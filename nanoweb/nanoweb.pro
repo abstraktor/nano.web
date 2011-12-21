@@ -95,6 +95,8 @@ HEADERS += \
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
+QT += webkit
+
 
 # Please do not modify the following two lines. Required for deployment.
 include(deployment.pri)

@@ -2,38 +2,38 @@
 #define IPN_WEBVIEWAPP_H
 
 #include "App.h"
+#include <QtWebKit>
 
 namespace ipn
 {
-	class BackgroundWidget;
-	class TitleBarWidget;
-	class TextWidget;
-	class ScalableButtonWidget;
+    class BackgroundWidget;
+    class TitleBarWidget;
+    class TextWidget;
+    class ScalableButtonWidget;
 
-        class WebviewApp : public App
-	{
-		Q_OBJECT
+    class WebviewApp : public App
+    {
+        Q_OBJECT
 
-		public:
-                        WebviewApp(QWidget *parent = 0);
+        public:
+            WebviewApp(QWidget *parent = 0);
 
-			inline bool isOpaque() {return false;}
-			void setMessage(QString message);
+            inline bool isOpaque() {return false;}
 
-		public slots:
-			void changePinchRotationAngle(qreal delta);
-			void changePinchScaleFactor(qreal delta);
-			void pinchIn();
-			void pinchOut();
-			void swipeLeft();
-			void swipeUp();
-			void swipeRight();
-			void swipeDown();
-                        void swipe(qreal angle);
+        public slots:
+            void changePinchRotationAngle(qreal delta);
+            void changePinchScaleFactor(qreal delta);
+            void pinchIn();
+            void pinchOut();
+            void swipeLeft();
+            void swipeUp();
+            void swipeRight();
+            void swipeDown();
+            void swipe(qreal angle);
 
 
-		signals:
-			void quitButtonClicked();
+        signals:
+            void quitButtonClicked();
 
 
                 protected:
@@ -44,14 +44,15 @@ namespace ipn
                 private:
                         QVector<QPolygon> m_drawing;
 
-			BackgroundWidget *m_back;
+            BackgroundWidget *m_back;
+            QWebView *m_webView;
 
-			TitleBarWidget *m_lastGesture;
-			TextWidget *m_scaleFactorText, *m_rotationAngleText, *m_swipeAngleText;
-			ScalableButtonWidget *m_quitButton;
+            TitleBarWidget *m_lastGesture;
+            TextWidget *m_scaleFactorText, *m_rotationAngleText, *m_swipeAngleText;
+            ScalableButtonWidget *m_quitButton;
 
                         qreal m_currentScaleFactor, m_currentRotationAngle;
-	};
+    };
 
 } // namespace ipn
 
