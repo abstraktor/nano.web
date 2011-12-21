@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Wed 21. Dec 17:01:23 2011
+** Created: Wed 21. Dec 17:51:06 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      23,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,21 +39,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
      162,   31,   16,   16, 0x08,
      205,  194,   16,   16, 0x08,
      238,   16,   16,   16, 0x08,
-     256,   16,   16,   16, 0x08,
-     281,   16,   16,   16, 0x08,
-     310,   16,   16,   16, 0x08,
-     333,   16,   16,   16, 0x08,
-     357,   16,   16,   16, 0x08,
-     376,   16,   16,   16, 0x08,
-     395,   16,   16,   16, 0x08,
-     414,   16,   16,   16, 0x08,
-     431,   16,   16,   16, 0x08,
-     448,   16,   16,   16, 0x08,
-     470,   16,   16,   16, 0x08,
-     491,   16,   16,   16, 0x08,
-     516,   16,   16,   16, 0x08,
-     538,   16,   16,   16, 0x08,
-     562,  558,   16,   16, 0x08,
+     260,  256,   16,   16, 0x08,
 
        0        // eod
 };
@@ -66,15 +52,7 @@ static const char qt_meta_stringdata_ipn__MainWindow[] = {
     "handleMouseHover(QMouseEvent*)\0"
     "forwardMouseEvent(QMouseEvent*)\0"
     "type,param\0handleGesture(GestureType,qreal)\0"
-    "switchToInfoApp()\0switchToDisplayMenuApp()\0"
-    "switchToInteractiveMenuApp()\0"
-    "switchToInputMenuApp()\0switchToChoiceMenuApp()\0"
-    "switchToClockApp()\0switchToPaintApp()\0"
-    "switchToMusicApp()\0switchToGUIApp()\0"
-    "switchToMapApp()\0switchToPeepholeApp()\0"
-    "switchToGestureApp()\0switchToMarkingMenuApp()\0"
-    "switchToMultiTapApp()\0switchToPickerApp()\0"
-    "app\0switchToApp(App*)\0"
+    "switchToWebPage()\0app\0switchToApp(App*)\0"
 };
 
 const QMetaObject ipn::MainWindow::staticMetaObject = {
@@ -113,25 +91,11 @@ int ipn::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 4: handleMouseHover((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 5: forwardMouseEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 6: handleGesture((*reinterpret_cast< GestureType(*)>(_a[1])),(*reinterpret_cast< qreal(*)>(_a[2]))); break;
-        case 7: switchToInfoApp(); break;
-        case 8: switchToDisplayMenuApp(); break;
-        case 9: switchToInteractiveMenuApp(); break;
-        case 10: switchToInputMenuApp(); break;
-        case 11: switchToChoiceMenuApp(); break;
-        case 12: switchToClockApp(); break;
-        case 13: switchToPaintApp(); break;
-        case 14: switchToMusicApp(); break;
-        case 15: switchToGUIApp(); break;
-        case 16: switchToMapApp(); break;
-        case 17: switchToPeepholeApp(); break;
-        case 18: switchToGestureApp(); break;
-        case 19: switchToMarkingMenuApp(); break;
-        case 20: switchToMultiTapApp(); break;
-        case 21: switchToPickerApp(); break;
-        case 22: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
+        case 7: switchToWebPage(); break;
+        case 8: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 23;
+        _id -= 9;
     }
     return _id;
 }

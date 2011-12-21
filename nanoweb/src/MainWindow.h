@@ -79,21 +79,7 @@ namespace ipn
 			void handleGesture(GestureType type, qreal param);
 
 			// Slots for connecting apps:
-			void switchToInfoApp();
-			void switchToDisplayMenuApp();
-			void switchToInteractiveMenuApp();
-			void switchToInputMenuApp();
-			void switchToChoiceMenuApp();
-			void switchToClockApp();
-			void switchToPaintApp();
-			void switchToMusicApp();
-			void switchToGUIApp();
-			void switchToMapApp();
-			void switchToPeepholeApp();
-			void switchToGestureApp();
-			void switchToMarkingMenuApp();
-			void switchToMultiTapApp();
-			void switchToPickerApp();
+                        void switchToWebPage();
 
 			void switchToApp(App *app);
 
@@ -104,17 +90,7 @@ namespace ipn
 
 			// Apps
 			MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
-			InfoApp *m_infoApp;
-			ClockApp *m_clockApp;
-			PaintApp *m_paintApp;
-			MusicApp *m_musicApp;
-			GUIApp *m_guiApp;
-			MapApp *m_mapApp;
-			PeepholeApp *m_peepholeApp;
-			GestureApp *m_gestureApp;
-			MarkingMenuApp *m_markingMenuApp;
-			MultiTapApp *m_multiTapApp;
-			PickerApp *m_pickerApp;
+                        InfoApp *m_infoApp;
 
 			// For emulating touch noise:
 			OverlayWidget *m_overlayWidget;
