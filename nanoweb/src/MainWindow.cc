@@ -12,6 +12,7 @@
 #include "apps/MultiTapApp.h"
 #include "apps/PickerApp.h"
 #include "apps/PeepholeApp.h"
+#include "apps/WebviewApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -34,14 +35,14 @@ namespace ipn
 		// Create apps:
 		m_menuApp = new MenuApp();
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
-		m_menuApp->addButton(MenuApp::TopLeft, "display", ":/img/icons/icon.png");
+                m_menuApp->addButton(MenuApp::TopLeft, "meilenwerk", ":/img/icons/icon.png");
                 m_menuApp->addButton(MenuApp::TopRight, "--", ":/img/icons/icon.png");
                 m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/icon.png");
                 m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/icon.png");
                 m_menuApp->titleBar()->setTitle("NANOWEB");
 
-		m_infoApp = new InfoApp();
-                m_infoApp->setMessage("You are now seeing a webpage.");
+                m_webviewApp = new WebviewApp();
+                //m_infoApp->setMessage("You are now seeing a webpage.");
 
 		// Set MenuApp as first app:
                 m_frameWidget->instantReplaceAllAppsBy(m_menuApp);
@@ -66,9 +67,10 @@ namespace ipn
                 // display webpage on topleftbutton-click
                 connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
                 // go back from webpage to main menu
-                connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
+                //connect(m_webviewApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
                 // quit button
                 connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
+                connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
 
 
 		// Initialize finger:
@@ -93,7 +95,7 @@ namespace ipn
 	}
 
 	// For each app, we need a slot which pushes it on the app stack:
-        void MainWindow::switchToWebPage()		{m_frameWidget->pushApp(m_infoApp);}
+        void MainWindow::switchToWebPage()		{m_frameWidget->pushApp(m_webviewApp);}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

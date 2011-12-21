@@ -31,6 +31,7 @@ INPUT(
 ./release\OverlayWidget.o
 ./release\MenuApp.o
 ./release\InfoApp.o
+./release\WebviewApp.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o
@@ -61,5 +62,6 @@ INPUT(
 ./release\moc_OverlayWidget.o
 ./release\moc_MenuApp.o
 ./release\moc_InfoApp.o
+./release\moc_WebviewApp.o
 ./release\qrc_resources.o
 );

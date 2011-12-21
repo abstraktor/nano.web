@@ -31,6 +31,7 @@ INPUT(
 ./debug\OverlayWidget.o
 ./debug\MenuApp.o
 ./debug\InfoApp.o
+./debug\WebviewApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -61,5 +62,6 @@ INPUT(
 ./debug\moc_OverlayWidget.o
 ./debug\moc_MenuApp.o
 ./debug\moc_InfoApp.o
+./debug\moc_WebviewApp.o
 ./debug\qrc_resources.o
 );

@@ -35,6 +35,7 @@ namespace ipn
 	class MultiTapApp;
 	class PickerApp;
 	class PeepholeApp;
+        class WebviewApp;
 
 	class OverlayWidget;
 	class TitleBarWidget;
@@ -90,7 +91,7 @@ namespace ipn
 
 			// Apps
 			MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
-                        InfoApp *m_infoApp;
+                        WebviewApp *m_webviewApp;
 
 			// For emulating touch noise:
 			OverlayWidget *m_overlayWidget;
