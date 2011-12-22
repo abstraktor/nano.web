@@ -5,6 +5,11 @@
 #include <QPolygon>
 #include <QVector>
 #include <QtWebKit>
+#include <QApplication>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsWebView>
+#include <QWebSettings>
 #include "widgets/BackgroundWidget.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
@@ -18,11 +23,31 @@ namespace ipn
 		m_currentScaleFactor = 1.0;
 		m_currentRotationAngle = 0.0;
 
-		m_webView = new QWebView(this);
-		m_webView->load(QUrl("http://www.meilenwerk.de/"));
-		m_webView->move(00, 00);
-		m_webView->resize(240, 240);
-		m_webView->show();
+
+		m_scene = new QGraphicsScene();
+
+		m_graphicsWebView = new QGraphicsWebView();
+		m_graphicsWebView->resize(100, 100);
+		m_graphicsWebView->load(QUrl("http://www.meilenwerk.de/"));
+
+		m_scene->addItem(m_graphicsWebView);
+
+		m_graphicsView = new QGraphicsView(m_scene, this);
+		m_graphicsView->setFrameShape(QFrame::NoFrame);
+		m_graphicsView->move(100, 100);
+		m_graphicsView->resize(100, 100);
+		m_graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		m_graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+
+		m_graphicsView->show();
+
+  /*m_webView = new QWebView(this);
+  m_webView->load(QUrl("http://www.meilenwerk.de/"));
+  m_webView->move(00, 00);
+  m_webView->resize(240, 240);
+  m_webView->show();*/
+
 
 		// Connect gestures:
 		connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
