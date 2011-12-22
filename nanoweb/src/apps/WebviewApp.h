@@ -46,10 +46,9 @@ namespace ipn
 
 	private:
 		QVector<QPolygon> m_drawing;
-		QWebView *m_webView;
 		QGraphicsView *m_graphicsView;
 		QGraphicsScene *m_scene;
-		QGraphicsWebView *m_graphicsWebView;
+		QGraphicsWebView *m_webView;
 
 		BackgroundWidget *m_back;
 

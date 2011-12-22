@@ -23,31 +23,34 @@ namespace ipn
 		m_currentScaleFactor = 1.0;
 		m_currentRotationAngle = 0.0;
 
+		/*
+		 * Important Websites, read and understand before editing this code:
+		 *    - http://codeposts.blogspot.com/2010/06/qtwebkit-goes-mobile.html
+		 *    - http://trac.webkit.org/wiki/QtWebKitTiling (slightly different)
+		 *    - http://doc.qt.nokia.com/4.7-snapshot/qgraphicswebview.html#QGraphicsWebView
+		 */
+
+		// qt web settings: enable tiling and flatten frames
+		QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, true);
+		QWebSettings::globalSettings()->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
 
 		m_scene = new QGraphicsScene();
 
-		m_graphicsWebView = new QGraphicsWebView();
-		m_graphicsWebView->resize(100, 100);
-		m_graphicsWebView->load(QUrl("http://www.meilenwerk.de/"));
+		m_webView = new QGraphicsWebView();
+		m_webView->resize(240, 240);
+		m_webView->load(QUrl("http://www.meilenwerk.de/"));
+		m_webView->setResizesToContents(true);
 
-		m_scene->addItem(m_graphicsWebView);
+		m_scene->addItem(m_webView);
 
 		m_graphicsView = new QGraphicsView(m_scene, this);
 		m_graphicsView->setFrameShape(QFrame::NoFrame);
-		m_graphicsView->move(100, 100);
-		m_graphicsView->resize(100, 100);
+		m_graphicsView->move(0, 0);
+		m_graphicsView->resize(240, 240);
 		m_graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 		m_graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-
 		m_graphicsView->show();
-
-  /*m_webView = new QWebView(this);
-  m_webView->load(QUrl("http://www.meilenwerk.de/"));
-  m_webView->move(00, 00);
-  m_webView->resize(240, 240);
-  m_webView->show();*/
-
 
 		// Connect gestures:
 		connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
