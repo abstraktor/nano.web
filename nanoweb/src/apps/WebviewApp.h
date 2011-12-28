@@ -13,6 +13,7 @@ namespace ipn
 	class TitleBarWidget;
 	class TextWidget;
 	class ScalableButtonWidget;
+	class NanoWebView;
 
 	class WebviewApp : public App
 	{
@@ -48,7 +49,7 @@ namespace ipn
 		QVector<QPolygon> m_drawing;
 		QGraphicsView *m_graphicsView;
 		QGraphicsScene *m_scene;
-		QGraphicsWebView *m_webView;
+		NanoWebView *m_webView;
 
 		BackgroundWidget *m_back;
 

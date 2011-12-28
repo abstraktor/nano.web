@@ -14,6 +14,7 @@
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
+#include "nanoweb/NanoWebView.h"
 
 namespace ipn
 {
@@ -36,10 +37,11 @@ namespace ipn
 
 		m_scene = new QGraphicsScene();
 
-		m_webView = new QGraphicsWebView();
+		m_webView = new NanoWebView();
 		m_webView->resize(240, 240);
 		m_webView->load(QUrl("http://www.meilenwerk.de/"));
 		m_webView->setResizesToContents(true);
+		m_webView->setZoomFactor(0.5);
 
 		m_scene->addItem(m_webView);
 
@@ -62,6 +64,10 @@ namespace ipn
 		connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
 		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
+	}
+
+	void WebviewApp::mousePressEvent(QMouseEvent *event) {
+		qDebug("Element clicked");
 	}
 
 	void WebviewApp::changePinchRotationAngle(qreal delta)
@@ -108,14 +114,6 @@ namespace ipn
 	{
 		m_swipeAngleText->setText("swipe angle: " + QString::number(angle) + "°");
 		update();
-	}
-
-	void WebviewApp::mousePressEvent(QMouseEvent *event)
-	{
-		// Begin a new line:
-		QPolygon newPolyLine;
-		newPolyLine.push_back(event->pos());
-		m_drawing.push_back(newPolyLine);
 	}
 
 	void WebviewApp::mouseMoveEvent(QMouseEvent *event)

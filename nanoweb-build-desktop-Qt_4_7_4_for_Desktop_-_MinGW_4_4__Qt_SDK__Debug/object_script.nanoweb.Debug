@@ -32,6 +32,7 @@ INPUT(
 ./debug\MenuApp.o
 ./debug\InfoApp.o
 ./debug\WebviewApp.o
+./debug\NanoWebView.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o

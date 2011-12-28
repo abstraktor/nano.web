@@ -58,7 +58,8 @@ SOURCES += \
         src/widgets/OverlayWidget.cc \
         src/apps/MenuApp.cc \
         src/apps/InfoApp.cc \
-    src/apps/WebviewApp.cc
+    src/apps/WebviewApp.cc \
+    src/nanoweb/NanoWebView.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -91,7 +92,9 @@ HEADERS += \
         src/widgets/OverlayWidget.h \
         src/apps/MenuApp.h \
         src/apps/InfoApp.h \
-    src/apps/WebviewApp.h
+    src/apps/WebviewApp.h \
+    src/nanoweb/NanoWebView.h \
+    src/nanoweb/NanoWebView.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets

@@ -13,27 +13,6 @@
 
 int main(int argc, char *argv[])
 {
-	/*	QApplication app(argc, argv);
-  const int width = 640;
-  const int height = 480;
-
-  QGraphicsScene scene;
-
-  QGraphicsView view(&scene);
-  view.setFrameShape(QFrame::NoFrame);
-  view.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  view.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-  QGraphicsWebView webview;
-  webview.resize(width, height);
-  webview.load(QUrl("http://www.wouwlabs.com/blogs/jeez"));
-
-  scene.addItem(&webview);
-  view.resize(width, height);
-  view.show();
-
-  return app.exec();*/
-
 	QApplication app(argc, argv);
 
 	// Initialize random number generator:

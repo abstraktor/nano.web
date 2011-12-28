@@ -32,6 +32,7 @@ INPUT(
 ./release\MenuApp.o
 ./release\InfoApp.o
 ./release\WebviewApp.o
+./release\NanoWebView.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o
