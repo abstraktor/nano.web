@@ -12,11 +12,15 @@
 namespace ipn
 {
 	class NanoWebView : public QGraphicsWebView
-	{
+    {
+        //Q_OBJECT
+
 		public:
-			NanoWebView(QGraphicsItem *parent = 0);
+            NanoWebView(QGraphicsItem *parent = 0);
 		protected:
-			virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
+            virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
+        //signals:
+        //    virtual void elementTapped();
 
 	};
 

@@ -10,7 +10,7 @@
 
 namespace ipn
 {
-	NanoWebView::NanoWebView(QGraphicsItem *parent) : QGraphicsWebView(parent)
+    NanoWebView::NanoWebView(QGraphicsItem *parent) : QGraphicsWebView(parent)
 	{
 	}
 
@@ -19,9 +19,10 @@ namespace ipn
 		qDebug() << "EVENT: mousePress" << pos;
 		QWebElement el = this->page()->mainFrame()->hitTestContent(pos).element();
 		//QWebElement el = this->page()->mainFrame()->hitTestContent(pos).linkElement();  // for link element
-		qDebug() << "TagName: " << el.tagName();
+        qDebug() << "TagName: " << el.tagName();
 
-		event->setAccepted(true);
-	}
+        event->setAccepted(true);
+        //emit elementTapped();
+    }
 }
 

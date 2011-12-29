@@ -22,7 +22,7 @@ namespace ipn
 		m_title->setFontStyle(TextWidget::STYLE_BOLD);
 		m_title->setLineHeight(0.8);
 
-		m_leftButton = NULL;
+        m_leftButton = NULL;
 		m_rightButton = NULL;
 	}
 

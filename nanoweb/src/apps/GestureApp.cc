@@ -26,7 +26,7 @@ namespace ipn
 		m_swipeAngleText->move(0, 48);
 		m_swipeAngleText->resize(240, 48);
 
-		m_scaleFactorText = new TextWidget(this);
+        m_scaleFactorText = new TextWidget(this);
 		m_scaleFactorText->setColor(Qt::white);
 		m_scaleFactorText->move(0, 96);
 		m_scaleFactorText->resize(240, 48);
@@ -94,8 +94,8 @@ namespace ipn
 	}
 
 	void GestureApp::swipeLeft()
-	{
-                setLastGesture("swipe left");
+    {
+        setLastGesture("swipe left");
 	}
 
 	void GestureApp::swipeUp()
