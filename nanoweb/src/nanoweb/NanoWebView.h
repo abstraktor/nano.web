@@ -15,6 +15,9 @@ namespace ipn
 	{
 		public:
 			NanoWebView(QGraphicsItem *parent = 0);
+		protected:
+			virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
+
 	};
 
 }

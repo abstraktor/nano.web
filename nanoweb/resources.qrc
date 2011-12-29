@@ -58,5 +58,16 @@
         <file>img/page_indicator/page_indicator_active.png</file>
         <file>img/page_indicator/page_indicator_inactive.png</file>
         <file>img/fingers/index_finger.png</file>
+        <file>webseite/meilenwerk.html</file>
+        <file>webseite/meilenwerk_files/_blank.gif</file>
+        <file>webseite/meilenwerk_files/content.css</file>
+        <file>webseite/meilenwerk_files/fouc.css</file>
+        <file>webseite/meilenwerk_files/meilenwerk_stuttgart_start_01.jpg</file>
+        <file>webseite/meilenwerk_files/mw.css</file>
+        <file>webseite/meilenwerk_files/MW_Logo.png</file>
+        <file>webseite/meilenwerk_files/nav.css</file>
+        <file>webseite/meilenwerk_files/piwik.js</file>
+        <file>webseite/meilenwerk_files/rb.css</file>
+        <file>webseite/meilenwerk_files/swfobject.js</file>
     </qresource>
 </RCC>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by Qt Creator 2.4.0, 2011-12-28T22:54:03. -->
+<!-- Written by Qt Creator 2.4.0, 2011-12-29T02:07:25. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -819,7 +819,7 @@
     <value type="QString" key="Qt4ProjectManager.S60DeployConfiguration.DeviceAddress"></value>
     <value type="QString" key="Qt4ProjectManager.S60DeployConfiguration.DevicePort">65029</value>
     <value type="QChar" key="Qt4ProjectManager.S60DeployConfiguration.InstallationDriveLetter">C</value>
-    <value type="QString" key="Qt4ProjectManager.S60DeployConfiguration.SerialPortName">COM5</value>
+    <value type="QString" key="Qt4ProjectManager.S60DeployConfiguration.SerialPortName"></value>
     <value type="bool" key="Qt4ProjectManager.S60DeployConfiguration.SilentInstall">true</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>
@@ -894,7 +894,7 @@
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">false</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

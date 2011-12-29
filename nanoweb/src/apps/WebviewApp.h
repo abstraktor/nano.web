@@ -53,9 +53,6 @@ namespace ipn
 
 		BackgroundWidget *m_back;
 
-		TitleBarWidget *m_lastGesture;
-		TextWidget *m_scaleFactorText, *m_rotationAngleText, *m_swipeAngleText;
-		ScalableButtonWidget *m_quitButton;
 
 		qreal m_currentScaleFactor, m_currentRotationAngle;
 	};

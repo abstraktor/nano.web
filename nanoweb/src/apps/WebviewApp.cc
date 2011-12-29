@@ -5,6 +5,7 @@
 #include <QPolygon>
 #include <QVector>
 #include <QtWebKit>
+#include <QtDebug>
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -41,7 +42,7 @@ namespace ipn
 		m_webView->resize(240, 240);
 		m_webView->load(QUrl("http://www.meilenwerk.de/"));
 		m_webView->setResizesToContents(true);
-		m_webView->setZoomFactor(0.5);
+		m_webView->setZoomFactor(1.0);
 
 		m_scene->addItem(m_webView);
 
@@ -67,23 +68,15 @@ namespace ipn
 	}
 
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {
-		qDebug("Element clicked");
+		qDebug() << "Element clicked";
 	}
 
 	void WebviewApp::changePinchRotationAngle(qreal delta)
 	{
-		m_currentRotationAngle += delta;
-		m_rotationAngleText->setText("rotation angle: " + QString::number(m_currentRotationAngle) + "°");
-
-		update();
 	}
 
 	void WebviewApp::changePinchScaleFactor(qreal delta)
 	{
-		m_currentScaleFactor *= delta;
-		m_scaleFactorText->setText("scaleFactor: " + QString::number(m_currentScaleFactor) + "x");
-
-		update();
 	}
 
 	void WebviewApp::pinchIn()
@@ -112,18 +105,10 @@ namespace ipn
 
 	void WebviewApp::swipe(qreal angle)
 	{
-		m_swipeAngleText->setText("swipe angle: " + QString::number(angle) + "°");
-		update();
+		qDebug() << "EVENT: Swipe " << angle;
 	}
 
 	void WebviewApp::mouseMoveEvent(QMouseEvent *event)
 	{
-		if (m_drawing.empty())
-			return;
-
-		if (event->buttons() == Qt::LeftButton)
-			m_drawing.back().push_back(event->pos());
-
-		update();
 	}
 } // namespace ipn

@@ -1,0 +1,231 @@
+.VertNavActive 
+{
+	display:block;
+	width:115px;
+	background-color:#252525;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	height: 18px;
+	line-height: 19px;
+	font-weight: bold;
+}
+
+.VertNavSpaceLeft {width:25px;}
+.VertNavSpaceRight {width:15px;}
+.VertNavSpaceLine {height:4px;}
+
+
+
+
+a.VertNavLink:link {
+	color:#a0a5a5;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	background-color: #252525;
+	display:block;
+	width:115px;
+	height:18px;
+	line-height: 19px;
+	font-weight: bold;
+	
+}
+a.VertNavLink:visited {
+	color:#a0a5a5;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	background-color: #252525;
+	display:block;
+	width:115px;
+	height:18px;
+	line-height: 19px;
+	font-weight: bold;
+
+	
+}
+
+a.VertNavLink:focus 
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #252525;
+	text-decoration: none;
+	display:block;
+	width:115px;
+	height:18px;
+	line-height: 19px;
+	font-weight: bold;
+	
+}
+a.VertNavLink:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #252525;
+	width:115px;
+	display:block;
+	height:18px;
+	line-height: 19px;
+	font-weight: bold;
+	
+}
+.HorNavBar {
+	border-left-width: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-left-color: #8D8D8D;
+	width: 10px;
+
+}
+
+a.HorNavLinkBig:link
+{
+	color:#8D8D8D;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+a.HorNavLinkBig:visited
+{
+	color:#8D8D8D;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+a.HorNavLinkBig:focus
+{
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+a.HorNavLinkBig:hover
+{
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+}
+.HorNavBig {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color: #8D8D8D;
+	font-weight: bold;
+
+
+
+}
+.HorNavSmall {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #8D8D8D;
+	font-weight: bold;
+
+
+}
+a.HorNavLinkSmall:link
+{
+	color:#8D8D8D;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+
+}
+
+a.HorNavLinkSmall:visited
+{
+	color:#8D8D8D;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a.HorNavLinkSmall:focus
+{
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a.HorNavLinkSmall:hover
+{
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+.HorNavBet {
+	height: 3px;
+
+
+}
+.HorNavBarBet {
+	border-left-width: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-left-color: #8D8D8D;
+	width: 10px;
+	height: 5px;
+
+}
+
+a.BasicNav:link
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #8D8D8D;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+
+}
+
+a.BasicNav:visited
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #8D8D8D;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.BasicNav:focus
+{
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.BasicNav:hover
+{
+	color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+}
+.VertNavSpaceInActive {
+width:7px;
+}
+.VertNavSpaceActive {
+
+width:7px;
+}

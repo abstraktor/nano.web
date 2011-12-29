@@ -112,7 +112,18 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/copyright \
     qtc_packaging/debian_harmattan/control \
     qtc_packaging/debian_harmattan/compat \
-    qtc_packaging/debian_harmattan/changelog
+    qtc_packaging/debian_harmattan/changelog \
+    webseite/meilenwerk.html \
+    webseite/meilenwerk_files/swfobject.js \
+    webseite/meilenwerk_files/rb.css \
+    webseite/meilenwerk_files/piwik.js \
+    webseite/meilenwerk_files/nav.css \
+    webseite/meilenwerk_files/MW_Logo.png \
+    webseite/meilenwerk_files/mw.css \
+    webseite/meilenwerk_files/meilenwerk_stuttgart_start_01.jpg \
+    webseite/meilenwerk_files/fouc.css \
+    webseite/meilenwerk_files/content.css \
+    webseite/meilenwerk_files/_blank.gif
 
 RESOURCES += \
     resources.qrc

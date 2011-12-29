@@ -1,0 +1,108 @@
+.rbUE {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 26px;
+	font-weight: bold;
+
+
+}
+.rbText {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #A0A5A5;
+	left: 15px;
+}
+.rbEinzugLinks {
+	width: 6px;
+	height: 14px;
+
+
+}
+
+
+	
+a.link:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 14px;
+}
+a.link:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 14px;
+}
+a.link:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #A0A5A5;
+	text-decoration: none;
+	line-height: 14px;
+}
+a.maillink:active {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 19px;
+}	
+	
+a.maillink:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 19px;
+}
+a.maillink:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 19px;
+}
+a.maillink:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #A0A5A5;
+	text-decoration: none;
+	line-height: 19px;
+}
+a.maillink:focus {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #A0A5A5;
+	text-decoration: none;
+	line-height: 19px;	
+
+	
+}.rbhinweis {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #A0A5A5;
+	line-height: 14px;
+
+}
+.rbEinzugRechts {
+	width: 25px;
+	height: 1px;
+
+}
+.rbEinzugOben {
+	width: 1px;
+	height: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+
+}
+.rbSpaceLine {
+	height: 4px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 4px;
+
+
+}
