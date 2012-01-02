@@ -51,21 +51,21 @@ namespace ipn
                 m_hardwareButtonLeft = new ButtonWidget(this);
                 m_hardwareButtonLeft->setInactiveImages(":/img/frame/hardware_button.png",
                         ":/img/frame/hardware_button_down.png");
-                m_hardwareButtonLeft->move(0, 0);
+                m_hardwareButtonLeft->move(190, 0);
                 m_hardwareButtonLeft->setMouseTracking(true);
                 connect(m_hardwareButtonLeft, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
 
                 m_hardwareButtonRight = new ButtonWidget(this);
                 m_hardwareButtonRight->setInactiveImages(":/img/frame/hardware_button.png",
                         ":/img/frame/hardware_button_down.png");
-                m_hardwareButtonRight->move(50, 0);
+                m_hardwareButtonRight->move(240, 0);
                 m_hardwareButtonRight->setMouseTracking(true);
                 connect(m_hardwareButtonRight, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
 
                 m_hardwareButtonBack = new ButtonWidget(this);
                 m_hardwareButtonBack->setInactiveImages(":/img/frame/hardware_button.png",
                         ":/img/frame/hardware_button_down.png");
-                m_hardwareButtonBack->move(240, 0);
+                m_hardwareButtonBack->move(0, 0);
                 m_hardwareButtonBack->setMouseTracking(true);
                 connect(m_hardwareButtonBack, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
 
