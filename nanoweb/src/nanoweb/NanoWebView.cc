@@ -11,10 +11,11 @@
 namespace ipn
 {
     NanoWebView::NanoWebView(QGraphicsItem *parent) : QGraphicsWebView(parent)
-	{
+        {
+
 	}
 
-	void NanoWebView::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+    void NanoWebView::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		QPoint pos = QPoint(event->scenePos().x(), event->scenePos().y());
 		qDebug() << "EVENT: mousePress" << pos;
 		QWebElement el = this->page()->mainFrame()->hitTestContent(pos).element();
@@ -24,5 +25,6 @@ namespace ipn
         event->setAccepted(true);
         //emit elementTapped();
     }
+
 }
 

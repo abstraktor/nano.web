@@ -13,7 +13,6 @@ enum {ANIMATION_LEFT, ANIMATION_RIGHT, ANIMATION_NONE};
 
 namespace ipn
 {
-
 	class ImageWidget;
 	class ButtonWidget;
 
@@ -43,6 +42,7 @@ namespace ipn
 			 */
 			void frameMoved();
 			void frameMoved(const QPoint relativeMovement);
+                        void gestureTriggered(GestureType type, qreal param);
 
 		public slots:
 			// slots used for manipulating the app stack (animated):
@@ -56,6 +56,8 @@ namespace ipn
 			void instantSwitchBackTo(App *app);
 			void instantReplaceAllAppsBy(App *app);
 
+                        void triggerHardwareButtonClick();
+
 		private slots:
 			void drawAnimation();
 
@@ -63,14 +65,16 @@ namespace ipn
 			void mouseMoveEvent(QMouseEvent *event);
 			void mousePressEvent(QMouseEvent *event);
 			void mouseReleaseEvent(QMouseEvent *event);
-			void moveEvent(QMoveEvent*);
+                        void moveEvent(QMoveEvent*);
 
 		private:
 			void popMultipleApps();
 			void refresh();
 
 			ImageWidget *m_frameImages[3][3];
-			ButtonWidget *m_hardwareButton;
+                        ButtonWidget *m_hardwareButtonBack;
+                        ButtonWidget *m_hardwareButtonLeft;
+                        ButtonWidget *m_hardwareButtonRight;
 
 			int m_paddingTop;
 

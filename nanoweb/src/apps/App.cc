@@ -38,6 +38,15 @@ namespace ipn
 			case SwipeDown:
 				emit swipeDownTriggered();
 				break;
+                        case RightButtonClick:
+                                emit rightButtonClickTriggered();
+                                break;
+                        case LeftButtonClick:
+                                emit leftButtonClickTriggered();
+                                break;
+                        case BackButtonClick:
+                                emit backButtonClickTriggered();
+                                break;
 		}
 	}
 

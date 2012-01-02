@@ -54,6 +54,10 @@ namespace ipn
 			void swipeUpTriggered();
 			void swipeRightTriggered();
 			void swipeDownTriggered();
+
+                        void backButtonClickTriggered();
+                        void leftButtonClickTriggered();
+                        void rightButtonClickTriggered();
 	};
 
 } // namespace ipn

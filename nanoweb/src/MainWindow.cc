@@ -37,13 +37,13 @@ namespace ipn
 		m_menuApp = new MenuApp();
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "meilenwerk", ":/img/icons/icon.png");
-        m_menuApp->addButton(MenuApp::TopRight, "element", ":/img/icons/icon.png");
+                m_menuApp->addButton(MenuApp::TopRight, "element", ":/img/icons/icon.png");
 		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/icon.png");
 		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/icon.png");
 		m_menuApp->titleBar()->setTitle("NANOWEB");
 
 		m_webviewApp = new WebviewApp();
-        m_elementTappedApp = new ElementTappedApp();
+                m_elementTappedApp = new ElementTappedApp();
 		//m_infoApp->setMessage("You are now seeing a webpage.");
 
 
@@ -61,15 +61,16 @@ namespace ipn
 		connect(m_overlayWidget, SIGNAL(mouseMoved(QMouseEvent*)), this, SLOT(handleMouseMove(QMouseEvent*)));
 		connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
 		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
+                connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
 
 
 
-        // display webpage on topleftbutton-click
-        connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
-        connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
+                // display webpage on topleftbutton-click
+                connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
+                connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
 		// go back from webpage to main menu
 		//connect(m_webviewApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 		// quit button

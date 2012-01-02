@@ -47,12 +47,28 @@ namespace ipn
 		layout->setSpacing(0);
 		layout->setContentsMargins(0, m_paddingTop, 0, 0);
 
-		m_hardwareButton = new ButtonWidget(this);
-		m_hardwareButton->setInactiveImages(":/img/frame/hardware_button.png",
-			":/img/frame/hardware_button_down.png");
-		m_hardwareButton->move(240, 0);
-		m_hardwareButton->setMouseTracking(true);
-		connect(m_hardwareButton, SIGNAL(clicked()), this, SLOT(popApp()));
+
+                m_hardwareButtonLeft = new ButtonWidget(this);
+                m_hardwareButtonLeft->setInactiveImages(":/img/frame/hardware_button.png",
+                        ":/img/frame/hardware_button_down.png");
+                m_hardwareButtonLeft->move(0, 0);
+                m_hardwareButtonLeft->setMouseTracking(true);
+                connect(m_hardwareButtonLeft, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
+
+                m_hardwareButtonRight = new ButtonWidget(this);
+                m_hardwareButtonRight->setInactiveImages(":/img/frame/hardware_button.png",
+                        ":/img/frame/hardware_button_down.png");
+                m_hardwareButtonRight->move(50, 0);
+                m_hardwareButtonRight->setMouseTracking(true);
+                connect(m_hardwareButtonRight, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
+
+                m_hardwareButtonBack = new ButtonWidget(this);
+                m_hardwareButtonBack->setInactiveImages(":/img/frame/hardware_button.png",
+                        ":/img/frame/hardware_button_down.png");
+                m_hardwareButtonBack->move(240, 0);
+                m_hardwareButtonBack->setMouseTracking(true);
+                connect(m_hardwareButtonBack, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
+
 
 		setFixedSize(frameSize());
 		resize(frameSize());
@@ -63,11 +79,22 @@ namespace ipn
 		m_animationTimer = new QTimer(this);
 		m_animationTimer->setInterval(30);
 		m_animationTimer->setSingleShot(false);
-		connect(m_animationTimer, SIGNAL(timeout()), this, SLOT(drawAnimation()));
+                connect(m_animationTimer, SIGNAL(timeout()), this, SLOT(drawAnimation()));
 
 		setMouseTracking(true);
 		setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	}
+
+        void IPodFrameWidget::triggerHardwareButtonClick()
+        {
+                GestureType type;
+
+                if (sender() == m_hardwareButtonBack) type = BackButtonClick;
+                else if (sender() == m_hardwareButtonRight) type = RightButtonClick;
+                else if (sender() == m_hardwareButtonLeft) type = LeftButtonClick;
+
+                emit gestureTriggered(type,0);
+        }
 
 	QSize IPodFrameWidget::frameSize()
 	{

@@ -33,8 +33,10 @@ namespace ipn
 		void swipeUp();
 		void swipeRight();
 		void swipeDown();
-		void swipe(qreal angle);
-
+                void swipe(qreal angle);
+                void backButtonClick();
+                void rightButtonClick();
+                void leftButtonClick();
 
 	signals:
 		void quitButtonClicked();
@@ -42,7 +44,7 @@ namespace ipn
 
 	protected:
 		virtual void mousePressEvent(QMouseEvent *event);
-		virtual void mouseMoveEvent(QMouseEvent *event);
+                virtual void mouseMoveEvent(QMouseEvent *event);
 
 
 	private:

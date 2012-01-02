@@ -11,9 +11,9 @@
 
 namespace ipn
 {
-	class NanoWebView : public QGraphicsWebView
+    class NanoWebView : public QGraphicsWebView
     {
-        //Q_OBJECT
+       // Q_OBJECT
 
 		public:
             NanoWebView(QGraphicsItem *parent = 0);

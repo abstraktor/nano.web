@@ -21,7 +21,10 @@ namespace ipn
 		SwipeUp,
 		SwipeRight,
 		SwipeDown,
-		Swipe
+                Swipe,
+                BackButtonClick,
+                RightButtonClick,
+                LeftButtonClick
 	};
 
 	class OverlayWidget : public QWidget

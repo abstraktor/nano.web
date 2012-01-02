@@ -65,6 +65,9 @@ namespace ipn
 		connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
 		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
+                connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+                connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
+                connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
 	}
 
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {
@@ -111,4 +114,19 @@ namespace ipn
 	void WebviewApp::mouseMoveEvent(QMouseEvent *event)
 	{
 	}
+
+        void WebviewApp::backButtonClick()
+        {
+                qDebug() << "Backbutton clicked! ";
+        }
+
+        void WebviewApp::rightButtonClick()
+        {
+                qDebug() << "Rightbutton clicked! ";
+        }
+
+        void WebviewApp::leftButtonClick()
+        {
+                qDebug() << "Leftbutton clicked! ";
+        }
 } // namespace ipn
