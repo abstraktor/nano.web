@@ -26,11 +26,11 @@ namespace ipn
 		m_currentRotationAngle = 0.0;
 
 		/*
-		 * Important Websites, read and understand before editing this code:
-		 *    - http://codeposts.blogspot.com/2010/06/qtwebkit-goes-mobile.html
-		 *    - http://trac.webkit.org/wiki/QtWebKitTiling (slightly different)
-		 *    - http://doc.qt.nokia.com/4.7-snapshot/qgraphicswebview.html#QGraphicsWebView
-		 */
+			 * Important Websites, read and understand before editing this code:
+			 *    - http://codeposts.blogspot.com/2010/06/qtwebkit-goes-mobile.html
+			 *    - http://trac.webkit.org/wiki/QtWebKitTiling (slightly different)
+			 *    - http://doc.qt.nokia.com/4.7-snapshot/qgraphicswebview.html#QGraphicsWebView
+			 */
 
 		// qt web settings: enable tiling and flatten frames
 		QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, true);
@@ -65,9 +65,9 @@ namespace ipn
 		connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
 		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
-                connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
-                connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
-                connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
+		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
+		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
 	}
 
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {
@@ -115,18 +115,18 @@ namespace ipn
 	{
 	}
 
-        void WebviewApp::backButtonClick()
-        {
-                qDebug() << "Backbutton clicked! ";
-        }
+	void WebviewApp::backButtonClick()
+	{
+		qDebug() << "Backbutton clicked! ";
+	}
 
-        void WebviewApp::rightButtonClick()
-        {
-                qDebug() << "Rightbutton clicked! ";
-        }
+	void WebviewApp::rightButtonClick()
+	{
+		qDebug() << "Rightbutton clicked! ";
+	}
 
-        void WebviewApp::leftButtonClick()
-        {
-                qDebug() << "Leftbutton clicked! ";
-        }
+	void WebviewApp::leftButtonClick()
+	{
+		qDebug() << "Leftbutton clicked! ";
+	}
 } // namespace ipn

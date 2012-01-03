@@ -33,6 +33,7 @@ INPUT(
 ./debug\InfoApp.o
 ./debug\WebviewApp.o
 ./debug\NanoWebView.o
+./debug\ElementTappedApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -64,5 +65,6 @@ INPUT(
 ./debug\moc_MenuApp.o
 ./debug\moc_InfoApp.o
 ./debug\moc_WebviewApp.o
+./debug\moc_ElementTappedApp.o
 ./debug\qrc_resources.o
 );

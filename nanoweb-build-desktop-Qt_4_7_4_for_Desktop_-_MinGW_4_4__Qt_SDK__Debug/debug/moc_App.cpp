@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'App.h'
 **
-** Created: Wed 21. Dec 17:02:19 2011
+** Created: Tue 3. Jan 16:26:21 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,12 +23,12 @@ static const uint qt_meta_data_ipn__App[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       9,       // signalCount
+      12,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       16,   10,    9,    9, 0x05,
@@ -40,6 +40,9 @@ static const uint qt_meta_data_ipn__App[] = {
      168,    9,    9,    9, 0x05,
      187,    9,    9,    9, 0x05,
      209,    9,    9,    9, 0x05,
+     230,    9,    9,    9, 0x05,
+     257,    9,    9,    9, 0x05,
+     284,    9,    9,    9, 0x05,
 
        0        // eod
 };
@@ -51,6 +54,9 @@ static const char qt_meta_stringdata_ipn__App[] = {
     "angle\0swipeTriggered(qreal)\0"
     "swipeLeftTriggered()\0swipeUpTriggered()\0"
     "swipeRightTriggered()\0swipeDownTriggered()\0"
+    "backButtonClickTriggered()\0"
+    "leftButtonClickTriggered()\0"
+    "rightButtonClickTriggered()\0"
 };
 
 const QMetaObject ipn::App::staticMetaObject = {
@@ -91,9 +97,12 @@ int ipn::App::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 6: swipeUpTriggered(); break;
         case 7: swipeRightTriggered(); break;
         case 8: swipeDownTriggered(); break;
+        case 9: backButtonClickTriggered(); break;
+        case 10: leftButtonClickTriggered(); break;
+        case 11: rightButtonClickTriggered(); break;
         default: ;
         }
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }
@@ -153,5 +162,23 @@ void ipn::App::swipeRightTriggered()
 void ipn::App::swipeDownTriggered()
 {
     QMetaObject::activate(this, &staticMetaObject, 8, 0);
+}
+
+// SIGNAL 9
+void ipn::App::backButtonClickTriggered()
+{
+    QMetaObject::activate(this, &staticMetaObject, 9, 0);
+}
+
+// SIGNAL 10
+void ipn::App::leftButtonClickTriggered()
+{
+    QMetaObject::activate(this, &staticMetaObject, 10, 0);
+}
+
+// SIGNAL 11
+void ipn::App::rightButtonClickTriggered()
+{
+    QMetaObject::activate(this, &staticMetaObject, 11, 0);
 }
 QT_END_MOC_NAMESPACE

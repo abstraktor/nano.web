@@ -33,6 +33,7 @@ INPUT(
 ./release\InfoApp.o
 ./release\WebviewApp.o
 ./release\NanoWebView.o
+./release\ElementTappedApp.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o
@@ -64,5 +65,6 @@ INPUT(
 ./release\moc_MenuApp.o
 ./release\moc_InfoApp.o
 ./release\moc_WebviewApp.o
+./release\moc_ElementTappedApp.o
 ./release\qrc_resources.o
 );

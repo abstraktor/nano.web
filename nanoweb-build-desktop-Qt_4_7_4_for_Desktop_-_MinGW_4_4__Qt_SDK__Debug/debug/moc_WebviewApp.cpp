@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'WebviewApp.h'
 **
-** Created: Wed 28. Dec 23:23:41 2011
+** Created: Tue 3. Jan 16:26:26 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__WebviewApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -43,6 +43,9 @@ static const uint qt_meta_data_ipn__WebviewApp[] = {
      148,   16,   16,   16, 0x0a,
      161,   16,   16,   16, 0x0a,
      179,  173,   16,   16, 0x0a,
+     192,   16,   16,   16, 0x0a,
+     210,   16,   16,   16, 0x0a,
+     229,   16,   16,   16, 0x0a,
 
        0        // eod
 };
@@ -53,7 +56,8 @@ static const char qt_meta_stringdata_ipn__WebviewApp[] = {
     "changePinchScaleFactor(qreal)\0pinchIn()\0"
     "pinchOut()\0swipeLeft()\0swipeUp()\0"
     "swipeRight()\0swipeDown()\0angle\0"
-    "swipe(qreal)\0"
+    "swipe(qreal)\0backButtonClick()\0"
+    "rightButtonClick()\0leftButtonClick()\0"
 };
 
 const QMetaObject ipn::WebviewApp::staticMetaObject = {
@@ -95,9 +99,12 @@ int ipn::WebviewApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 7: swipeRight(); break;
         case 8: swipeDown(); break;
         case 9: swipe((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 10: backButtonClick(); break;
+        case 11: rightButtonClick(); break;
+        case 12: leftButtonClick(); break;
         default: ;
         }
-        _id -= 10;
+        _id -= 13;
     }
     return _id;
 }
