@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsWebView>
+#include "widgets/FlickArea.h"
 
 namespace ipn
 {
@@ -33,10 +34,10 @@ namespace ipn
 		void swipeUp();
 		void swipeRight();
 		void swipeDown();
-                void swipe(qreal angle);
-                void backButtonClick();
-                void rightButtonClick();
-                void leftButtonClick();
+		void swipe(qreal angle);
+		void backButtonClick();
+		void rightButtonClick();
+		void leftButtonClick();
 
 	signals:
 		void quitButtonClicked();
@@ -44,7 +45,7 @@ namespace ipn
 
 	protected:
 		virtual void mousePressEvent(QMouseEvent *event);
-                virtual void mouseMoveEvent(QMouseEvent *event);
+		virtual void mouseMoveEvent(QMouseEvent *event);
 
 
 	private:
@@ -52,6 +53,7 @@ namespace ipn
 		QGraphicsView *m_graphicsView;
 		QGraphicsScene *m_scene;
 		NanoWebView *m_webView;
+		FlickArea *m_flickArea;
 
 		BackgroundWidget *m_back;
 

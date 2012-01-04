@@ -15,6 +15,7 @@
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
+#include "widgets/FlickArea.h"
 #include "nanoweb/NanoWebView.h"
 
 namespace ipn
@@ -24,6 +25,13 @@ namespace ipn
 
 		m_currentScaleFactor = 1.0;
 		m_currentRotationAngle = 0.0;
+
+
+		/*
+		m_flickArea = new FlickArea(this);
+		m_flickArea->move(0, 0);
+		m_flickArea->resize(240, 240);
+		*/
 
 		/*
 			 * Important Websites, read and understand before editing this code:
@@ -39,18 +47,20 @@ namespace ipn
 		m_scene = new QGraphicsScene();
 
 		m_webView = new NanoWebView();
-		m_webView->resize(240, 240);
+		m_webView->resize(480, 480);
 		m_webView->load(QUrl("http://www.meilenwerk.de/"));
 		m_webView->setResizesToContents(true);
 		m_webView->setZoomFactor(1.0);
+		m_webView->setScale(0.5);
 
+		m_webView->page()->setPreferredContentsSize(QSize(240, 240));
 
 		m_scene->addItem(m_webView);
 
 		m_graphicsView = new QGraphicsView(m_scene, this);
 		m_graphicsView->setFrameShape(QFrame::NoFrame);
 		m_graphicsView->move(0, 0);
-		m_graphicsView->resize(240, 240);
+		m_graphicsView->resize(480, 480);
 		m_graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 		m_graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 

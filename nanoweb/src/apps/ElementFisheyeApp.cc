@@ -29,7 +29,6 @@ namespace ipn
 
 		translation = QPoint();
 		mousePressed = false;
-		setMouseTracking(true);
 	}
 
 	void ElementFisheyeApp::changePinchRotationAngle(qreal delta)
@@ -74,19 +73,16 @@ namespace ipn
 
 	void ElementFisheyeApp::mouseMoveEvent(QMouseEvent *event)
 	{
-		qDebug() << event->buttons();
 		if (!mousePressed && event->buttons() == Qt::LeftButton) {
 			mousePressed = true;
 			lastPoint = event->pos();
 			return;
 		}
-		if (mousePressed && event->buttons() == Qt::LeftButton) {
+		else if (mousePressed && event->buttons() == Qt::LeftButton) {
 			QPoint diff = event->pos() - lastPoint;
 			lastPoint = event->pos();
 			translation = translation + diff;
 		}
-
-
 		update();
 	}
 
