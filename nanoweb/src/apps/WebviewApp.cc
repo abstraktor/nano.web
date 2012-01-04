@@ -44,6 +44,7 @@ namespace ipn
 		m_webView->setResizesToContents(true);
 		m_webView->setZoomFactor(1.0);
 
+
 		m_scene->addItem(m_webView);
 
 		m_graphicsView = new QGraphicsView(m_scene, this);

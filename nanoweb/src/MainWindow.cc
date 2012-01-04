@@ -14,6 +14,7 @@
 #include "apps/PeepholeApp.h"
 #include "apps/WebviewApp.h"
 #include "apps/ElementTappedApp.h"
+#include "apps/ElementFisheyeApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -37,13 +38,14 @@ namespace ipn
 		m_menuApp = new MenuApp();
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "meilenwerk", ":/img/icons/icon.png");
-                m_menuApp->addButton(MenuApp::TopRight, "element", ":/img/icons/icon.png");
-		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/icon.png");
+		m_menuApp->addButton(MenuApp::TopRight, "element", ":/img/icons/icon.png");
+		m_menuApp->addButton(MenuApp::BottomLeft, "fisheye", ":/img/icons/icon.png");
 		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/icon.png");
 		m_menuApp->titleBar()->setTitle("NANOWEB");
 
 		m_webviewApp = new WebviewApp();
-                m_elementTappedApp = new ElementTappedApp();
+		m_elementTappedApp = new ElementTappedApp();
+		m_elementFisheyeApp = new ElementFisheyeApp();
 		//m_infoApp->setMessage("You are now seeing a webpage.");
 
 
@@ -61,16 +63,17 @@ namespace ipn
 		connect(m_overlayWidget, SIGNAL(mouseMoved(QMouseEvent*)), this, SLOT(handleMouseMove(QMouseEvent*)));
 		connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
 		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
-                connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
+		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
 
 
 
-                // display webpage on topleftbutton-click
-                connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
-                connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
+		// display webpage on topleftbutton-click
+		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
+		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
+		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToElementFisheye()));
 		// go back from webpage to main menu
 		//connect(m_webviewApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 		// quit button
@@ -99,9 +102,10 @@ namespace ipn
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
 	}
 
-    // For each app, we need a slot which pushes it on the app stack:
-    void MainWindow::switchToWebPage()              {m_frameWidget->pushApp(m_webviewApp);}
-    void MainWindow::switchToElementTapped()        {m_frameWidget->pushApp(m_elementTappedApp);}
+	// For each app, we need a slot which pushes it on the app stack:
+	void MainWindow::switchToWebPage()              {m_frameWidget->pushApp(m_webviewApp);}
+	void MainWindow::switchToElementTapped()        {m_frameWidget->pushApp(m_elementTappedApp);}
+	void MainWindow::switchToElementFisheye()        {m_frameWidget->pushApp(m_elementFisheyeApp);}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{
@@ -280,5 +284,4 @@ namespace ipn
 		show();
 	#endif
 	}
-
 } // namespace ipn

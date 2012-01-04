@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Tue 3. Jan 16:26:08 2012
+** Created: Wed 4. Jan 18:08:03 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,7 +40,8 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
      205,  194,   16,   16, 0x08,
      238,   16,   16,   16, 0x08,
      256,   16,   16,   16, 0x08,
-     284,  280,   16,   16, 0x08,
+     280,   16,   16,   16, 0x08,
+     309,  305,   16,   16, 0x08,
 
        0        // eod
 };
@@ -54,7 +55,8 @@ static const char qt_meta_stringdata_ipn__MainWindow[] = {
     "forwardMouseEvent(QMouseEvent*)\0"
     "type,param\0handleGesture(GestureType,qreal)\0"
     "switchToWebPage()\0switchToElementTapped()\0"
-    "app\0switchToApp(App*)\0"
+    "switchToElementFisheye()\0app\0"
+    "switchToApp(App*)\0"
 };
 
 const QMetaObject ipn::MainWindow::staticMetaObject = {
@@ -95,10 +97,11 @@ int ipn::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 6: handleGesture((*reinterpret_cast< GestureType(*)>(_a[1])),(*reinterpret_cast< qreal(*)>(_a[2]))); break;
         case 7: switchToWebPage(); break;
         case 8: switchToElementTapped(); break;
-        case 9: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
+        case 9: switchToElementFisheye(); break;
+        case 10: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

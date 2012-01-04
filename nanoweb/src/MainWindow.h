@@ -37,6 +37,7 @@ class PickerApp;
 class PeepholeApp;
 class WebviewApp;
 class ElementTappedApp;
+class ElementFisheyeApp;
 
 class OverlayWidget;
 class TitleBarWidget;
@@ -81,8 +82,9 @@ class MainWindow : public QMainWindow
         void handleGesture(GestureType type, qreal param);
 
         // Slots for connecting apps:
-        void switchToWebPage();
-        void switchToElementTapped();
+		void switchToWebPage();
+		void switchToElementTapped();
+		void switchToElementFisheye();
 
         void switchToApp(App *app);
 
@@ -95,6 +97,7 @@ class MainWindow : public QMainWindow
         MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
         WebviewApp *m_webviewApp;
         ElementTappedApp *m_elementTappedApp;
+		ElementFisheyeApp *m_elementFisheyeApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

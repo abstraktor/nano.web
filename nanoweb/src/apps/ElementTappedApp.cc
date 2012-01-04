@@ -18,6 +18,7 @@ namespace ipn
         m_elementBackground->setColor(BackgroundWidget::BG_GRAY);
         m_elementBackground->move(0, 0);
         m_elementBackground->resize(240, 120);
+
         m_buttonBackground = new BackgroundWidget(this);
         m_buttonBackground->setColor(BackgroundWidget::BG_GRAY);
         m_buttonBackground->move(0, 120);
@@ -36,7 +37,7 @@ namespace ipn
         m_elementContentText->setText("\"Zürichsee\"");
 
         m_browseElementButton = new ScalableButtonWidget(this);
-        m_browseElementButton->move(122, 122);
+		m_browseElementButton->move(122, 122);
         m_browseElementButton->resize(116, 116);
         m_browseElementButton->setImage(":/img/buttons/default");
         m_browseElementButton->setText("browse\nelement");

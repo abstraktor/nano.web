@@ -60,7 +60,8 @@ SOURCES += \
         src/apps/InfoApp.cc \
     src/apps/WebviewApp.cc \
     src/nanoweb/NanoWebView.cc \
-    src/apps/ElementTappedApp.cc
+    src/apps/ElementTappedApp.cc \
+    src/apps/ElementFisheyeApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -96,7 +97,8 @@ HEADERS += \
     src/apps/WebviewApp.h \
     src/nanoweb/NanoWebView.h \
     src/nanoweb/NanoWebView.h \
-    src/apps/ElementTappedApp.h
+    src/apps/ElementTappedApp.h \
+    src/apps/ElementFisheyeApp.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
