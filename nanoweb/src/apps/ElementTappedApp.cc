@@ -37,15 +37,15 @@ namespace ipn
         m_elementContentText->setText("\"Zürichsee\"");
 
         m_browseElementButton = new ScalableButtonWidget(this);
-		m_browseElementButton->move(122, 122);
-        m_browseElementButton->resize(116, 116);
+		m_browseElementButton->move(28, 148);
+		m_browseElementButton->resize(64, 64);
         m_browseElementButton->setImage(":/img/buttons/default");
         m_browseElementButton->setText("browse\nelement");
         connect(m_browseElementButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));
 
         m_followLinkButton = new ScalableButtonWidget(this);
-        m_followLinkButton->move(2, 122);
-        m_followLinkButton->resize(116, 116);
+		m_followLinkButton->move(148, 148);
+		m_followLinkButton->resize(64, 64);
         m_followLinkButton->setImage(":/img/buttons/default");
         m_followLinkButton->setText("follow\nlink");
         connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));

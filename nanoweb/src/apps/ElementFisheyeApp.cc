@@ -73,7 +73,6 @@ namespace ipn
 		else {
 			moves++;
 			diff = diff + (event->pos() - lastPoint);
-		//	qDebug() << diff;
 			lastPoint = event->pos();
 			if (moves == 10) {
 				double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
@@ -84,8 +83,6 @@ namespace ipn
 						axis = XAXIS;
 					else
 						axis = YAXIS;
-					qDebug() << diff;
-					qDebug() << axis;
 				}
 
 			}

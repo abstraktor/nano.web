@@ -89,7 +89,7 @@ namespace ipn
         {
                 GestureType type;
 
-                if (sender() == m_hardwareButtonBack) type = BackButtonClick;
+				if (sender() == m_hardwareButtonBack) { popApp(); type = BackButtonClick; }
                 else if (sender() == m_hardwareButtonRight) type = RightButtonClick;
                 else if (sender() == m_hardwareButtonLeft) type = LeftButtonClick;
 
