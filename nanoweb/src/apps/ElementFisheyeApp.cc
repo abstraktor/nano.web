@@ -12,66 +12,43 @@
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 
+#define ANIMATION_TIME 500.0
+#define FRAMES 25.0
 namespace ipn
 {
 
 	ElementFisheyeApp::ElementFisheyeApp(QWidget *pParent) : App(pParent)
 	{
-
-		// Connect gestures:
-		connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
-		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
-		connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
-		connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
-		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
-		connect(this, SIGNAL(pinchRotationAngleChanged(qreal)), this, SLOT(changePinchRotationAngle(qreal)));
-		connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
-		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
-		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
-
 		translation = QPoint();
 		diff = QPoint();
 		mousePressed = false;
 		moves = 0;
 		animationTimer = new QTimer(this);
+		animationTimer->setInterval(ANIMATION_TIME / FRAMES);
+		connect(animationTimer, SIGNAL(timeout()), this, SLOT(timerTick()));
 		doSwiping = false;
 		axis = 0;
+
+
+
+		animationStart = QPoint();
+		animationDestination = QPoint();
+		tickCount = 0;
 	}
 
-	void ElementFisheyeApp::changePinchRotationAngle(qreal delta)
+	void ElementFisheyeApp::timerTick()
 	{
-	}
-
-	void ElementFisheyeApp::changePinchScaleFactor(qreal delta)
-	{
-	}
-
-	void ElementFisheyeApp::pinchIn()
-	{
-	}
-
-	void ElementFisheyeApp::pinchOut()
-	{
-	}
-
-	void ElementFisheyeApp::swipeLeft()
-	{
-	}
-
-	void ElementFisheyeApp::swipeUp()
-	{
-	}
-
-	void ElementFisheyeApp::swipeRight()
-	{
-	}
-
-	void ElementFisheyeApp::swipeDown()
-	{
-	}
-
-	void ElementFisheyeApp::swipe(qreal angle)
-	{
+		tickCount++;
+		QPoint vector = animationDestination - animationStart;
+		translation = animationStart + ((float) tickCount / FRAMES) * vector;
+		update();
+		if (tickCount == (int) FRAMES) {
+			animationTimer->stop();
+			translation = animationDestination;
+			tickCount = 0;
+			update();
+			diff = translation = QPoint();
+		}
 	}
 
 	void ElementFisheyeApp::mousePressEvent(QMouseEvent *event)
@@ -118,6 +95,24 @@ namespace ipn
 	}
 
 	void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *) {
+		if (doSwiping) {
+			if (axis == 1) {
+				// animate x-axis
+				if (abs(diff.x()) < 100)
+					animationDestination = QPoint(0, 0);
+				else
+					animationDestination = QPoint(240 * signum(diff.x()), 0);
+			}
+			else if (axis == 2) {
+				// animate y-axis
+				if (abs(diff.y()) < 100)
+					animationDestination = QPoint(0, 0);
+				else
+					animationDestination = QPoint(0, 240 * signum(diff.y()));
+			}
+			animationStart = diff;
+			animationTimer->start();
+		}
 		mousePressed = false;
 		doSwiping = false;
 		moves = 0;
@@ -165,6 +160,14 @@ namespace ipn
 		painter->drawText(rect(), Qt::AlignCenter, "a.VertNavLink");
 		painter->setFont(QFont("Ubuntu", 10, QFont::Normal	));
 		painter->drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to edit");
+	}
+
+	int ElementFisheyeApp::signum(int number) {
+		if (number > 0)
+				return 1;
+		else if (number < 0)
+				return -1;
+		return 0;
 	}
 
 } // namespace ipn

@@ -22,16 +22,8 @@ class ElementFisheyeApp : public App
         inline bool isOpaque() {return false;}
         void setMessage(QString message);
 
-    public slots:
-        void changePinchRotationAngle(qreal delta);
-        void changePinchScaleFactor(qreal delta);
-        void pinchIn();
-        void pinchOut();
-        void swipeLeft();
-        void swipeUp();
-        void swipeRight();
-        void swipeDown();
-        void swipe(qreal angle);
+	public slots:
+		void timerTick();
 
 
     signals:
@@ -42,17 +34,23 @@ class ElementFisheyeApp : public App
 		virtual void mousePressEvent(QMouseEvent *event);
 		virtual void mouseMoveEvent(QMouseEvent *event);
 		virtual void mouseReleaseEvent(QMouseEvent *event);
-        virtual void paintEvent(QPaintEvent *event);
+		virtual void paintEvent(QPaintEvent *event);
 
 
-    private:
+	private:
 		void drawFisheye(QPainter *painter, QWebElement *el = 0);
+		int signum(int number);
 		QVector<QPolygon> m_drawing;
 		qreal translatex, translatey;
 
 		QPoint translation;
 		QPoint lastPoint;
 		QPoint diff;
+
+		QPoint animationStart;
+		QPoint animationDestination;
+		int tickCount;
+
 		bool mousePressed;
 		bool doSwiping;
 		QTimer *animationTimer;
