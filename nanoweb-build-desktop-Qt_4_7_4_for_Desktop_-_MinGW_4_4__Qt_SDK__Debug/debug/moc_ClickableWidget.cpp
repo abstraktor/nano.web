@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ClickableWidget.h'
 **
-** Created: Wed 21. Dec 17:02:47 2011
+** Created: Thu 5. Jan 16:59:02 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

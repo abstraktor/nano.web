@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ScalableButtonWidget.h'
 **
-** Created: Wed 21. Dec 17:02:56 2011
+** Created: Thu 5. Jan 16:59:04 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

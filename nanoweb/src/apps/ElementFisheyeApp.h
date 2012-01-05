@@ -38,7 +38,7 @@ class ElementFisheyeApp : public App
 
 
 	private:
-		void drawFisheye(QPainter *painter, QWebElement *el = 0);
+		void drawFisheye(QPainter *painter, QWebElement *el = 0, QColor bgcolor = Qt::white);
 		int signum(int number);
 		QVector<QPolygon> m_drawing;
 		qreal translatex, translatey;
