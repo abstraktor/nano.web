@@ -85,6 +85,7 @@ class MainWindow : public QMainWindow
 		void switchToWebPage();
 		void switchToElementTapped();
 		void switchToElementFisheye();
+		void switchToInfo();
 
         void switchToApp(App *app);
 
@@ -98,6 +99,7 @@ class MainWindow : public QMainWindow
         WebviewApp *m_webviewApp;
         ElementTappedApp *m_elementTappedApp;
 		ElementFisheyeApp *m_elementFisheyeApp;
+		InfoApp *m_infoApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

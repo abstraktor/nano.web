@@ -23,6 +23,7 @@
 #include <QDesktopWidget>
 #include <QMouseEvent>
 #include <QResizeEvent>
+#include <QDebug>
 
 namespace ipn
 {
@@ -46,6 +47,7 @@ namespace ipn
 		m_webviewApp = new WebviewApp();
 		m_elementTappedApp = new ElementTappedApp();
 		m_elementFisheyeApp = new ElementFisheyeApp();
+		m_infoApp = new InfoApp();
 		//m_infoApp->setMessage("You are now seeing a webpage.");
 
 
@@ -70,15 +72,16 @@ namespace ipn
 
 
 
-		// display webpage on topleftbutton-click
 		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
 		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
 		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToElementFisheye()));
+		connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
 		// go back from webpage to main menu
 		//connect(m_webviewApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 		// quit button
 		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
 		connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
+		connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 
 
 		// Initialize finger:
@@ -103,9 +106,10 @@ namespace ipn
 	}
 
 	// For each app, we need a slot which pushes it on the app stack:
-	void MainWindow::switchToWebPage()              {m_frameWidget->pushApp(m_webviewApp);}
-	void MainWindow::switchToElementTapped()        {m_frameWidget->pushApp(m_elementTappedApp);}
-	void MainWindow::switchToElementFisheye()        {m_frameWidget->pushApp(m_elementFisheyeApp);}
+	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
+	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
+	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
+	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

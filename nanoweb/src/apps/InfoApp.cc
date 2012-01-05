@@ -19,6 +19,7 @@ namespace ipn
 		m_note->setFontSize(15);
 		m_note->setLineHeight(1.25);
 		m_note->setColor(Qt::white);
+		m_note->setText("This feature is not\nyet implemnted.");
 
 		m_okButton = new ScalableButtonWidget(this);
 		m_okButton->move(160, 180);

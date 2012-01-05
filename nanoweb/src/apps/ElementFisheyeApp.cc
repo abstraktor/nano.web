@@ -15,6 +15,11 @@
 
 #define ANIMATION_TIME 500.0
 #define FRAMES 25.0
+
+#define NOAXIS 0
+#define XAXIS 1
+#define YAXIS 2
+
 namespace ipn
 {
 
@@ -28,7 +33,7 @@ namespace ipn
 		animationTimer->setInterval(ANIMATION_TIME / FRAMES);
 		connect(animationTimer, SIGNAL(timeout()), this, SLOT(timerTick()));
 		doSwiping = false;
-		axis = 0;
+		axis = NOAXIS;
 
 
 
@@ -70,23 +75,23 @@ namespace ipn
 			diff = diff + (event->pos() - lastPoint);
 		//	qDebug() << diff;
 			lastPoint = event->pos();
-			if (moves == 15) {
+			if (moves == 10) {
 				double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
 				if (length >= 5 && diff.x() != diff.y()) {
 					doSwiping = true;
 					// detect x or y
 					if (abs(diff.x()) > abs(diff.y()))
-						axis = 1;
+						axis = XAXIS;
 					else
-						axis = 2;
+						axis = YAXIS;
 					qDebug() << diff;
 					qDebug() << axis;
 				}
 
 			}
-			if (axis == 1)
+			if (axis == XAXIS)
 				diff.setY(0);
-			else if (axis == 2)
+			else if (axis == YAXIS)
 				diff.setX(0);
 			if (doSwiping) {
 				translation = diff;
@@ -97,14 +102,14 @@ namespace ipn
 
 	void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *) {
 		if (doSwiping) {
-			if (axis == 1) {
+			if (axis == XAXIS) {
 				// animate x-axis
 				if (abs(diff.x()) < 100)
 					animationDestination = QPoint(0, 0);
 				else
 					animationDestination = QPoint(240 * signum(diff.x()), 0);
 			}
-			else if (axis == 2) {
+			else if (axis == YAXIS) {
 				// animate y-axis
 				if (abs(diff.y()) < 100)
 					animationDestination = QPoint(0, 0);
@@ -117,7 +122,7 @@ namespace ipn
 		mousePressed = false;
 		doSwiping = false;
 		moves = 0;
-		axis = 0;
+		axis = NOAXIS;
 	}
 
 	void ElementFisheyeApp::paintEvent(QPaintEvent*)
