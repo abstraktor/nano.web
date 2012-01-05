@@ -4,7 +4,9 @@
 #include <QPen>
 #include <QPolygon>
 #include <QVector>
+#include <QTimer>
 #include <QtDebug>
+#include <math.h>
 #include "widgets/BackgroundWidget.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
@@ -28,7 +30,12 @@ namespace ipn
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
 
 		translation = QPoint();
+		diff = QPoint();
 		mousePressed = false;
+		moves = 0;
+		animationTimer = new QTimer(this);
+		doSwiping = false;
+		axis = 0;
 	}
 
 	void ElementFisheyeApp::changePinchRotationAngle(qreal delta)
@@ -73,21 +80,48 @@ namespace ipn
 
 	void ElementFisheyeApp::mouseMoveEvent(QMouseEvent *event)
 	{
-		if (!mousePressed && event->buttons() == Qt::LeftButton) {
+		if (!event->buttons() == Qt::LeftButton)
+				return;
+		if (!mousePressed) {
 			mousePressed = true;
 			lastPoint = event->pos();
 			return;
 		}
-		else if (mousePressed && event->buttons() == Qt::LeftButton) {
-			QPoint diff = event->pos() - lastPoint;
+		else {
+			moves++;
+			diff = diff + (event->pos() - lastPoint);
+		//	qDebug() << diff;
 			lastPoint = event->pos();
-			translation = translation + diff;
+			if (moves == 15) {
+				double length = sqrt(pow(diff.x(), 2) + pow(diff.y(), 2));
+				if (length >= 5 && diff.x() != diff.y()) {
+					doSwiping = true;
+					// detect x or y
+					if (abs(diff.x()) > abs(diff.y()))
+						axis = 1;
+					else
+						axis = 2;
+					qDebug() << diff;
+					qDebug() << axis;
+				}
+
+			}
+			if (axis == 1)
+				diff.setY(0);
+			else if (axis == 2)
+				diff.setX(0);
+			if (doSwiping) {
+				translation = diff;
+			}
 		}
 		update();
 	}
 
 	void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *) {
 		mousePressed = false;
+		doSwiping = false;
+		moves = 0;
+		axis = 0;
 	}
 
 	void ElementFisheyeApp::paintEvent(QPaintEvent*)

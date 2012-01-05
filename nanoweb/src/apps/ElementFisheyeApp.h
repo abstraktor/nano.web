@@ -3,6 +3,7 @@
 
 #include "App.h"
 #include <QWebElement>
+#include <QTimer>
 
 namespace ipn
 {
@@ -48,9 +49,16 @@ class ElementFisheyeApp : public App
 		void drawFisheye(QPainter *painter, QWebElement *el = 0);
 		QVector<QPolygon> m_drawing;
 		qreal translatex, translatey;
+
 		QPoint translation;
 		QPoint lastPoint;
+		QPoint diff;
 		bool mousePressed;
+		bool doSwiping;
+		QTimer *animationTimer;
+		int moves;
+
+		int axis;
 
 };
 
