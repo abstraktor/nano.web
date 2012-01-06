@@ -63,6 +63,7 @@ namespace ipn
 
 	void ElementFisheyeApp::mouseMoveEvent(QMouseEvent *event)
 	{
+		qDebug() << event->pos();
 		if (!event->buttons() == Qt::LeftButton)
 				return;
 		if (!mousePressed) {

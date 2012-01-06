@@ -39,7 +39,7 @@ class ElementTappedApp : public App
         BackgroundWidget *m_elementBackground;
         BackgroundWidget *m_buttonBackground;
 
-        TextWidget *m_elementText, *m_elementContentText;
+		TextWidget *m_elementText, *m_elementContentText, *m_explainText;
         ScalableButtonWidget *m_browseElementButton, *m_followLinkButton;
 };
 
