@@ -61,7 +61,8 @@ SOURCES += \
     src/apps/WebviewApp.cc \
     src/nanoweb/NanoWebView.cc \
     src/apps/ElementTappedApp.cc \
-    src/apps/ElementFisheyeApp.cc
+    src/apps/ElementFisheyeApp.cc \
+    src/nanoweb/NanoQWebview.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -98,7 +99,8 @@ HEADERS += \
     src/nanoweb/NanoWebView.h \
     src/nanoweb/NanoWebView.h \
     src/apps/ElementTappedApp.h \
-    src/apps/ElementFisheyeApp.h
+    src/apps/ElementFisheyeApp.h \
+    src/nanoweb/NanoQWebview.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
@@ -118,7 +120,6 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/compat \
     qtc_packaging/debian_harmattan/changelog \
     webseite/meilenwerk.html \
-    webseite/meilenwerk_files/swfobject.js \
     webseite/meilenwerk_files/rb.css \
     webseite/meilenwerk_files/piwik.js \
     webseite/meilenwerk_files/nav.css \

@@ -58,17 +58,6 @@
         <file>img/page_indicator/page_indicator_active.png</file>
         <file>img/page_indicator/page_indicator_inactive.png</file>
         <file>img/fingers/index_finger.png</file>
-        <file>webseite/meilenwerk.html</file>
-        <file>webseite/meilenwerk_files/_blank.gif</file>
-        <file>webseite/meilenwerk_files/content.css</file>
-        <file>webseite/meilenwerk_files/fouc.css</file>
-        <file>webseite/meilenwerk_files/meilenwerk_stuttgart_start_01.jpg</file>
-        <file>webseite/meilenwerk_files/mw.css</file>
-        <file>webseite/meilenwerk_files/MW_Logo.png</file>
-        <file>webseite/meilenwerk_files/nav.css</file>
-        <file>webseite/meilenwerk_files/piwik.js</file>
-        <file>webseite/meilenwerk_files/rb.css</file>
-        <file>webseite/meilenwerk_files/swfobject.js</file>
         <file>img/our_icons/ACCESS.png</file>
         <file>img/our_icons/ADDRESSBOOK.png</file>
         <file>img/our_icons/ATTACHMENT.png</file>
@@ -189,5 +178,14 @@
         <file>img/our_icons/mockup.png</file>
         <file>img/our_icons/edit.png</file>
         <file>img/our_icons/followlink.png</file>
+        <file>meilenwerk/meilenwerk.html</file>
+        <file>meilenwerk/meilenwerk-Dateien/_blank.gif</file>
+        <file>meilenwerk/meilenwerk-Dateien/content.css</file>
+        <file>meilenwerk/meilenwerk-Dateien/meilenwerk_zuerichsee_start_01.jpg</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
+        <file>meilenwerk/meilenwerk-Dateien/MW_Logo.png</file>
+        <file>meilenwerk/meilenwerk-Dateien/nav.css</file>
+        <file>meilenwerk/meilenwerk-Dateien/rb.css</file>
+        <file>meilenwerk/meilenwerk-Dateien/zuerichsee_imageshow.js</file>
     </qresource>
 </RCC>

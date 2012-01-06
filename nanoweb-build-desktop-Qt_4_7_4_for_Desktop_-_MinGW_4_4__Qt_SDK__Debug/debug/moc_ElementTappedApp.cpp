@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ElementTappedApp.h'
 **
-** Created: Fri 6. Jan 12:42:44 2012
+** Created: Fri 6. Jan 15:21:37 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

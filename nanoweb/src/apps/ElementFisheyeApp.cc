@@ -40,6 +40,9 @@ namespace ipn
 		animationStart = QPoint();
 		animationDestination = QPoint();
 		tickCount = 0;
+
+
+		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 	}
 
 	void ElementFisheyeApp::timerTick()

@@ -1,0 +1,69 @@
+body {
+	margin: 0px; padding: 0px; width: 100%; height: 100%; background-color: rgb(0, 0, 0);
+}
+#divHead {
+	margin: 0px auto; padding: 15px 0px 0px; border: 0px currentColor; width: 900px; height: 70px; z-index: 0; background-color: rgb(0, 0, 0);
+}
+#divLogo {
+	width: 270px; height: 43px; float: left;
+}
+#divImp {
+	color: rgb(141, 141, 141); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold;
+}
+#divHorMenu {
+	margin: 0px auto; border: 0px currentColor; width: 900px; height: 40px; z-index: 0; background-color: rgb(0, 0, 0);
+}
+#divSpacerI {
+	margin: 0px auto; border: 0px currentColor; width: 900px; height: 12px; z-index: 0; background-color: rgb(0, 0, 0);
+}
+#divImageShow {
+	border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141); margin: 0px auto; width: 900px; height: 360px; z-index: 0;
+}
+#divBanner {
+	margin: 0px auto; border: 3px currentColor; width: 900px; height: 60px; z-index: 0;
+}
+#divImageVideo {
+	border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141); margin: 0px auto; width: 900px; height: 360px; z-index: 0; background-image: none; background-repeat: no-repeat;
+}
+#divImages {
+	margin: 0px auto; border: 0px currentColor; width: 900px; height: 182px; z-index: 0;
+}
+#divSpacerII {
+	margin: 0px auto; border: 0px currentColor; width: 900px; height: 13px; z-index: 0; background-color: rgb(0, 0, 0);
+}
+#divMCI {
+	margin: 0px auto; border: 0px currentColor; width: 900px; height: 350px; z-index: 0; background-color: rgb(0, 0, 0);
+}
+#divVertSubMenu {
+	width: 145px; height: 325px; float: left; z-index: 0; background-color: rgb(0, 0, 0);
+}
+#divVertSubMenuStart {
+	left: 0px; top: -168px; width: 140px; height: 325px; position: relative; z-index: 3;
+}
+#divVertSubMenuStartFnord {
+	left: 0px; top: -222px; width: 140px; height: 325px; position: relative; z-index: 3;
+}
+#divVertSubMenuStartDUS {
+	left: 0px; top: -190px; width: 140px; height: 325px; position: relative; z-index: 3;
+}
+#divOuterContent {
+	height: 325px; overflow: auto; scrollbar-base-color: rgb(84, 84, 84); scrollbar-shadow-color: rgb(84, 84, 84); scrollbar-highlight-color: rgb(84, 84, 84); scrollbar-arrow-color: rgb(40, 45, 45); scrollbar-track-color: rgb(37, 37, 37); background-color: rgb(0, 0, 0);
+}
+#divContent {
+	width: 515px; color: rgb(160, 165, 165); line-height: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; background-color: rgb(0, 0, 0);
+}
+#divBoxRight {
+	width: 207px; height: 325px; float: right; background-color: rgb(37, 37, 37);
+}
+#rbleft {
+	width: 12px; height: 325px; float: left; background-color: rgb(0, 0, 0);
+}
+#rbright {
+	background-position: right; width: 195px; height: 325px; right: 5px; float: right; background-color: rgb(37, 37, 37);
+}
+.GalerieRahmen {
+	border-top-color: rgb(141, 141, 141); border-bottom-color: rgb(141, 141, 141); border-top-width: 3px; border-bottom-width: 3px; border-top-style: solid; border-bottom-style: solid;
+}
+.breadcrumb {
+	text-align: right; right: 20px; color: rgb(160, 165, 165); text-transform: uppercase; text-indent: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; border-right-color: rgb(0, 0, 0); border-right-width: 15px; border-right-style: solid;
+}

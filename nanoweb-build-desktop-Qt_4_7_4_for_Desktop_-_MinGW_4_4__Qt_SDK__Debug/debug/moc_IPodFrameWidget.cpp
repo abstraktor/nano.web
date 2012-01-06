@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'IPodFrameWidget.h'
 **
-** Created: Thu 5. Jan 17:57:36 2012
+** Created: Fri 6. Jan 15:20:57 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
