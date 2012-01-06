@@ -7,6 +7,7 @@
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
+#include "webhelpers.h"
 #include "ElementTappedApp.h"
 
 namespace ipn
@@ -71,6 +72,12 @@ namespace ipn
 		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
     }
+
+	void ElementTappedApp::setElement(QWebElement el) {
+		currentEl = el;
+		m_elementText->setText(ipn::webhelpers::elementIdentifierString(el));
+		m_elementContentText->setText(ipn::webhelpers::elementContentString(el));
+	}
 
     void ElementTappedApp::pinchIn()
     {

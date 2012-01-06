@@ -36,6 +36,7 @@ INPUT(
 ./release\ElementTappedApp.o
 ./release\ElementFisheyeApp.o
 ./release\NanoQWebview.o
+./release\webhelpers.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o

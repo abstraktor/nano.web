@@ -2,6 +2,7 @@
 #define IPN_ELEMENTTAPPEDAPP_H
 
 #include "App.h"
+#include <QWebElement>
 
 namespace ipn
 {
@@ -18,7 +19,7 @@ class ElementTappedApp : public App
         ElementTappedApp(QWidget *parent = 0);
 
         inline bool isOpaque() {return true;}
-        void setMessage(QString message);
+		void setElement(QWebElement el);
 
     public slots:
         void pinchIn();
@@ -41,6 +42,7 @@ class ElementTappedApp : public App
 
 		TextWidget *m_elementText, *m_elementContentText, *m_explainText;
         ScalableButtonWidget *m_browseElementButton, *m_followLinkButton;
+		QWebElement currentEl;
 };
 
 } // namespace ipn

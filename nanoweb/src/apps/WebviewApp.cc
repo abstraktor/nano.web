@@ -61,6 +61,7 @@ namespace ipn
 		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
 		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
+		connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SIGNAL(elementTapped(QWebElement)));
 	}
 
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {

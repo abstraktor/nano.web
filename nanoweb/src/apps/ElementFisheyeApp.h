@@ -24,6 +24,10 @@ class ElementFisheyeApp : public App
 
 	public slots:
 		void timerTick();
+		void swipeLeft();
+		void swipeUp();
+		void swipeRight();
+		void swipeDown();
 
 
     signals:
@@ -35,7 +39,6 @@ class ElementFisheyeApp : public App
 		virtual void mouseMoveEvent(QMouseEvent *event);
 		virtual void mouseReleaseEvent(QMouseEvent *event);
 		virtual void paintEvent(QPaintEvent *event);
-
 
 	private:
 		void drawFisheye(QPainter *painter, QWebElement *el = 0, QColor bgcolor = Qt::white);

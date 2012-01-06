@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Fri 6. Jan 15:20:56 2012
+** Created: Fri 6. Jan 22:03:25 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,9 +40,10 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
      205,  194,   16,   16, 0x08,
      238,   16,   16,   16, 0x08,
      256,   16,   16,   16, 0x08,
-     280,   16,   16,   16, 0x08,
-     305,   16,   16,   16, 0x08,
-     324,  320,   16,   16, 0x08,
+     283,  280,   16,   16, 0x08,
+     318,   16,   16,   16, 0x08,
+     343,   16,   16,   16, 0x08,
+     362,  358,   16,   16, 0x08,
 
        0        // eod
 };
@@ -56,6 +57,7 @@ static const char qt_meta_stringdata_ipn__MainWindow[] = {
     "forwardMouseEvent(QMouseEvent*)\0"
     "type,param\0handleGesture(GestureType,qreal)\0"
     "switchToWebPage()\0switchToElementTapped()\0"
+    "el\0switchToElementTapped(QWebElement)\0"
     "switchToElementFisheye()\0switchToInfo()\0"
     "app\0switchToApp(App*)\0"
 };
@@ -98,12 +100,13 @@ int ipn::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 6: handleGesture((*reinterpret_cast< GestureType(*)>(_a[1])),(*reinterpret_cast< qreal(*)>(_a[2]))); break;
         case 7: switchToWebPage(); break;
         case 8: switchToElementTapped(); break;
-        case 9: switchToElementFisheye(); break;
-        case 10: switchToInfo(); break;
-        case 11: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
+        case 9: switchToElementTapped((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
+        case 10: switchToElementFisheye(); break;
+        case 11: switchToInfo(); break;
+        case 12: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

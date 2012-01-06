@@ -11,13 +11,16 @@ namespace ipn
 
 	void NanoQWebview::mousePressEvent(QMouseEvent *event) {
 		QPoint pos = event->pos();
-		qDebug() << "EVENT: mousePress" << pos;
+		//qDebug() << "EVENT: mousePress" << pos;
+		//qDebug() << "#" << this->page()->mainFrame()->hitTestContent(pos).element().tagName().length() << "#";
 		QWebElement el = this->page()->mainFrame()->hitTestContent(pos).element();
-		//QWebElement el = this->page()->mainFrame()->hitTestContent(pos).linkElement();  // for link element
-		qDebug() << "TagName: " << el.tagName();
+		if (el.tagName() == "")
+			el = this->page()->mainFrame()->hitTestContent(pos).linkElement();  // for link element
+		qDebug() << "TagName: " << "" << "#" << el.tagName();
 
 		event->setAccepted(true);
-		emit elementTapped();
+		el.setStyleProperty("background-color", "red !important");
+		emit elementTapped(el);
 	}
 
 } // namespace ipn

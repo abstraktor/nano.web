@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ElementFisheyeApp.h'
 **
-** Created: Fri 6. Jan 15:21:38 2012
+** Created: Fri 6. Jan 21:50:44 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__ElementFisheyeApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,13 +35,18 @@ static const uint qt_meta_data_ipn__ElementFisheyeApp[] = {
 
  // slots: signature, parameters, type, tag, flags
       44,   23,   23,   23, 0x0a,
+      56,   23,   23,   23, 0x0a,
+      68,   23,   23,   23, 0x0a,
+      78,   23,   23,   23, 0x0a,
+      91,   23,   23,   23, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__ElementFisheyeApp[] = {
     "ipn::ElementFisheyeApp\0\0quitButtonClicked()\0"
-    "timerTick()\0"
+    "timerTick()\0swipeLeft()\0swipeUp()\0"
+    "swipeRight()\0swipeDown()\0"
 };
 
 const QMetaObject ipn::ElementFisheyeApp::staticMetaObject = {
@@ -75,9 +80,13 @@ int ipn::ElementFisheyeApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a
         switch (_id) {
         case 0: quitButtonClicked(); break;
         case 1: timerTick(); break;
+        case 2: swipeLeft(); break;
+        case 3: swipeUp(); break;
+        case 4: swipeRight(); break;
+        case 5: swipeDown(); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 6;
     }
     return _id;
 }

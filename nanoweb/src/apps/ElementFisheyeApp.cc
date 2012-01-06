@@ -43,6 +43,26 @@ namespace ipn
 
 
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
+		connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
+		connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
+		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
+	}
+
+	void ElementFisheyeApp::swipeRight()
+	{
+		qDebug() << "swipe right";
+	}
+	void ElementFisheyeApp::swipeUp()
+	{
+		qDebug() << "swipe up";
+	}
+	void ElementFisheyeApp::swipeDown()
+	{
+		qDebug() << "swipe down";
+	}
+	void ElementFisheyeApp::swipeLeft()
+	{
+		qDebug() << "swipe left";
 	}
 
 	void ElementFisheyeApp::timerTick()
@@ -66,7 +86,6 @@ namespace ipn
 
 	void ElementFisheyeApp::mouseMoveEvent(QMouseEvent *event)
 	{
-		qDebug() << event->pos();
 		if (!event->buttons() == Qt::LeftButton)
 				return;
 		if (!mousePressed) {

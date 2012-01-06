@@ -13,6 +13,7 @@
 #include "widgets/OverlayWidget.h"
 
 #include <QtGui/QMainWindow>
+#include <QWebElement>
 
 class QMouseEvent;
 class QResizeEvent;
@@ -84,6 +85,7 @@ class MainWindow : public QMainWindow
         // Slots for connecting apps:
 		void switchToWebPage();
 		void switchToElementTapped();
+		void switchToElementTapped(QWebElement el);
 		void switchToElementFisheye();
 		void switchToInfo();
 

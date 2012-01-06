@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'NanoQWebview.h'
 **
-** Created: Fri 6. Jan 15:38:58 2012
+** Created: Fri 6. Jan 21:55:03 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,13 +31,13 @@ static const uint qt_meta_data_ipn__NanoQWebview[] = {
        1,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
-      19,   18,   18,   18, 0x05,
+      22,   19,   18,   18, 0x05,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__NanoQWebview[] = {
-    "ipn::NanoQWebview\0\0elementTapped()\0"
+    "ipn::NanoQWebview\0\0el\0elementTapped(QWebElement)\0"
 };
 
 const QMetaObject ipn::NanoQWebview::staticMetaObject = {
@@ -69,7 +69,7 @@ int ipn::NanoQWebview::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: elementTapped(); break;
+        case 0: elementTapped((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
         default: ;
         }
         _id -= 1;
@@ -78,8 +78,9 @@ int ipn::NanoQWebview::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void ipn::NanoQWebview::elementTapped()
+void ipn::NanoQWebview::elementTapped(QWebElement _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

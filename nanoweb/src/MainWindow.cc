@@ -48,7 +48,6 @@ namespace ipn
 		m_elementTappedApp = new ElementTappedApp();
 		m_elementFisheyeApp = new ElementFisheyeApp();
 		m_infoApp = new InfoApp();
-		//m_infoApp->setMessage("You are now seeing a webpage.");
 
 
 		// Set MenuApp as first app:
@@ -66,6 +65,7 @@ namespace ipn
 		connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
 		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
+		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -110,6 +110,7 @@ namespace ipn
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
+	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

@@ -6,6 +6,7 @@
 #include <QtWebKit>
 #include <QWebView>
 #include <QMouseEvent>
+#include <QWebElement>
 
 namespace ipn
 {
@@ -18,7 +19,7 @@ namespace ipn
 		protected:
 			virtual void mousePressEvent(QMouseEvent *);
 		signals:
-			virtual void elementTapped();
+			virtual void elementTapped(QWebElement el);
 
 	};
 
