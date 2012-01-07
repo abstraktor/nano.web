@@ -141,21 +141,22 @@ namespace ipn
 			return;
 		}
 		else {
+			qDebug() << event->pos();
 			moves++;
 			diff = diff + (event->pos() - lastPoint);
 			lastPoint = event->pos();
-			if (moves == 10) {
-				double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
-				if (length >= 5 && diff.x() != diff.y()) {
-					doSwiping = true;
-					// detect x or y
-					if (abs(diff.x()) > abs(diff.y()))
-						axis = XAXIS;
-					else
-						axis = YAXIS;
-				}
-
+			//if (moves == 1) {
+			double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
+			if (length >= 5 && diff.x() != diff.y()) {
+				doSwiping = true;
+				// detect x or y
+				if (abs(diff.x()) > abs(diff.y()))
+					axis = XAXIS;
+				else
+					axis = YAXIS;
 			}
+
+			//}
 			if (axis == XAXIS)
 				diff.setY(0);
 			else if (axis == YAXIS)
@@ -167,7 +168,7 @@ namespace ipn
 		update();
 	}
 
-	void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *) {
+	void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 		if (doSwiping) {
 			if (axis == XAXIS) {
 				// animate x-axis
@@ -233,7 +234,9 @@ namespace ipn
 			animationTimer->start();
 		}
 		else {
-			emit tapped();
+			QRect r = QRect(60, 60, 120, 120);
+			if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5)
+				emit tapped();
 		}
 		mousePressed = false;
 		doSwiping = false;
