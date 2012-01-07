@@ -30,13 +30,13 @@ namespace ipn
 		m_elementText->setFontStyle(1);
         m_elementText->move(0, 0);
 		m_elementText->resize(240, 60);
-		m_elementText->setText("a.HorNavLinkBig");
+		m_elementText->setText("---element identifier---");
 
         m_elementContentText = new TextWidget(this);
 		m_elementContentText->setColor(Qt::white);
 		m_elementContentText->move(0, 30);
         m_elementContentText->resize(240, 60);
-		m_elementContentText->setText("\"Zürichsee\"");
+		m_elementContentText->setText("---content---");
 
 		m_explainText = new TextWidget(this);
 		m_explainText->setColor(Qt::white);
@@ -61,6 +61,7 @@ namespace ipn
 		m_followLinkButton->setIconImage(":/img/our_icons/followlink");
 		m_followLinkButton->setTitle("follow link");
         connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));
+		connect(m_browseElementButton, SIGNAL(clicked()), this, SLOT(editButtonClicked()));
 
 
 		// Connect gestures:
@@ -72,6 +73,10 @@ namespace ipn
 		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
     }
+
+	void ElementTappedApp::editButtonClicked() {
+		emit elementTapped(currentEl);
+	}
 
 	void ElementTappedApp::setElement(QWebElement el) {
 		currentEl = el;

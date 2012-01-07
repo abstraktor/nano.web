@@ -19,7 +19,7 @@ namespace ipn
 		qDebug() << "TagName: " << "" << "#" << el.tagName();
 
 		event->setAccepted(true);
-		el.setStyleProperty("background-color", "red !important");
+		//el.setStyleProperty("background-color", "red !important"); // PROOF OF CONCEPT
 		emit elementTapped(el);
 	}
 

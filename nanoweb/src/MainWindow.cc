@@ -66,6 +66,7 @@ namespace ipn
 		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
+		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -111,6 +112,7 @@ namespace ipn
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
 	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
+	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->pushApp(m_elementFisheyeApp);}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

@@ -29,10 +29,12 @@ class ElementTappedApp : public App
         void swipeRight();
         void swipeDown();
         void swipe(qreal angle);
+		void editButtonClicked();
 
 
     signals:
-        void quitButtonClicked();
+		void quitButtonClicked();
+		void elementTapped(QWebElement el);
 
 
     private:
@@ -43,6 +45,7 @@ class ElementTappedApp : public App
 		TextWidget *m_elementText, *m_elementContentText, *m_explainText;
         ScalableButtonWidget *m_browseElementButton, *m_followLinkButton;
 		QWebElement currentEl;
+
 };
 
 } // namespace ipn

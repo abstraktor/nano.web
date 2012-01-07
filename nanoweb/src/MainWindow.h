@@ -87,6 +87,7 @@ class MainWindow : public QMainWindow
 		void switchToElementTapped();
 		void switchToElementTapped(QWebElement el);
 		void switchToElementFisheye();
+		void switchToElementFisheye(QWebElement el);
 		void switchToInfo();
 
         void switchToApp(App *app);

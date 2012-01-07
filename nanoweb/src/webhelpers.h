@@ -13,6 +13,13 @@ namespace ipn
 	{
 		QString elementIdentifierString(QWebElement el);
 		QString elementContentString(QWebElement el);
+
+		bool hasPreviousSibling(QWebElement el);
+		bool hasNextSibling(QWebElement el);
+		bool hasFirstChild(QWebElement el);
+		bool hasParent(QWebElement el);
+
+		bool nodeExists(QWebElement el);
 	} // namespace webhelpers
 } // namespace ipn
 

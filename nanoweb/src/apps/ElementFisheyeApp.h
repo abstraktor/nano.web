@@ -19,8 +19,8 @@ class ElementFisheyeApp : public App
     public:
 		ElementFisheyeApp(QWidget *parent = 0);
 
-        inline bool isOpaque() {return false;}
-        void setMessage(QString message);
+		inline bool isOpaque() {return false;}
+		void setElement(QWebElement el);
 
 	public slots:
 		void timerTick();
@@ -41,11 +41,12 @@ class ElementFisheyeApp : public App
 		virtual void paintEvent(QPaintEvent *event);
 
 	private:
-		void drawFisheye(QPainter *painter, QWebElement *el = 0, QColor bgcolor = Qt::white);
-		int signum(int number);
-		QVector<QPolygon> m_drawing;
-		qreal translatex, translatey;
+		void drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor = Qt::white);
+		QWebElement currentEl, nextEl;
 
+		/*
+		 * Start animation stuff
+		 */
 		QPoint translation;
 		QPoint lastPoint;
 		QPoint diff;
@@ -60,6 +61,12 @@ class ElementFisheyeApp : public App
 		int moves;
 
 		int axis;
+		/*
+		 * End animation stuff
+		 */
+		// helpers
+		int signum(int number);
+		void setAnimationParametersToZero();
 
 };
 
