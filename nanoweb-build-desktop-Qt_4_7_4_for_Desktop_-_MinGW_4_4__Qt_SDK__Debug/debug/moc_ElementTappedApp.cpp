@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ElementTappedApp.h'
 **
-** Created: Sat 7. Jan 18:01:40 2012
+** Created: Sat 7. Jan 19:38:29 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,36 +23,35 @@ static const uint qt_meta_data_ipn__ElementTappedApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       23,   22,   22,   22, 0x05,
       46,   43,   22,   22, 0x05,
+      73,   22,   22,   22, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      73,   22,   22,   22, 0x0a,
-      83,   22,   22,   22, 0x0a,
-      94,   22,   22,   22, 0x0a,
-     106,   22,   22,   22, 0x0a,
-     116,   22,   22,   22, 0x0a,
-     129,   22,   22,   22, 0x0a,
-     147,  141,   22,   22, 0x0a,
-     160,   22,   22,   22, 0x0a,
+      93,   22,   22,   22, 0x0a,
+     103,   22,   22,   22, 0x0a,
+     114,   22,   22,   22, 0x0a,
+     126,   22,   22,   22, 0x0a,
+     136,   22,   22,   22, 0x0a,
+     149,   22,   22,   22, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__ElementTappedApp[] = {
     "ipn::ElementTappedApp\0\0quitButtonClicked()\0"
-    "el\0elementTapped(QWebElement)\0pinchIn()\0"
-    "pinchOut()\0swipeLeft()\0swipeUp()\0"
-    "swipeRight()\0swipeDown()\0angle\0"
-    "swipe(qreal)\0editButtonClicked()\0"
+    "el\0elementTapped(QWebElement)\0"
+    "editButtonClicked()\0pinchIn()\0pinchOut()\0"
+    "swipeLeft()\0swipeUp()\0swipeRight()\0"
+    "swipeDown()\0"
 };
 
 const QMetaObject ipn::ElementTappedApp::staticMetaObject = {
@@ -86,17 +85,16 @@ int ipn::ElementTappedApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: quitButtonClicked(); break;
         case 1: elementTapped((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
-        case 2: pinchIn(); break;
-        case 3: pinchOut(); break;
-        case 4: swipeLeft(); break;
-        case 5: swipeUp(); break;
-        case 6: swipeRight(); break;
-        case 7: swipeDown(); break;
-        case 8: swipe((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 9: editButtonClicked(); break;
+        case 2: editButtonClicked(); break;
+        case 3: pinchIn(); break;
+        case 4: pinchOut(); break;
+        case 5: swipeLeft(); break;
+        case 6: swipeUp(); break;
+        case 7: swipeRight(); break;
+        case 8: swipeDown(); break;
         default: ;
         }
-        _id -= 10;
+        _id -= 9;
     }
     return _id;
 }
@@ -112,5 +110,11 @@ void ipn::ElementTappedApp::elementTapped(QWebElement _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void ipn::ElementTappedApp::editButtonClicked()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -27,24 +27,23 @@ class ElementTappedApp : public App
         void swipeLeft();
         void swipeUp();
         void swipeRight();
-        void swipeDown();
-        void swipe(qreal angle);
-		void editButtonClicked();
+		void swipeDown();
 
 	protected:
 		virtual void paintEvent(QPaintEvent *event);
+		virtual void mousePressEvent(QMouseEvent *event);
+		virtual void mouseReleaseEvent(QMouseEvent *event);
 
     signals:
 		void quitButtonClicked();
 		void elementTapped(QWebElement el);
+		void editButtonClicked();
 
 
     private:
 
-        BackgroundWidget *m_elementBackground;
-        BackgroundWidget *m_buttonBackground;
-
-		TextWidget *m_elementText, *m_elementContentText, *m_explainText;
+		QColor buttonColor;
+		TextWidget *m_explainText;
         ScalableButtonWidget *m_browseElementButton, *m_followLinkButton;
 		QWebElement currentEl;
 

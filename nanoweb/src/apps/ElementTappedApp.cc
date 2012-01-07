@@ -41,6 +41,8 @@ namespace ipn
         m_elementContentText->resize(240, 60);
 		//m_elementContentText->setText("---content---");*/
 
+		buttonColor = QColor(180, 180, 180);
+
 		m_explainText = new TextWidget(this);
 		m_explainText->setColor(Qt::white);
 		m_explainText->move(0, 0);
@@ -63,12 +65,11 @@ namespace ipn
 		m_followLinkButton->setImage(":/img/buttons/default");
 		m_followLinkButton->setIconImage(":/img/our_icons/followlink");
 		m_followLinkButton->setTitle("follow link");
-        connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));
-		connect(m_browseElementButton, SIGNAL(clicked()), this, SLOT(editButtonClicked()));
+		connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));
+		connect(m_browseElementButton, SIGNAL(clicked()), this, SIGNAL(editButtonClicked()));
 
 
 		// Connect gestures:
-		connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
 		connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
@@ -77,8 +78,21 @@ namespace ipn
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
     }
 
-	void ElementTappedApp::editButtonClicked() {
-		emit elementTapped(currentEl);
+	void ElementTappedApp::mousePressEvent(QMouseEvent *event)
+	{
+		if (event->pos().y() <= 120) {
+			buttonColor = QColor(100, 100, 100);
+			update();
+		}
+	}
+
+	void ElementTappedApp::mouseReleaseEvent(QMouseEvent *event)
+	{
+		if (event->pos().y() <= 120) {
+			buttonColor = QColor(180, 180, 180);
+			update();
+			emit elementTapped(currentEl);
+		}
 	}
 
 	void ElementTappedApp::setElement(QWebElement el) {
@@ -110,9 +124,6 @@ namespace ipn
     {
     }
 
-    void ElementTappedApp::swipe(qreal angle)
-    {
-    }
 
 	void ElementTappedApp::paintEvent(QPaintEvent*)
 	{
@@ -121,6 +132,9 @@ namespace ipn
 
 		painter.setBrush(QBrush(QColor(64, 64, 64), Qt::SolidPattern));
 		painter.drawRect(0, 0, 240, 240);
+
+		painter.setBrush(QBrush(buttonColor, Qt::SolidPattern));
+		painter.drawRoundedRect(40, 50, 160, 70, 10.0, 10.0);
 
 		painter.setPen(QPen(Qt::white, 5.0));
 		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
