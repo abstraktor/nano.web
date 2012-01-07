@@ -43,16 +43,21 @@ namespace ipn
 		animationDestination = QPoint();
 		tickCount = 0;
 
-
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
 		connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
 		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
+		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 	}
 
 	void ElementFisheyeApp::setElement(QWebElement el) {
 		currentEl = el;
 		update();
+	}
+
+	void ElementFisheyeApp::backButtonClick()
+	{
+		qDebug() << "Backbutton clicked! ";
 	}
 
 	void ElementFisheyeApp::swipeRight()
@@ -227,6 +232,9 @@ namespace ipn
 			animationStart = diff;
 			animationTimer->start();
 		}
+		else {
+			emit tapped();
+		}
 		mousePressed = false;
 		doSwiping = false;
 		moves = 0;
@@ -235,35 +243,39 @@ namespace ipn
 
 	void ElementFisheyeApp::paintEvent(QPaintEvent*)
 	{
+		QColor current = QColor(20, 20, 20);
+		QColor others = QColor(0, 0, 0);
+
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 
 		painter.translate(translation);
 		// draw select element
 		painter.translate(0, 0);
-		drawFisheye(&painter, currentEl, Qt::white);
+		drawFisheye(&painter, currentEl, current);
 		// draw parent
 		painter.translate(0, -240);
-		drawFisheye(&painter, currentEl.parent(), Qt::gray);
+		drawFisheye(&painter, currentEl.parent(), others);
 		// draw left sibling
 		painter.translate(-240, 240);
-		drawFisheye(&painter, currentEl.previousSibling(), Qt::gray);
+		drawFisheye(&painter, currentEl.previousSibling(), others);
 		// draw right sibling
 		painter.translate(480, 0);
-		drawFisheye(&painter, currentEl.nextSibling(), Qt::gray);
+		drawFisheye(&painter, currentEl.nextSibling(), others);
 		// draw child
 		painter.translate(-240, 240);
-		drawFisheye(&painter, currentEl.firstChild(), Qt::gray);
+		drawFisheye(&painter, currentEl.firstChild(), others);
 
 		//for (QVector<QPolygon>::iterator p = m_drawing.begin(); p != m_drawing.end(); p++)
 		//	painter.drawPolyline(*p);
 	}
 
 	void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor) {
+		bgcolor.setAlpha(220);
 		painter->setBrush(QBrush(bgcolor, Qt::SolidPattern));
 		painter->drawRect(0, 0, 240, 240);
 
-		painter->setPen(QPen(Qt::black, 5.0));
+		painter->setPen(QPen(Qt::white, 5.0));
 		if (ipn::webhelpers::hasParent(el))
 			painter->drawLine(60, 10, 180, 10);
 		if (ipn::webhelpers::hasPreviousSibling(el))
@@ -274,9 +286,10 @@ namespace ipn
 			painter->drawLine(60, 230, 180, 230);
 
 		painter->setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
-		painter->drawText(rect(), Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(el));
+		painter->drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(el));
+		painter->drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(el));
 		painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal	));
-		painter->drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to edit");
+		painter->drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
 	}
 
 	void ElementFisheyeApp::setAnimationParametersToZero() {

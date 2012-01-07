@@ -34,14 +34,13 @@ namespace ipn
 		m_frameWidget = new ipn::IPodFrameWidget(new QWidget);
 		setCentralWidget(m_frameWidget);
 
-
 		// Create apps:
 		m_menuApp = new MenuApp();
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
 		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
-		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/icon.png");
-		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/icon.png");
+		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png");
+		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png");
 		m_menuApp->titleBar()->setTitle("NANOWEB");
 
 		m_webviewApp = new WebviewApp();
@@ -65,8 +64,10 @@ namespace ipn
 		connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
 		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
+
 		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
 		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
+		connect(m_elementFisheyeApp, SIGNAL(tapped()), m_frameWidget, SLOT(instantPopApp()));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -77,8 +78,8 @@ namespace ipn
 		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
 		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToElementFisheye()));
 		connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
-		// go back from webpage to main menu
-		//connect(m_webviewApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
+
+
 		// quit button
 		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
 		connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
@@ -112,7 +113,7 @@ namespace ipn
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
 	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
-	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->pushApp(m_elementFisheyeApp);}
+	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

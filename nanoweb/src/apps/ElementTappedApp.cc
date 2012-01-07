@@ -7,6 +7,7 @@
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
+#include "helpers.h"
 #include "webhelpers.h"
 #include "ElementTappedApp.h"
 
@@ -15,17 +16,19 @@ namespace ipn
 
     ElementTappedApp::ElementTappedApp(QWidget *pParent) : App(pParent)
 	{
+		/*
         m_elementBackground = new BackgroundWidget(this);
         m_elementBackground->setColor(BackgroundWidget::BG_GRAY);
         m_elementBackground->move(0, 0);
         m_elementBackground->resize(240, 120);
 
+
         m_buttonBackground = new BackgroundWidget(this);
         m_buttonBackground->setColor(BackgroundWidget::BG_GRAY);
         m_buttonBackground->move(0, 120);
-        m_buttonBackground->resize(240, 120);
+		m_buttonBackground->resize(240, 120);*/
 
-        m_elementText = new TextWidget(this);
+		/*m_elementText = new TextWidget(this);
 		m_elementText->setColor(Qt::white);
 		m_elementText->setFontStyle(1);
         m_elementText->move(0, 0);
@@ -36,14 +39,14 @@ namespace ipn
 		m_elementContentText->setColor(Qt::white);
 		m_elementContentText->move(0, 30);
         m_elementContentText->resize(240, 60);
-		m_elementContentText->setText("---content---");
+		//m_elementContentText->setText("---content---");*/
 
 		m_explainText = new TextWidget(this);
 		m_explainText->setColor(Qt::white);
-		m_explainText->move(0, 90);
-		m_explainText->resize(240, 60);
+		m_explainText->move(0, 0);
+		m_explainText->resize(240, 30);
 		m_explainText->setFontSize(12);
-		m_explainText->setText("Link clicked!\nDecide, how to go on.");
+		m_explainText->setText("You selected:");
 
 
         m_browseElementButton = new ScalableButtonWidget(this);
@@ -80,8 +83,7 @@ namespace ipn
 
 	void ElementTappedApp::setElement(QWebElement el) {
 		currentEl = el;
-		m_elementText->setText(ipn::webhelpers::elementIdentifierString(el));
-		m_elementContentText->setText(ipn::webhelpers::elementContentString(el));
+		update();
 	}
 
     void ElementTappedApp::pinchIn()
@@ -111,5 +113,21 @@ namespace ipn
     void ElementTappedApp::swipe(qreal angle)
     {
     }
+
+	void ElementTappedApp::paintEvent(QPaintEvent*)
+	{
+		QPainter painter(this);
+		painter.setRenderHint(QPainter::Antialiasing);
+
+		painter.setBrush(QBrush(QColor(64, 64, 64), Qt::SolidPattern));
+		painter.drawRect(0, 0, 240, 240);
+
+		painter.setPen(QPen(Qt::white, 5.0));
+		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
+
+		painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
+		painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
+	}
+
 
 } // namespace ipn

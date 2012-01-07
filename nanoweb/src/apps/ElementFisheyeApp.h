@@ -28,10 +28,11 @@ class ElementFisheyeApp : public App
 		void swipeUp();
 		void swipeRight();
 		void swipeDown();
+		void backButtonClick();
 
 
     signals:
-        void quitButtonClicked();
+		void tapped();
 
 
     protected:

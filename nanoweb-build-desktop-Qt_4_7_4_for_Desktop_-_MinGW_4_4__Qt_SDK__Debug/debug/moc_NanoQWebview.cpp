@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'NanoQWebview.h'
 **
-** Created: Fri 6. Jan 21:55:03 2012
+** Created: Sat 7. Jan 17:43:01 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

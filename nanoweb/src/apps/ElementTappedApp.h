@@ -31,6 +31,8 @@ class ElementTappedApp : public App
         void swipe(qreal angle);
 		void editButtonClicked();
 
+	protected:
+		virtual void paintEvent(QPaintEvent *event);
 
     signals:
 		void quitButtonClicked();

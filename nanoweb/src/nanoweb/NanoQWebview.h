@@ -19,7 +19,7 @@ namespace ipn
 		protected:
 			virtual void mousePressEvent(QMouseEvent *);
 		signals:
-			virtual void elementTapped(QWebElement el);
+			void elementTapped(QWebElement el);
 
 	};
 
