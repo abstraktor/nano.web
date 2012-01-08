@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Sun 8. Jan 15:04:31 2012
+** Created: Sun 8. Jan 19:19:49 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -45,7 +45,8 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
      343,  280,   16,   16, 0x08,
      379,   16,   16,   16, 0x08,
      394,   16,   16,   16, 0x08,
-     431,  427,   16,   16, 0x08,
+     419,   16,   16,   16, 0x08,
+     456,  452,   16,   16, 0x08,
 
        0        // eod
 };
@@ -62,8 +63,9 @@ static const char qt_meta_stringdata_ipn__MainWindow[] = {
     "el\0switchToElementTapped(QWebElement)\0"
     "switchToElementFisheye()\0"
     "switchToElementFisheye(QWebElement)\0"
-    "switchToInfo()\0elementTappedLeftButtonClicked()\0"
-    "app\0switchToApp(App*)\0"
+    "switchToInfo()\0switchToChooseTool1App()\0"
+    "elementTappedLeftButtonClicked()\0app\0"
+    "switchToApp(App*)\0"
 };
 
 const QMetaObject ipn::MainWindow::staticMetaObject = {
@@ -108,11 +110,12 @@ int ipn::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 10: switchToElementFisheye(); break;
         case 11: switchToElementFisheye((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
         case 12: switchToInfo(); break;
-        case 13: elementTappedLeftButtonClicked(); break;
-        case 14: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
+        case 13: switchToChooseTool1App(); break;
+        case 14: elementTappedLeftButtonClicked(); break;
+        case 15: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }

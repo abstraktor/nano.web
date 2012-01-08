@@ -17,13 +17,14 @@ namespace ipn
     ElementTappedApp::ElementTappedApp(QWidget *pParent) : App(pParent)
 	{
 		buttonColor = QColor(180, 180, 180);
+		isElementTapped = false;
 
 		m_explainText = new TextWidget(this);
 		m_explainText->setColor(Qt::white);
 		m_explainText->move(0, 0);
 		m_explainText->resize(240, 30);
 		m_explainText->setFontSize(12);
-		m_explainText->setText("You selected:");
+		m_explainText->setText("Tap to refine your selection:");
 
 
 		m_editElementButton = new ScalableButtonWidget(this);
@@ -54,8 +55,10 @@ namespace ipn
 
 	void ElementTappedApp::mousePressEvent(QMouseEvent *event)
 	{
-		if (event->pos().y() >= 50 && event->pos().y() <= 140)
-			emit elementTapped(currentEl);
+		if (event->pos().y() >= 50 && event->pos().y() <= 140) {
+			isElementTapped = true;
+			updateView();
+		}
 		/*
 		if (event->pos().y() <= 120) {
 			buttonColor = QColor(100, 100, 100);
@@ -66,6 +69,11 @@ namespace ipn
 
 	void ElementTappedApp::mouseReleaseEvent(QMouseEvent *event)
 	{
+		if (isElementTapped && event->pos().y() >= 50 && event->pos().y() <= 140) {
+			emit elementTapped(currentEl);
+		}
+		isElementTapped = false;
+		update();
 		/*
 		if (event->pos().y() <= 120) {
 			buttonColor = QColor(180, 180, 180);
@@ -134,7 +142,11 @@ namespace ipn
 
 		painter.setBrush(QBrush(buttonColor, Qt::SolidPattern));
 		//painter.drawRoundedRect(40, 50, 160, 70, 10.0, 10.0);
-		QPixmap pixmap(":img/our_imgs/elementTapped_background.png");
+		QPixmap pixmap;
+		if (!isElementTapped)
+			pixmap = QPixmap(":img/our_imgs/elementTapped_background.png");
+		else
+			pixmap = QPixmap(":img/our_imgs/elementTapped_background_hover.png");
 		painter.drawPixmap(0, 40, 240, 90, pixmap);
 
 		painter.setPen(QPen(Qt::white, 5.0));

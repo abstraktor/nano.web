@@ -58,123 +58,7 @@
         <file>img/page_indicator/page_indicator_active.png</file>
         <file>img/page_indicator/page_indicator_inactive.png</file>
         <file>img/fingers/index_finger.png</file>
-        <file>img/our_icons/ACCESS.png</file>
-        <file>img/our_icons/ADDRESSBOOK.png</file>
-        <file>img/our_icons/ATTACHMENT.png</file>
-        <file>img/our_icons/AUTOMATIC UPDATES.png</file>
-        <file>img/our_icons/BLUETOOTH.png</file>
-        <file>img/our_icons/BOOK.png</file>
-        <file>img/our_icons/BOOKMARKS.png</file>
-        <file>img/our_icons/BURN.png</file>
-        <file>img/our_icons/CALENDAR.png</file>
-        <file>img/our_icons/CAMERA.png</file>
-        <file>img/our_icons/CD.png</file>
-        <file>img/our_icons/CHAT.png</file>
-        <file>img/our_icons/CLOCK.png</file>
-        <file>img/our_icons/CMD.png</file>
-        <file>img/our_icons/CPU.png</file>
-        <file>img/our_icons/DEFRAG.png</file>
-        <file>img/our_icons/DESKTOP.png</file>
-        <file>img/our_icons/DISPLAY.png</file>
-        <file>img/our_icons/DOWNLOAD.png</file>
-        <file>img/our_icons/DVD - NOTEBOOK.png</file>
-        <file>img/our_icons/EARPHONE.png</file>
-        <file>img/our_icons/EASY EJECT.png</file>
-        <file>img/our_icons/FAX.png</file>
-        <file>img/our_icons/FILE - BATCH.png</file>
-        <file>img/our_icons/FILE - CERTIFICATE.png</file>
-        <file>img/our_icons/FILE - DLL.png</file>
-        <file>img/our_icons/FILE - EXECUTABLE.png</file>
-        <file>img/our_icons/FILE - FONT.A.png</file>
-        <file>img/our_icons/FILE - FONT.png</file>
-        <file>img/our_icons/FILE - INTERNET.png</file>
-        <file>img/our_icons/FILE - MOVIE.png</file>
-        <file>img/our_icons/FILE - PICTURE.png</file>
-        <file>img/our_icons/FILE - SOUND.png</file>
-        <file>img/our_icons/FILE - TEXT.png</file>
-        <file>img/our_icons/FILE - ZIP.png</file>
-        <file>img/our_icons/FILE.png</file>
-        <file>img/our_icons/FIREWALL.png</file>
-        <file>img/our_icons/FLOPPY.png</file>
-        <file>img/our_icons/FOLDER - DOCUMENTS.png</file>
-        <file>img/our_icons/FOLDER - DOWNLOADS.png</file>
-        <file>img/our_icons/FOLDER - FONTS.png</file>
-        <file>img/our_icons/FOLDER - GAMES.png</file>
-        <file>img/our_icons/FOLDER - INTERNET.png</file>
-        <file>img/our_icons/FOLDER - MOVIE.png</file>
-        <file>img/our_icons/FOLDER - MUSIC.png</file>
-        <file>img/our_icons/FOLDER - OPEN.png</file>
-        <file>img/our_icons/FOLDER - PICTURES.png</file>
-        <file>img/our_icons/FOLDER - PRINTER.png</file>
-        <file>img/our_icons/FOLDER - SETTINGS.png</file>
-        <file>img/our_icons/FOLDER - SHARE.png</file>
-        <file>img/our_icons/FOLDER - USER.png</file>
-        <file>img/our_icons/FOLDER.png</file>
-        <file>img/our_icons/GAMECONTROLLER.png</file>
-        <file>img/our_icons/HARDWARE.png</file>
-        <file>img/our_icons/HDD - EXTERNAL.png</file>
-        <file>img/our_icons/HDD.png</file>
-        <file>img/our_icons/HEADPHONE.png</file>
-        <file>img/our_icons/HELP.png</file>
-        <file>img/our_icons/HOME.png</file>
-        <file>img/our_icons/INFO.png</file>
-        <file>img/our_icons/INFRARED.png</file>
-        <file>img/our_icons/INTERNET.png</file>
-        <file>img/our_icons/KEY.png</file>
-        <file>img/our_icons/KEYBOARD MOUSE - SETTINGS.png</file>
-        <file>img/our_icons/KEYBOARD.png</file>
-        <file>img/our_icons/LOCK - UNLOCKED.png</file>
-        <file>img/our_icons/LOCK.png</file>
-        <file>img/our_icons/MAIL.png</file>
-        <file>img/our_icons/MICROPHONE.png</file>
-        <file>img/our_icons/MOBILE.png</file>
-        <file>img/our_icons/MODEM.png</file>
-        <file>img/our_icons/MOUSE.png</file>
-        <file>img/our_icons/NETWORK - FAX.png</file>
-        <file>img/our_icons/NETWORK - FOLDER ADD.png</file>
-        <file>img/our_icons/NETWORK - FOLDER OPEN.png</file>
-        <file>img/our_icons/NETWORK - FOLDER.png</file>
-        <file>img/our_icons/NETWORK - HDD.png</file>
-        <file>img/our_icons/NETWORK - HOME.png</file>
-        <file>img/our_icons/NETWORK - LAN.png</file>
-        <file>img/our_icons/NETWORK - NOTEBOOK.png</file>
-        <file>img/our_icons/NETWORK - PRINTER.png</file>
-        <file>img/our_icons/NOTEBOOK.png</file>
-        <file>img/our_icons/PCMCIA.png</file>
-        <file>img/our_icons/PDA.png</file>
-        <file>img/our_icons/PHONE.png</file>
-        <file>img/our_icons/PHOTO.png</file>
-        <file>img/our_icons/POWER - RESTART.png</file>
-        <file>img/our_icons/POWER - SHUT DOWN.png</file>
-        <file>img/our_icons/POWER - SLEEP.png</file>
-        <file>img/our_icons/POWER - STANDBY.png</file>
-        <file>img/our_icons/POWER - SWITCH USER.png</file>
-        <file>img/our_icons/POWERCFG - BATTERY.png</file>
-        <file>img/our_icons/POWERCFG - SETTINGS.png</file>
-        <file>img/our_icons/POWERCFG.png</file>
-        <file>img/our_icons/PRINTER.png</file>
-        <file>img/our_icons/RAM.png</file>
-        <file>img/our_icons/RUN.png</file>
-        <file>img/our_icons/SCANNER.png</file>
-        <file>img/our_icons/SD CARD.png</file>
-        <file>img/our_icons/SEARCH.png</file>
-        <file>img/our_icons/SECURITY CENTER.png</file>
-        <file>img/our_icons/SETTINGS.png</file>
-        <file>img/our_icons/SOFTWARE.png</file>
-        <file>img/our_icons/SPEAKER.png</file>
-        <file>img/our_icons/SYNCAPP.png</file>
-        <file>img/our_icons/TASKBAR.png</file>
-        <file>img/our_icons/TASKS.png</file>
-        <file>img/our_icons/TOOLS.png</file>
-        <file>img/our_icons/TRASH - EMPTY.png</file>
-        <file>img/our_icons/TRASH - FULL.png</file>
-        <file>img/our_icons/TV.png</file>
-        <file>img/our_icons/USB.png</file>
-        <file>img/our_icons/USER - F.png</file>
-        <file>img/our_icons/USER - M.png</file>
         <file>img/our_icons/website.png</file>
-        <file>img/our_icons/WIFI.png</file>
-        <file>img/our_icons/WORLD.png</file>
         <file>img/our_icons/mockup.png</file>
         <file>img/our_icons/edit.png</file>
         <file>img/our_icons/followlink.png</file>
@@ -190,5 +74,6 @@
         <file>meilenwerk/testpage.html</file>
         <file>img/our_icons/back.png</file>
         <file>img/our_imgs/elementTapped_background.png</file>
+        <file>img/our_imgs/elementTapped_background_hover.png</file>
     </qresource>
 </RCC>

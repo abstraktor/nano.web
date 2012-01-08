@@ -43,7 +43,7 @@ class ElementTappedApp : public App
 
 
     private:
-
+		bool isElementTapped;
 		QColor buttonColor;
 		TextWidget *m_explainText;
         ScalableButtonWidget *m_editElementButton, *m_followLinkButton;

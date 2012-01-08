@@ -273,7 +273,7 @@ namespace ipn
 	}
 
 	void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor) {
-		bgcolor.setAlpha(220);
+		bgcolor.setAlpha(230);
 		painter->setBrush(QBrush(bgcolor, Qt::SolidPattern));
 		painter->drawRect(0, 0, 240, 240);
 

@@ -57,5 +57,8 @@ namespace ipn
 
 		update();
 	}
+	int PageIndicatorWidget::getActiveSegment() {
+		return m_activeSegment;
+	}
 
 } // namespace ipn

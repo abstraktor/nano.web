@@ -63,7 +63,8 @@ SOURCES += \
     src/apps/ElementTappedApp.cc \
     src/apps/ElementFisheyeApp.cc \
     src/nanoweb/NanoQWebview.cc \
-    src/webhelpers.cc
+    src/webhelpers.cc \
+    src/apps/ChooseTool1App.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -102,7 +103,8 @@ HEADERS += \
     src/apps/ElementTappedApp.h \
     src/apps/ElementFisheyeApp.h \
     src/nanoweb/NanoQWebview.h \
-    src/webhelpers.h
+    src/webhelpers.h \
+    src/apps/ChooseTool1App.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets

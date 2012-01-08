@@ -17,6 +17,7 @@ namespace ipn
 			void setNumberOfSegments(int numberOfSegments);
 			void setPosition(float position);
 			void setActiveSegment(int activeSegment);
+			int getActiveSegment();
 
 		protected:
 			virtual void paintEvent(QPaintEvent *event);
