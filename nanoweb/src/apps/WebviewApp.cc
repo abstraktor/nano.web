@@ -45,6 +45,7 @@ namespace ipn
 		m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
 		m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
 		m_webView->show();
+		m_webView->setZoomFactor(1.0);
 		//m_webView->setZoomFactor(1.0);
 
 		//m_webView->page()->setPreferredContentsSize(QSize(240, 240));
@@ -75,14 +76,20 @@ namespace ipn
 
 	void WebviewApp::changePinchScaleFactor(qreal delta)
 	{
+		qDebug() << delta;
+		m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
 	}
 
 	void WebviewApp::pinchIn()
 	{
+		qDebug() << "pinch in";
+		emit zoomTriggered();
 	}
 
 	void WebviewApp::pinchOut()
 	{
+		qDebug() << "pinch out";
+		emit zoomTriggered();
 	}
 
 	void WebviewApp::swipeLeft()

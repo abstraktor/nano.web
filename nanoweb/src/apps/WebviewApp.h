@@ -41,6 +41,7 @@ namespace ipn
 	signals:
 		void quitButtonClicked();
 		void elementTapped(QWebElement el);
+		void zoomTriggered();
 
 
 	protected:

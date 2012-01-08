@@ -16,31 +16,6 @@ namespace ipn
 
     ElementTappedApp::ElementTappedApp(QWidget *pParent) : App(pParent)
 	{
-		/*
-        m_elementBackground = new BackgroundWidget(this);
-        m_elementBackground->setColor(BackgroundWidget::BG_GRAY);
-        m_elementBackground->move(0, 0);
-        m_elementBackground->resize(240, 120);
-
-
-        m_buttonBackground = new BackgroundWidget(this);
-        m_buttonBackground->setColor(BackgroundWidget::BG_GRAY);
-        m_buttonBackground->move(0, 120);
-		m_buttonBackground->resize(240, 120);*/
-
-		/*m_elementText = new TextWidget(this);
-		m_elementText->setColor(Qt::white);
-		m_elementText->setFontStyle(1);
-        m_elementText->move(0, 0);
-		m_elementText->resize(240, 60);
-		m_elementText->setText("---element identifier---");
-
-        m_elementContentText = new TextWidget(this);
-		m_elementContentText->setColor(Qt::white);
-		m_elementContentText->move(0, 30);
-        m_elementContentText->resize(240, 60);
-		//m_elementContentText->setText("---content---");*/
-
 		buttonColor = QColor(180, 180, 180);
 
 		m_explainText = new TextWidget(this);
@@ -51,22 +26,21 @@ namespace ipn
 		m_explainText->setText("You selected:");
 
 
-        m_browseElementButton = new ScalableButtonWidget(this);
-		m_browseElementButton->move(30, 150);
-		m_browseElementButton->resize(60, 60);
-		m_browseElementButton->setImage(":/img/buttons/default");
-		m_browseElementButton->setIconImage(":/img/our_icons/edit");
-		m_browseElementButton->setTitle("edit");
-        connect(m_browseElementButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));
+		m_editElementButton = new ScalableButtonWidget(this);
+		m_editElementButton->move(150, 150);
+		m_editElementButton->resize(60, 60);
+		m_editElementButton->setImage(":/img/buttons/default");
+		m_editElementButton->setIconImage(":/img/our_icons/edit");
+		m_editElementButton->setTitle("edit");
+		connect(m_editElementButton, SIGNAL(clicked()), this, SIGNAL(editButtonClicked()));
 
         m_followLinkButton = new ScalableButtonWidget(this);
-		m_followLinkButton->move(150, 150);
+		m_followLinkButton->move(30, 150);
 		m_followLinkButton->resize(60, 60);
 		m_followLinkButton->setImage(":/img/buttons/default");
 		m_followLinkButton->setIconImage(":/img/our_icons/followlink");
 		m_followLinkButton->setTitle("follow link");
-		connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(quitButtonClicked()));
-		connect(m_browseElementButton, SIGNAL(clicked()), this, SIGNAL(editButtonClicked()));
+		connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(leftButtonClicked()));
 
 
 		// Connect gestures:
@@ -80,24 +54,49 @@ namespace ipn
 
 	void ElementTappedApp::mousePressEvent(QMouseEvent *event)
 	{
+		if (event->pos().y() >= 50 && event->pos().y() <= 140)
+			emit elementTapped(currentEl);
+		/*
 		if (event->pos().y() <= 120) {
 			buttonColor = QColor(100, 100, 100);
 			update();
 		}
+		*/
 	}
 
 	void ElementTappedApp::mouseReleaseEvent(QMouseEvent *event)
 	{
+		/*
 		if (event->pos().y() <= 120) {
 			buttonColor = QColor(180, 180, 180);
 			update();
 			emit elementTapped(currentEl);
 		}
+		*/
+	}
+
+	void ElementTappedApp::updateView() {
+		if (currentEl.tagName() == "A")
+		{
+			m_followLinkButton->setTitle("follow link");
+			m_followLinkButton->setIconImage(":/img/our_icons/followlink");
+		}
+		else {
+			m_followLinkButton->setTitle("back");
+			m_followLinkButton->setIconImage(":/img/our_icons/back");
+
+		}
+		update();
+
+	}
+
+	QWebElement ElementTappedApp::getElement() {
+		return currentEl;
 	}
 
 	void ElementTappedApp::setElement(QWebElement el) {
 		currentEl = el;
-		update();
+		updateView();
 	}
 
     void ElementTappedApp::pinchIn()
@@ -134,7 +133,9 @@ namespace ipn
 		painter.drawRect(0, 0, 240, 240);
 
 		painter.setBrush(QBrush(buttonColor, Qt::SolidPattern));
-		painter.drawRoundedRect(40, 50, 160, 70, 10.0, 10.0);
+		//painter.drawRoundedRect(40, 50, 160, 70, 10.0, 10.0);
+		QPixmap pixmap(":img/our_imgs/elementTapped_background.png");
+		painter.drawPixmap(0, 40, 240, 90, pixmap);
 
 		painter.setPen(QPen(Qt::white, 5.0));
 		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));

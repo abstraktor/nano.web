@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'WebviewApp.h'
 **
-** Created: Sat 7. Jan 17:49:41 2012
+** Created: Sun 8. Jan 15:00:28 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,37 +23,39 @@ static const uint qt_meta_data_ipn__WebviewApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       17,   16,   16,   16, 0x05,
       40,   37,   16,   16, 0x05,
+      67,   16,   16,   16, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      73,   67,   16,   16, 0x0a,
-     105,   67,   16,   16, 0x0a,
-     135,   16,   16,   16, 0x0a,
-     145,   16,   16,   16, 0x0a,
-     156,   16,   16,   16, 0x0a,
-     168,   16,   16,   16, 0x0a,
-     178,   16,   16,   16, 0x0a,
-     191,   16,   16,   16, 0x0a,
-     209,  203,   16,   16, 0x0a,
-     222,   16,   16,   16, 0x0a,
-     240,   16,   16,   16, 0x0a,
-     259,   16,   16,   16, 0x0a,
+      89,   83,   16,   16, 0x0a,
+     121,   83,   16,   16, 0x0a,
+     151,   16,   16,   16, 0x0a,
+     161,   16,   16,   16, 0x0a,
+     172,   16,   16,   16, 0x0a,
+     184,   16,   16,   16, 0x0a,
+     194,   16,   16,   16, 0x0a,
+     207,   16,   16,   16, 0x0a,
+     225,  219,   16,   16, 0x0a,
+     238,   16,   16,   16, 0x0a,
+     256,   16,   16,   16, 0x0a,
+     275,   16,   16,   16, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__WebviewApp[] = {
     "ipn::WebviewApp\0\0quitButtonClicked()\0"
-    "el\0elementTapped(QWebElement)\0delta\0"
+    "el\0elementTapped(QWebElement)\0"
+    "zoomTriggered()\0delta\0"
     "changePinchRotationAngle(qreal)\0"
     "changePinchScaleFactor(qreal)\0pinchIn()\0"
     "pinchOut()\0swipeLeft()\0swipeUp()\0"
@@ -93,21 +95,22 @@ int ipn::WebviewApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: quitButtonClicked(); break;
         case 1: elementTapped((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
-        case 2: changePinchRotationAngle((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 3: changePinchScaleFactor((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 4: pinchIn(); break;
-        case 5: pinchOut(); break;
-        case 6: swipeLeft(); break;
-        case 7: swipeUp(); break;
-        case 8: swipeRight(); break;
-        case 9: swipeDown(); break;
-        case 10: swipe((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 11: backButtonClick(); break;
-        case 12: rightButtonClick(); break;
-        case 13: leftButtonClick(); break;
+        case 2: zoomTriggered(); break;
+        case 3: changePinchRotationAngle((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 4: changePinchScaleFactor((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 5: pinchIn(); break;
+        case 6: pinchOut(); break;
+        case 7: swipeLeft(); break;
+        case 8: swipeUp(); break;
+        case 9: swipeRight(); break;
+        case 10: swipeDown(); break;
+        case 11: swipe((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 12: backButtonClick(); break;
+        case 13: rightButtonClick(); break;
+        case 14: leftButtonClick(); break;
         default: ;
         }
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }
@@ -123,5 +126,11 @@ void ipn::WebviewApp::elementTapped(QWebElement _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void ipn::WebviewApp::zoomTriggered()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -19,7 +19,9 @@ class ElementTappedApp : public App
         ElementTappedApp(QWidget *parent = 0);
 
         inline bool isOpaque() {return true;}
+		QWebElement getElement();
 		void setElement(QWebElement el);
+		void updateView();
 
     public slots:
         void pinchIn();
@@ -35,7 +37,7 @@ class ElementTappedApp : public App
 		virtual void mouseReleaseEvent(QMouseEvent *event);
 
     signals:
-		void quitButtonClicked();
+		void leftButtonClicked();
 		void elementTapped(QWebElement el);
 		void editButtonClicked();
 
@@ -44,7 +46,7 @@ class ElementTappedApp : public App
 
 		QColor buttonColor;
 		TextWidget *m_explainText;
-        ScalableButtonWidget *m_browseElementButton, *m_followLinkButton;
+        ScalableButtonWidget *m_editElementButton, *m_followLinkButton;
 		QWebElement currentEl;
 
 };

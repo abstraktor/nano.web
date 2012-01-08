@@ -141,7 +141,6 @@ namespace ipn
 			return;
 		}
 		else {
-			qDebug() << event->pos();
 			moves++;
 			diff = diff + (event->pos() - lastPoint);
 			lastPoint = event->pos();

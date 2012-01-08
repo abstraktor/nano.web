@@ -10,17 +10,22 @@ namespace ipn
 	{
 	QString elementIdentifierString(QWebElement el)
 	{
+		QString s;
 		if (el.attribute("id") != "")
-			return el.tagName() + "#" + el.attribute("id");
-		if (el.attribute("class") != "")
-			return el.tagName() + "." + el.attribute("class");
+			s =  el.tagName() + "#" + el.attribute("id");
+		else if (el.attribute("class") != "")
+			s =  el.tagName() + "." + el.attribute("class");
+		else
+			s = el.tagName().toLower();
 
-		return el.tagName().toLower();
+		if (s.length() > CONTENTLENGTH)
+			s = s.left(CONTENTLENGTH) + "...";
+		return s;
 	}
 
 	QString elementContentString(QWebElement el)
 	{
-		QString s = el.toPlainText().trimmed();
+		QString s = el.toPlainText().trimmed().replace("\n", " ");
 		if (s.length() == 0)
 			return "[no content]";
 		if (s.length() > CONTENTLENGTH) {

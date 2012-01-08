@@ -188,5 +188,7 @@
         <file>meilenwerk/meilenwerk-Dateien/rb.css</file>
         <file>meilenwerk/meilenwerk-Dateien/zuerichsee_imageshow.js</file>
         <file>meilenwerk/testpage.html</file>
+        <file>img/our_icons/back.png</file>
+        <file>img/our_imgs/elementTapped_background.png</file>
     </qresource>
 </RCC>

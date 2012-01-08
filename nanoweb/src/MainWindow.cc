@@ -66,7 +66,9 @@ namespace ipn
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
 		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
+		connect(m_webviewApp, SIGNAL(zoomTriggered()), this, SLOT(switchToInfo()));
 		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
+		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
 		connect(m_elementFisheyeApp, SIGNAL(tapped()), m_frameWidget, SLOT(instantPopApp()));
 
 		// Forward event notifications from the frame widget:
@@ -114,6 +116,14 @@ namespace ipn
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
 	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
+	void MainWindow::elementTappedLeftButtonClicked() {
+		if (m_elementTappedApp->getElement().tagName() == "A") {
+			switchToInfo();
+		}
+		else {
+			m_frameWidget->popApp();
+		}
+	}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

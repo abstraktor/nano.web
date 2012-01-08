@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ElementTappedApp.h'
 **
-** Created: Sat 7. Jan 19:38:29 2012
+** Created: Sun 8. Jan 15:04:32 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -47,7 +47,7 @@ static const uint qt_meta_data_ipn__ElementTappedApp[] = {
 };
 
 static const char qt_meta_stringdata_ipn__ElementTappedApp[] = {
-    "ipn::ElementTappedApp\0\0quitButtonClicked()\0"
+    "ipn::ElementTappedApp\0\0leftButtonClicked()\0"
     "el\0elementTapped(QWebElement)\0"
     "editButtonClicked()\0pinchIn()\0pinchOut()\0"
     "swipeLeft()\0swipeUp()\0swipeRight()\0"
@@ -83,7 +83,7 @@ int ipn::ElementTappedApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: quitButtonClicked(); break;
+        case 0: leftButtonClicked(); break;
         case 1: elementTapped((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
         case 2: editButtonClicked(); break;
         case 3: pinchIn(); break;
@@ -100,7 +100,7 @@ int ipn::ElementTappedApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void ipn::ElementTappedApp::quitButtonClicked()
+void ipn::ElementTappedApp::leftButtonClicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
