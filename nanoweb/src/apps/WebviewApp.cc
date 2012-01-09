@@ -75,6 +75,7 @@ namespace ipn
 	}
 
 	void WebviewApp::elementTappedHandler(QWebElement el) {
+		qDebug() << "element tapped";
 		if (!doSwiping && !doZooming) {
 			emit elementTapped(el);
 		}
@@ -83,6 +84,7 @@ namespace ipn
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {
 		qDebug() << "Element clicked";
 		doZooming = false;
+		qDebug() << "mouse press";
 	}
 
 	void WebviewApp::mouseMoveEvent(QMouseEvent *event)
@@ -133,21 +135,18 @@ namespace ipn
 
 	void WebviewApp::changePinchScaleFactor(qreal delta)
 	{
-		qDebug() << delta;
+		qDebug() << "zooming";
 		doZooming = true;
 		m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
+		emit zoomTriggered();
 	}
 
 	void WebviewApp::pinchIn()
 	{
-		qDebug() << "pinch in";
-		emit zoomTriggered();
 	}
 
 	void WebviewApp::pinchOut()
 	{
-		qDebug() << "pinch out";
-		emit zoomTriggered();
 	}
 
 	void WebviewApp::swipeLeft()

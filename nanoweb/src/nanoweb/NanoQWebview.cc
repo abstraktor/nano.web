@@ -10,6 +10,7 @@ namespace ipn
 	}
 
 	void NanoQWebview::mousePressEvent(QMouseEvent *event) {
+		event->setAccepted(false);
 	}
 
 	void NanoQWebview::mouseMoveEvent(QMouseEvent *event) {

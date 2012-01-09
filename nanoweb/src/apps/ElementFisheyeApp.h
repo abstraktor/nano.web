@@ -43,7 +43,9 @@ class ElementFisheyeApp : public App
 
 	private:
 		void drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor = Qt::white);
-		QWebElement currentEl, nextEl;
+		QWebElement currentEl, nextEl, lastChild;
+
+		bool lastSwipeDownwards;
 
 		/*
 		 * Start animation stuff

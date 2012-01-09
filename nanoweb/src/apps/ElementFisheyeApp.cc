@@ -43,6 +43,8 @@ namespace ipn
 		animationDestination = QPoint();
 		tickCount = 0;
 
+		lastSwipeDownwards = false;
+
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
 		connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
@@ -77,7 +79,10 @@ namespace ipn
 		animationStart = translation;
 		if (ipn::webhelpers::hasFirstChild(currentEl)) {
 			animationDestination = QPoint(0, -240);
-			nextEl = currentEl.firstChild();
+			if (lastSwipeDownwards)
+				nextEl = lastChild;
+			else
+				nextEl = currentEl.firstChild();
 		}
 		else {
 			setAnimationParametersToZero();
@@ -91,6 +96,8 @@ namespace ipn
 		if (ipn::webhelpers::hasParent(currentEl)) {
 			animationDestination = QPoint(0, 240);
 			nextEl = currentEl.parent();
+			lastSwipeDownwards = true;
+			lastChild = currentEl;
 		}
 		else {
 			setAnimationParametersToZero();
@@ -124,6 +131,7 @@ namespace ipn
 			tickCount = 0;
 			update();
 			diff = translation = QPoint();
+			lastSwipeDownwards = vector.y() > 0;
 		}
 	}
 
@@ -209,6 +217,9 @@ namespace ipn
 						if (ipn::webhelpers::hasParent(currentEl)) {
 							animationDestination = QPoint(0, 240);
 							nextEl = currentEl.parent();
+							lastSwipeDownwards = true;
+							lastChild = currentEl;
+							qDebug() << "now";
 						}
 						else {
 							setAnimationParametersToZero();
@@ -218,7 +229,10 @@ namespace ipn
 						if (ipn::webhelpers::hasFirstChild(currentEl))
 						{
 							animationDestination = QPoint(0, -240);
-							nextEl = currentEl.firstChild();
+							if (lastSwipeDownwards)
+								nextEl = lastChild;
+							else
+								nextEl = currentEl.firstChild();
 						}
 						else {
 							setAnimationParametersToZero();
@@ -266,7 +280,7 @@ namespace ipn
 		drawFisheye(&painter, currentEl.nextSibling(), others);
 		// draw child
 		painter.translate(-240, 240);
-		drawFisheye(&painter, currentEl.firstChild(), others);
+		drawFisheye(&painter, lastSwipeDownwards ? lastChild : currentEl.firstChild(), others);
 
 		painter.translate(0, -240);
 		painter.translate(-translation);

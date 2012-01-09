@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'WebviewApp.h'
 **
-** Created: Mon 9. Jan 22:16:59 2012
+** Created: Mon 9. Jan 22:40:51 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
