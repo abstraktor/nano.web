@@ -37,6 +37,7 @@ namespace ipn
 		void backButtonClick();
 		void rightButtonClick();
 		void leftButtonClick();
+		void elementTappedHandler(QWebElement el);
 
 	signals:
 		void quitButtonClicked();
@@ -47,6 +48,7 @@ namespace ipn
 	protected:
 		virtual void mousePressEvent(QMouseEvent *event);
 		virtual void mouseMoveEvent(QMouseEvent *event);
+		virtual void mouseReleaseEvent(QMouseEvent *event);
 
 
 	private:
@@ -55,6 +57,11 @@ namespace ipn
 		FlickArea *m_flickArea;
 
 		BackgroundWidget *m_back;
+
+		bool doSwiping, mousePressed, doZooming;
+		QPoint translation, diff, lastPoint;
+
+		void updateView();
 
 
 		qreal m_currentScaleFactor, m_currentRotationAngle;

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'WebviewApp.h'
 **
-** Created: Sun 8. Jan 19:14:10 2012
+** Created: Mon 9. Jan 22:16:59 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__WebviewApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -48,6 +48,7 @@ static const uint qt_meta_data_ipn__WebviewApp[] = {
      238,   16,   16,   16, 0x0a,
      256,   16,   16,   16, 0x0a,
      275,   16,   16,   16, 0x0a,
+     293,   37,   16,   16, 0x0a,
 
        0        // eod
 };
@@ -62,6 +63,7 @@ static const char qt_meta_stringdata_ipn__WebviewApp[] = {
     "swipeRight()\0swipeDown()\0angle\0"
     "swipe(qreal)\0backButtonClick()\0"
     "rightButtonClick()\0leftButtonClick()\0"
+    "elementTappedHandler(QWebElement)\0"
 };
 
 const QMetaObject ipn::WebviewApp::staticMetaObject = {
@@ -108,9 +110,10 @@ int ipn::WebviewApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 12: backButtonClick(); break;
         case 13: rightButtonClick(); break;
         case 14: leftButtonClick(); break;
+        case 15: elementTappedHandler((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }

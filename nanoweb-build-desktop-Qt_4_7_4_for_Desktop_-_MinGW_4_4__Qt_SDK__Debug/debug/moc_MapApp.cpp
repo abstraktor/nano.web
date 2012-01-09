@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MapApp.h'
 **
-** Created: Sun 8. Jan 19:13:40 2012
+** Created: Mon 9. Jan 21:45:06 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

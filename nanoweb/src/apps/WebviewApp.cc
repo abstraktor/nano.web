@@ -20,6 +20,13 @@ namespace ipn
 {
 	WebviewApp::WebviewApp(QWidget *pParent) : App(pParent)
 	{
+		mousePressed = false;
+		doSwiping = false;
+		doZooming = false;
+
+		translation = QPoint();
+		diff = QPoint();
+		lastPoint = QPoint();
 		/*
 		m_flickArea = new FlickArea(this);
 		m_flickArea->move(0, 0);
@@ -64,20 +71,70 @@ namespace ipn
 		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
 		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
 
-		connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SIGNAL(elementTapped(QWebElement)));
+		connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SLOT(elementTappedHandler(QWebElement)));
+	}
+
+	void WebviewApp::elementTappedHandler(QWebElement el) {
+		if (!doSwiping && !doZooming) {
+			emit elementTapped(el);
+		}
 	}
 
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {
 		qDebug() << "Element clicked";
+		doZooming = false;
+	}
+
+	void WebviewApp::mouseMoveEvent(QMouseEvent *event)
+	{
+		if (!event->buttons() == Qt::LeftButton)
+			return;
+		if (!mousePressed) {
+			mousePressed = true;
+			lastPoint = event->pos();
+			return;
+		}
+		else {
+			diff = diff + (event->pos() - lastPoint);
+			lastPoint = event->pos();
+			double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
+			if (length >= 2) {
+				doSwiping = true;
+			}
+			if (doSwiping) {
+				if (diff.x() > 0)
+					diff.setX(0);
+				if (diff.y() > 0)
+					diff.setY(0);
+				if (abs(diff.x()) > 715)
+					diff.setX(-715);
+				if (abs(diff.y()) > 275)
+					diff.setY(-275);
+				translation = diff;
+			}
+		}
+		updateView();
+	}
+
+	void WebviewApp::mouseReleaseEvent(QMouseEvent *event) {
+		mousePressed = false;
+		doSwiping = false;
 	}
 
 	void WebviewApp::changePinchRotationAngle(qreal delta)
 	{
 	}
 
+
+	void WebviewApp::updateView() {
+		update();
+		m_webView->move(translation.x(), translation.y());
+	}
+
 	void WebviewApp::changePinchScaleFactor(qreal delta)
 	{
 		qDebug() << delta;
+		doZooming = true;
 		m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
 	}
 
@@ -111,11 +168,7 @@ namespace ipn
 
 	void WebviewApp::swipe(qreal angle)
 	{
-		qDebug() << "EVENT: Swipe " << angle;
-	}
-
-	void WebviewApp::mouseMoveEvent(QMouseEvent *event)
-	{
+		//qDebug() << "EVENT: Swipe " << angle;
 	}
 
 	void WebviewApp::backButtonClick()

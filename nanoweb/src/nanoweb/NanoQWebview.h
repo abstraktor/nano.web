@@ -18,8 +18,13 @@ namespace ipn
 			NanoQWebview(QWidget *parent = 0);
 		protected:
 			virtual void mousePressEvent(QMouseEvent *);
+			virtual void mouseMoveEvent(QMouseEvent *);
+			virtual void mouseReleaseEvent(QMouseEvent *);
 		signals:
 			void elementTapped(QWebElement el);
+
+		private:
+
 
 	};
 
