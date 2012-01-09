@@ -235,7 +235,7 @@ namespace ipn
 		else {
 			QRect r = QRect(60, 60, 120, 120);
 			if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5)
-				emit tapped();
+				emit elementTapped(currentEl);
 		}
 		mousePressed = false;
 		doSwiping = false;
@@ -268,25 +268,27 @@ namespace ipn
 		painter.translate(-240, 240);
 		drawFisheye(&painter, currentEl.firstChild(), others);
 
-		//for (QVector<QPolygon>::iterator p = m_drawing.begin(); p != m_drawing.end(); p++)
-		//	painter.drawPolyline(*p);
+		painter.translate(0, -240);
+		painter.translate(-translation);
+		painter.setPen(QPen(Qt::white, 5.0));
+		if (ipn::webhelpers::hasParent(currentEl))
+			painter.drawLine(60, 10, 180, 10);
+		if (ipn::webhelpers::hasPreviousSibling(currentEl))
+			painter.drawLine(10, 60, 10, 180);
+		if (ipn::webhelpers::hasNextSibling(currentEl))
+			painter.drawLine(230, 60, 230, 180);
+		if (ipn::webhelpers::hasFirstChild(currentEl))
+			painter.drawLine(60, 230, 180, 230);
 	}
 
 	void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor) {
 		bgcolor.setAlpha(230);
 		painter->setBrush(QBrush(bgcolor, Qt::SolidPattern));
+		painter->setPen(Qt::NoPen);
 		painter->drawRect(0, 0, 240, 240);
+		painter->setPen(Qt::SolidLine);
 
 		painter->setPen(QPen(Qt::white, 5.0));
-		if (ipn::webhelpers::hasParent(el))
-			painter->drawLine(60, 10, 180, 10);
-		if (ipn::webhelpers::hasPreviousSibling(el))
-			painter->drawLine(10, 60, 10, 180);
-		if (ipn::webhelpers::hasNextSibling(el))
-			painter->drawLine(230, 60, 230, 180);
-		if (ipn::webhelpers::hasFirstChild(el))
-			painter->drawLine(60, 230, 180, 230);
-
 		painter->setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
 		painter->drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(el));
 		painter->drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(el));

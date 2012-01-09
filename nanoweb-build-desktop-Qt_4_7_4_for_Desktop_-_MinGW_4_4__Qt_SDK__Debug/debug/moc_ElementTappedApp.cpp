@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ElementTappedApp.h'
 **
-** Created: Sun 8. Jan 19:14:12 2012
+** Created: Sun 8. Jan 23:42:13 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__ElementTappedApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -42,6 +42,7 @@ static const uint qt_meta_data_ipn__ElementTappedApp[] = {
      126,   22,   22,   22, 0x0a,
      136,   22,   22,   22, 0x0a,
      149,   22,   22,   22, 0x0a,
+     161,   43,   22,   22, 0x0a,
 
        0        // eod
 };
@@ -51,7 +52,7 @@ static const char qt_meta_stringdata_ipn__ElementTappedApp[] = {
     "el\0elementTapped(QWebElement)\0"
     "editButtonClicked()\0pinchIn()\0pinchOut()\0"
     "swipeLeft()\0swipeUp()\0swipeRight()\0"
-    "swipeDown()\0"
+    "swipeDown()\0elementTappedInFisheye(QWebElement)\0"
 };
 
 const QMetaObject ipn::ElementTappedApp::staticMetaObject = {
@@ -92,9 +93,10 @@ int ipn::ElementTappedApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 6: swipeUp(); break;
         case 7: swipeRight(); break;
         case 8: swipeDown(); break;
+        case 9: elementTappedInFisheye((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

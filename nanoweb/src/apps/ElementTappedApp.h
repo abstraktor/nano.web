@@ -30,6 +30,7 @@ class ElementTappedApp : public App
         void swipeUp();
         void swipeRight();
 		void swipeDown();
+		void elementTappedInFisheye(QWebElement el);
 
 	protected:
 		virtual void paintEvent(QPaintEvent *event);
@@ -44,6 +45,7 @@ class ElementTappedApp : public App
 
     private:
 		bool isElementTapped;
+		bool showText;
 		QColor buttonColor;
 		TextWidget *m_explainText;
         ScalableButtonWidget *m_editElementButton, *m_followLinkButton;

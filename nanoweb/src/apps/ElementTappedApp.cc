@@ -3,6 +3,7 @@
 #include <QPen>
 #include <QPolygon>
 #include <QVector>
+#include <QDebug>
 #include "widgets/BackgroundWidget.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
@@ -18,6 +19,7 @@ namespace ipn
 	{
 		buttonColor = QColor(180, 180, 180);
 		isElementTapped = false;
+		showText = true;
 
 		m_explainText = new TextWidget(this);
 		m_explainText->setColor(Qt::white);
@@ -70,6 +72,7 @@ namespace ipn
 	void ElementTappedApp::mouseReleaseEvent(QMouseEvent *event)
 	{
 		if (isElementTapped && event->pos().y() >= 50 && event->pos().y() <= 140) {
+			showText = false;
 			emit elementTapped(currentEl);
 		}
 		isElementTapped = false;
@@ -83,7 +86,14 @@ namespace ipn
 		*/
 	}
 
+	void ElementTappedApp::elementTappedInFisheye(QWebElement el) {
+		showText = true;
+		currentEl = el;
+		updateView();
+	}
+
 	void ElementTappedApp::updateView() {
+		/*
 		if (currentEl.tagName() == "A")
 		{
 			m_followLinkButton->setTitle("follow link");
@@ -92,8 +102,12 @@ namespace ipn
 		else {
 			m_followLinkButton->setTitle("back");
 			m_followLinkButton->setIconImage(":/img/our_icons/back");
-
 		}
+		*/
+
+		m_followLinkButton->setTitle("follow link");
+		m_followLinkButton->setIconImage(":/img/our_icons/followlink");
+		m_followLinkButton->setEnabled(currentEl.tagName() == "A");
 		update();
 
 	}
@@ -142,18 +156,26 @@ namespace ipn
 
 		painter.setBrush(QBrush(buttonColor, Qt::SolidPattern));
 		//painter.drawRoundedRect(40, 50, 160, 70, 10.0, 10.0);
-		QPixmap pixmap;
+		//QPixmap pixmap;
 		if (!isElementTapped)
-			pixmap = QPixmap(":img/our_imgs/elementTapped_background.png");
+			painter.setBrush(QBrush(QColor(255, 255, 255), Qt::SolidPattern));
+			//pixmap = QPixmap(":img/our_imgs/elementTapped_background.png");
 		else
-			pixmap = QPixmap(":img/our_imgs/elementTapped_background_hover.png");
-		painter.drawPixmap(0, 40, 240, 90, pixmap);
+			painter.setBrush(QBrush(QColor(200, 200, 200), Qt::SolidPattern));
+			//pixmap = QPixmap(":img/our_imgs/elementTapped_background_hover.png");
+		//painter.drawPixmap(0, 40, 240, 90, pixmap);
+		painter.setPen(Qt::NoPen);
+		painter.drawRoundedRect(15, 40, 210, 90, 15.0, 15.0);
+		painter.setPen(Qt::SolidLine);
 
-		painter.setPen(QPen(Qt::white, 5.0));
+
+		painter.setPen(QPen(Qt::black, 5.0));
 		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
 
-		painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
-		painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
+		if (showText) {
+			painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
+			painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
+		}
 	}
 
 

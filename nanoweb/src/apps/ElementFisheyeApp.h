@@ -32,7 +32,7 @@ class ElementFisheyeApp : public App
 
 
     signals:
-		void tapped();
+		void elementTapped(QWebElement el);
 
 
     protected:

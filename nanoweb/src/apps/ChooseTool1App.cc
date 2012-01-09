@@ -11,6 +11,7 @@
 #include "widgets/TitleBarWidget.h"
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
+#include "widgets/PageIndicatorWidget.h"
 #include "helpers.h"
 #include "webhelpers.h"
 
@@ -38,10 +39,64 @@ namespace ipn
 		axis = NOAXIS;
 
 
+		m_pageIndicator = new PageIndicatorWidget(this);
+		m_pageIndicator->setNumberOfSegments(3);
+		m_pageIndicator->setActiveSegment(0);
+		m_pageIndicator->move(120 - m_pageIndicator->width() / 2, 224);
+
 
 		animationStart = QPoint();
 		animationDestination = QPoint();
 		tickCount = 0;
+
+		m_topLeft1 = new ScalableButtonWidget(this);
+		m_topLeft1->resize(64, 64);
+		m_topLeft1->setImage(":/img/buttons/default");
+		m_topLeft1->setIconImage(":/img/our_icons/edit");
+		m_topLeft1->setTitle("box model");
+		m_topRight1 = new ScalableButtonWidget(this);
+		m_topRight1->resize(64, 64);
+		m_topRight1->setImage(":/img/buttons/default");
+		m_topRight1->setIconImage(":/img/our_icons/edit");
+		m_topRight1->setTitle("text");
+		m_bottomLeft1 = new ScalableButtonWidget(this);
+		m_bottomLeft1->resize(64, 64);
+		m_bottomLeft1->setImage(":/img/buttons/default");
+		m_bottomLeft1->setIconImage(":/img/our_icons/edit");
+		m_bottomLeft1->setTitle("color");
+		m_bottomRight1 = new ScalableButtonWidget(this);
+		m_bottomRight1->resize(64, 64);
+		m_bottomRight1->setImage(":/img/buttons/default");
+		m_bottomRight1->setIconImage(":/img/our_icons/edit");
+		m_bottomRight1->setTitle("position");
+
+		m_topLeft2 = new ScalableButtonWidget(this);
+		m_topLeft2->resize(64, 64);
+		m_topLeft2->setImage(":/img/buttons/default");
+		m_topLeft2->setIconImage(":/img/our_icons/edit");
+		m_topLeft2->setTitle("list");
+		m_topRight2 = new ScalableButtonWidget(this);
+		m_topRight2->resize(64, 64);
+		m_topRight2->setImage(":/img/buttons/default");
+		m_topRight2->setIconImage(":/img/our_icons/edit");
+		m_topRight2->setTitle("add child");
+		m_bottomLeft2 = new ScalableButtonWidget(this);
+		m_bottomLeft2->resize(64, 64);
+		m_bottomLeft2->setImage(":/img/buttons/default");
+		m_bottomLeft2->setIconImage(":/img/our_icons/edit");
+		m_bottomLeft2->setTitle("attributes");
+		m_bottomRight2 = new ScalableButtonWidget(this);
+		m_bottomRight2->resize(64, 64);
+		m_bottomRight2->setImage(":/img/buttons/default");
+		m_bottomRight2->setIconImage(":/img/our_icons/edit");
+		m_bottomRight2->setTitle("delete");
+
+		topLeft = QPoint(36, 36);
+		topRight = QPoint(138, 36);
+		bottomLeft = QPoint(36, 128);
+		bottomRight = QPoint(138, 128);
+
+		updateView();
 
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
@@ -50,7 +105,29 @@ namespace ipn
 
 	void ChooseTool1App::setElement(QWebElement el) {
 		currentEl = el;
+		updateView();
+	}
+
+	void ChooseTool1App::updateView() {
 		update();
+		QPoint standardTranslation = QPoint(240, 0);
+		QPoint tl1 = topLeft + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_topLeft1->move(tl1.x(), tl1.y());
+		QPoint tr1 = topRight + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_topRight1->move(tr1.x(), tr1.y());
+		QPoint bl1 = bottomLeft + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_bottomLeft1->move(bl1.x(), bl1.y());
+		QPoint br1 = bottomRight + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_bottomRight1->move(br1.x(), br1.y());
+
+		QPoint tl2 = topLeft + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_topLeft2->move(tl2.x(), tl2.y());
+		QPoint tr2 = topRight + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_topRight2->move(tr2.x(), tr2.y());
+		QPoint bl2 = bottomLeft + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_bottomLeft2->move(bl2.x(), bl2.y());
+		QPoint br2 = bottomRight + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		m_bottomRight2->move(br2.x(), br2.y());
 	}
 
 	void ChooseTool1App::backButtonClick()
@@ -63,7 +140,7 @@ namespace ipn
 		animationStart = translation;
 		if (canLeft()) {
 			animationDestination = QPoint(240, 0);
-			nextEl = currentEl.previousSibling();
+			m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() + 1);
 		}
 		else {
 			setAnimationParametersToZero();
@@ -75,7 +152,7 @@ namespace ipn
 		animationStart = translation;
 		if (canRight()) {
 			animationDestination = QPoint(-240, 0);
-			nextEl = currentEl.nextSibling();
+			m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() - 1);
 
 		}
 		else {
@@ -87,16 +164,19 @@ namespace ipn
 	void ChooseTool1App::timerTick()
 	{
 		tickCount++;
-		QPoint vector = animationDestination - animationStart;
-		translation = animationStart + ((float) tickCount / FRAMES) * vector;
-		update();
+		//qDebug() << "dest :" << animationDestination;
+		//qDebug() << "start:" << animationStart;
+		//QPoint vector = animationDestination - animationStart;
+		translation = animationStart - ((float) tickCount / FRAMES) * animationStart;
+		//translation = (animationStart + QPoint(240, 0)) - ((float) tickCount / FRAMES) * (animationStart + QPoint(240, 0));;
+		updateView();
 		if (tickCount == (int) FRAMES) {
 			animationTimer->stop();
-			currentEl = nextEl;
 			translation = animationDestination;
 			tickCount = 0;
-			update();
+			updateView();
 			diff = translation = QPoint();
+			updateView();
 		}
 	}
 
@@ -122,22 +202,18 @@ namespace ipn
 			if (length >= 5 && diff.x() != diff.y()) {
 				doSwiping = true;
 				// detect x or y
-				if (abs(diff.x()) > abs(diff.y()))
+				//if (abs(diff.x()) > abs(diff.y()))
 					axis = XAXIS;
-				else
-					axis = YAXIS;
 			}
 
 			//}
-			if (axis == XAXIS)
+			//if (axis == XAXIS)
 				diff.setY(0);
-			else if (axis == YAXIS)
-				diff.setX(0);
 			if (doSwiping) {
 				translation = diff;
 			}
 		}
-		update();
+		updateView();
 	}
 
 	void ChooseTool1App::mouseReleaseEvent(QMouseEvent *event) {
@@ -145,14 +221,15 @@ namespace ipn
 			if (axis == XAXIS) {
 				// animate x-axis
 				if (abs(diff.x()) < 100) {
-					animationDestination = QPoint(0, 0);
-					nextEl = currentEl;
+					animationDestination = m_pageIndicator->getActiveSegment() * QPoint(240, 0);
+					animationStart = diff;
 				}
 				else {
 					if (signum(diff.x()) == +1) {
 						if (canLeft()) {
-							animationDestination = QPoint(240, 0);
-							nextEl = currentEl.previousSibling();
+							m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() - 1);
+							animationDestination = m_pageIndicator->getActiveSegment() * QPoint(240, 0);
+							animationStart = diff - QPoint(240, 0);
 						}
 						else {
 							setAnimationParametersToZero();
@@ -160,8 +237,9 @@ namespace ipn
 					}
 					else if (signum (diff.x()) == -1) {
 						if (canRight()) {
-							animationDestination = QPoint(-240, 0);
-							nextEl = currentEl.nextSibling();
+							m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() + 1);
+							animationDestination = m_pageIndicator->getActiveSegment() * QPoint(240, 0);
+							animationStart = diff + QPoint(240, 0);
 						}
 						else {
 							setAnimationParametersToZero();
@@ -172,7 +250,7 @@ namespace ipn
 					}
 				}
 			}
-			animationStart = diff;
+			//animationStart = diff;
 			animationTimer->start();
 		}
 		else {
@@ -193,8 +271,10 @@ namespace ipn
 		painter.setRenderHint(QPainter::Antialiasing);
 		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));
 		painter.drawRect(0, 0, 240, 240);
-		painter.translate(translation);
-		painter.drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
+
+		painter.setPen(QPen(Qt::white, 5.0));
+		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
+		painter.drawText(0, 0, 240, 30, Qt::AlignCenter, "el: " + ipn::webhelpers::elementIdentifierString(currentEl));
 
 	}
 
@@ -207,7 +287,6 @@ namespace ipn
 
 	void ChooseTool1App::setAnimationParametersToZero() {
 		animationDestination = QPoint(0, 0);
-		nextEl = currentEl;
 	}
 
 	int ChooseTool1App::signum(int number) {

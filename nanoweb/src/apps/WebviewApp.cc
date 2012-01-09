@@ -43,7 +43,7 @@ namespace ipn
 		m_webView->move(0, 0);
 		//m_webView->load(QUrl("http://www.meilenwerk.de/Meilenwerk_Zuerichsee_index.php"));
 		m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
-		m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
+		//m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
 		m_webView->show();
 		m_webView->setZoomFactor(1.0);
 		//m_webView->setZoomFactor(1.0);
@@ -63,6 +63,7 @@ namespace ipn
 		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
 		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
+
 		connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SIGNAL(elementTapped(QWebElement)));
 	}
 

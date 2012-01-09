@@ -72,7 +72,9 @@ namespace ipn
 		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
 		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
 		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
-		connect(m_elementFisheyeApp, SIGNAL(tapped()), m_frameWidget, SLOT(instantPopApp()));
+
+		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_frameWidget, SLOT(instantPopApp()));
+		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_elementTappedApp, SLOT(elementTappedInFisheye(QWebElement)));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -117,7 +119,10 @@ namespace ipn
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
-	void MainWindow::switchToChooseTool1App()		{m_frameWidget->pushApp(m_chooseTool1App);}
+	void MainWindow::switchToChooseTool1App() {
+		m_chooseTool1App->setElement(m_elementTappedApp->getElement());
+		m_frameWidget->pushApp(m_chooseTool1App);
+	}
 	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 	void MainWindow::elementTappedLeftButtonClicked() {
