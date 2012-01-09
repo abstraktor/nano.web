@@ -61,7 +61,10 @@ SOURCES += \
     src/apps/WebviewApp.cc \
     src/nanoweb/NanoWebView.cc \
     src/apps/ElementTappedApp.cc \
-    src/apps/ElementFisheyeApp.cc
+    src/apps/ElementFisheyeApp.cc \
+    src/nanoweb/NanoQWebview.cc \
+    src/webhelpers.cc \
+    src/apps/ChooseTool1App.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -98,7 +101,10 @@ HEADERS += \
     src/nanoweb/NanoWebView.h \
     src/nanoweb/NanoWebView.h \
     src/apps/ElementTappedApp.h \
-    src/apps/ElementFisheyeApp.h
+    src/apps/ElementFisheyeApp.h \
+    src/nanoweb/NanoQWebview.h \
+    src/webhelpers.h \
+    src/apps/ChooseTool1App.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
@@ -118,7 +124,6 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/compat \
     qtc_packaging/debian_harmattan/changelog \
     webseite/meilenwerk.html \
-    webseite/meilenwerk_files/swfobject.js \
     webseite/meilenwerk_files/rb.css \
     webseite/meilenwerk_files/piwik.js \
     webseite/meilenwerk_files/nav.css \
@@ -127,7 +132,124 @@ OTHER_FILES += \
     webseite/meilenwerk_files/meilenwerk_stuttgart_start_01.jpg \
     webseite/meilenwerk_files/fouc.css \
     webseite/meilenwerk_files/content.css \
-    webseite/meilenwerk_files/_blank.gif
+    webseite/meilenwerk_files/_blank.gif \
+    img/our_icons/WORLD.png \
+    img/our_icons/WIFI.png \
+    img/our_icons/website.png \
+    img/our_icons/USER - M.png \
+    img/our_icons/USER - F.png \
+    img/our_icons/USB.png \
+    img/our_icons/TV.png \
+    img/our_icons/TRASH - FULL.png \
+    img/our_icons/TRASH - EMPTY.png \
+    img/our_icons/TOOLS.png \
+    img/our_icons/TASKS.png \
+    img/our_icons/TASKBAR.png \
+    img/our_icons/SYNCAPP.png \
+    img/our_icons/SPEAKER.png \
+    img/our_icons/SOFTWARE.png \
+    img/our_icons/SETTINGS.png \
+    img/our_icons/SECURITY CENTER.png \
+    img/our_icons/SEARCH.png \
+    img/our_icons/SD CARD.png \
+    img/our_icons/SCANNER.png \
+    img/our_icons/RUN.png \
+    img/our_icons/RAM.png \
+    img/our_icons/PRINTER.png \
+    img/our_icons/POWERCFG.png \
+    img/our_icons/POWERCFG - SETTINGS.png \
+    img/our_icons/POWERCFG - BATTERY.png \
+    img/our_icons/POWER - SWITCH USER.png \
+    img/our_icons/POWER - STANDBY.png \
+    img/our_icons/POWER - SLEEP.png \
+    img/our_icons/POWER - SHUT DOWN.png \
+    img/our_icons/POWER - RESTART.png \
+    img/our_icons/PHOTO.png \
+    img/our_icons/PHONE.png \
+    img/our_icons/PDA.png \
+    img/our_icons/PCMCIA.png \
+    img/our_icons/NOTEBOOK.png \
+    img/our_icons/NETWORK - PRINTER.png \
+    img/our_icons/NETWORK - NOTEBOOK.png \
+    img/our_icons/NETWORK - LAN.png \
+    img/our_icons/NETWORK - HOME.png \
+    img/our_icons/NETWORK - HDD.png \
+    img/our_icons/NETWORK - FOLDER.png \
+    img/our_icons/NETWORK - FOLDER OPEN.png \
+    img/our_icons/NETWORK - FOLDER ADD.png \
+    img/our_icons/NETWORK - FAX.png \
+    img/our_icons/MOUSE.png \
+    img/our_icons/MODEM.png \
+    img/our_icons/MOBILE.png \
+    img/our_icons/MICROPHONE.png \
+    img/our_icons/MAIL.png \
+    img/our_icons/LOCK.png \
+    img/our_icons/LOCK - UNLOCKED.png \
+    img/our_icons/KEYBOARD.png \
+    img/our_icons/KEYBOARD MOUSE - SETTINGS.png \
+    img/our_icons/KEY.png \
+    img/our_icons/INTERNET.png \
+    img/our_icons/INFRARED.png \
+    img/our_icons/INFO.png \
+    img/our_icons/HOME.png \
+    img/our_icons/HELP.png \
+    img/our_icons/HEADPHONE.png \
+    img/our_icons/HDD.png \
+    img/our_icons/HDD - EXTERNAL.png \
+    img/our_icons/HARDWARE.png \
+    img/our_icons/GAMECONTROLLER.png \
+    img/our_icons/FOLDER.png \
+    img/our_icons/FOLDER - USER.png \
+    img/our_icons/FOLDER - SHARE.png \
+    img/our_icons/FOLDER - SETTINGS.png \
+    img/our_icons/FOLDER - PRINTER.png \
+    img/our_icons/FOLDER - PICTURES.png \
+    img/our_icons/FOLDER - OPEN.png \
+    img/our_icons/FOLDER - MUSIC.png \
+    img/our_icons/FOLDER - MOVIE.png \
+    img/our_icons/FOLDER - INTERNET.png \
+    img/our_icons/FOLDER - GAMES.png \
+    img/our_icons/FOLDER - FONTS.png \
+    img/our_icons/FOLDER - DOWNLOADS.png \
+    img/our_icons/FOLDER - DOCUMENTS.png \
+    img/our_icons/FLOPPY.png \
+    img/our_icons/FIREWALL.png \
+    img/our_icons/FILE.png \
+    img/our_icons/FILE - ZIP.png \
+    img/our_icons/FILE - TEXT.png \
+    img/our_icons/FILE - SOUND.png \
+    img/our_icons/FILE - PICTURE.png \
+    img/our_icons/FILE - MOVIE.png \
+    img/our_icons/FILE - INTERNET.png \
+    img/our_icons/FILE - FONT.png \
+    img/our_icons/FILE - FONT.A.png \
+    img/our_icons/FILE - EXECUTABLE.png \
+    img/our_icons/FILE - DLL.png \
+    img/our_icons/FILE - CERTIFICATE.png \
+    img/our_icons/FILE - BATCH.png \
+    img/our_icons/FAX.png \
+    img/our_icons/EASY EJECT.png \
+    img/our_icons/EARPHONE.png \
+    img/our_icons/DVD - NOTEBOOK.png \
+    img/our_icons/DOWNLOAD.png \
+    img/our_icons/DISPLAY.png \
+    img/our_icons/DESKTOP.png \
+    img/our_icons/DEFRAG.png \
+    img/our_icons/CPU.png \
+    img/our_icons/CMD.png \
+    img/our_icons/CLOCK.png \
+    img/our_icons/CHAT.png \
+    img/our_icons/CD.png \
+    img/our_icons/CAMERA.png \
+    img/our_icons/CALENDAR.png \
+    img/our_icons/BURN.png \
+    img/our_icons/BOOKMARKS.png \
+    img/our_icons/BOOK.png \
+    img/our_icons/BLUETOOTH.png \
+    img/our_icons/AUTOMATIC UPDATES.png \
+    img/our_icons/ATTACHMENT.png \
+    img/our_icons/ADDRESSBOOK.png \
+    img/our_icons/ACCESS.png
 
 RESOURCES += \
     resources.qrc

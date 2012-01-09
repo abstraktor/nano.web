@@ -1,0 +1,81 @@
+.VertNavActive {
+	width: 115px; height: 18px; color: rgb(255, 255, 255); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; display: block; background-color: rgb(37, 37, 37);
+}
+.VertNavSpaceLeft {
+	width: 25px;
+}
+.VertNavSpaceRight {
+	width: 15px;
+}
+.VertNavSpaceLine {
+	height: 4px;
+}
+a.VertNavLink:link {
+	width: 115px; height: 18px; color: rgb(160, 165, 165); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; display: block; background-color: rgb(37, 37, 37);
+}
+a.VertNavLink:visited {
+	width: 115px; height: 18px; color: rgb(160, 165, 165); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; display: block; background-color: rgb(37, 37, 37);
+}
+a.VertNavLink:focus {
+	width: 115px; height: 18px; color: rgb(255, 255, 255); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; display: block; background-color: rgb(37, 37, 37);
+}
+a.VertNavLink:hover {
+	width: 115px; height: 18px; color: rgb(255, 255, 255); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none; display: block; background-color: rgb(37, 37, 37);
+}
+.HorNavBar {
+	border-style: none none none solid; width: 10px; border-left-color: rgb(141, 141, 141); border-left-width: 3px;
+}
+a.HorNavLinkBig:link {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
+}
+a.HorNavLinkBig:visited {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
+}
+a.HorNavLinkBig:focus {
+	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
+}
+a.HorNavLinkBig:hover {
+	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
+}
+.HorNavBig {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold;
+}
+.HorNavSmall {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;
+}
+a.HorNavLinkSmall:link {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none;
+}
+a.HorNavLinkSmall:visited {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none;
+}
+a.HorNavLinkSmall:focus {
+	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none;
+}
+a.HorNavLinkSmall:hover {
+	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none;
+}
+.HorNavBet {
+	height: 3px;
+}
+.HorNavBarBet {
+	border-style: none none none solid; width: 10px; height: 5px; border-left-color: rgb(141, 141, 141); border-left-width: 3px;
+}
+a.BasicNav:link {
+	color: rgb(141, 141, 141); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+}
+a.BasicNav:visited {
+	color: rgb(141, 141, 141); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+}
+a.BasicNav:focus {
+	color: rgb(255, 255, 255); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+}
+a.BasicNav:hover {
+	color: rgb(255, 255, 255); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+}
+.VertNavSpaceInActive {
+	width: 7px;
+}
+.VertNavSpaceActive {
+	width: 7px;
+}

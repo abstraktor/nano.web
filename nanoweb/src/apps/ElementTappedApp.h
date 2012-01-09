@@ -2,6 +2,7 @@
 #define IPN_ELEMENTTAPPEDAPP_H
 
 #include "App.h"
+#include <QWebElement>
 
 namespace ipn
 {
@@ -18,7 +19,9 @@ class ElementTappedApp : public App
         ElementTappedApp(QWidget *parent = 0);
 
         inline bool isOpaque() {return true;}
-        void setMessage(QString message);
+		QWebElement getElement();
+		void setElement(QWebElement el);
+		void updateView();
 
     public slots:
         void pinchIn();
@@ -26,21 +29,26 @@ class ElementTappedApp : public App
         void swipeLeft();
         void swipeUp();
         void swipeRight();
-        void swipeDown();
-        void swipe(qreal angle);
+		void swipeDown();
 
+	protected:
+		virtual void paintEvent(QPaintEvent *event);
+		virtual void mousePressEvent(QMouseEvent *event);
+		virtual void mouseReleaseEvent(QMouseEvent *event);
 
     signals:
-        void quitButtonClicked();
+		void leftButtonClicked();
+		void elementTapped(QWebElement el);
+		void editButtonClicked();
 
 
     private:
+		bool isElementTapped;
+		QColor buttonColor;
+		TextWidget *m_explainText;
+        ScalableButtonWidget *m_editElementButton, *m_followLinkButton;
+		QWebElement currentEl;
 
-        BackgroundWidget *m_elementBackground;
-        BackgroundWidget *m_buttonBackground;
-
-        TextWidget *m_elementText, *m_elementContentText;
-        ScalableButtonWidget *m_browseElementButton, *m_followLinkButton;
 };
 
 } // namespace ipn

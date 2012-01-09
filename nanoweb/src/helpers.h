@@ -5,6 +5,7 @@
 #define IPN_HELPERS_H_Y7SNIYWW
 
 #include <QString>
+#include "IPodFrameWidget.h"
 
 namespace ipn
 {

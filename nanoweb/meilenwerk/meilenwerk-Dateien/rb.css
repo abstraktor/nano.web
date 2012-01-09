@@ -1,0 +1,45 @@
+.rbUE {
+	color: rgb(255, 255, 255); line-height: 26px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;
+}
+.rbText {
+	left: 15px; color: rgb(160, 165, 165); font-family: Arial, Helvetica, sans-serif; font-size: 11px;
+}
+.rbEinzugLinks {
+	width: 6px; height: 14px;
+}
+a.link:link {
+	color: rgb(255, 255, 255); line-height: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.link:visited {
+	color: rgb(255, 255, 255); line-height: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.link:hover {
+	color: rgb(160, 165, 165); line-height: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.maillink:active {
+	color: rgb(255, 255, 255); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.maillink:link {
+	color: rgb(255, 255, 255); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.maillink:visited {
+	color: rgb(255, 255, 255); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.maillink:hover {
+	color: rgb(160, 165, 165); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+a.maillink:focus {
+	color: rgb(160, 165, 165); line-height: 19px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-decoration: none;
+}
+.rbhinweis {
+	color: rgb(160, 165, 165); line-height: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;
+}
+.rbEinzugRechts {
+	width: 25px; height: 1px;
+}
+.rbEinzugOben {
+	width: 1px; height: 5px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;
+}
+.rbSpaceLine {
+	height: 4px; font-family: Arial, Helvetica, sans-serif; font-size: 4px;
+}

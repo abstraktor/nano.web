@@ -15,6 +15,7 @@
 #include "apps/WebviewApp.h"
 #include "apps/ElementTappedApp.h"
 #include "apps/ElementFisheyeApp.h"
+#include "apps/ChooseTool1App.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -34,21 +35,20 @@ namespace ipn
 		m_frameWidget = new ipn::IPodFrameWidget(new QWidget);
 		setCentralWidget(m_frameWidget);
 
-
 		// Create apps:
 		m_menuApp = new MenuApp();
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
-		m_menuApp->addButton(MenuApp::TopLeft, "meilenwerk", ":/img/icons/icon.png");
-		m_menuApp->addButton(MenuApp::TopRight, "element", ":/img/icons/icon.png");
-		m_menuApp->addButton(MenuApp::BottomLeft, "fisheye", ":/img/icons/icon.png");
-		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/icon.png");
+		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
+		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
+		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png");
+		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png");
 		m_menuApp->titleBar()->setTitle("NANOWEB");
 
 		m_webviewApp = new WebviewApp();
 		m_elementTappedApp = new ElementTappedApp();
 		m_elementFisheyeApp = new ElementFisheyeApp();
 		m_infoApp = new InfoApp();
-		//m_infoApp->setMessage("You are now seeing a webpage.");
+		m_chooseTool1App = new ChooseTool1App();
 
 
 		// Set MenuApp as first app:
@@ -67,17 +67,24 @@ namespace ipn
 		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
+		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
+		connect(m_webviewApp, SIGNAL(zoomTriggered()), this, SLOT(switchToInfo()));
+		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
+		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
+		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
+		connect(m_elementFisheyeApp, SIGNAL(tapped()), m_frameWidget, SLOT(instantPopApp()));
+
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
 
 
 
 		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
-		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToElementTapped()));
-		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToElementFisheye()));
+		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
+		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
-		// go back from webpage to main menu
-		//connect(m_webviewApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
+
+
 		// quit button
 		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
 		connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
@@ -110,6 +117,17 @@ namespace ipn
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
+	void MainWindow::switchToChooseTool1App()		{m_frameWidget->pushApp(m_chooseTool1App);}
+	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
+	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
+	void MainWindow::elementTappedLeftButtonClicked() {
+		if (m_elementTappedApp->getElement().tagName() == "A") {
+			switchToInfo();
+		}
+		else {
+			m_frameWidget->popApp();
+		}
+	}
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

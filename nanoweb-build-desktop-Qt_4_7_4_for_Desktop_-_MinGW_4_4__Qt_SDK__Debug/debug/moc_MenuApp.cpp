@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MenuApp.h'
 **
-** Created: Thu 5. Jan 17:58:08 2012
+** Created: Sun 8. Jan 19:14:07 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

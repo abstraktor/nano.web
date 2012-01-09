@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'WebviewApp.h'
 **
-** Created: Thu 5. Jan 17:58:11 2012
+** Created: Sun 8. Jan 19:14:10 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,36 +23,40 @@ static const uint qt_meta_data_ipn__WebviewApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       17,   16,   16,   16, 0x05,
+      40,   37,   16,   16, 0x05,
+      67,   16,   16,   16, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      43,   37,   16,   16, 0x0a,
-      75,   37,   16,   16, 0x0a,
-     105,   16,   16,   16, 0x0a,
-     115,   16,   16,   16, 0x0a,
-     126,   16,   16,   16, 0x0a,
-     138,   16,   16,   16, 0x0a,
-     148,   16,   16,   16, 0x0a,
+      89,   83,   16,   16, 0x0a,
+     121,   83,   16,   16, 0x0a,
+     151,   16,   16,   16, 0x0a,
      161,   16,   16,   16, 0x0a,
-     179,  173,   16,   16, 0x0a,
-     192,   16,   16,   16, 0x0a,
-     210,   16,   16,   16, 0x0a,
-     229,   16,   16,   16, 0x0a,
+     172,   16,   16,   16, 0x0a,
+     184,   16,   16,   16, 0x0a,
+     194,   16,   16,   16, 0x0a,
+     207,   16,   16,   16, 0x0a,
+     225,  219,   16,   16, 0x0a,
+     238,   16,   16,   16, 0x0a,
+     256,   16,   16,   16, 0x0a,
+     275,   16,   16,   16, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__WebviewApp[] = {
     "ipn::WebviewApp\0\0quitButtonClicked()\0"
-    "delta\0changePinchRotationAngle(qreal)\0"
+    "el\0elementTapped(QWebElement)\0"
+    "zoomTriggered()\0delta\0"
+    "changePinchRotationAngle(qreal)\0"
     "changePinchScaleFactor(qreal)\0pinchIn()\0"
     "pinchOut()\0swipeLeft()\0swipeUp()\0"
     "swipeRight()\0swipeDown()\0angle\0"
@@ -90,21 +94,23 @@ int ipn::WebviewApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: quitButtonClicked(); break;
-        case 1: changePinchRotationAngle((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 2: changePinchScaleFactor((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 3: pinchIn(); break;
-        case 4: pinchOut(); break;
-        case 5: swipeLeft(); break;
-        case 6: swipeUp(); break;
-        case 7: swipeRight(); break;
-        case 8: swipeDown(); break;
-        case 9: swipe((*reinterpret_cast< qreal(*)>(_a[1]))); break;
-        case 10: backButtonClick(); break;
-        case 11: rightButtonClick(); break;
-        case 12: leftButtonClick(); break;
+        case 1: elementTapped((*reinterpret_cast< QWebElement(*)>(_a[1]))); break;
+        case 2: zoomTriggered(); break;
+        case 3: changePinchRotationAngle((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 4: changePinchScaleFactor((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 5: pinchIn(); break;
+        case 6: pinchOut(); break;
+        case 7: swipeLeft(); break;
+        case 8: swipeUp(); break;
+        case 9: swipeRight(); break;
+        case 10: swipeDown(); break;
+        case 11: swipe((*reinterpret_cast< qreal(*)>(_a[1]))); break;
+        case 12: backButtonClick(); break;
+        case 13: rightButtonClick(); break;
+        case 14: leftButtonClick(); break;
         default: ;
         }
-        _id -= 13;
+        _id -= 15;
     }
     return _id;
 }
@@ -113,5 +119,18 @@ int ipn::WebviewApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void ipn::WebviewApp::quitButtonClicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void ipn::WebviewApp::elementTapped(QWebElement _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void ipn::WebviewApp::zoomTriggered()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
 }
 QT_END_MOC_NAMESPACE

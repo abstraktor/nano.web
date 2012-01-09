@@ -3,10 +3,9 @@
 
 #include "App.h"
 #include <QtWebKit>
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsWebView>
+#include <QWebView>
 #include "widgets/FlickArea.h"
+#include "nanoweb/NanoQWebView.h"
 
 namespace ipn
 {
@@ -14,7 +13,7 @@ namespace ipn
 	class TitleBarWidget;
 	class TextWidget;
 	class ScalableButtonWidget;
-	class NanoWebView;
+	class NanoQWebView;
 
 	class WebviewApp : public App
 	{
@@ -41,6 +40,8 @@ namespace ipn
 
 	signals:
 		void quitButtonClicked();
+		void elementTapped(QWebElement el);
+		void zoomTriggered();
 
 
 	protected:
@@ -50,9 +51,7 @@ namespace ipn
 
 	private:
 		QVector<QPolygon> m_drawing;
-		QGraphicsView *m_graphicsView;
-		QGraphicsScene *m_scene;
-		NanoWebView *m_webView;
+		NanoQWebview *m_webView;
 		FlickArea *m_flickArea;
 
 		BackgroundWidget *m_back;

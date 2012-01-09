@@ -11,42 +11,42 @@ namespace ipn
 	{
 		switch (type)
 		{
-			case PinchIn:
-				emit pinchInTriggered();
-				break;
-			case PinchOut:
-				emit pinchOutTriggered();
-				break;
-			case PinchRotation:
-				emit pinchRotationAngleChanged(param);
-				break;
-			case PinchScale:
-				emit pinchScaleFactorChanged(param);
-				break;
-			case Swipe:
-				emit swipeTriggered(param);
-				break;
-			case SwipeLeft:
-				emit swipeLeftTriggered();
-				break;
-			case SwipeUp:
-				emit swipeUpTriggered();
-				break;
-			case SwipeRight:
-				emit swipeRightTriggered();
-				break;
-			case SwipeDown:
-				emit swipeDownTriggered();
-				break;
-                        case RightButtonClick:
-                                emit rightButtonClickTriggered();
-                                break;
-                        case LeftButtonClick:
-                                emit leftButtonClickTriggered();
-                                break;
-                        case BackButtonClick:
-                                emit backButtonClickTriggered();
-                                break;
+		case PinchIn:
+			emit pinchInTriggered();
+			break;
+		case PinchOut:
+			emit pinchOutTriggered();
+			break;
+		case PinchRotation:
+			emit pinchRotationAngleChanged(param);
+			break;
+		case PinchScale:
+			emit pinchScaleFactorChanged(param);
+			break;
+		case Swipe:
+			emit swipeTriggered(param);
+			break;
+		case SwipeLeft:
+			emit swipeLeftTriggered();
+			break;
+		case SwipeUp:
+			emit swipeUpTriggered();
+			break;
+		case SwipeRight:
+			emit swipeRightTriggered();
+			break;
+		case SwipeDown:
+			emit swipeDownTriggered();
+			break;
+		case RightButtonClick:
+			emit rightButtonClickTriggered();
+			break;
+		case LeftButtonClick:
+			emit leftButtonClickTriggered();
+			break;
+		case BackButtonClick:
+			emit backButtonClickTriggered();
+			break;
 		}
 	}
 

@@ -13,6 +13,7 @@
 #include "widgets/OverlayWidget.h"
 
 #include <QtGui/QMainWindow>
+#include <QWebElement>
 
 class QMouseEvent;
 class QResizeEvent;
@@ -38,6 +39,7 @@ class PeepholeApp;
 class WebviewApp;
 class ElementTappedApp;
 class ElementFisheyeApp;
+class ChooseTool1App;
 
 class OverlayWidget;
 class TitleBarWidget;
@@ -84,8 +86,12 @@ class MainWindow : public QMainWindow
         // Slots for connecting apps:
 		void switchToWebPage();
 		void switchToElementTapped();
+		void switchToElementTapped(QWebElement el);
 		void switchToElementFisheye();
+		void switchToElementFisheye(QWebElement el);
 		void switchToInfo();
+		void switchToChooseTool1App();
+		void elementTappedLeftButtonClicked();
 
         void switchToApp(App *app);
 
@@ -100,6 +106,7 @@ class MainWindow : public QMainWindow
         ElementTappedApp *m_elementTappedApp;
 		ElementFisheyeApp *m_elementFisheyeApp;
 		InfoApp *m_infoApp;
+		ChooseTool1App *m_chooseTool1App;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

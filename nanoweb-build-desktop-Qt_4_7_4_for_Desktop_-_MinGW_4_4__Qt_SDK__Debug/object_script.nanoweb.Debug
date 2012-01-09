@@ -35,6 +35,9 @@ INPUT(
 ./debug\NanoWebView.o
 ./debug\ElementTappedApp.o
 ./debug\ElementFisheyeApp.o
+./debug\NanoQWebview.o
+./debug\webhelpers.o
+./debug\ChooseTool1App.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -68,5 +71,7 @@ INPUT(
 ./debug\moc_WebviewApp.o
 ./debug\moc_ElementTappedApp.o
 ./debug\moc_ElementFisheyeApp.o
+./debug\moc_NanoQWebview.o
+./debug\moc_ChooseTool1App.o
 ./debug\qrc_resources.o
 );
