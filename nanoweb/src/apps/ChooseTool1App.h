@@ -47,6 +47,7 @@ class ChooseTool1App : public App
 		PageIndicatorWidget *m_pageIndicator;
 		ScalableButtonWidget *m_topLeft1, *m_topRight1, *m_bottomLeft1, *m_bottomRight1;
 		ScalableButtonWidget *m_topLeft2, *m_topRight2, *m_bottomLeft2, *m_bottomRight2;
+		ScalableButtonWidget *m_topLeft3, *m_topRight3, *m_bottomLeft3, *m_bottomRight3;
 		QPoint topLeft, topRight, bottomLeft, bottomRight;
 		QWebElement currentEl;
 
@@ -73,6 +74,7 @@ class ChooseTool1App : public App
 		// helpers
 		int signum(int number);
 		void setAnimationParametersToZero();
+		double distance(QPoint a, QPoint b);
 
 };
 

@@ -13,6 +13,7 @@
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/PageIndicatorWidget.h"
 #include "helpers.h"
+#include <QtCore/qmath.h>
 #include "webhelpers.h"
 
 #define ANIMATION_TIME 500.0
@@ -91,6 +92,27 @@ namespace ipn
 		m_bottomRight2->setIconImage(":/img/our_icons/edit");
 		m_bottomRight2->setTitle("delete");
 
+		m_topLeft3 = new ScalableButtonWidget(this);
+		m_topLeft3->resize(64, 64);
+		m_topLeft3->setImage(":/img/buttons/default");
+		m_topLeft3->setIconImage(":/img/our_icons/edit");
+		m_topLeft3->setTitle("--");
+		m_topRight3 = new ScalableButtonWidget(this);
+		m_topRight3->resize(64, 64);
+		m_topRight3->setImage(":/img/buttons/default");
+		m_topRight3->setIconImage(":/img/our_icons/edit");
+		m_topRight3->setTitle("--");
+		m_bottomLeft3 = new ScalableButtonWidget(this);
+		m_bottomLeft3->resize(64, 64);
+		m_bottomLeft3->setImage(":/img/buttons/default");
+		m_bottomLeft3->setIconImage(":/img/our_icons/edit");
+		m_bottomLeft3->setTitle("--");
+		m_bottomRight3 = new ScalableButtonWidget(this);
+		m_bottomRight3->resize(64, 64);
+		m_bottomRight3->setImage(":/img/buttons/default");
+		m_bottomRight3->setIconImage(":/img/our_icons/edit");
+		m_bottomRight3->setTitle("--");
+
 		topLeft = QPoint(36, 36);
 		topRight = QPoint(138, 36);
 		bottomLeft = QPoint(36, 128);
@@ -111,23 +133,32 @@ namespace ipn
 	void ChooseTool1App::updateView() {
 		update();
 		QPoint standardTranslation = QPoint(240, 0);
-		QPoint tl1 = topLeft + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint tl1 = topLeft + translation;
 		m_topLeft1->move(tl1.x(), tl1.y());
-		QPoint tr1 = topRight + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint tr1 = topRight + translation;
 		m_topRight1->move(tr1.x(), tr1.y());
-		QPoint bl1 = bottomLeft + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint bl1 = bottomLeft + translation;
 		m_bottomLeft1->move(bl1.x(), bl1.y());
-		QPoint br1 = bottomRight + translation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint br1 = bottomRight + translation;
 		m_bottomRight1->move(br1.x(), br1.y());
 
-		QPoint tl2 = topLeft + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint tl2 = topLeft + translation + standardTranslation;
 		m_topLeft2->move(tl2.x(), tl2.y());
-		QPoint tr2 = topRight + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint tr2 = topRight + translation + standardTranslation;
 		m_topRight2->move(tr2.x(), tr2.y());
-		QPoint bl2 = bottomLeft + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint bl2 = bottomLeft + translation + standardTranslation;
 		m_bottomLeft2->move(bl2.x(), bl2.y());
-		QPoint br2 = bottomRight + translation + standardTranslation - m_pageIndicator->getActiveSegment() * standardTranslation;
+		QPoint br2 = bottomRight + translation + standardTranslation;
 		m_bottomRight2->move(br2.x(), br2.y());
+
+		QPoint tl3 = topLeft + translation + 2 * standardTranslation;
+		m_topLeft3->move(tl3.x(), tl3.y());
+		QPoint tr3 = topRight + translation + 2 * standardTranslation;
+		m_topRight3->move(tr3.x(), tr3.y());
+		QPoint bl3 = bottomLeft + translation + 2 * standardTranslation;
+		m_bottomLeft3->move(bl3.x(), bl3.y());
+		QPoint br3 = bottomRight + translation + 2 * standardTranslation;
+		m_bottomRight3->move(br3.x(), br3.y());
 	}
 
 	void ChooseTool1App::backButtonClick()
@@ -164,18 +195,13 @@ namespace ipn
 	void ChooseTool1App::timerTick()
 	{
 		tickCount++;
-		//qDebug() << "dest :" << animationDestination;
-		//qDebug() << "start:" << animationStart;
-		//QPoint vector = animationDestination - animationStart;
-		translation = animationStart - ((float) tickCount / FRAMES) * animationStart;
-		//translation = (animationStart + QPoint(240, 0)) - ((float) tickCount / FRAMES) * (animationStart + QPoint(240, 0));;
+		QPoint vector = animationDestination - animationStart;
+		translation = animationStart + ((float) tickCount / FRAMES) * vector;
 		updateView();
 		if (tickCount == (int) FRAMES) {
 			animationTimer->stop();
-			translation = animationDestination;
+			diff = translation = animationDestination;
 			tickCount = 0;
-			updateView();
-			diff = translation = QPoint();
 			updateView();
 		}
 	}
@@ -218,45 +244,15 @@ namespace ipn
 
 	void ChooseTool1App::mouseReleaseEvent(QMouseEvent *event) {
 		if (doSwiping) {
-			if (axis == XAXIS) {
-				// animate x-axis
-				if (abs(diff.x()) < 100) {
-					animationDestination = m_pageIndicator->getActiveSegment() * QPoint(240, 0);
-					animationStart = diff;
-				}
-				else {
-					if (signum(diff.x()) == +1) {
-						if (canLeft()) {
-							m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() - 1);
-							animationDestination = m_pageIndicator->getActiveSegment() * QPoint(240, 0);
-							animationStart = diff - QPoint(240, 0);
-						}
-						else {
-							setAnimationParametersToZero();
-						}
-					}
-					else if (signum (diff.x()) == -1) {
-						if (canRight()) {
-							m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() + 1);
-							animationDestination = m_pageIndicator->getActiveSegment() * QPoint(240, 0);
-							animationStart = diff + QPoint(240, 0);
-						}
-						else {
-							setAnimationParametersToZero();
-						}
-					}
-					else {
-						qDebug() << "Error: should not happen";
-					}
-				}
+			// for all pages
+			animationDestination = QPoint();
+			for (int i = 0; i < 3; i++) {
+				if (distance(i * QPoint(-240, 0), diff) < distance(animationDestination, diff))
+					animationDestination = i * QPoint(-240, 0);
 			}
-			//animationStart = diff;
+			m_pageIndicator->setActiveSegment(animationDestination.x() / -240);
+			animationStart = diff;
 			animationTimer->start();
-		}
-		else {
-			QRect r = QRect(60, 60, 120, 120);
-			if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5)
-				emit tapped();
 		}
 		mousePressed = false;
 		doSwiping = false;
@@ -295,6 +291,10 @@ namespace ipn
 		else if (number < 0)
 			return -1;
 		return 0;
+	}
+	double ChooseTool1App::distance(QPoint a, QPoint b) {
+		QPoint d = a - b;
+		return qSqrt(d.x() * d.x() + d.y() * d.y());
 	}
 
 } // namespace ipn

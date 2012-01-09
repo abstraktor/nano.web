@@ -219,7 +219,6 @@ namespace ipn
 							nextEl = currentEl.parent();
 							lastSwipeDownwards = true;
 							lastChild = currentEl;
-							qDebug() << "now";
 						}
 						else {
 							setAnimationParametersToZero();
@@ -293,6 +292,7 @@ namespace ipn
 			painter.drawLine(230, 60, 230, 180);
 		if (ipn::webhelpers::hasFirstChild(currentEl))
 			painter.drawLine(60, 230, 180, 230);
+		painter.drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
 	}
 
 	void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor) {
@@ -307,7 +307,6 @@ namespace ipn
 		painter->drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(el));
 		painter->drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(el));
 		painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal	));
-		painter->drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
 	}
 
 	void ElementFisheyeApp::setAnimationParametersToZero() {

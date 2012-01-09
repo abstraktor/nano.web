@@ -75,16 +75,13 @@ namespace ipn
 	}
 
 	void WebviewApp::elementTappedHandler(QWebElement el) {
-		qDebug() << "element tapped";
 		if (!doSwiping && !doZooming) {
 			emit elementTapped(el);
 		}
 	}
 
 	void WebviewApp::mousePressEvent(QMouseEvent *event) {
-		qDebug() << "Element clicked";
 		doZooming = false;
-		qDebug() << "mouse press";
 	}
 
 	void WebviewApp::mouseMoveEvent(QMouseEvent *event)
@@ -108,10 +105,10 @@ namespace ipn
 					diff.setX(0);
 				if (diff.y() > 0)
 					diff.setY(0);
-				if (abs(diff.x()) > 715)
-					diff.setX(-715);
-				if (abs(diff.y()) > 275)
-					diff.setY(-275);
+				if (abs(diff.x()) > (715 * m_webView->zoomFactor()))
+					diff.setX(-715 * m_webView->zoomFactor());
+				if (abs(diff.y()) > (275 * m_webView->zoomFactor()))
+					diff.setY(-275 * m_webView->zoomFactor());
 				translation = diff;
 			}
 		}
