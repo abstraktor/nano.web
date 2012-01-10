@@ -91,5 +91,8 @@
         <file>img/fisheye-app/lappen_left.png</file>
         <file>img/fisheye-app/lappen_right.png</file>
         <file>img/fisheye-app/lappen_top.png</file>
+        <file>img/fisheye-app/lappen_top.png</file>
+        <file>img/our_imgs/meilenwerk.png</file>
+        <file>img/our_imgs/zurichsee.png</file>
     </qresource>
 </RCC>

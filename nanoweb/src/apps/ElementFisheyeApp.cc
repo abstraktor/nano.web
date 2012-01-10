@@ -288,15 +288,15 @@ namespace ipn
 		painter.translate(-translation);
 		painter.setPen(QPen(Qt::white, 5.0));
 
-		QPixmap pixmap = QPixmap(":img/our_imgs/lappen.png");
+		QPixmap pixmap = QPixmap(":img/fisheye-app/lappen_top.png");
 		if (ipn::webhelpers::hasParent(currentEl)) {
-			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawPixmap(0, 0, 240, 24, pixmap);
 			painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.parent().tagName().toUpper());
 		}
 		painter.rotate(90);
 		painter.translate(0, -240);
 		if (ipn::webhelpers::hasNextSibling(currentEl)) {
-			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawPixmap(0, 0, 240, 24, pixmap);
 			painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.nextSibling().tagName().toUpper());
 		}
 
@@ -304,7 +304,7 @@ namespace ipn
 		painter.rotate(90);
 		painter.translate(-240, -240);
 		if (ipn::webhelpers::hasFirstChild(currentEl)) {
-			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawPixmap(0, 0, 240, 24, pixmap);
 			//painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.firstChild().tagName().toUpper());
 		}
 
@@ -312,7 +312,7 @@ namespace ipn
 		painter.rotate(90);
 		painter.translate(-240, 0);
 		if (ipn::webhelpers::hasPreviousSibling(currentEl)) {
-			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawPixmap(0, 0, 240, 24, pixmap);
 			painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.previousSibling().tagName().toUpper());
 		}
 
