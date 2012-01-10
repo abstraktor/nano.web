@@ -25,34 +25,41 @@ a.VertNavLink:hover {
 .HorNavBar {
 	border-style: none none none solid; width: 10px; border-left-color: rgb(141, 141, 141); border-left-width: 3px;
 }
-a.HorNavLinkBig:link {
+a.cityLink:link {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
 }
-a.HorNavLinkBig:visited {
+a.cityLink:visited {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
 }
-a.HorNavLinkBig:focus {
+a.cityLink:focus {
 	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
 }
-a.HorNavLinkBig:hover {
+a.cityLink:hover {
 	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 15px; text-decoration: none;
 }
-.HorNavBig {
+.topRow {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold;
 }
-.HorNavSmall {
+.bottomRow {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;
 }
-a.HorNavLinkSmall:link {
+
+#navTable td {
+	border-right: 3px solid rgb(141, 141, 141);
+	padding-left: 5px;
+}
+.bottomRow {
+}
+a.navLink:link {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-decoration: none;
 }
-a.HorNavLinkSmall:visited {
+a.navLink:visited {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none;
 }
-a.HorNavLinkSmall:focus {
+a.navLink:focus {
 	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none;
 }
-a.HorNavLinkSmall:hover {
+a.navLink:hover {
 	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-decoration: none;
 }
 .HorNavBet {
@@ -61,17 +68,17 @@ a.HorNavLinkSmall:hover {
 .HorNavBarBet {
 	border-style: none none none solid; width: 10px; height: 5px; border-left-color: rgb(141, 141, 141); border-left-width: 3px;
 }
-a.BasicNav:link {
-	color: rgb(141, 141, 141); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+a.impressumNavLink:link {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
 }
-a.BasicNav:visited {
-	color: rgb(141, 141, 141); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+a.impressumNavLink:visited {
+	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
 }
-a.BasicNav:focus {
-	color: rgb(255, 255, 255); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+a.impressumNavLink:focus {
+	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
 }
-a.BasicNav:hover {
-	color: rgb(255, 255, 255); text-transform: uppercase; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
+a.impressumNavLink:hover {
+	color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none;
 }
 .VertNavSpaceInActive {
 	width: 7px;
