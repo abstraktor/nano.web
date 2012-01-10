@@ -52,8 +52,8 @@ namespace ipn
 
 		m_topLeft1 = new ScalableButtonWidget(this);
 		m_topLeft1->resize(64, 64);
-		m_topLeft1->setImage(":/img/buttons/default");
-		m_topLeft1->setIconImage(":/img/our_icons/edit");
+                m_topLeft1->setImage(":/img/buttons/default");
+                m_topLeft1->setIconImage(":/img/menu-icons/box_model");
 		m_topLeft1->setTitle("box model");
 		m_topRight1 = new ScalableButtonWidget(this);
 		m_topRight1->resize(64, 64);

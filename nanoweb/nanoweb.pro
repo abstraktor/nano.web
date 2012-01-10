@@ -251,10 +251,28 @@ OTHER_FILES += \
     img/our_icons/AUTOMATIC UPDATES.png \
     img/our_icons/ATTACHMENT.png \
     img/our_icons/ADDRESSBOOK.png \
-    img/our_icons/ACCESS.png
+    img/our_icons/ACCESS.png \
+    img/fisheye-app/lappen_top.png \
+    img/fisheye-app/lappen_right.png \
+    img/fisheye-app/lappen_left.png \
+    img/fisheye-app/lappen_bottom.png \
+    img/boxmodel-app/bm_topbutton_pressed.png \
+    img/boxmodel-app/bm_rightbutton_pressed.png \
+    img/boxmodel-app/bm_released.png \
+    img/boxmodel-app/bm_middle_pressed.png \
+    img/boxmodel-app/bm_leftbutton_pressed.png \
+    img/boxmodel-app/bm_bottombutton_pressed.png \
+    img/menu-icons/text.png \
+    img/menu-icons/position.png \
+    img/menu-icons/color.png \
+    img/menu-icons/box_model.png
 
 RESOURCES += \
     resources.qrc
+
+
+
+
 
 
 

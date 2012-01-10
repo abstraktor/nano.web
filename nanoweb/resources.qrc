@@ -76,5 +76,20 @@
         <file>img/our_imgs/elementTapped_background.png</file>
         <file>img/our_imgs/elementTapped_background_hover.png</file>
         <file>img/our_imgs/lappen.png</file>
+        <file>img/boxmodel-app/bm_bottombutton_pressed.png</file>
+        <file>img/boxmodel-app/bm_button_pressed.xcf</file>
+        <file>img/boxmodel-app/bm_leftbutton_pressed.png</file>
+        <file>img/boxmodel-app/bm_middle_pressed.png</file>
+        <file>img/boxmodel-app/bm_released.png</file>
+        <file>img/boxmodel-app/bm_rightbutton_pressed.png</file>
+        <file>img/boxmodel-app/bm_topbutton_pressed.png</file>
+        <file>img/menu-icons/box_model.png</file>
+        <file>img/menu-icons/color.png</file>
+        <file>img/menu-icons/position.png</file>
+        <file>img/menu-icons/text.png</file>
+        <file>img/fisheye-app/lappen_bottom.png</file>
+        <file>img/fisheye-app/lappen_left.png</file>
+        <file>img/fisheye-app/lappen_right.png</file>
+        <file>img/fisheye-app/lappen_top.png</file>
     </qresource>
 </RCC>
