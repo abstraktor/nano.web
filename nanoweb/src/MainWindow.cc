@@ -16,6 +16,7 @@
 #include "apps/ElementTappedApp.h"
 #include "apps/ElementFisheyeApp.h"
 #include "apps/ChooseTool1App.h"
+#include "apps/ChooseToolBoxmodelApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -49,6 +50,7 @@ namespace ipn
 		m_elementFisheyeApp = new ElementFisheyeApp();
 		m_infoApp = new InfoApp();
 		m_chooseTool1App = new ChooseTool1App();
+		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
 
 
 		// Set MenuApp as first app:
@@ -68,13 +70,15 @@ namespace ipn
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
 		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
-		//connect(m_webviewApp, SIGNAL(zoomTriggered()), this, SLOT(switchToInfo()));
 		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
 		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
 		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
+		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
+		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
 
 		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_frameWidget, SLOT(instantPopApp()));
 		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_elementTappedApp, SLOT(elementTappedInFisheye(QWebElement)));
+		connect(m_elementFisheyeApp, SIGNAL(backButtonClickTriggered()), this, SLOT(elementTappedInFisheye()));
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -89,7 +93,7 @@ namespace ipn
 
 		// quit button
 		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
-		connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
+		//connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
 		connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 
 
@@ -103,6 +107,11 @@ namespace ipn
 	#endif
 
 		setMouseTracking(true);
+	}
+
+
+	void MainWindow::elementTappedInFisheye() {
+		m_elementTappedApp->elementTappedInFisheye(m_elementFisheyeApp->getElement());
 	}
 
 	void MainWindow::resizeEvent(QResizeEvent *event)
@@ -122,6 +131,10 @@ namespace ipn
 	void MainWindow::switchToChooseTool1App() {
 		m_chooseTool1App->setElement(m_elementTappedApp->getElement());
 		m_frameWidget->pushApp(m_chooseTool1App);
+	}
+	void MainWindow::switchToChooseToolBoxmodelApp() {
+		m_chooseToolBoxmodelApp->setElement(m_chooseTool1App->getElement());
+		m_frameWidget->pushApp(m_chooseToolBoxmodelApp);
 	}
 	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}

@@ -123,11 +123,37 @@ namespace ipn
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+
+		connect(m_topLeft1, SIGNAL(clicked()), this, SLOT(boxmodelButtonClickedSlot()));
+		connect(m_topLeft2, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_topLeft3, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_topRight1, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_topRight2, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_topRight3, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_bottomLeft1, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_bottomLeft2, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_bottomLeft3, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_bottomRight1, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_bottomRight2, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+		connect(m_bottomRight3, SIGNAL(clicked()), this, SLOT(anotherButtonClickedSlot()));
+	}
+	void ChooseTool1App::boxmodelButtonClickedSlot() {
+		if (!doSwiping)
+			emit boxmodelButtonClicked();
+	}
+
+	void ChooseTool1App::anotherButtonClickedSlot() {
+		if (!doSwiping)
+			emit anotherButtonClicked();
 	}
 
 	void ChooseTool1App::setElement(QWebElement el) {
 		currentEl = el;
 		updateView();
+	}
+
+	QWebElement ChooseTool1App::getElement() {
+		return currentEl;
 	}
 
 	void ChooseTool1App::updateView() {

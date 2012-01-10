@@ -40,6 +40,7 @@ class WebviewApp;
 class ElementTappedApp;
 class ElementFisheyeApp;
 class ChooseTool1App;
+class ChooseToolBoxmodelApp;
 
 class OverlayWidget;
 class TitleBarWidget;
@@ -91,7 +92,9 @@ class MainWindow : public QMainWindow
 		void switchToElementFisheye(QWebElement el);
 		void switchToInfo();
 		void switchToChooseTool1App();
+		void switchToChooseToolBoxmodelApp();
 		void elementTappedLeftButtonClicked();
+		void elementTappedInFisheye();
 
         void switchToApp(App *app);
 
@@ -107,6 +110,7 @@ class MainWindow : public QMainWindow
 		ElementFisheyeApp *m_elementFisheyeApp;
 		InfoApp *m_infoApp;
 		ChooseTool1App *m_chooseTool1App;
+		ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

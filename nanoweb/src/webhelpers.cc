@@ -12,11 +12,11 @@ namespace ipn
 	{
 		QString s;
 		if (el.attribute("id") != "")
-			s =  el.tagName() + "#" + el.attribute("id");
+			s =  el.tagName().toUpper() + "#" + el.attribute("id");
 		else if (el.attribute("class") != "")
-			s =  el.tagName() + "." + el.attribute("class");
+			s =  el.tagName().toUpper() + "." + el.attribute("class");
 		else
-			s = el.tagName().toLower();
+			s = el.tagName().toUpper();
 
 		if (s.length() > CONTENTLENGTH)
 			s = s.left(CONTENTLENGTH) + "...";

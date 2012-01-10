@@ -22,16 +22,20 @@ class ChooseTool1App : public App
 
 		inline bool isOpaque() {return false;}
 		void setElement(QWebElement el);
+		QWebElement getElement();
 
 	public slots:
 		void timerTick();
 		void swipeLeft();
 		void swipeRight();
 		void backButtonClick();
+		void anotherButtonClickedSlot();
+		void boxmodelButtonClickedSlot();
 
 
     signals:
-		void tapped();
+		void boxmodelButtonClicked();
+		void anotherButtonClicked();
 
 
     protected:
