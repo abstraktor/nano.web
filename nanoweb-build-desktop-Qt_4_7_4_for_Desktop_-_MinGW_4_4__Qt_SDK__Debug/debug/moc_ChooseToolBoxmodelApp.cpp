@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ChooseToolBoxmodelApp.h'
 **
-** Created: Tue 10. Jan 00:39:29 2012
+** Created: Tue 10. Jan 19:25:38 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -34,14 +34,14 @@ static const uint qt_meta_data_ipn__ChooseToolBoxmodelApp[] = {
       28,   27,   27,   27, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      37,   27,   27,   27, 0x0a,
+      50,   27,   27,   27, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__ChooseToolBoxmodelApp[] = {
-    "ipn::ChooseToolBoxmodelApp\0\0tapped()\0"
-    "backButtonClick()\0"
+    "ipn::ChooseToolBoxmodelApp\0\0"
+    "borderButtonClicked()\0backButtonClick()\0"
 };
 
 const QMetaObject ipn::ChooseToolBoxmodelApp::staticMetaObject = {
@@ -73,7 +73,7 @@ int ipn::ChooseToolBoxmodelApp::qt_metacall(QMetaObject::Call _c, int _id, void 
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: tapped(); break;
+        case 0: borderButtonClicked(); break;
         case 1: backButtonClick(); break;
         default: ;
         }
@@ -83,7 +83,7 @@ int ipn::ChooseToolBoxmodelApp::qt_metacall(QMetaObject::Call _c, int _id, void 
 }
 
 // SIGNAL 0
-void ipn::ChooseToolBoxmodelApp::tapped()
+void ipn::ChooseToolBoxmodelApp::borderButtonClicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }

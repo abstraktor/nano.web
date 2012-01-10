@@ -41,6 +41,7 @@ class ElementTappedApp;
 class ElementFisheyeApp;
 class ChooseTool1App;
 class ChooseToolBoxmodelApp;
+class BorderEditApp;
 
 class OverlayWidget;
 class TitleBarWidget;
@@ -93,6 +94,7 @@ class MainWindow : public QMainWindow
 		void switchToInfo();
 		void switchToChooseTool1App();
 		void switchToChooseToolBoxmodelApp();
+		void switchToBorderApp();
 		void elementTappedLeftButtonClicked();
 		void elementTappedInFisheye();
 
@@ -111,6 +113,7 @@ class MainWindow : public QMainWindow
 		InfoApp *m_infoApp;
 		ChooseTool1App *m_chooseTool1App;
 		ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
+		BorderEditApp *m_borderEditApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

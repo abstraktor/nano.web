@@ -28,8 +28,8 @@ class ChooseToolBoxmodelApp : public App
 		void backButtonClick();
 
 
-    signals:
-		void tapped();
+	signals:
+		void borderButtonClicked();
 
 
     protected:

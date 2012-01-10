@@ -39,6 +39,7 @@ INPUT(
 ./debug\webhelpers.o
 ./debug\ChooseTool1App.o
 ./debug\ChooseToolBoxmodelApp.o
+./debug\BorderEditApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -75,5 +76,6 @@ INPUT(
 ./debug\moc_NanoQWebview.o
 ./debug\moc_ChooseTool1App.o
 ./debug\moc_ChooseToolBoxmodelApp.o
+./debug\moc_BorderEditApp.o
 ./debug\qrc_resources.o
 );

@@ -52,23 +52,23 @@ namespace ipn
 
 		m_topLeft1 = new ScalableButtonWidget(this);
 		m_topLeft1->resize(64, 64);
-                m_topLeft1->setImage(":/img/buttons/default");
-                m_topLeft1->setIconImage(":/img/menu-icons/box_model");
+		m_topLeft1->setImage(":/img/buttons/default");
+		m_topLeft1->setIconImage(":/img/menu-icons/box_model");
 		m_topLeft1->setTitle("box model");
 		m_topRight1 = new ScalableButtonWidget(this);
 		m_topRight1->resize(64, 64);
 		m_topRight1->setImage(":/img/buttons/default");
-		m_topRight1->setIconImage(":/img/our_icons/edit");
+		m_topRight1->setIconImage(":/img/menu-icons/text");
 		m_topRight1->setTitle("text");
 		m_bottomLeft1 = new ScalableButtonWidget(this);
 		m_bottomLeft1->resize(64, 64);
 		m_bottomLeft1->setImage(":/img/buttons/default");
-		m_bottomLeft1->setIconImage(":/img/our_icons/edit");
+		m_bottomLeft1->setIconImage(":/img/menu-icons/color");
 		m_bottomLeft1->setTitle("color");
 		m_bottomRight1 = new ScalableButtonWidget(this);
 		m_bottomRight1->resize(64, 64);
 		m_bottomRight1->setImage(":/img/buttons/default");
-		m_bottomRight1->setIconImage(":/img/our_icons/edit");
+		m_bottomRight1->setIconImage(":/img/menu-icons/position");
 		m_bottomRight1->setTitle("position");
 
 		m_topLeft2 = new ScalableButtonWidget(this);

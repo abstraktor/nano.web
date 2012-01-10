@@ -17,6 +17,7 @@
 #include "apps/ElementFisheyeApp.h"
 #include "apps/ChooseTool1App.h"
 #include "apps/ChooseToolBoxmodelApp.h"
+#include "apps/BorderEditApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -51,6 +52,7 @@ namespace ipn
 		m_infoApp = new InfoApp();
 		m_chooseTool1App = new ChooseTool1App();
 		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
+		m_borderEditApp = new BorderEditApp();
 
 
 		// Set MenuApp as first app:
@@ -73,12 +75,14 @@ namespace ipn
 		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
 		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
 		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
-		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
-		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
-
 		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_frameWidget, SLOT(instantPopApp()));
 		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_elementTappedApp, SLOT(elementTappedInFisheye(QWebElement)));
 		connect(m_elementFisheyeApp, SIGNAL(backButtonClickTriggered()), this, SLOT(elementTappedInFisheye()));
+		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
+		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
+		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
+
+
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -136,16 +140,21 @@ namespace ipn
 		m_chooseToolBoxmodelApp->setElement(m_chooseTool1App->getElement());
 		m_frameWidget->pushApp(m_chooseToolBoxmodelApp);
 	}
-	void MainWindow::switchToElementTapped(QWebElement el) {m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);}
+	void MainWindow::switchToElementTapped(QWebElement el) {
+		//m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);
+		m_borderEditApp->setElement(el);
+		m_frameWidget->pushApp(m_borderEditApp);
+	}
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 	void MainWindow::elementTappedLeftButtonClicked() {
-		if (m_elementTappedApp->getElement().tagName() == "A") {
-			switchToInfo();
-		}
-		else {
-			m_frameWidget->popApp();
-		}
+		switchToInfo();
 	}
+
+	void MainWindow::switchToBorderApp() {
+		m_borderEditApp->setElement(m_chooseToolBoxmodelApp->getElement());
+		m_frameWidget->pushApp(m_borderEditApp);
+	}
+
 
 	void MainWindow::handleMousePress(QMouseEvent *event)
 	{

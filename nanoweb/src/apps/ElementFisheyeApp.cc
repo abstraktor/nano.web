@@ -319,7 +319,7 @@ namespace ipn
 		painter.translate(240, 0);
 		painter.rotate(90);
 		if (ipn::webhelpers::hasFirstChild(currentEl)) {
-			painter.drawText(0, 220, 240, 20, Qt::AlignCenter, currentEl.firstChild().tagName().toUpper());
+			painter.drawText(0, 220, 240, 20, Qt::AlignCenter, lastSwipeDownwards ? lastChild.tagName().toUpper() : currentEl.firstChild().tagName().toUpper());
 		}
 
 

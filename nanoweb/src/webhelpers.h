@@ -6,6 +6,7 @@
 
 #include <QString>
 #include <QWebElement>
+#include <QColor>
 
 namespace ipn
 {
@@ -13,6 +14,7 @@ namespace ipn
 	{
 		QString elementIdentifierString(QWebElement el);
 		QString elementContentString(QWebElement el);
+		QColor stringToColor(QString colorString);
 
 		bool hasPreviousSibling(QWebElement el);
 		bool hasNextSibling(QWebElement el);

@@ -46,14 +46,13 @@ namespace ipn
 		QWebSettings::globalSettings()->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
 
 		m_webView = new NanoQWebview(this);
-		m_webView->resize(1000, 1000);
+		m_webView->resize(10000, 10000);
 		m_webView->move(0, 0);
 		//m_webView->load(QUrl("http://www.meilenwerk.de/Meilenwerk_Zuerichsee_index.php"));
 		m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
 		//m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
 		m_webView->show();
 		m_webView->setZoomFactor(1.0);
-		//m_webView->setZoomFactor(1.0);
 
 		//m_webView->page()->setPreferredContentsSize(QSize(240, 240));
 
@@ -135,6 +134,8 @@ namespace ipn
 		qDebug() << "zooming";
 		doZooming = true;
 		m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
+		diff = diff * delta;
+		updateView();
 		emit zoomTriggered();
 	}
 

@@ -65,7 +65,8 @@ SOURCES += \
     src/nanoweb/NanoQWebview.cc \
     src/webhelpers.cc \
     src/apps/ChooseTool1App.cc \
-    src/apps/ChooseToolBoxmodelApp.cc
+    src/apps/ChooseToolBoxmodelApp.cc \
+    src/apps/BorderEditApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -106,7 +107,8 @@ HEADERS += \
     src/nanoweb/NanoQWebview.h \
     src/webhelpers.h \
     src/apps/ChooseTool1App.h \
-    src/apps/ChooseToolBoxmodelApp.h
+    src/apps/ChooseToolBoxmodelApp.h \
+    src/apps/BorderEditApp.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets

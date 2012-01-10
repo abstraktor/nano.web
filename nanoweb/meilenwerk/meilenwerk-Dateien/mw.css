@@ -17,7 +17,12 @@ body {
 	margin: 0px auto; border: 0px currentColor; width: 900px; height: 12px; z-index: 0; background-color: rgb(0, 0, 0);
 }
 #bigImage {
-	border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141);width: 900px; height: 360px; z-index: 0; margin-top: 12px;
+	width: 900px; height: 360px; z-index: 0; margin-top: 12px;
+}
+#zuerichImage {
+	border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141);
+	border-left: none;
+	border-right: none;
 }
 #divBanner {
 	margin: 0px auto; border: 3px currentColor; width: 900px; height: 60px; z-index: 0;

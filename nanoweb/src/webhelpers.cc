@@ -34,6 +34,30 @@ namespace ipn
 		return "\"" + s + "\"";
 	}
 
+	QColor stringToColor(QString colorString) {
+		if (colorString == "")
+			return QColor(0, 0, 0);
+		if (!colorString.contains("rgb")) {
+			qDebug() << "Error: not implemented color, contact Stefan: " << colorString;
+			return Qt::black;
+		}
+		int r, g, b;
+		QString newS;
+
+		for (int i = 0; i < colorString.length(); i++) {
+			if (colorString.at(i).isDigit())
+				newS += colorString.at(i);
+			if (colorString.at(i) == ',')
+				newS += "#";
+
+		}
+		QStringList split = newS.split("#");
+		r = split.at(0).toInt();
+		g = split.at(1).toInt();
+		b = split.at(2).toInt();
+		return  QColor(r, g, b);
+	}
+
 
 	bool hasPreviousSibling(QWebElement el) {
 		return nodeExists(el.previousSibling());
