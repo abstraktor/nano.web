@@ -157,6 +157,7 @@ namespace ipn
 		painter.setBrush(QBrush(buttonColor, Qt::SolidPattern));
 		//painter.drawRoundedRect(40, 50, 160, 70, 10.0, 10.0);
 		//QPixmap pixmap;
+
 		if (!isElementTapped)
 			painter.setBrush(QBrush(QColor(255, 255, 255), Qt::SolidPattern));
 			//pixmap = QPixmap(":img/our_imgs/elementTapped_background.png");
@@ -175,6 +176,14 @@ namespace ipn
 		if (showText) {
 			painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
 			painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
+		}
+		if (currentEl.tagName().toUpper() == "IMG") {
+			QPixmap pixmap;
+			if (currentEl.attribute("src").contains("MW_Logo"))
+				pixmap = QPixmap(":img/our_imgs/meilenwerk.png");
+			if (currentEl.attribute("src").contains("zuerichsee"))
+				pixmap = QPixmap(":img/our_imgs/zurichsee.png");
+			painter.drawPixmap(20, 90, 200, 35, pixmap);
 		}
 	}
 

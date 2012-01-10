@@ -76,5 +76,8 @@
         <file>img/our_imgs/elementTapped_background.png</file>
         <file>img/our_imgs/elementTapped_background_hover.png</file>
         <file>img/our_imgs/lappen.png</file>
+        <file>img/fisheye-app/lappen_top.png</file>
+        <file>img/our_imgs/meilenwerk.png</file>
+        <file>img/our_imgs/zurichsee.png</file>
     </qresource>
 </RCC>
