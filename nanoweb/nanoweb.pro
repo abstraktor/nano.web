@@ -64,7 +64,8 @@ SOURCES += \
     src/apps/ElementFisheyeApp.cc \
     src/nanoweb/NanoQWebview.cc \
     src/webhelpers.cc \
-    src/apps/ChooseTool1App.cc
+    src/apps/ChooseTool1App.cc \
+    src/apps/ChooseToolBoxmodelApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -104,7 +105,8 @@ HEADERS += \
     src/apps/ElementFisheyeApp.h \
     src/nanoweb/NanoQWebview.h \
     src/webhelpers.h \
-    src/apps/ChooseTool1App.h
+    src/apps/ChooseTool1App.h \
+    src/apps/ChooseToolBoxmodelApp.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets

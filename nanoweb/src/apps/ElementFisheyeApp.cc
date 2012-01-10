@@ -56,6 +56,9 @@ namespace ipn
 		currentEl = el;
 		update();
 	}
+	QWebElement ElementFisheyeApp::getElement() {
+		return currentEl;
+	}
 
 	void ElementFisheyeApp::backButtonClick()
 	{
@@ -284,15 +287,43 @@ namespace ipn
 		painter.translate(0, -240);
 		painter.translate(-translation);
 		painter.setPen(QPen(Qt::white, 5.0));
-		if (ipn::webhelpers::hasParent(currentEl))
-			painter.drawLine(60, 10, 180, 10);
-		if (ipn::webhelpers::hasPreviousSibling(currentEl))
-			painter.drawLine(10, 60, 10, 180);
-		if (ipn::webhelpers::hasNextSibling(currentEl))
-			painter.drawLine(230, 60, 230, 180);
-		if (ipn::webhelpers::hasFirstChild(currentEl))
-			painter.drawLine(60, 230, 180, 230);
-		painter.drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
+
+		QPixmap pixmap = QPixmap(":img/our_imgs/lappen.png");
+		if (ipn::webhelpers::hasParent(currentEl)) {
+			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.parent().tagName().toUpper());
+		}
+		painter.rotate(90);
+		painter.translate(0, -240);
+		if (ipn::webhelpers::hasNextSibling(currentEl)) {
+			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.nextSibling().tagName().toUpper());
+		}
+
+		painter.translate(0, 240);
+		painter.rotate(90);
+		painter.translate(-240, -240);
+		if (ipn::webhelpers::hasFirstChild(currentEl)) {
+			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			//painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.firstChild().tagName().toUpper());
+		}
+
+		painter.translate(240, 240);
+		painter.rotate(90);
+		painter.translate(-240, 0);
+		if (ipn::webhelpers::hasPreviousSibling(currentEl)) {
+			painter.drawPixmap(0, 0, 240, 20, pixmap);
+			painter.drawText(0, 0, 240, 20, Qt::AlignCenter, currentEl.previousSibling().tagName().toUpper());
+		}
+
+		painter.translate(240, 0);
+		painter.rotate(90);
+		if (ipn::webhelpers::hasFirstChild(currentEl)) {
+			painter.drawText(0, 220, 240, 20, Qt::AlignCenter, currentEl.firstChild().tagName().toUpper());
+		}
+
+
+		//painter.drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
 	}
 
 	void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor) {
@@ -301,6 +332,9 @@ namespace ipn
 		painter->setPen(Qt::NoPen);
 		painter->drawRect(0, 0, 240, 240);
 		painter->setPen(Qt::SolidLine);
+
+		if (!ipn::webhelpers::nodeExists(el))
+			return;
 
 		painter->setPen(QPen(Qt::white, 5.0));
 		painter->setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));

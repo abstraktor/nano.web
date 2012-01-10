@@ -75,5 +75,6 @@
         <file>img/our_icons/back.png</file>
         <file>img/our_imgs/elementTapped_background.png</file>
         <file>img/our_imgs/elementTapped_background_hover.png</file>
+        <file>img/our_imgs/lappen.png</file>
     </qresource>
 </RCC>
