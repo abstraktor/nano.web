@@ -40,6 +40,7 @@ INPUT(
 ./debug\ChooseTool1App.o
 ./debug\ChooseToolBoxmodelApp.o
 ./debug\BorderEditApp.o
+./debug\BorderWidthApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -77,5 +78,6 @@ INPUT(
 ./debug\moc_ChooseTool1App.o
 ./debug\moc_ChooseToolBoxmodelApp.o
 ./debug\moc_BorderEditApp.o
+./debug\moc_BorderWidthApp.o
 ./debug\qrc_resources.o
 );

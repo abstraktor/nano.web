@@ -66,7 +66,8 @@ SOURCES += \
     src/webhelpers.cc \
     src/apps/ChooseTool1App.cc \
     src/apps/ChooseToolBoxmodelApp.cc \
-    src/apps/BorderEditApp.cc
+    src/apps/BorderEditApp.cc \
+    src/apps/BorderWidthApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -108,7 +109,8 @@ HEADERS += \
     src/webhelpers.h \
     src/apps/ChooseTool1App.h \
     src/apps/ChooseToolBoxmodelApp.h \
-    src/apps/BorderEditApp.h
+    src/apps/BorderEditApp.h \
+    src/apps/BorderWidthApp.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets

@@ -40,6 +40,7 @@ INPUT(
 ./release\ChooseTool1App.o
 ./release\ChooseToolBoxmodelApp.o
 ./release\BorderEditApp.o
+./release\BorderWidthApp.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o
@@ -77,5 +78,6 @@ INPUT(
 ./release\moc_ChooseTool1App.o
 ./release\moc_ChooseToolBoxmodelApp.o
 ./release\moc_BorderEditApp.o
+./release\moc_BorderWidthApp.o
 ./release\qrc_resources.o
 );

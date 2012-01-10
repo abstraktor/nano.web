@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Tue 10. Jan 19:25:36 2012
+** Created: Tue 10. Jan 22:43:42 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -48,8 +48,9 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
      419,   16,   16,   16, 0x08,
      451,   16,   16,   16, 0x08,
      471,   16,   16,   16, 0x08,
-     504,   16,   16,   16, 0x08,
-     533,  529,   16,   16, 0x08,
+     496,   16,   16,   16, 0x08,
+     529,   16,   16,   16, 0x08,
+     558,  554,   16,   16, 0x08,
 
        0        // eod
 };
@@ -68,7 +69,7 @@ static const char qt_meta_stringdata_ipn__MainWindow[] = {
     "switchToElementFisheye(QWebElement)\0"
     "switchToInfo()\0switchToChooseTool1App()\0"
     "switchToChooseToolBoxmodelApp()\0"
-    "switchToBorderApp()\0"
+    "switchToBorderApp()\0switchToBorderWidthApp()\0"
     "elementTappedLeftButtonClicked()\0"
     "elementTappedInFisheye()\0app\0"
     "switchToApp(App*)\0"
@@ -119,12 +120,13 @@ int ipn::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 13: switchToChooseTool1App(); break;
         case 14: switchToChooseToolBoxmodelApp(); break;
         case 15: switchToBorderApp(); break;
-        case 16: elementTappedLeftButtonClicked(); break;
-        case 17: elementTappedInFisheye(); break;
-        case 18: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
+        case 16: switchToBorderWidthApp(); break;
+        case 17: elementTappedLeftButtonClicked(); break;
+        case 18: elementTappedInFisheye(); break;
+        case 19: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }

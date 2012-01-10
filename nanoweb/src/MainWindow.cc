@@ -18,6 +18,7 @@
 #include "apps/ChooseTool1App.h"
 #include "apps/ChooseToolBoxmodelApp.h"
 #include "apps/BorderEditApp.h"
+#include "apps/BorderWidthApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -53,6 +54,7 @@ namespace ipn
 		m_chooseTool1App = new ChooseTool1App();
 		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
 		m_borderEditApp = new BorderEditApp();
+		m_borderWidthApp = new BorderWidthApp();
 
 
 		// Set MenuApp as first app:
@@ -81,6 +83,7 @@ namespace ipn
 		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
 		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
+		connect(m_borderEditApp, SIGNAL(), this, SLOT(switchToBorderWidthApp()));
 
 
 
@@ -148,6 +151,9 @@ namespace ipn
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 	void MainWindow::elementTappedLeftButtonClicked() {
 		switchToInfo();
+	}
+	void MainWindow::switchToBorderWidthApp() {
+		m_frameWidget->pushApp(m_borderWidthApp);
 	}
 
 	void MainWindow::switchToBorderApp() {

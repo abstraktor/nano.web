@@ -1,0 +1,196 @@
+#include "BorderWidthApp.h"
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPen>
+#include <QPolygon>
+#include <QVector>
+#include <QTimer>
+#include <QtDebug>
+#include <QRect>
+#include <QtCore/qmath.h>
+#include "widgets/BackgroundWidget.h"
+#include "widgets/TitleBarWidget.h"
+#include "widgets/TextWidget.h"
+#include "widgets/ScalableButtonWidget.h"
+#include "widgets/PageIndicatorWidget.h"
+#include "helpers.h"
+#include <QtCore/qmath.h>
+#include "webhelpers.h"
+
+#define ANIMATION_TIME 500.0
+#define FRAMES 25.0
+
+#define NOAXIS 0
+#define XAXIS 1
+#define YAXIS 2
+
+namespace ipn
+{
+
+	BorderWidthApp::BorderWidthApp(QWidget *pParent) : App(pParent)
+	{
+		translation = QPoint();
+		diff = QPoint();
+		mousePressed = false;
+		moves = 0;
+		animationTimer = new QTimer(this);
+		animationTimer->setInterval(ANIMATION_TIME / FRAMES);
+		connect(animationTimer, SIGNAL(timeout()), this, SLOT(timerTick()));
+		doSwiping = false;
+		axis = NOAXIS;
+
+		animationStart = QPoint();
+		animationDestination = QPoint();
+		tickCount = 0;
+
+
+		updateView();
+
+		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
+		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
+		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+
+	}
+
+	void BorderWidthApp::setElement(QWebElement el) {
+		currentEl = el;
+		updateView();
+	}
+
+	QWebElement BorderWidthApp::getElement() {
+		return currentEl;
+	}
+
+	void BorderWidthApp::updateView() {
+		update();
+	}
+
+	void BorderWidthApp::backButtonClick()
+	{
+		qDebug() << "Backbutton clicked! ";
+	}
+
+	void BorderWidthApp::swipeRight()
+	{
+		animationStart = translation;
+		if (canLeft()) {
+			animationDestination = QPoint(188, 0);
+		}
+		else {
+			setAnimationParametersToZero();
+		}
+		animationTimer->start();
+	}
+	void BorderWidthApp::swipeLeft()
+	{
+		animationStart = translation;
+		if (canRight()) {
+			animationDestination = QPoint(-188, 0);
+
+		}
+		else {
+			setAnimationParametersToZero();
+		}
+		animationTimer->start();
+	}
+
+	void BorderWidthApp::timerTick()
+	{
+		tickCount++;
+		QPoint vector = animationDestination - animationStart;
+		translation = animationStart + ((float) tickCount / FRAMES) * vector;
+		updateView();
+		if (tickCount == (int) FRAMES) {
+			animationTimer->stop();
+			diff = translation = animationDestination;
+			tickCount = 0;
+			updateView();
+		}
+	}
+
+	void BorderWidthApp::mousePressEvent(QMouseEvent *event)
+	{
+	}
+
+	void BorderWidthApp::mouseMoveEvent(QMouseEvent *event)
+	{
+		if (!event->buttons() == Qt::LeftButton)
+			return;
+		if (!mousePressed) {
+			mousePressed = true;
+			lastPoint = event->pos();
+			return;
+		}
+		else {
+			moves++;
+			diff = diff + (event->pos() - lastPoint);
+			lastPoint = event->pos();
+			//if (moves == 1) {
+			double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
+			if (length >= 5 && diff.x() != diff.y()) {
+				doSwiping = true;
+				axis = XAXIS;
+			}
+
+				diff.setY(0);
+			if (doSwiping) {
+				translation = diff;
+			}
+		}
+		updateView();
+	}
+
+	void BorderWidthApp::mouseReleaseEvent(QMouseEvent *event) {
+		if (doSwiping) {
+			// for all pages
+			animationDestination = QPoint();
+			for (int i = 0; i < 3; i++) {
+				if (distance(i * QPoint(-188, 0), diff) < distance(animationDestination, diff))
+					animationDestination = i * QPoint(-188, 0);
+			}
+			animationStart = diff;
+			animationTimer->start();
+		}
+		mousePressed = false;
+		doSwiping = false;
+		moves = 0;
+		axis = NOAXIS;
+		updateView();
+	}
+
+	void BorderWidthApp::paintEvent(QPaintEvent*)
+	{
+
+		QPainter painter(this);
+		painter.setRenderHint(QPainter::Antialiasing);
+		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));
+		painter.drawRect(0, 0, 240, 240);
+
+		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
+		painter.drawText(0, 0, 240, 30, Qt::AlignCenter, "el: " + ipn::webhelpers::elementIdentifierString(currentEl));
+	}
+
+	bool BorderWidthApp::canLeft() {
+		return true;
+	}
+	bool BorderWidthApp::canRight() {
+		return true;
+	}
+
+	void BorderWidthApp::setAnimationParametersToZero() {
+		animationDestination = QPoint(0, 0);
+	}
+
+	int BorderWidthApp::signum(int number) {
+		if (number > 0)
+			return 1;
+		else if (number < 0)
+			return -1;
+		return 0;
+	}
+	double BorderWidthApp::distance(QPoint a, QPoint b) {
+		QPoint d = a - b;
+		return qSqrt(d.x() * d.x() + d.y() * d.y());
+	}
+
+} // namespace ipn
