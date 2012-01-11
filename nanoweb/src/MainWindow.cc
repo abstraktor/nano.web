@@ -86,7 +86,7 @@ namespace ipn
 		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
 		connect(m_borderEditApp, SIGNAL(borderEdit(QString)), this, SLOT(switchToSpecificBorderApp(QString)));
-
+		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:
@@ -159,13 +159,17 @@ namespace ipn
 		m_frameWidget->pushApp(m_borderEditApp);
 	}
 	void MainWindow::switchToSpecificBorderApp(QString property) {
-		qDebug() << property;
 		if (property.contains("width")) {
 			m_borderWidthApp->cssproperty = property;
+			m_borderWidthApp->setElement(m_borderEditApp->getElement());
 			m_frameWidget->pushApp(m_borderWidthApp);
+		}
+		else if (property.contains("color")) {
+			switchToInfo();
 		}
 		else if (property.contains("style")) {
 			m_borderStyleApp->cssproperty = property;
+			m_borderStyleApp->setElement(m_borderEditApp->getElement());
 			m_frameWidget->pushApp(m_borderStyleApp);
 		}
 	}

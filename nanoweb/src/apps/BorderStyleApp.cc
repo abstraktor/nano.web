@@ -52,7 +52,7 @@ namespace ipn
 		m_picker->addEntry("double");
 		m_picker->addEntry("dotted");
 		m_picker->addEntry("dashed");
-		m_picker->setActiveEntry(2);
+		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::ComputedStyle);
 		m_picker->move(0, 40);
 
 
@@ -62,6 +62,13 @@ namespace ipn
 		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 
+		connect(m_picker, SIGNAL(entryClicked(QString)), this, SLOT(entryClicked(QString)));
+
+	}
+
+	void BorderStyleApp::entryClicked(QString value) {
+		currentEl.setStyleProperty(cssproperty, value + " !important");
+		emit valueChosen();
 	}
 
 	void BorderStyleApp::setElement(QWebElement el) {
@@ -172,7 +179,6 @@ namespace ipn
 
 	void BorderStyleApp::paintEvent(QPaintEvent*)
 	{
-
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));

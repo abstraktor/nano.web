@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QDebug>
+#include <QtCore/qmath.h>
 
 #define NO_ENTRY -1
 
@@ -13,22 +14,22 @@ namespace ipn
 
 	StyleListWidget::StyleListWidget(QWidget *parent) : QWidget(parent)
 	{
+		mousePressed = false;
+		doSwiping = false;
+		doZooming = false;
+
+		translation = QPoint();
+		diff = QPoint();
+		lastPoint = QPoint();
+
 		m_entries = QVector<QString>();
-		m_highlightedEntry = NO_ENTRY;
-		m_activeEntry = NO_ENTRY;
+		selected = "";
 
 	}
 
 	void StyleListWidget::addEntry(QString text)
 	{
 		int numberOfEntries = m_entries.size();
-
-		/*TextWidget *newEntry = new TextWidget(this);
-		newEntry->setColor(Qt::black);
-		newEntry->setText(text);
-		newEntry->setAlignment(Qt::AlignLeft);
-		newEntry->resize(184, newEntry->textHeight());
-		newEntry->move(16, 12 + 48 * numberOfEntries);*/
 		m_entries.append(text);
 
 		resize(240, (numberOfEntries + 1) * 48);
@@ -42,11 +43,24 @@ namespace ipn
 		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
 
-		painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
+		painter.translate(translation);
+
 		for (int i = 0; i < m_entries.size(); i++) {
 			painter.setPen(Qt::NoPen);
-			painter.drawRect(0, i * 48, 240, 48);
+			QRect rect = QRect(0, i * 48, 240, 48);
+
+			qDebug() << selected;
+			if(m_entries.at(i) == selected)
+				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
+
+			if (buttonPressed && rect.contains(lastPoint - translation))
+				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
+			else
+				painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
+
+			painter.drawRect(rect);
 			painter.setPen(QPen(Qt::black, 1.0f));
+			painter.setRenderHint(QPainter::Antialiasing, false);
 			if (m_entries.at(i) == "solid") {
 				painter.drawLine(40, i * 48 + 24, 200, i * 48 + 24);
 			}
@@ -57,64 +71,82 @@ namespace ipn
 			else if (m_entries.at(i) == "dotted") {
 				QPen p = painter.pen();
 				p.setStyle(Qt::DotLine);
+				painter.setPen(p);
 				painter.drawLine(40, i * 48 + 24, 200, i * 48 + 24);
 			}
-			painter.drawText(0, i * 48, 240, 48, Qt::AlignCenter, m_entries.at(i));
+			else if (m_entries.at(i) == "dashed") {
+				QPen p = painter.pen();
+				p.setStyle(Qt::DashLine);
+				painter.setPen(p);
+				painter.drawLine(40, i * 48 + 24, 200, i * 48 + 24);
+			}
+			else if (m_entries.at(i) == "none") {
+				painter.drawText(0, i * 48, 240, 48, Qt::AlignCenter, "none");
+			}
+			painter.setRenderHint(QPainter::Antialiasing, true);
 			if (i == 0) continue;
 			painter.setPen(QPen(Qt::white, 1.0f));
 			painter.drawLine(QPoint(0, i * 48 - 1), QPoint(width(), i * 48 - 1));
 		}
 
-		QPixmap pixmap = QPixmap(":img/our_imgs/arrow_down.png");
-		painter.drawPixmap(0, 192, 240, 8, pixmap);
+		painter.translate(-translation);
+		if (translation.y() != 0) {
+			QPixmap pixmap = QPixmap(":img/our_imgs/arrow_up.png");
+			painter.drawPixmap(0, 0, 240, 8, pixmap);
+		}
+
+		if (translation.y() != -40) {
+			QPixmap pixmap = QPixmap(":img/our_imgs/arrow_down.png");
+			painter.drawPixmap(0, 192, 240, 8, pixmap);
+		}
 	}
 
 	void StyleListWidget::mousePressEvent(QMouseEvent *event)
 	{
-		if (event->pos().y() < 0 || event->pos().y() > m_entries.size() * 48)
-		{
-			m_highlightedEntry = -1;
+		lastPoint = event->pos();
+		buttonPressed = true;
+		update();
+	}
+
+	void StyleListWidget::mouseMoveEvent(QMouseEvent *event)
+	{
+		if (!event->buttons() == Qt::LeftButton)
+			return;
+		if (!mousePressed) {
+			mousePressed = true;
+			lastPoint = event->pos();
 			return;
 		}
-
-		m_highlightedEntry = event->pos().y() / 48;
-
+		else {
+			diff = diff + (event->pos() - lastPoint);
+			lastPoint = event->pos();
+			double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
+			if (length >= 2) {
+				doSwiping = true;
+				buttonPressed = false;
+			}
+			if (doSwiping) {
+				diff.setX(0);
+				if (diff.y() > 0)
+					diff.setY(0);
+				if (abs(diff.y()) > 40)
+					diff.setY(-40);
+				translation = diff;
+			}
+		}
 		update();
+		qDebug() << translation;
 	}
 
 	void StyleListWidget::mouseReleaseEvent(QMouseEvent *event)
 	{
-		QRect highlightedEntryRect = QRect(0, m_highlightedEntry * 48,
-			240, (m_highlightedEntry + 1) * 48);
-
-		if (highlightedEntryRect.contains(event->pos()))
-		{
-			m_activeEntry = m_highlightedEntry;
-			emit entryChanged();
+		if (buttonPressed) {
+			int index = ((event->pos() - translation).y() / 48);
+			emit entryClicked(m_entries.at(index));
 		}
-
-		m_highlightedEntry = -1;
-
-		update();
-	}
-
-	int StyleListWidget::activeEntry()
-	{
-		return m_activeEntry;
-	}
-
-	QString StyleListWidget::activeEntryText()
-	{
-		if (m_activeEntry == NO_ENTRY || m_activeEntry >= m_entries.size())
-			return QString();
-
-		return m_entries[m_activeEntry];
-	}
-
-	void StyleListWidget::setActiveEntry(int activeEntry)
-	{
-		m_activeEntry = activeEntry;
-
+		mousePressed = false;
+		doSwiping = false;
+		buttonPressed = false;
 		update();
 	}
 

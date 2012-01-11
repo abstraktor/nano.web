@@ -27,11 +27,15 @@ class BorderStyleApp : public App
 		QWebElement getElement();
 		QString cssproperty;
 
+	signals:
+		void valueChosen();
+
 	public slots:
 		void timerTick();
 		void swipeLeft();
 		void swipeRight();
 		void backButtonClick();
+		void entryClicked(QString value);
 
 
 

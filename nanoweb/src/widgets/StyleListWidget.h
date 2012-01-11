@@ -18,22 +18,23 @@ namespace ipn
 
 			void addEntry(QString text);
 
-			int activeEntry();
-			QString activeEntryText();
-			void setActiveEntry(int activeEntry);
+			QString selected;
+
 
 		signals:
-			void entryChanged();
+			void entryClicked(QString value);
 
 		protected:
 			virtual void paintEvent(QPaintEvent *event);
 			virtual void mousePressEvent(QMouseEvent *event);
 			virtual void mouseReleaseEvent(QMouseEvent *event);
+			virtual void mouseMoveEvent(QMouseEvent *event);
 
 		private:
 			QVector<QString> m_entries;
-			int m_activeEntry;
-			int m_highlightedEntry;
+
+			bool doSwiping, mousePressed, doZooming, buttonPressed;
+			QPoint translation, diff, lastPoint;
 	};
 
 } // namespace ipn
