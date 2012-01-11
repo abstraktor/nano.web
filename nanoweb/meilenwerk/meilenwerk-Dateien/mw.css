@@ -20,9 +20,22 @@ body {
 	width: 900px; height: 360px; z-index: 0; margin-top: 12px;
 }
 #zuerichImage {
-	border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141);
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-color: rgb(141, 141, 141);
+	border-bottom-color: rgb(141, 141, 141);
+	border-left-color: rgb(0, 0, 0);
+	border-right-color: rgb(0, 0, 0);
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	
+	/*border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141);
 	border-left: none;
-	border-right: none;
+	border-right: none;*/
 }
 #divBanner {
 	margin: 0px auto; border: 3px currentColor; width: 900px; height: 60px; z-index: 0;

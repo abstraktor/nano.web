@@ -49,14 +49,11 @@ namespace ipn
 			painter.setPen(Qt::NoPen);
 			QRect rect = QRect(0, i * 48, 240, 48);
 
-			qDebug() << selected;
+			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 			if(m_entries.at(i) == selected)
 				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
-
 			if (buttonPressed && rect.contains(lastPoint - translation))
 				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
-			else
-				painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 
 			painter.drawRect(rect);
 			painter.setPen(QPen(Qt::black, 1.0f));
@@ -135,7 +132,6 @@ namespace ipn
 			}
 		}
 		update();
-		qDebug() << translation;
 	}
 
 	void StyleListWidget::mouseReleaseEvent(QMouseEvent *event)
