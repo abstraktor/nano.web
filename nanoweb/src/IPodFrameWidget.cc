@@ -52,21 +52,23 @@ namespace ipn
                 m_hardwareButtonLeft = new ButtonWidget(this);
                 m_hardwareButtonLeft->setInactiveImages(":/img/frame/hardware_button.png",
                         ":/img/frame/hardware_button_down.png");
-                m_hardwareButtonLeft->move(190, 0);
+                m_hardwareButtonLeft->move(200, 0);
                 m_hardwareButtonLeft->setMouseTracking(true);
                 connect(m_hardwareButtonLeft, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
+                connect(m_hardwareButtonLeft, SIGNAL(pressed()), this, SLOT(triggerHardwareButtonPress()));
+                connect(m_hardwareButtonLeft, SIGNAL(released()), this, SLOT(triggerHardwareButtonRelease()));
 
                 m_hardwareButtonRight = new ButtonWidget(this);
                 m_hardwareButtonRight->setInactiveImages(":/img/frame/hardware_button.png",
                         ":/img/frame/hardware_button_down.png");
-                m_hardwareButtonRight->move(240, 0);
+                m_hardwareButtonRight->move(260, 0);
                 m_hardwareButtonRight->setMouseTracking(true);
                 connect(m_hardwareButtonRight, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
 
                 m_hardwareButtonBack = new ButtonWidget(this);
                 m_hardwareButtonBack->setInactiveImages(":/img/frame/hardware_button.png",
                         ":/img/frame/hardware_button_down.png");
-                m_hardwareButtonBack->move(0, 0);
+                m_hardwareButtonBack->move(20, 0);
                 m_hardwareButtonBack->setMouseTracking(true);
                 connect(m_hardwareButtonBack, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
 
@@ -90,7 +92,7 @@ namespace ipn
         {
                 GestureType type;
 
-				if (sender() == m_hardwareButtonBack) { popApp(); type = BackButtonClick; }
+                if (sender() == m_hardwareButtonBack) { popApp(); type = BackButtonClick; }
                 else if (sender() == m_hardwareButtonRight) type = RightButtonClick;
                 else if (sender() == m_hardwareButtonLeft) type = LeftButtonClick;
 
@@ -126,10 +128,11 @@ namespace ipn
 	void IPodFrameWidget::mouseMoveEvent(QMouseEvent *event)
 	{
 		if (m_prevMousePosition.isNull())
-			m_prevMousePosition = event->globalPos();
+                        m_prevMousePosition = event->globalPos();
 
-		if (m_dragging)
-			move(pos() + event->globalPos() - m_prevMousePosition);
+                // our users disliked this
+                //if (m_dragging)
+                //	move(pos() + event->globalPos() - m_prevMousePosition);
 
 		m_prevMousePosition = event->globalPos();
 		event->ignore();
