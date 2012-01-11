@@ -24,7 +24,16 @@ namespace ipn
                 Swipe,
                 BackButtonClick,
                 RightButtonClick,
-                LeftButtonClick
+                LeftButtonClick,
+                BackButtonHold,
+                RightButtonHold,
+                LeftButtonHold,
+                BackButtonPress,
+                RightButtonPress,
+                LeftButtonPress,
+                BackButtonRelease,
+                RightButtonRelease,
+                LeftButtonRelease
 	};
 
 	class OverlayWidget : public QWidget

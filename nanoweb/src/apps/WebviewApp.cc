@@ -66,9 +66,14 @@ namespace ipn
 		connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
 		connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 		connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
+
 		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
 		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
+
+                connect(this, SIGNAL(backButtonHoldTriggered()), this, SLOT(backButtonHold()));
+                connect(this, SIGNAL(rightButtonHoldTriggered()), this, SLOT(rightButtonHold()));
+                connect(this, SIGNAL(leftButtonHoldTriggered()), this, SLOT(leftButtonHold()));
 
 		connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SLOT(elementTappedHandler(QWebElement)));
 	}
@@ -182,4 +187,19 @@ namespace ipn
 	{
 		qDebug() << "Leftbutton clicked! ";
 	}
+
+        void WebviewApp::leftButtonHold()
+        {
+                qDebug() << "Leftbutton hold! ";
+        }
+
+        void WebviewApp::rightButtonHold()
+        {
+                qDebug() << "Rightbutton hold! ";
+        }
+
+        void WebviewApp::backButtonHold()
+        {
+                qDebug() << "Backbutton hold! ";
+        }
 } // namespace ipn

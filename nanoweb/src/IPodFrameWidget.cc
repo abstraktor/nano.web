@@ -99,6 +99,28 @@ namespace ipn
                 emit gestureTriggered(type,0);
         }
 
+        void IPodFrameWidget::triggerHardwareButtonRelease()
+        {
+            GestureType type;
+
+            if (sender() == m_hardwareButtonBack) { type = BackButtonRelease; }
+            else if (sender() == m_hardwareButtonRight) type = RightButtonRelease;
+            else if (sender() == m_hardwareButtonLeft) type = LeftButtonRelease;
+
+            emit gestureTriggered(type,0);
+        }
+
+        void IPodFrameWidget::triggerHardwareButtonPress()
+        {
+            GestureType type;
+
+            if (sender() == m_hardwareButtonBack) { type = BackButtonPress; }
+            else if (sender() == m_hardwareButtonRight) type = RightButtonPress;
+            else if (sender() == m_hardwareButtonLeft) type = LeftButtonPress;
+
+            emit gestureTriggered(type,0);
+        }
+
 	QSize IPodFrameWidget::frameSize()
 	{
 		int width = m_frameImages[FRAME_TOP][FRAME_LEFT]->width()
