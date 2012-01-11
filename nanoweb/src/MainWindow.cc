@@ -19,6 +19,7 @@
 #include "apps/ChooseToolBoxmodelApp.h"
 #include "apps/BorderEditApp.h"
 #include "apps/BorderWidthApp.h"
+#include "apps/BorderStyleApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -55,6 +56,7 @@ namespace ipn
 		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
 		m_borderEditApp = new BorderEditApp();
 		m_borderWidthApp = new BorderWidthApp();
+		m_borderStyleApp = new BorderStyleApp();
 
 
 		// Set MenuApp as first app:
@@ -83,8 +85,8 @@ namespace ipn
 		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
 		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
-		connect(m_borderEditApp, SIGNAL(), this, SLOT(switchToBorderWidthApp()));
-
+		connect(m_borderEditApp, SIGNAL(borderEdit(QString)), this, SLOT(switchToSpecificBorderApp(QString)));
+		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:
@@ -152,14 +154,26 @@ namespace ipn
 	void MainWindow::elementTappedLeftButtonClicked() {
 		switchToInfo();
 	}
-	void MainWindow::switchToBorderWidthApp() {
-		m_frameWidget->pushApp(m_borderWidthApp);
-	}
-
 	void MainWindow::switchToBorderApp() {
 		m_borderEditApp->setElement(m_chooseToolBoxmodelApp->getElement());
 		m_frameWidget->pushApp(m_borderEditApp);
 	}
+	void MainWindow::switchToSpecificBorderApp(QString property) {
+		if (property.contains("width")) {
+			m_borderWidthApp->cssproperty = property;
+			m_borderWidthApp->setElement(m_borderEditApp->getElement());
+			m_frameWidget->pushApp(m_borderWidthApp);
+		}
+		else if (property.contains("color")) {
+			switchToInfo();
+		}
+		else if (property.contains("style")) {
+			m_borderStyleApp->cssproperty = property;
+			m_borderStyleApp->setElement(m_borderEditApp->getElement());
+			m_frameWidget->pushApp(m_borderStyleApp);
+		}
+	}
+
 
 
 	void MainWindow::handleMousePress(QMouseEvent *event)

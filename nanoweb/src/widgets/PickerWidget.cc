@@ -29,7 +29,7 @@ namespace ipn
 		int numberOfEntries = m_entries.size();
 
 		TextWidget *newEntry = new TextWidget(this);
-		newEntry->setColor(Qt::white);
+		newEntry->setColor(Qt::black);
 		newEntry->setText(text);
 		newEntry->setAlignment(Qt::AlignLeft);
 		newEntry->resize(184, newEntry->textHeight());
@@ -46,9 +46,12 @@ namespace ipn
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 
-		QPen pen(QColor(179, 179, 179));
-		pen.setWidth(2);
-		painter.setPen(pen);
+
+		painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
+		painter.drawRect(rect());
+
+
+		painter.setPen(QPen(Qt::white, 5.0f));
 
 		if (m_highlightedEntry != NO_ENTRY)
 		{
@@ -67,7 +70,7 @@ namespace ipn
 			m_checkmarkImage->hide();
 
 		for (int i = 1; i < m_entries.size(); i++)
-			painter.drawLine(QPoint(8 + 1, i * 48 - 1), QPoint(width() - 8 - 1, i * 48 - 1));
+			painter.drawLine(QPoint(0, i * 48 - 1), QPoint(width(), i * 48 - 1));
 	}
 
 	void PickerWidget::mousePressEvent(QMouseEvent *event)

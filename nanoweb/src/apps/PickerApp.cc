@@ -9,10 +9,6 @@ namespace ipn
 
 	PickerApp::PickerApp(QWidget *pParent) : App(pParent)
 	{
-		m_back = new BackgroundWidget(this);
-		m_back->setColor(BackgroundWidget::BG_GRAY);
-		m_back->move(0, 0);
-
 		m_titleBar = new TitleBarWidget(this);
 		m_titleBar->setTitle("connection");
 		m_titleBar->move(0, 0);

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'BorderEditApp.h'
 **
-** Created: Tue 10. Jan 21:13:22 2012
+** Created: Wed 11. Jan 17:18:58 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,24 +23,28 @@ static const uint qt_meta_data_ipn__BorderEditApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      29,   20,   19,   19, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      20,   19,   19,   19, 0x0a,
-      32,   19,   19,   19, 0x0a,
-      44,   19,   19,   19, 0x0a,
-      57,   19,   19,   19, 0x0a,
+      49,   19,   19,   19, 0x0a,
+      61,   19,   19,   19, 0x0a,
+      73,   19,   19,   19, 0x0a,
+      86,   19,   19,   19, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__BorderEditApp[] = {
-    "ipn::BorderEditApp\0\0timerTick()\0"
+    "ipn::BorderEditApp\0\0property\0"
+    "borderEdit(QString)\0timerTick()\0"
     "swipeLeft()\0swipeRight()\0backButtonClick()\0"
 };
 
@@ -73,14 +77,22 @@ int ipn::BorderEditApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: timerTick(); break;
-        case 1: swipeLeft(); break;
-        case 2: swipeRight(); break;
-        case 3: backButtonClick(); break;
+        case 0: borderEdit((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: timerTick(); break;
+        case 2: swipeLeft(); break;
+        case 3: swipeRight(); break;
+        case 4: backButtonClick(); break;
         default: ;
         }
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
+}
+
+// SIGNAL 0
+void ipn::BorderEditApp::borderEdit(QString _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

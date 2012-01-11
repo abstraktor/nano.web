@@ -32,7 +32,7 @@ class BorderEditApp : public App
 
 
 	signals:
-
+		void borderEdit(QString property);
 
     protected:
 		virtual void mousePressEvent(QMouseEvent *event);
@@ -43,6 +43,7 @@ class BorderEditApp : public App
 	private:
 		bool canLeft();
 		bool canRight();
+		bool leftPressed, topPressed, rightPressed, bottomPressed;
 		void updateView();
 		PageIndicatorWidget *m_pageIndicator;
 		QPoint topLeft, topRight, bottomLeft, bottomRight;

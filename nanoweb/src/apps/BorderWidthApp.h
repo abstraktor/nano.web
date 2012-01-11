@@ -12,6 +12,8 @@ class TitleBarWidget;
 class TextWidget;
 class ScalableButtonWidget;
 class PageIndicatorWidget;
+class FlickArea;
+class WidthListWidget;
 
 class BorderWidthApp : public App
 {
@@ -23,6 +25,7 @@ class BorderWidthApp : public App
 		inline bool isOpaque() {return false;}
 		void setElement(QWebElement el);
 		QWebElement getElement();
+		QString cssproperty;
 
 	public slots:
 		void timerTick();
@@ -31,10 +34,6 @@ class BorderWidthApp : public App
 		void backButtonClick();
 
 
-	signals:
-		void borderWidthEdit(QString property);
-		void borderStyleEdit(QString property);
-		void borderColorEdit(QString property);
 
 
     protected:
@@ -48,7 +47,7 @@ class BorderWidthApp : public App
 		bool canRight();
 		void updateView();
 		QWebElement currentEl;
-		QString cssproperty;
+		WidthListWidget *m_picker;
 
 		/*
 		 * Start animation stuff

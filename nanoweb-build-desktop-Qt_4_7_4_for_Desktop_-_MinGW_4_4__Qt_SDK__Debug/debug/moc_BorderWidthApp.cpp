@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'BorderWidthApp.h'
 **
-** Created: Tue 10. Jan 22:43:44 2012
+** Created: Wed 11. Jan 17:19:03 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

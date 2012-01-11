@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'PaintApp.h'
 **
-** Created: Mon 9. Jan 21:45:01 2012
+** Created: Wed 11. Jan 17:18:06 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

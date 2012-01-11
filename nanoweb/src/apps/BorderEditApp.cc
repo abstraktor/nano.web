@@ -31,6 +31,7 @@ namespace ipn
 	{
 		backgroundString = "";
 
+		leftPressed = topPressed = bottomPressed = rightPressed = false;
 
 		translation = QPoint();
 		diff = QPoint();
@@ -89,7 +90,7 @@ namespace ipn
 	{
 		animationStart = translation;
 		if (canLeft()) {
-			animationDestination = QPoint(188, 0);
+			animationDestination = QPoint(136, 0);
 			m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() + 1);
 		}
 		else {
@@ -101,7 +102,7 @@ namespace ipn
 	{
 		animationStart = translation;
 		if (canRight()) {
-			animationDestination = QPoint(-188, 0);
+			animationDestination = QPoint(-136, 0);
 			m_pageIndicator->setActiveSegment(m_pageIndicator->getActiveSegment() - 1);
 
 		}
@@ -128,17 +129,25 @@ namespace ipn
 	void BorderEditApp::mousePressEvent(QMouseEvent *event)
 	{
 		QRect top = QRect(52, 0, 136, 52);
-		if (top.contains(event->pos()))
+		if (top.contains(event->pos())) {
 			backgroundString = ":img/boxmodel-app/bm_topbutton_pressed.png";
+			topPressed = true;
+		}
 		QRect right = QRect(188, 52, 52, 136);
-		if (right.contains(event->pos()))
+		if (right.contains(event->pos())) {
 			backgroundString = ":img/boxmodel-app/bm_rightbutton_pressed.png";
+			rightPressed = true;
+		}
 		QRect bottom = QRect(52, 188, 136, 52);
-		if (bottom.contains(event->pos()))
+		if (bottom.contains(event->pos())) {
 			backgroundString = ":img/boxmodel-app/bm_bottombutton_pressed.png";
+			bottomPressed = true;
+		}
 		QRect left = QRect(0, 52, 52, 136);
-		if (left.contains(event->pos()))
+		if (left.contains(event->pos())) {
 			backgroundString = ":img/boxmodel-app/bm_leftbutton_pressed.png";
+			leftPressed = true;
+		}
 		updateView();
 	}
 
@@ -176,10 +185,10 @@ namespace ipn
 			// for all pages
 			animationDestination = QPoint();
 			for (int i = 0; i < 3; i++) {
-				if (distance(i * QPoint(-188, 0), diff) < distance(animationDestination, diff))
-					animationDestination = i * QPoint(-188, 0);
+				if (distance(i * QPoint(-136, 0), diff) < distance(animationDestination, diff))
+					animationDestination = i * QPoint(-136, 0);
 			}
-			m_pageIndicator->setActiveSegment(animationDestination.x() / -188);
+			m_pageIndicator->setActiveSegment(animationDestination.x() / -136);
 			animationStart = diff;
 			animationTimer->start();
 		}
@@ -188,7 +197,30 @@ namespace ipn
 		moves = 0;
 		axis = NOAXIS;
 		backgroundString = "";
+
+
+		QString clickedCssProperty = "";
+		if (m_pageIndicator->getActiveSegment() == 0)
+			clickedCssProperty = "width";
+		else if (m_pageIndicator->getActiveSegment() == 1)
+			clickedCssProperty = "color";
+		else if (m_pageIndicator->getActiveSegment() == 2)
+			clickedCssProperty = "style";
+		QRect top = QRect(52, 0, 136, 52);
+		if (topPressed && top.contains(event->pos()))
+			emit borderEdit("border-top-" + clickedCssProperty);
+		QRect right = QRect(188, 52, 52, 136);
+		if (rightPressed && right.contains(event->pos()))
+			emit borderEdit("border-right-" + clickedCssProperty);
+		QRect bottom = QRect(52, 188, 136, 52);
+		if (bottomPressed && bottom.contains(event->pos()))
+			emit borderEdit("border-bottom-" + clickedCssProperty);
+		QRect left = QRect(0, 52, 52, 136);
+		if (leftPressed && left.contains(event->pos()))
+			emit borderEdit("border-left-" + clickedCssProperty);
 		updateView();
+
+		leftPressed = topPressed = bottomPressed = rightPressed = false;
 	}
 
 	void BorderEditApp::paintEvent(QPaintEvent*)
@@ -210,12 +242,13 @@ namespace ipn
 
 		painter.translate(translation);
 		painter.setPen(QPen(Qt::white, 5.0));
-		painter.drawText(90, 110, "border");
-		painter.drawText(95, 135, "width");
-		painter.drawText(278, 110, "border");
-		painter.drawText(283, 135, "color");
-		painter.drawText(466, 110, "border");
-		painter.drawText(466, 135, "style");
+		painter.drawText(52, 52, 136, 136, Qt::AlignCenter, "border\nwidth");
+		painter.drawText(188, 52, 136, 136, Qt::AlignCenter, "border\ncolor");
+		painter.drawText(324, 52, 136, 136, Qt::AlignCenter, "border\nstyle");
+		//painter.drawText(278, 110, "border");
+		//painter.drawText(283, 135, "color");
+		//painter.drawText(466, 110, "border");
+		//painter.drawText(466, 135, "style");
 		painter.translate(-translation);
 
 		QString cssproperty;
