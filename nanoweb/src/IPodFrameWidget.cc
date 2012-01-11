@@ -64,6 +64,8 @@ namespace ipn
                 m_hardwareButtonRight->move(260, 0);
                 m_hardwareButtonRight->setMouseTracking(true);
                 connect(m_hardwareButtonRight, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
+                connect(m_hardwareButtonRight, SIGNAL(pressed()), this, SLOT(triggerHardwareButtonPress()));
+                connect(m_hardwareButtonRight, SIGNAL(released()), this, SLOT(triggerHardwareButtonRelease()));
 
                 m_hardwareButtonBack = new ButtonWidget(this);
                 m_hardwareButtonBack->setInactiveImages(":/img/frame/hardware_button.png",
@@ -71,6 +73,8 @@ namespace ipn
                 m_hardwareButtonBack->move(20, 0);
                 m_hardwareButtonBack->setMouseTracking(true);
                 connect(m_hardwareButtonBack, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
+                connect(m_hardwareButtonBack, SIGNAL(pressed()), this, SLOT(triggerHardwareButtonPress()));
+                connect(m_hardwareButtonBack, SIGNAL(released()), this, SLOT(triggerHardwareButtonRelease()));
 
 
 		setFixedSize(frameSize());
