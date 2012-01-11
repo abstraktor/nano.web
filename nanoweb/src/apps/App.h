@@ -36,11 +36,12 @@ namespace ipn
                             Screen
                         };
 
-                        QWidget *parent;
                         QTimer *m_buttonHoldTimer;
                         HoldType m_holdingButton;
 
-		signals:
+                signals:
+                        void performPopApp();
+
 			// Gesture signals. Connect to these signals if you want to react to gesture events:
 
 			// Signal emitted when the users have two fingers on the screen and rotates them.
@@ -87,7 +88,17 @@ namespace ipn
                         void rightButtonHoldTriggered();
 
             private slots:
+                        void popApp();
                         void triggerButtonHold();
+
+                        void backButtonClick();
+                        void rightButtonClick();
+                        void leftButtonClick();
+
+                        void backButtonHold();
+                        void rightButtonHold();
+                        void leftButtonHold();
+
 	};
 
 } // namespace ipn

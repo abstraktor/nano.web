@@ -41,23 +41,24 @@ namespace ipn
 
 
 		// Create apps:
-		m_menuApp = new MenuApp();
+                m_menuApp = new MenuApp(m_frameWidget);
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
 		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
-		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png");
-		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png");
+                m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png", false);
+                m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png", false);
 		m_menuApp->titleBar()->setTitle("NANOWEB");
+                connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close()));
 
-		m_webviewApp = new WebviewApp();
-		m_elementTappedApp = new ElementTappedApp();
-		m_elementFisheyeApp = new ElementFisheyeApp();
-		m_infoApp = new InfoApp();
-		m_chooseTool1App = new ChooseTool1App();
-		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
-		m_borderEditApp = new BorderEditApp();
-		m_borderWidthApp = new BorderWidthApp();
-		m_borderStyleApp = new BorderStyleApp();
+                m_webviewApp = new WebviewApp(m_frameWidget);
+                m_elementTappedApp = new ElementTappedApp(m_frameWidget);
+                m_elementFisheyeApp = new ElementFisheyeApp(m_frameWidget);
+                m_infoApp = new InfoApp(m_frameWidget);
+                m_chooseTool1App = new ChooseTool1App(m_frameWidget);
+                m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp(m_frameWidget);
+                m_borderEditApp = new BorderEditApp(m_frameWidget);
+                m_borderWidthApp = new BorderWidthApp(m_frameWidget);
+                m_borderStyleApp = new BorderStyleApp(m_frameWidget);
 
 
 		// Set MenuApp as first app:

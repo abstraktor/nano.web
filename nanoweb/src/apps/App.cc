@@ -1,4 +1,5 @@
 #include "App.h"
+#include <QtDebug>
 
 namespace ipn
 {
@@ -16,7 +17,20 @@ namespace ipn
             // Invoke the marking menu on button clicks and on timer expiration:
             connect(m_buttonHoldTimer, SIGNAL(timeout()), this, SLOT(triggerButtonHold()));
 
-            this->parent = parent;
+            connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+            connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
+            connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
+
+            connect(this, SIGNAL(backButtonHoldTriggered()), this, SLOT(backButtonHold()));
+            connect(this, SIGNAL(rightButtonHoldTriggered()), this, SLOT(rightButtonHold()));
+            connect(this, SIGNAL(leftButtonHoldTriggered()), this, SLOT(leftButtonHold()));
+
+            connect(this, SIGNAL(performPopApp()), parent, SLOT(popApp()));
+        }
+
+        void App::popApp()
+        {
+            emit performPopApp();
         }
 
         void App::triggerButtonHold()
@@ -104,7 +118,36 @@ namespace ipn
                         m_buttonHoldTimer->stop();
                         break;
                 }
+        }
+        void App::backButtonClick()
+        {
+                emit popApp();
+                qDebug() << "Backbutton clicked! ";
+        }
 
-	}
+        void App::rightButtonClick()
+        {
+                qDebug() << "Rightbutton clicked! ";
+        }
+
+        void App::leftButtonClick()
+        {
+                qDebug() << "Leftbutton clicked! ";
+        }
+
+        void App::leftButtonHold()
+        {
+                qDebug() << "Leftbutton hold! ";
+        }
+
+        void App::rightButtonHold()
+        {
+                qDebug() << "Rightbutton hold! ";
+        }
+
+        void App::backButtonHold()
+        {
+                qDebug() << "Backbutton hold! ";
+        }
 
 } // namespace ipn
