@@ -32,8 +32,11 @@ class BorderWidthApp : public App
 		void swipeLeft();
 		void swipeRight();
 		void backButtonClick();
+		void entryClicked(QString value);
 
 
+	signals:
+		void valueChosen();
 
 
     protected:

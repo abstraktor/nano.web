@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #define NO_ENTRY -1
+#define ENTRYHEIGHT 40
 
 namespace ipn
 {
@@ -16,23 +17,16 @@ namespace ipn
 		m_entries = QVector<QString>();
 		m_highlightedEntry = NO_ENTRY;
 		m_activeEntry = NO_ENTRY;
+		resize(240, 200);
+
+		selected = "";
+		buttonPressed = false;
 
 	}
 
 	void WidthListWidget::addEntry(QString text)
 	{
-		int numberOfEntries = m_entries.size();
-
-		/*TextWidget *newEntry = new TextWidget(this);
-		newEntry->setColor(Qt::black);
-		newEntry->setText(text);
-		newEntry->setAlignment(Qt::AlignLeft);
-		newEntry->resize(184, newEntry->textHeight());
-		newEntry->move(16, 12 + 48 * numberOfEntries);*/
 		m_entries.append(text);
-
-		resize(240, (numberOfEntries + 1) * 48);
-
 		update();
 	}
 
@@ -42,78 +36,60 @@ namespace ipn
 		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
 
+
 		painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 		for (int i = 0; i < m_entries.size(); i++) {
 			painter.setPen(Qt::NoPen);
-			painter.drawRect(0, i * 48, 240, 48);
+
+			QRect rect = QRect(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT);
+			if (i == 3)
+				rect = QRect(0, 3 * ENTRYHEIGHT, 240, 200 - 3 * ENTRYHEIGHT);
+
+			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
+
+			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick"))
+				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
+			if (buttonPressed && rect.contains(lastPoint))
+				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
+
+			painter.drawRect(rect);
+
 			painter.setPen(QPen(Qt::black, 1.0f));
-			if (m_entries.at(i) == "solid") {
-				painter.drawLine(40, i * 48 + 24, 200, i * 48 + 24);
+			painter.drawText(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT, Qt::AlignCenter, m_entries.at(i));
+
+			if (i == 3) {
+				QPixmap pixmap = QPixmap(":/img/our_imgs/input.png");
+				painter.drawPixmap(90, i * ENTRYHEIGHT + 10, 60, 60, pixmap);
+				if (i == 3 && selected != "thin" && selected != "medium" && selected != "thick")
+					painter.drawText(0, 3 * ENTRYHEIGHT, 90, 200 - 3 * ENTRYHEIGHT, Qt::AlignCenter, selected);
 			}
-			else if (m_entries.at(i) == "double") {
-				painter.drawLine(40, i * 48 + 22, 200, i * 48 + 22);
-				painter.drawLine(40, i * 48 + 26, 200, i * 48 + 26);
-			}
-			else if (m_entries.at(i) == "dotted") {
-				QPen p = painter.pen();
-				p.setStyle(Qt::DotLine);
-				painter.drawLine(40, i * 48 + 24, 200, i * 48 + 24);
-			}
-			painter.drawText(0, i * 48, 240, 48, Qt::AlignCenter, m_entries.at(i));
+
 			if (i == 0) continue;
 			painter.setPen(QPen(Qt::white, 1.0f));
-			painter.drawLine(QPoint(0, i * 48 - 1), QPoint(width(), i * 48 - 1));
+			painter.drawLine(QPoint(0, i * ENTRYHEIGHT - 1), QPoint(width(), i * ENTRYHEIGHT - 1));
 		}
 
-		QPixmap pixmap = QPixmap(":img/our_imgs/arrow_down.png");
-		painter.drawPixmap(0, 192, 240, 8, pixmap);
+
 	}
 
 	void WidthListWidget::mousePressEvent(QMouseEvent *event)
 	{
-		if (event->pos().y() < 0 || event->pos().y() > m_entries.size() * 48)
-		{
-			m_highlightedEntry = -1;
-			return;
-		}
-
-		m_highlightedEntry = event->pos().y() / 48;
-
+		buttonPressed = true;
+		lastPoint = event->pos();
 		update();
 	}
 
 	void WidthListWidget::mouseReleaseEvent(QMouseEvent *event)
 	{
-		QRect highlightedEntryRect = QRect(0, m_highlightedEntry * 48,
-			240, (m_highlightedEntry + 1) * 48);
-
-		if (highlightedEntryRect.contains(event->pos()))
-		{
-			m_activeEntry = m_highlightedEntry;
-			emit entryChanged();
+		if (buttonPressed) {
+			int index = ((event->pos()).y() / 48);
+			if (index > 3) index = 3;
+			QString value = m_entries.at(index);
+			if (value == "") value = selected;
+			emit entryClicked(value);
 		}
 
-		m_highlightedEntry = -1;
-
-		update();
-	}
-
-	int WidthListWidget::activeEntry()
-	{
-		return m_activeEntry;
-	}
-
-	QString WidthListWidget::activeEntryText()
-	{
-		if (m_activeEntry == NO_ENTRY || m_activeEntry >= m_entries.size())
-			return QString();
-
-		return m_entries[m_activeEntry];
-	}
-
-	void WidthListWidget::setActiveEntry(int activeEntry)
-	{
-		m_activeEntry = activeEntry;
+		buttonPressed = false;
 
 		update();
 	}

@@ -18,12 +18,11 @@ namespace ipn
 
 			void addEntry(QString text);
 
-			int activeEntry();
-			QString activeEntryText();
-			void setActiveEntry(int activeEntry);
+			QString selected;
+
 
 		signals:
-			void entryChanged();
+			void entryClicked(QString value);
 
 		protected:
 			virtual void paintEvent(QPaintEvent *event);
@@ -32,6 +31,8 @@ namespace ipn
 
 		private:
 			QVector<QString> m_entries;
+			bool buttonPressed;
+			QPoint lastPoint;
 			int m_activeEntry;
 			int m_highlightedEntry;
 	};

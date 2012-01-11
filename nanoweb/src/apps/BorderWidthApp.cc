@@ -50,7 +50,7 @@ namespace ipn
 		m_picker->addEntry("thin");
 		m_picker->addEntry("medium");
 		m_picker->addEntry("thick");
-		m_picker->setActiveEntry(2);
+		m_picker->addEntry("");
 		m_picker->move(0, 40);
 
 
@@ -59,7 +59,13 @@ namespace ipn
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+		connect(m_picker, SIGNAL(entryClicked(QString)), this, SLOT(entryClicked(QString)));
 
+	}
+
+	void BorderWidthApp::entryClicked(QString value) {
+		currentEl.setStyleProperty(cssproperty, value);
+		emit valueChosen();
 	}
 
 	void BorderWidthApp::setElement(QWebElement el) {
@@ -170,6 +176,7 @@ namespace ipn
 
 	void BorderWidthApp::paintEvent(QPaintEvent*)
 	{
+		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::ComputedStyle);
 
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);

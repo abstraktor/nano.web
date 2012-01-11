@@ -39,6 +39,7 @@ namespace ipn
 		m_frameWidget = new ipn::IPodFrameWidget(new QWidget);
 		setCentralWidget(m_frameWidget);
 
+
 		// Create apps:
 		m_menuApp = new MenuApp();
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
@@ -87,6 +88,7 @@ namespace ipn
 		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
 		connect(m_borderEditApp, SIGNAL(borderEdit(QString)), this, SLOT(switchToSpecificBorderApp(QString)));
 		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
+		connect(m_borderWidthApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:
@@ -214,9 +216,13 @@ namespace ipn
 		forwardMouseEvent(event);
 	}
 
+	void MainWindow::moveEvent(QMoveEvent *event) {
+	}
+
 	void MainWindow::handleMouseMove(QMouseEvent *event)
 	{
 		QRect screen = QRect(0, 0, 240, 240);
+
 
 		// Drop the mouse event if it is outside the screen:
 		if (!screen.contains(event->pos() + m_currentOffset))
@@ -250,6 +256,7 @@ namespace ipn
 	void MainWindow::moveOverlay()
 	{
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
+
 	}
 
 	void MainWindow::handleGesture(GestureType type, qreal param)

@@ -6,6 +6,7 @@
 #include <QMoveEvent>
 #include <QSize>
 #include <QTimer>
+#include <QDebug>
 #include <math.h>
 
 namespace ipn
@@ -108,6 +109,7 @@ namespace ipn
 		return QSize(width, height);
 	}
 
+
 	QRect IPodFrameWidget::contentRect()
 	{
 		int x = m_frameImages[FRAME_TOP][FRAME_LEFT]->width();
@@ -151,6 +153,7 @@ namespace ipn
 		// Emit event for use without and with the position difference as parameter
 		emit frameMoved();
 		emit frameMoved(event->pos() - event->oldPos());
+		//this->move(event->oldPos());
 	}
 
 	App *IPodFrameWidget::topApp()

@@ -65,6 +65,7 @@ class MainWindow : public QMainWindow
         explicit MainWindow(QWidget *parent = 0);
 
         virtual void resizeEvent(QResizeEvent *event);
+		virtual void moveEvent(QMoveEvent *event);
 
         void setOrientation(ScreenOrientation orientation);
         void showExpanded();

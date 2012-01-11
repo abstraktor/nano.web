@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'WidthListWidget.h'
 **
-** Created: Wed 11. Jan 17:19:01 2012
+** Created: Wed 11. Jan 19:51:24 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,13 +31,14 @@ static const uint qt_meta_data_ipn__WidthListWidget[] = {
        1,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
-      22,   21,   21,   21, 0x05,
+      28,   22,   21,   21, 0x05,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__WidthListWidget[] = {
-    "ipn::WidthListWidget\0\0entryChanged()\0"
+    "ipn::WidthListWidget\0\0value\0"
+    "entryClicked(QString)\0"
 };
 
 const QMetaObject ipn::WidthListWidget::staticMetaObject = {
@@ -69,7 +70,7 @@ int ipn::WidthListWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: entryChanged(); break;
+        case 0: entryClicked((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
         _id -= 1;
@@ -78,8 +79,9 @@ int ipn::WidthListWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void ipn::WidthListWidget::entryChanged()
+void ipn::WidthListWidget::entryClicked(QString _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE
