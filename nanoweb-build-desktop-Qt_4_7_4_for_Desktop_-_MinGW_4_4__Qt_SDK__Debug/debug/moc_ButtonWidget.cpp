@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ButtonWidget.h'
 **
-** Created: Mon 9. Jan 21:45:22 2012
+** Created: Wed 11. Jan 16:53:48 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

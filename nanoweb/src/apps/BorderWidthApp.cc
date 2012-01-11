@@ -13,6 +13,8 @@
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/PageIndicatorWidget.h"
+#include "widgets/FlickArea.h"
+#include "widgets/WidthListWidget.h"
 #include "helpers.h"
 #include <QtCore/qmath.h>
 #include "webhelpers.h"
@@ -42,6 +44,14 @@ namespace ipn
 		animationStart = QPoint();
 		animationDestination = QPoint();
 		tickCount = 0;
+
+
+		m_picker = new WidthListWidget(this);
+		m_picker->addEntry("thin");
+		m_picker->addEntry("medium");
+		m_picker->addEntry("thick");
+		m_picker->setActiveEntry(2);
+		m_picker->move(0, 40);
 
 
 		updateView();
@@ -166,8 +176,12 @@ namespace ipn
 		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));
 		painter.drawRect(0, 0, 240, 240);
 
-		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
-		painter.drawText(0, 0, 240, 30, Qt::AlignCenter, "el: " + ipn::webhelpers::elementIdentifierString(currentEl));
+		painter.setBrush(QBrush(QColor(64, 64, 64), Qt::SolidPattern));
+		painter.drawRect(0, 0, 240, 40);
+
+		painter.setPen(QPen(Qt::white, 5.0));
+		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
+		painter.drawText(0, 0, 240, 40, Qt::AlignCenter, cssproperty);
 	}
 
 	bool BorderWidthApp::canLeft() {

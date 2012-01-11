@@ -67,6 +67,9 @@ SOURCES += \
     src/apps/ChooseTool1App.cc \
     src/apps/ChooseToolBoxmodelApp.cc \
     src/apps/BorderEditApp.cc \
+    src/widgets/StyleListWidget.cc \
+    src/widgets/WidthListWidget.cc \
+    src/apps/BorderStyleApp.cc \
     src/apps/BorderWidthApp.cc
 HEADERS += \
         src/MainWindow.h \
@@ -110,6 +113,10 @@ HEADERS += \
     src/apps/ChooseTool1App.h \
     src/apps/ChooseToolBoxmodelApp.h \
     src/apps/BorderEditApp.h \
+    src/widgets/StyleListWidget.h \
+    src/widgets/WidthListWidget.h \
+    src/widgets/WidthListWidget.h \
+    src/apps/BorderStyleApp.h \
     src/apps/BorderWidthApp.h
 FORMS +=
 

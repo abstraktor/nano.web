@@ -89,5 +89,7 @@
         <file>meilenwerk/meilenwerk-Dateien/nav.css</file>
         <file>meilenwerk/meilenwerk-Dateien/rb.css</file>
         <file>meilenwerk/meilenwerk-Dateien/zuerichsee_imageshow.js</file>
+        <file>img/our_imgs/arrow_down.png</file>
+        <file>img/our_imgs/arrow_up.png</file>
     </qresource>
 </RCC>

@@ -40,6 +40,9 @@ INPUT(
 ./debug\ChooseTool1App.o
 ./debug\ChooseToolBoxmodelApp.o
 ./debug\BorderEditApp.o
+./debug\StyleListWidget.o
+./debug\WidthListWidget.o
+./debug\BorderStyleApp.o
 ./debug\BorderWidthApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
@@ -78,6 +81,9 @@ INPUT(
 ./debug\moc_ChooseTool1App.o
 ./debug\moc_ChooseToolBoxmodelApp.o
 ./debug\moc_BorderEditApp.o
+./debug\moc_StyleListWidget.o
+./debug\moc_WidthListWidget.o
+./debug\moc_BorderStyleApp.o
 ./debug\moc_BorderWidthApp.o
 ./debug\qrc_resources.o
 );
