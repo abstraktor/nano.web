@@ -54,7 +54,6 @@ namespace ipn
                         ":/img/frame/hardware_button_down.png");
                 m_hardwareButtonLeft->move(200, 0);
                 m_hardwareButtonLeft->setMouseTracking(true);
-                connect(m_hardwareButtonLeft, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
                 connect(m_hardwareButtonLeft, SIGNAL(pressed()), this, SLOT(triggerHardwareButtonPress()));
                 connect(m_hardwareButtonLeft, SIGNAL(released()), this, SLOT(triggerHardwareButtonRelease()));
 
@@ -63,7 +62,6 @@ namespace ipn
                         ":/img/frame/hardware_button_down.png");
                 m_hardwareButtonRight->move(260, 0);
                 m_hardwareButtonRight->setMouseTracking(true);
-                connect(m_hardwareButtonRight, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
                 connect(m_hardwareButtonRight, SIGNAL(pressed()), this, SLOT(triggerHardwareButtonPress()));
                 connect(m_hardwareButtonRight, SIGNAL(released()), this, SLOT(triggerHardwareButtonRelease()));
 
@@ -72,7 +70,6 @@ namespace ipn
                         ":/img/frame/hardware_button_down.png");
                 m_hardwareButtonBack->move(20, 0);
                 m_hardwareButtonBack->setMouseTracking(true);
-                connect(m_hardwareButtonBack, SIGNAL(clicked()), this, SLOT(triggerHardwareButtonClick()));
                 connect(m_hardwareButtonBack, SIGNAL(pressed()), this, SLOT(triggerHardwareButtonPress()));
                 connect(m_hardwareButtonBack, SIGNAL(released()), this, SLOT(triggerHardwareButtonRelease()));
 
@@ -91,23 +88,23 @@ namespace ipn
 		setMouseTracking(true);
 		setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	}
-
+/*
         void IPodFrameWidget::triggerHardwareButtonClick()
         {
                 GestureType type;
 
-                if (sender() == m_hardwareButtonBack) { popApp(); type = BackButtonClick; }
+                if (sender() == m_hardwareButtonBack) type = BackButtonClick;
                 else if (sender() == m_hardwareButtonRight) type = RightButtonClick;
                 else if (sender() == m_hardwareButtonLeft) type = LeftButtonClick;
 
                 emit gestureTriggered(type,0);
-        }
+        }*/
 
         void IPodFrameWidget::triggerHardwareButtonRelease()
         {
             GestureType type;
 
-            if (sender() == m_hardwareButtonBack) { type = BackButtonRelease; }
+            if (sender() == m_hardwareButtonBack) type = BackButtonRelease;
             else if (sender() == m_hardwareButtonRight) type = RightButtonRelease;
             else if (sender() == m_hardwareButtonLeft) type = LeftButtonRelease;
 
@@ -118,7 +115,7 @@ namespace ipn
         {
             GestureType type;
 
-            if (sender() == m_hardwareButtonBack) { type = BackButtonPress; }
+            if (sender() == m_hardwareButtonBack) type = BackButtonPress;
             else if (sender() == m_hardwareButtonRight) type = RightButtonPress;
             else if (sender() == m_hardwareButtonLeft) type = LeftButtonPress;
 

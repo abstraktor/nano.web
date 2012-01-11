@@ -175,6 +175,7 @@ namespace ipn
 
 	void WebviewApp::backButtonClick()
 	{
+                parent->popApp();
 		qDebug() << "Backbutton clicked! ";
 	}
 

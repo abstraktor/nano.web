@@ -15,6 +15,8 @@ namespace ipn
 
             // Invoke the marking menu on button clicks and on timer expiration:
             connect(m_buttonHoldTimer, SIGNAL(timeout()), this, SLOT(triggerButtonHold()));
+
+            this->parent = parent;
         }
 
         void App::triggerButtonHold()

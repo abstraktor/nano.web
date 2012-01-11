@@ -36,6 +36,7 @@ namespace ipn
                             Screen
                         };
 
+                        QWidget *parent;
                         QTimer *m_buttonHoldTimer;
                         HoldType m_holdingButton;
 
