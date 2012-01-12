@@ -3,7 +3,6 @@
         <file>fonts/Ubuntu-R.ttf</file>
         <file>fonts/Ubuntu-B.ttf</file>
         <file>img/frame/tl.png</file>
-        <file>img/frame/t.png</file>
         <file>img/frame/tr.png</file>
         <file>img/frame/l.png</file>
         <file>img/frame/r.png</file>
@@ -85,10 +84,11 @@
         <file>meilenwerk/meilenwerk-Dateien/_blank.gif</file>
         <file>meilenwerk/meilenwerk-Dateien/content.css</file>
         <file>meilenwerk/meilenwerk-Dateien/meilenwerk_zuerichsee_start_01.jpg</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>meilenwerk/meilenwerk-Dateien/MW_Logo.png</file>
         <file>meilenwerk/meilenwerk-Dateien/nav.css</file>
         <file>meilenwerk/meilenwerk-Dateien/rb.css</file>
         <file>meilenwerk/meilenwerk-Dateien/zuerichsee_imageshow.js</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
+        <file>img/frame/t.png</file>
     </qresource>
 </RCC>

@@ -35,6 +35,7 @@ namespace ipn
 
 			bool doSwiping, mousePressed, doZooming, buttonPressed;
 			QPoint translation, diff, lastPoint;
+			int m_activeEntry;
 	};
 
 } // namespace ipn

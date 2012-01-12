@@ -15,8 +15,7 @@ namespace ipn
 	WidthListWidget::WidthListWidget(QWidget *parent) : QWidget(parent)
 	{
 		m_entries = QVector<QString>();
-		m_highlightedEntry = NO_ENTRY;
-		m_activeEntry = NO_ENTRY;
+		m_activeEntry = 3;
 		resize(240, 200);
 
 		selected = "";
@@ -47,10 +46,13 @@ namespace ipn
 
 			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 
-			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick"))
+			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick")) {
 				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
-			if (buttonPressed && rect.contains(lastPoint))
+			}
+			if (buttonPressed && rect.contains(lastPoint)) {
 				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
+				m_activeEntry = i;
+			}
 
 			painter.drawRect(rect);
 
@@ -82,9 +84,7 @@ namespace ipn
 	void WidthListWidget::mouseReleaseEvent(QMouseEvent *event)
 	{
 		if (buttonPressed) {
-			int index = ((event->pos()).y() / 48);
-			if (index > 3) index = 3;
-			QString value = m_entries.at(index);
+			QString value = m_entries.at(m_activeEntry);
 			if (value == "") value = selected;
 			emit entryClicked(value);
 		}

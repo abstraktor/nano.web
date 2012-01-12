@@ -285,7 +285,7 @@ namespace ipn
 			left = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-left-color", QWebElement::ComputedStyle));
 			right = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-right-color", QWebElement::ComputedStyle));
 			bottom = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-bottom-color", QWebElement::ComputedStyle));
-			painter.setPen(QPen(Qt::black, 2.0));
+			painter.setPen(QPen(Qt::black, 1.0));
 			painter.setBrush(QBrush(top, Qt::SolidPattern));
 			painter.drawRoundedRect(70, 10, 100, 32, 9.0, 9.0);
 			painter.rotate(90);
