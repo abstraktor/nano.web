@@ -25,7 +25,10 @@ namespace ipn
             connect(this, SIGNAL(rightButtonHoldTriggered()), this, SLOT(rightButtonHold()));
             connect(this, SIGNAL(leftButtonHoldTriggered()), this, SLOT(leftButtonHold()));
 
+            // let's bind some overall actions
             connect(this, SIGNAL(performPopApp()), parent, SLOT(popApp()));
+            connect(this, SIGNAL(rightButtonClickTriggered()), parent, SLOT(switchToMockUp()));
+            connect(this, SIGNAL(leftButtonClickTriggered()), parent, SLOT(switchToWebPage()));
         }
 
         void App::popApp()
