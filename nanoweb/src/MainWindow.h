@@ -26,13 +26,6 @@ class IPodFrameWidget;
 class App;
 class MenuApp;
 class InfoApp;
-class ClockApp;
-class PaintApp;
-class MusicApp;
-class GUIApp;
-class MapApp;
-class GestureApp;
-class MarkingMenuApp;
 class MultiTapApp;
 class PickerApp;
 class PeepholeApp;
@@ -99,6 +92,7 @@ class MainWindow : public QMainWindow
 		void switchToChooseToolBoxmodelApp();
 		void switchToBorderApp();
 		void switchToSpecificBorderApp(QString cssproperty);
+		void switchToNumberApp();
 		void elementTappedLeftButtonClicked();
 		void elementTappedInFisheye();
 
@@ -120,6 +114,7 @@ class MainWindow : public QMainWindow
 		BorderEditApp *m_borderEditApp;
 		BorderStyleApp *m_borderStyleApp;
 		BorderWidthApp *m_borderWidthApp;
+		MultiTapApp *m_multiTapApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

@@ -2,16 +2,6 @@
 #include "IPodFrameWidget.h"
 #include "apps/MenuApp.h"
 #include "apps/InfoApp.h"
-#include "apps/ClockApp.h"
-#include "apps/PaintApp.h"
-#include "apps/MusicApp.h"
-#include "apps/GUIApp.h"
-#include "apps/MapApp.h"
-#include "apps/GestureApp.h"
-#include "apps/MarkingMenuApp.h"
-#include "apps/MultiTapApp.h"
-#include "apps/PickerApp.h"
-#include "apps/PeepholeApp.h"
 #include "apps/WebviewApp.h"
 #include "apps/ElementTappedApp.h"
 #include "apps/ElementFisheyeApp.h"
@@ -20,6 +10,7 @@
 #include "apps/BorderEditApp.h"
 #include "apps/BorderWidthApp.h"
 #include "apps/BorderStyleApp.h"
+#include "apps/MultiTapApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -112,6 +103,8 @@ namespace ipn
 		m_fingerImage = new ImageWidget(this);
 		m_fingerImage->setImage(":/img/fingers/index_finger.png");
 
+		qDebug() << m_frameWidget->topApp();
+
 	#ifdef Q_OS_SYMBIAN
 		// Do not display the finger on nokia phones:
 		m_fingerImage->hide();
@@ -174,6 +167,9 @@ namespace ipn
 			m_borderStyleApp->setElement(m_borderEditApp->getElement());
 			m_frameWidget->pushApp(m_borderStyleApp);
 		}
+	}
+	void MainWindow::switchToNumberApp() {
+		m_frameWidget->pushApp(m_multiTapApp);
 	}
 
 
