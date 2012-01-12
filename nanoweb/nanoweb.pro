@@ -70,7 +70,8 @@ SOURCES += \
     src/widgets/StyleListWidget.cc \
     src/widgets/WidthListWidget.cc \
     src/apps/BorderStyleApp.cc \
-    src/apps/BorderWidthApp.cc
+    src/apps/BorderWidthApp.cc \
+    src/apps/MockUpApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -117,7 +118,8 @@ HEADERS += \
     src/widgets/WidthListWidget.h \
     src/widgets/WidthListWidget.h \
     src/apps/BorderStyleApp.h \
-    src/apps/BorderWidthApp.h
+    src/apps/BorderWidthApp.h \
+    src/apps/MockUpApp.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
@@ -280,6 +282,8 @@ OTHER_FILES += \
 
 RESOURCES += \
     resources.qrc
+
+
 
 
 

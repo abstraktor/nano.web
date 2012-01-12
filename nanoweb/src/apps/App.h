@@ -3,6 +3,7 @@
 
 #include "widgets/OverlayWidget.h"
 #include <QWidget>
+#include <QTimer>
 
 namespace ipn
 {
@@ -10,8 +11,9 @@ namespace ipn
 	// App is an abstract class which represents an app for the iPod nano. You have to derive
 	// from this class if you want to create new apps.
 	class App : public QWidget
-	{
-		Q_OBJECT
+        {
+
+                Q_OBJECT
 
 		public:
 			App(QWidget *parent = 0);
@@ -24,8 +26,22 @@ namespace ipn
 			// Part of gesture recognition, you won't normally need this function unless
 			// you want to add custom gestures.
 			void handleGesture(GestureType type, qreal param = 0);
+                private:
 
-		signals:
+                        enum HoldType {
+                            AllReleased,
+                            Left,
+                            Right,
+                            Back,
+                            Screen
+                        };
+
+                        QTimer *m_buttonHoldTimer;
+                        HoldType m_holdingButton;
+
+                signals:
+                        void performPopApp();
+
 			// Gesture signals. Connect to these signals if you want to react to gesture events:
 
 			// Signal emitted when the users have two fingers on the screen and rotates them.
@@ -58,6 +74,31 @@ namespace ipn
 			void backButtonClickTriggered();
 			void leftButtonClickTriggered();
 			void rightButtonClickTriggered();
+
+                        void backButtonPressTriggered();
+                        void leftButtonPressTriggered();
+                        void rightButtonPressTriggered();
+
+                        void backButtonReleaseTriggered();
+                        void leftButtonReleaseTriggered();
+                        void rightButtonReleaseTriggered();
+
+                        void backButtonHoldTriggered();
+                        void leftButtonHoldTriggered();
+                        void rightButtonHoldTriggered();
+
+            private slots:
+                        void popApp();
+                        void triggerButtonHold();
+
+                        void backButtonClick();
+                        void rightButtonClick();
+                        void leftButtonClick();
+
+                        void backButtonHold();
+                        void rightButtonHold();
+                        void leftButtonHold();
+
 	};
 
 } // namespace ipn

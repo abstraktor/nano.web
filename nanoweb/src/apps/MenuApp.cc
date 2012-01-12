@@ -32,13 +32,19 @@ namespace ipn
 		return m_buttons[position];
 	}
 
-	void MenuApp::addButton(ButtonPosition position, QString title, QString iconImage)
+        void MenuApp::addButton(ButtonPosition position, QString title, QString iconImage)
+        {
+            addButton(position, title, iconImage, true);
+        }
+
+        void MenuApp::addButton(ButtonPosition position, QString title, QString iconImage, bool enable)
 	{
 		m_buttons[position]->show();
 		m_buttons[position]->setImage(":/img/buttons/default");
 		m_buttons[position]->resize(64, 64);
 		m_buttons[position]->setTitle(title);
 		m_buttons[position]->setIconImage(iconImage);
+                m_buttons[position]->setEnabled(enable);
 
 		switch (position)
 		{

@@ -37,6 +37,7 @@ class ChooseToolBoxmodelApp;
 class BorderEditApp;
 class BorderStyleApp;
 class BorderWidthApp;
+class MockUpApp;
 
 class OverlayWidget;
 class TitleBarWidget;
@@ -68,6 +69,9 @@ class MainWindow : public QMainWindow
     protected:
         virtual void mouseMoveEvent(QMouseEvent *event);
 
+    public slots:
+        void popApp();
+
     private slots:
         void moveOverlay();
 
@@ -83,6 +87,7 @@ class MainWindow : public QMainWindow
 
         // Slots for connecting apps:
 		void switchToWebPage();
+                void switchToMockUp();
 		void switchToElementTapped();
 		void switchToElementTapped(QWebElement el);
 		void switchToElementFisheye();
@@ -115,6 +120,7 @@ class MainWindow : public QMainWindow
 		BorderStyleApp *m_borderStyleApp;
 		BorderWidthApp *m_borderWidthApp;
 		MultiTapApp *m_multiTapApp;
+        MockUpApp *m_mockUpApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

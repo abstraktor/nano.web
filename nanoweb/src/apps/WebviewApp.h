@@ -34,9 +34,7 @@ namespace ipn
 		void swipeRight();
 		void swipeDown();
 		void swipe(qreal angle);
-		void backButtonClick();
-		void rightButtonClick();
-		void leftButtonClick();
+
 		void elementTappedHandler(QWebElement el);
 
 	signals:

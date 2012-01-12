@@ -82,18 +82,10 @@ namespace ipn
 	void WidthListWidget::mouseReleaseEvent(QMouseEvent *event)
 	{
 		if (buttonPressed) {
-			QString value;
-			for (int i = 0; i < m_entries.size(); i++) {
-				QRect rect = QRect(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT);
-				if (i == 3)
-					rect = QRect(0, 3 * ENTRYHEIGHT, 240, 200 - 3 * ENTRYHEIGHT);
-
-				if (rect.contains(lastPoint))
-					value = m_entries.at(i);
-			}
-
+			int index = ((event->pos()).y() / 48);
+			if (index > 3) index = 3;
+			QString value = m_entries.at(index);
 			if (value == "") value = selected;
-			qDebug() << value;
 			emit entryClicked(value);
 		}
 

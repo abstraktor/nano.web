@@ -36,19 +36,21 @@ namespace ipn
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
 		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
-		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png");
-		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png");
+                m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png", false);
+                m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png", false);
 		m_menuApp->titleBar()->setTitle("NANOWEB");
+                connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close()));
 
-		m_webviewApp = new WebviewApp();
-		m_elementTappedApp = new ElementTappedApp();
-		m_elementFisheyeApp = new ElementFisheyeApp();
-		m_infoApp = new InfoApp();
-		m_chooseTool1App = new ChooseTool1App();
-		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
-		m_borderEditApp = new BorderEditApp();
-		m_borderWidthApp = new BorderWidthApp();
-		m_borderStyleApp = new BorderStyleApp();
+                m_webviewApp = new WebviewApp(this);
+                m_elementTappedApp = new ElementTappedApp(this);
+                m_elementFisheyeApp = new ElementFisheyeApp(this);
+                m_infoApp = new InfoApp(this);
+                m_chooseTool1App = new ChooseTool1App(this);
+                m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp(this);
+                m_borderEditApp = new BorderEditApp(this);
+                m_borderWidthApp = new BorderWidthApp(this);
+                m_borderStyleApp = new BorderStyleApp(this);
+                m_mockUpApp = new MockUpApp(this);
 
 
 		// Set MenuApp as first app:
@@ -127,7 +129,11 @@ namespace ipn
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
 	}
 
+        // proxy popApp to FrameWidget
+        void MainWindow::popApp() { m_frameWidget->popApp();}
+
 	// For each app, we need a slot which pushes it on the app stack:
+        void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}

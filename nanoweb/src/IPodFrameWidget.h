@@ -56,9 +56,8 @@ namespace ipn
 		void instantSwitchBackTo(App *app);
 		void instantReplaceAllAppsBy(App *app);
 
-                void triggerHardwareButtonClick();
-                //void triggerHardwareButtonPress();
-                //void triggerHardwareButtonRelease();
+                void triggerHardwareButtonPress();
+                void triggerHardwareButtonRelease();
 
 	private slots:
 		void drawAnimation();
