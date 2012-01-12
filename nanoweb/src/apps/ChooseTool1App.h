@@ -48,6 +48,7 @@ class ChooseTool1App : public App
 		bool canLeft();
 		bool canRight();
 		void updateView();
+		void stopAnimation();
 		PageIndicatorWidget *m_pageIndicator;
 		ScalableButtonWidget *m_topLeft1, *m_topRight1, *m_bottomLeft1, *m_bottomRight1;
 		ScalableButtonWidget *m_topLeft2, *m_topRight2, *m_bottomLeft2, *m_bottomRight2;

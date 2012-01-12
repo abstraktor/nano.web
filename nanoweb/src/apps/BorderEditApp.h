@@ -43,6 +43,7 @@ class BorderEditApp : public App
 	private:
 		bool canLeft();
 		bool canRight();
+		void stopAnimation();
 		bool leftPressed, topPressed, rightPressed, bottomPressed;
 		void updateView();
 		PageIndicatorWidget *m_pageIndicator;

@@ -68,10 +68,10 @@ SOURCES += \
     src/apps/ChooseToolBoxmodelApp.cc \
     src/apps/BorderEditApp.cc \
     src/widgets/StyleListWidget.cc \
-    src/widgets/WidthListWidget.cc \
     src/apps/BorderStyleApp.cc \
     src/apps/BorderWidthApp.cc \
-    src/apps/MockUpApp.cc
+    src/apps/MockUpApp.cc \
+    src/widgets/WidthListWidget.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -115,11 +115,10 @@ HEADERS += \
     src/apps/ChooseToolBoxmodelApp.h \
     src/apps/BorderEditApp.h \
     src/widgets/StyleListWidget.h \
-    src/widgets/WidthListWidget.h \
-    src/widgets/WidthListWidget.h \
     src/apps/BorderStyleApp.h \
     src/apps/BorderWidthApp.h \
-    src/apps/MockUpApp.h
+    src/apps/MockUpApp.h \
+    src/widgets/WidthListWidget.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
