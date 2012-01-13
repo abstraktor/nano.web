@@ -13,6 +13,7 @@ class MenuApp : public App
 {
     Q_OBJECT
 
+
     public:
         MenuApp(QWidget *parent = 0);
 

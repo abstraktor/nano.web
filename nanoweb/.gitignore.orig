@@ -1,0 +1,8 @@
+nanoweb.pro.user
+nanoweb.pro.user*
+<<<<<<< HEAD
+
+=======
+>>>>>>> 64bbde1
+*.o
+moc_*.cpp

@@ -2,16 +2,6 @@
 #include "IPodFrameWidget.h"
 #include "apps/MenuApp.h"
 #include "apps/InfoApp.h"
-#include "apps/ClockApp.h"
-#include "apps/PaintApp.h"
-#include "apps/MusicApp.h"
-#include "apps/GUIApp.h"
-#include "apps/MapApp.h"
-#include "apps/GestureApp.h"
-#include "apps/MarkingMenuApp.h"
-#include "apps/MultiTapApp.h"
-#include "apps/PickerApp.h"
-#include "apps/PeepholeApp.h"
 #include "apps/WebviewApp.h"
 #include "apps/ElementTappedApp.h"
 #include "apps/ElementFisheyeApp.h"
@@ -20,6 +10,8 @@
 #include "apps/BorderEditApp.h"
 #include "apps/BorderWidthApp.h"
 #include "apps/BorderStyleApp.h"
+#include "apps/MultiTapApp.h"
+#include "apps/MockUpApp.h"
 #include "widgets/TitleBarWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include "widgets/ImageWidget.h"
@@ -45,60 +37,38 @@ namespace ipn
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
 		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
-		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png");
-		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png");
+		m_menuApp->addButton(MenuApp::BottomLeft, "--", ":/img/icons/default.png", false);
+		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png", false);
 		m_menuApp->titleBar()->setTitle("NANOWEB");
+		connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close()));
 
-		m_webviewApp = new WebviewApp();
-		m_elementTappedApp = new ElementTappedApp();
-		m_elementFisheyeApp = new ElementFisheyeApp();
-		m_infoApp = new InfoApp();
-		m_chooseTool1App = new ChooseTool1App();
-		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp();
-		m_borderEditApp = new BorderEditApp();
-		m_borderWidthApp = new BorderWidthApp();
-		m_borderStyleApp = new BorderStyleApp();
-		m_multiTapApp = new MultiTapApp();
+		m_webviewApp = new WebviewApp(this);
+                m_elementTappedApp = new ElementTappedApp(this);
+		m_elementFisheyeApp = new ElementFisheyeApp(this);
+		m_infoApp = new InfoApp(this);
+		m_chooseTool1App = new ChooseTool1App(this);
+		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp(this);
+		m_borderEditApp = new BorderEditApp(this);
+		m_borderWidthApp = new BorderWidthApp(this);
+		m_borderStyleApp = new BorderStyleApp(this);
+                //m_mockUpApp = new MockUpApp(this);
 
 
 		// Set MenuApp as first app:
 		m_frameWidget->instantReplaceAllAppsBy(m_menuApp);
 
 		// Set up OverlayWidget:
-		m_overlayWidget = new OverlayWidget(this);
+                m_overlayWidget = new NanoOverlayWidget(this);
 		m_overlayWidget->resize(240, 240);
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
 		m_currentChild = NULL;
 
-		connect(m_overlayWidget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(handleMousePress(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(mouseReleased(QMouseEvent*)), this, SLOT(handleMouseRelease(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(mouseMoved(QMouseEvent*)), this, SLOT(handleMouseMove(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
-		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
-		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
-		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
-		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
-		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_frameWidget, SLOT(instantPopApp()));
-		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_elementTappedApp, SLOT(elementTappedInFisheye(QWebElement)));
-		connect(m_elementFisheyeApp, SIGNAL(backButtonClickTriggered()), this, SLOT(elementTappedInFisheye()));
-		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
-		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
-		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
-		connect(m_borderEditApp, SIGNAL(borderEdit(QString)), this, SLOT(switchToSpecificBorderApp(QString)));
-		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
-		connect(m_borderWidthApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
-		connect(m_borderWidthApp, SIGNAL(requestNumber()), this, SLOT(switchToMultiTapApp()));
-		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_borderWidthApp, SLOT(numberClicked(QString)));
-		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
-
-
 
 		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
 		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
@@ -125,9 +95,13 @@ namespace ipn
 	}
 
 
-	void MainWindow::elementTappedInFisheye() {
-		m_elementTappedApp->elementTappedInFisheye(m_elementFisheyeApp->getElement());
-	}
+        void MainWindow::elementTappedInFisheye(QWebElement el) {
+                m_elementTappedApp->elementTappedInFisheye(el);
+        }
+
+        void MainWindow::elementTappedInFisheye(){
+                elementTappedInFisheye(m_elementFisheyeApp->getElement());
+        }
 
 	void MainWindow::resizeEvent(QResizeEvent *event)
 	{
@@ -138,7 +112,12 @@ namespace ipn
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
 	}
 
+        // proxy some events to FrameWidget
+	void MainWindow::popApp() { m_frameWidget->popApp();}
+        void MainWindow::instantPopApp() { m_frameWidget->instantPopApp();}
+
 	// For each app, we need a slot which pushes it on the app stack:
+	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
@@ -179,7 +158,7 @@ namespace ipn
 			m_frameWidget->pushApp(m_borderStyleApp);
 		}
 	}
-	void MainWindow::switchToMultiTapApp() {
+	void MainWindow::switchToNumberApp() {
 		m_frameWidget->pushApp(m_multiTapApp);
 	}
 

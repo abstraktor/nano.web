@@ -29,8 +29,10 @@
 namespace ipn
 {
 
-	BorderWidthApp::BorderWidthApp(QWidget *pParent) : App(pParent)
+        BorderWidthApp::BorderWidthApp(QWidget *parent) : App(parent)
 	{
+                connect(this, SIGNAL(valueChosen()), parent, SLOT(popApp()));
+
 		translation = QPoint();
 		diff = QPoint();
 		mousePressed = false;

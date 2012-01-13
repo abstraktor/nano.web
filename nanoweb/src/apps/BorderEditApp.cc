@@ -29,6 +29,9 @@ namespace ipn
 
 	BorderEditApp::BorderEditApp(QWidget *pParent) : App(pParent)
 	{
+
+                connect(this, SIGNAL(borderEdit(QString)), parent, SLOT(switchToSpecificBorderApp(QString)));
+
 		backgroundString = "";
 
 		leftPressed = topPressed = bottomPressed = rightPressed = false;

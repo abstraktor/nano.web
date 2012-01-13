@@ -15,8 +15,12 @@
 namespace ipn
 {
 
-    ElementTappedApp::ElementTappedApp(QWidget *pParent) : App(pParent)
+    ElementTappedApp::ElementTappedApp(QWidget *parent) : App(parent)
 	{
+                connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementFisheye(QWebElement)));
+                connect(this, SIGNAL(leftButtonClicked()), parent, SLOT(elementTappedLeftButtonClicked()));
+                connect(this, SIGNAL(editButtonClicked()), parent, SLOT(switchToChooseTool1App()));
+
 		buttonColor = QColor(180, 180, 180);
 		isElementTapped = false;
 		showText = true;

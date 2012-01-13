@@ -26,8 +26,11 @@
 namespace ipn
 {
 
-	ChooseTool1App::ChooseTool1App(QWidget *pParent) : App(pParent)
+        ChooseTool1App::ChooseTool1App(QWidget *parent) : App(parent)
 	{
+                connect(this, SIGNAL(boxmodelButtonClicked()), parent, SLOT(switchToChooseToolBoxmodelApp()));
+                connect(this, SIGNAL(anotherButtonClicked()), parent, SLOT(switchToInfo()));
+
 		translation = QPoint();
 
 		diff = QPoint();

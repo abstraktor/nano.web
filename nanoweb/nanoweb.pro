@@ -70,6 +70,7 @@ SOURCES += \
     src/widgets/StyleListWidget.cc \
     src/apps/BorderStyleApp.cc \
     src/apps/BorderWidthApp.cc \
+    src/apps/MockUpApp.cc \
     src/widgets/WidthListWidget.cc \
     src/apps/MockupApp.cc
 HEADERS += \
@@ -117,8 +118,8 @@ HEADERS += \
     src/widgets/StyleListWidget.h \
     src/apps/BorderStyleApp.h \
     src/apps/BorderWidthApp.h \
+    src/apps/MockUpApp.h \
     src/widgets/WidthListWidget.h \
-    src/apps/MockupApp.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets

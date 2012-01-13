@@ -17,8 +17,11 @@
 
 namespace ipn
 {
-	WebviewApp::WebviewApp(QWidget *pParent) : App(pParent)
+        WebviewApp::WebviewApp(QWidget *parent) : App(parent)
 	{
+
+                connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementTapped(QWebElement)));
+
 		mousePressed = false;
 		doSwiping = false;
 		doZooming = false;

@@ -10,7 +10,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "widgets/OverlayWidget.h"
+#include "nanoweb/NanoOverlayWidget.h"
 
 #include <QtGui/QMainWindow>
 #include <QWebElement>
@@ -26,13 +26,6 @@ class IPodFrameWidget;
 class App;
 class MenuApp;
 class InfoApp;
-class ClockApp;
-class PaintApp;
-class MusicApp;
-class GUIApp;
-class MapApp;
-class GestureApp;
-class MarkingMenuApp;
 class MultiTapApp;
 class PickerApp;
 class PeepholeApp;
@@ -44,9 +37,9 @@ class ChooseToolBoxmodelApp;
 class BorderEditApp;
 class BorderStyleApp;
 class BorderWidthApp;
-class MultiTapApp;
+class MockUpApp;
 
-class OverlayWidget;
+class NanoOverlayWidget;
 class TitleBarWidget;
 class ScalableButtonWidget;
 class ImageWidget;
@@ -76,6 +69,30 @@ class MainWindow : public QMainWindow
     protected:
         virtual void mouseMoveEvent(QMouseEvent *event);
 
+    public slots:
+        // slots proxying to m_frameWidget
+        void popApp();
+        void instantPopApp();
+
+        // Slots for connecting apps:
+        void switchToWebPage();
+        void switchToMockUp();
+        void switchToElementTapped();
+        void switchToElementTapped(QWebElement el);
+        void switchToElementFisheye();
+        void switchToElementFisheye(QWebElement el);
+        void switchToInfo();
+        void switchToChooseTool1App();
+        void switchToChooseToolBoxmodelApp();
+        void switchToBorderApp();
+        void switchToSpecificBorderApp(QString cssproperty);
+        void switchToNumberApp();
+        void elementTappedLeftButtonClicked();
+        void elementTappedInFisheye();
+        void elementTappedInFisheye(QWebElement el);
+
+        void switchToApp(App *app);
+
     private slots:
         void moveOverlay();
 
@@ -89,22 +106,6 @@ class MainWindow : public QMainWindow
         // Handle gestures triggered by m_overlayWidget:
         void handleGesture(GestureType type, qreal param);
 
-        // Slots for connecting apps:
-		void switchToWebPage();
-		void switchToElementTapped();
-		void switchToElementTapped(QWebElement el);
-		void switchToElementFisheye();
-		void switchToElementFisheye(QWebElement el);
-		void switchToInfo();
-		void switchToChooseTool1App();
-		void switchToChooseToolBoxmodelApp();
-		void switchToBorderApp();
-		void switchToSpecificBorderApp(QString cssproperty);
-		void elementTappedLeftButtonClicked();
-		void elementTappedInFisheye();
-		void switchToMultiTapApp();
-
-        void switchToApp(App *app);
 
     private:
         void moveHandOverlay(QPoint pos);
@@ -123,9 +124,10 @@ class MainWindow : public QMainWindow
 		BorderStyleApp *m_borderStyleApp;
 		BorderWidthApp *m_borderWidthApp;
 		MultiTapApp *m_multiTapApp;
+        MockUpApp *m_mockUpApp;
 
         // For emulating touch noise:
-        OverlayWidget *m_overlayWidget;
+        NanoOverlayWidget *m_overlayWidget;
         QPoint m_currentOffset;
         QWidget *m_currentChild;
         static const int m_noiseRadius = 20;
