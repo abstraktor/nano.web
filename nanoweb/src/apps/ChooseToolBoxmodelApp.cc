@@ -26,8 +26,9 @@
 namespace ipn
 {
 
-	ChooseToolBoxmodelApp::ChooseToolBoxmodelApp(QWidget *pParent) : App(pParent)
+        ChooseToolBoxmodelApp::ChooseToolBoxmodelApp(QWidget *parent) : App(parent)
 	{
+                connect(this, SIGNAL(borderButtonClicked()), parent, SLOT(switchToBorderApp()));
 
 		m_topLeft1 = new ScalableButtonWidget(this);
 		m_topLeft1->resize(64, 64);

@@ -70,7 +70,27 @@ class MainWindow : public QMainWindow
         virtual void mouseMoveEvent(QMouseEvent *event);
 
     public slots:
+        // slots proxying to m_frameWidget
         void popApp();
+        void instantPopApp();
+
+        // Slots for connecting apps:
+        void switchToWebPage();
+        void switchToMockUp();
+        void switchToElementTapped();
+        void switchToElementTapped(QWebElement el);
+        void switchToElementFisheye();
+        void switchToElementFisheye(QWebElement el);
+        void switchToInfo();
+        void switchToChooseTool1App();
+        void switchToChooseToolBoxmodelApp();
+        void switchToBorderApp();
+        void switchToSpecificBorderApp(QString cssproperty);
+        void switchToNumberApp();
+        void elementTappedLeftButtonClicked();
+        void elementTappedInFisheye();
+
+        void switchToApp(App *app);
 
     private slots:
         void moveOverlay();
@@ -85,23 +105,6 @@ class MainWindow : public QMainWindow
         // Handle gestures triggered by m_overlayWidget:
         void handleGesture(GestureType type, qreal param);
 
-        // Slots for connecting apps:
-		void switchToWebPage();
-                void switchToMockUp();
-		void switchToElementTapped();
-		void switchToElementTapped(QWebElement el);
-		void switchToElementFisheye();
-		void switchToElementFisheye(QWebElement el);
-		void switchToInfo();
-		void switchToChooseTool1App();
-		void switchToChooseToolBoxmodelApp();
-		void switchToBorderApp();
-		void switchToSpecificBorderApp(QString cssproperty);
-		void switchToNumberApp();
-		void elementTappedLeftButtonClicked();
-		void elementTappedInFisheye();
-
-        void switchToApp(App *app);
 
     private:
         void moveHandOverlay(QPoint pos);

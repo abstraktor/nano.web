@@ -24,8 +24,12 @@
 namespace ipn
 {
 
-	ElementFisheyeApp::ElementFisheyeApp(QWidget *pParent) : App(pParent)
+        ElementFisheyeApp::ElementFisheyeApp(QWidget *parent) : App(parent)
 	{
+                connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(instantPopApp()));
+                connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(elementTappedInFisheye(QWebElement)));
+                connect(this, SIGNAL(backButtonClickTriggered()), parent, SLOT(elementTappedInFisheye()));
+
 		translation = QPoint();
 
 		diff = QPoint();

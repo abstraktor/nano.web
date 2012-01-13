@@ -65,25 +65,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
-		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
-		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
-                connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
-		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
-		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_frameWidget, SLOT(instantPopApp()));
-		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_elementTappedApp, SLOT(elementTappedInFisheye(QWebElement)));
-		connect(m_elementFisheyeApp, SIGNAL(backButtonClickTriggered()), this, SLOT(elementTappedInFisheye()));
-		connect(m_chooseTool1App, SIGNAL(boxmodelButtonClicked()), this, SLOT(switchToChooseToolBoxmodelApp()));
-		connect(m_chooseTool1App, SIGNAL(anotherButtonClicked()), this, SLOT(switchToInfo()));
-		connect(m_chooseToolBoxmodelApp, SIGNAL(borderButtonClicked()), this, SLOT(switchToBorderApp()));
-		connect(m_borderEditApp, SIGNAL(borderEdit(QString)), this, SLOT(switchToSpecificBorderApp(QString)));
-		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
-		connect(m_borderWidthApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
-
-
 
 		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
 		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
@@ -93,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 		// quit button
 		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
-		//connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
+                //connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
 		connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 
 
@@ -125,8 +110,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
 	}
 
-	// proxy popApp to FrameWidget
+        // proxy some events to FrameWidget
 	void MainWindow::popApp() { m_frameWidget->popApp();}
+        void MainWindow::instantPopApp() { m_frameWidget->instantPopApp();}
 
 	// For each app, we need a slot which pushes it on the app stack:
 	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
