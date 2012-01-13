@@ -23,12 +23,11 @@ namespace ipn
 			QString text();
 
 		signals:
-			void accepted();
+			void accepted(QString value);
 
 		protected slots:
 			void multiTapKeyPressed();
 			void blink();
-			void catchCurrentChar();
 			void refreshText();
 			void unitChange();
 
@@ -43,9 +42,8 @@ namespace ipn
 			ScalableButtonWidget *m_unitButton, *m_keys[12];
 
 			QString m_currentText;
-			QChar m_currentChar;
-			int m_lastKey, m_tapCount;
-			QTimer *m_multiTapTimer, *m_cursorBlinkTimer;
+			QString unit;
+			QTimer *m_cursorBlinkTimer;
 			bool m_cursorBlink;
 	};
 

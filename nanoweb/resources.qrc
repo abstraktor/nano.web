@@ -93,5 +93,6 @@
         <file>img/icons/multitap/key_12.png</file>
         <file>img/icons/multitap/key_12a.png</file>
         <file>img/icons/multitap/key_12b.png</file>
+        <file>img/icons/multitap/key_12c.png</file>
     </qresource>
 </RCC>

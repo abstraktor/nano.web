@@ -91,7 +91,8 @@ namespace ipn
 		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 		connect(m_borderWidthApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 		connect(m_borderWidthApp, SIGNAL(requestNumber()), this, SLOT(switchToMultiTapApp()));
-		connect(m_multiTapApp, SIGNAL(accepted()), m_frameWidget, SLOT(popApp()));
+		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_borderWidthApp, SLOT(numberClicked(QString)));
+		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:

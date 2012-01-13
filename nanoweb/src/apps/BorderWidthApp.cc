@@ -72,6 +72,12 @@ namespace ipn
 		emit valueChosen();
 	}
 
+	void BorderWidthApp::numberClicked(QString value) {
+		qDebug() << "pppp" << value;
+		currentEl.setStyleProperty(cssproperty, value);
+		emit valueChosen();
+	}
+
 	void BorderWidthApp::setElement(QWebElement el) {
 		currentEl = el;
 		updateView();

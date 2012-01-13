@@ -95,15 +95,10 @@ namespace ipn
 		connect(m_cursorBlinkTimer, SIGNAL(timeout()), this, SLOT(blink()));
 		m_cursorBlinkTimer->start();
 
-		m_multiTapTimer = new QTimer(this);
-		m_multiTapTimer->setInterval(1000);
-		m_multiTapTimer->setSingleShot(true);
-		connect(m_multiTapTimer, SIGNAL(timeout()), this, SLOT(catchCurrentChar()));
-
-		m_currentChar = QChar();
 		m_currentText = QString();
-		m_lastKey = -1;
 		m_cursorBlink = false;
+		unit = "px";
+		qDebug() << unit;
 	}
 
 	QString MultiTapApp::text()
@@ -126,10 +121,8 @@ namespace ipn
 		if (key == 9)
 		{
 			// delete currently pressed key
-			if (m_currentChar.isNull() && !m_currentText.isEmpty())
+			if (!m_currentText.isEmpty())
 				m_currentText.chop(1);
-			else
-				m_currentChar = QChar();
 
 			m_cursorBlink = false;
 			m_cursorBlinkTimer->start();
@@ -137,7 +130,9 @@ namespace ipn
 		else if (key == 11)
 		{
 			// accept button pressed
-			emit accepted();
+			emit accepted(m_currentText + unit);
+			m_currentText = "";
+			refreshText();
 		}
 		else
 		{
@@ -145,12 +140,9 @@ namespace ipn
 
 			m_currentText.append(characters[key].at(0));
 
-			m_multiTapTimer->start();
 			m_cursorBlinkTimer->stop();
 			m_cursorBlink = false;
 		}
-
-		m_lastKey = key;
 
 		refreshText();
 	}
@@ -162,22 +154,10 @@ namespace ipn
 		refreshText();
 	}
 
-	void MultiTapApp::catchCurrentChar()
-	{
-		m_currentText.append(m_currentChar);
-		m_currentChar = QChar();
-		m_lastKey = -1;
-
-		blink();
-		m_cursorBlinkTimer->start();
-	}
-
 	void MultiTapApp::refreshText()
 	{
 		QString text = m_currentText;
 
-		if (m_currentChar != QChar())
-			text += m_currentChar;
 
 		if (m_cursorBlink)
 			text += "|";
@@ -187,6 +167,18 @@ namespace ipn
 
 	void MultiTapApp::unitChange() {
 		qDebug() << "TODO: change unit";
+		if (unit == "px") {
+			m_unitButton->setIconImage(":/img/icons/multitap/key_12c");
+			unit = "em";
+		}
+		else if (unit == "em") {
+			m_unitButton->setIconImage(":/img/icons/multitap/key_12b");
+			unit = "%";
+		}
+		else if (unit == "%") {
+			m_unitButton->setIconImage(":/img/icons/multitap/key_12a");
+			unit = "px";
+		}
 	}
 
 } // namespace ipn

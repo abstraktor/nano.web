@@ -33,6 +33,7 @@ class BorderWidthApp : public App
 		void swipeRight();
 		void backButtonClick();
 		void entryClicked(QString value);
+		void numberClicked(QString value);
 
 
 	signals:
