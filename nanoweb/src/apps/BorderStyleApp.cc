@@ -45,7 +45,6 @@ namespace ipn
 		animationDestination = QPoint();
 		tickCount = 0;
 
-
 		m_picker = new StyleListWidget(this);
 		m_picker->addEntry("none");
 		m_picker->addEntry("solid");

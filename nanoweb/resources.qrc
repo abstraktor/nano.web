@@ -62,7 +62,6 @@
         <file>img/our_icons/mockup.png</file>
         <file>img/our_icons/edit.png</file>
         <file>img/our_icons/followlink.png</file>
-        <file>meilenwerk/testpage.html</file>
         <file>img/our_icons/back.png</file>
         <file>img/our_imgs/elementTapped_background.png</file>
         <file>img/our_imgs/elementTapped_background_hover.png</file>
@@ -80,17 +79,16 @@
         <file>img/boxmodel-app/bm_released.png</file>
         <file>img/boxmodel-app/bm_rightbutton_pressed.png</file>
         <file>img/boxmodel-app/bm_topbutton_pressed.png</file>
+        <file>img/our_imgs/input.png</file>
         <file>meilenwerk/meilenwerk.html</file>
+        <file>meilenwerk/testpage.html</file>
         <file>meilenwerk/meilenwerk-Dateien/_blank.gif</file>
         <file>meilenwerk/meilenwerk-Dateien/content.css</file>
         <file>meilenwerk/meilenwerk-Dateien/meilenwerk_zuerichsee_start_01.jpg</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>meilenwerk/meilenwerk-Dateien/MW_Logo.png</file>
         <file>meilenwerk/meilenwerk-Dateien/nav.css</file>
         <file>meilenwerk/meilenwerk-Dateien/rb.css</file>
         <file>meilenwerk/meilenwerk-Dateien/zuerichsee_imageshow.js</file>
-        <file>img/our_imgs/arrow_down.png</file>
-        <file>img/our_imgs/arrow_up.png</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
-        <file>img/our_imgs/input.png</file>
     </qresource>
 </RCC>

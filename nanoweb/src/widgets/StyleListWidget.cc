@@ -23,6 +23,7 @@ namespace ipn
 		lastPoint = QPoint();
 
 		m_entries = QVector<QString>();
+		m_activeEntry = NO_ENTRY;
 		selected = "";
 
 	}
@@ -34,6 +35,8 @@ namespace ipn
 
 		resize(240, (numberOfEntries + 1) * 48);
 
+		if (m_entries.contains(selected))
+			m_activeEntry = m_entries.indexOf(selected);
 		update();
 	}
 
@@ -52,8 +55,10 @@ namespace ipn
 			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 			if(m_entries.at(i) == selected)
 				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
-			if (buttonPressed && rect.contains(lastPoint - translation))
+			if (buttonPressed && rect.contains(lastPoint - translation)) {
 				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
+				m_activeEntry = i;
+			}
 
 			painter.drawRect(rect);
 			painter.setPen(QPen(Qt::black, 1.0f));
@@ -137,8 +142,9 @@ namespace ipn
 	void StyleListWidget::mouseReleaseEvent(QMouseEvent *event)
 	{
 		if (buttonPressed) {
-			int index = ((event->pos() - translation).y() / 48);
-			emit entryClicked(m_entries.at(index));
+			QString value = m_entries.at(m_activeEntry);
+			if (value == "") value = selected;
+			emit entryClicked(value);
 		}
 		mousePressed = false;
 		doSwiping = false;

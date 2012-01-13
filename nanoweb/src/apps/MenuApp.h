@@ -5,39 +5,39 @@
 
 namespace ipn
 {
+class BackgroundWidget;
+class TitleBarWidget;
+class ScalableButtonWidget;
 
-	class BackgroundWidget;
-	class TitleBarWidget;
-	class ScalableButtonWidget;
+class MenuApp : public App
+{
+    Q_OBJECT
 
-	class MenuApp : public App
-	{
-		Q_OBJECT
+    public:
+        MenuApp(QWidget *parent = 0);
 
-		public:
-            MenuApp(QWidget *parent = 0);
+        enum ButtonPosition {TopLeft, TopRight, BottomLeft, BottomRight};
 
-			enum ButtonPosition {TopLeft, TopRight, BottomLeft, BottomRight};
+        ScalableButtonWidget *button(ButtonPosition position);
+        void addButton(ButtonPosition position, QString title, QString iconImage);
+        void addButton(ButtonPosition position, QString title, QString iconImage, bool enable);
 
-			ScalableButtonWidget *button(ButtonPosition position);
-			void addButton(ButtonPosition position, QString title, QString iconImage);
+        inline bool isOpaque() {return true;}
+        TitleBarWidget *titleBar();
 
-			inline bool isOpaque() {return true;}
-			TitleBarWidget *titleBar();
+    signals:
+        void backButtonClicked();
+        void topLeftButtonClicked();
+        void topRightButtonClicked();
+        void bottomLeftButtonClicked();
+        void bottomRightButtonClicked();
 
-		signals:
-			void backButtonClicked();
-            void topLeftButtonClicked();
-            void topRightButtonClicked();
-            void bottomLeftButtonClicked();
-            void bottomRightButtonClicked();
+    protected:
+        BackgroundWidget *m_back;
 
-		protected:
-			BackgroundWidget *m_back;
-
-			TitleBarWidget *m_titleBar;
-			ScalableButtonWidget *m_buttons[4];
-	};
+        TitleBarWidget *m_titleBar;
+        ScalableButtonWidget *m_buttons[4];
+};
 
 } // namespace ipn
 

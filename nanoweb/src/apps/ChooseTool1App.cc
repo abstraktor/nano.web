@@ -225,15 +225,21 @@ namespace ipn
 		translation = animationStart + ((float) tickCount / FRAMES) * vector;
 		updateView();
 		if (tickCount == (int) FRAMES) {
-			animationTimer->stop();
-			diff = translation = animationDestination;
-			tickCount = 0;
-			updateView();
+			stopAnimation();
 		}
+	}
+
+	void ChooseTool1App::stopAnimation() {
+		animationTimer->stop();
+		diff = translation = animationDestination;
+		tickCount = 0;
+		updateView();
+
 	}
 
 	void ChooseTool1App::mousePressEvent(QMouseEvent *event)
 	{
+		stopAnimation();
 	}
 
 	void ChooseTool1App::mouseMoveEvent(QMouseEvent *event)

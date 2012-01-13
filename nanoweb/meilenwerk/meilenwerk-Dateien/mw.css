@@ -1,8 +1,23 @@
+* {
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: rgb(0, 0, 0);
+	border-bottom-color: rgb(0, 0, 0);
+	border-left-color: rgb(0, 0, 0);
+	border-right-color: rgb(0, 0, 0);
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+}
+
 body {
 	margin: 0px; padding: 0px; width: 100%; height: 100%; background-color: rgb(0, 0, 0);
 }
 #head {
-	padding: 15px 0px 0px; border: 0px currentColor; width: 900px; height: 70px; z-index: 0; background-color: rgb(0, 0, 0);
+	padding: 15px 0px 0px; width: 900px; height: 70px; z-index: 0; background-color: rgb(0, 0, 0);
 }
 #logo {
 	width: 270px; height: 43px; float: left;
@@ -10,11 +25,10 @@ body {
 #impressum {
 	color: rgb(141, 141, 141); font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold;
 }
-#navigation {
-	border: 0px currentColor; width: 900px; height: 40px; z-index: 0; background-color: rgb(0, 0, 0);
+#navigation { width: 900px; height: 40px; z-index: 0; background-color: rgb(0, 0, 0);
 }
 #divSpacerI {
-	margin: 0px auto; border: 0px currentColor; width: 900px; height: 12px; z-index: 0; background-color: rgb(0, 0, 0);
+	margin: 0px auto; width: 900px; height: 12px; z-index: 0; background-color: rgb(0, 0, 0);
 }
 #bigImage {
 	width: 900px; height: 360px; z-index: 0; margin-top: 12px;
@@ -22,8 +36,8 @@ body {
 #zuerichImage {
 	border-top-style: solid;
 	border-bottom-style: solid;
-	border-right-style: none;
-	border-left-style: none;
+	border-right-style: solid;
+	border-left-style: solid;
 	border-top-color: rgb(141, 141, 141);
 	border-bottom-color: rgb(141, 141, 141);
 	border-left-color: rgb(0, 0, 0);
@@ -32,25 +46,19 @@ body {
 	border-bottom-width: 3px;
 	border-left-width: 0px;
 	border-right-width: 0px;
-	
-	/*border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141);
-	border-left: none;
-	border-right: none;*/
 }
 #divBanner {
-	margin: 0px auto; border: 3px currentColor; width: 900px; height: 60px; z-index: 0;
-}
-#divImageVideo {
-	border-width: 3px; border-style: solid none; border-color: rgb(141, 141, 141); margin: 0px auto; width: 900px; height: 360px; z-index: 0; background-image: none; background-repeat: no-repeat;
+	margin: 0px auto; border: 3px solid rgb(0, 0, 0); width: 900px; height: 60px; z-index: 0;
 }
 #divImages {
-	margin: 0px auto; border: 0px currentColor; width: 900px; height: 182px; z-index: 0;
+	margin: 0px auto; width: 900px; height: 182px; z-index: 0;
 }
+
 #divSpacerII {
-	margin: 0px auto; border: 0px currentColor; width: 900px; height: 13px; z-index: 0; background-color: rgb(0, 0, 0);
+	margin: 0px auto; width: 900px; height: 13px; z-index: 0; background-color: rgb(0, 0, 0);
 }
 #divMCI {
-	margin: 0px auto; border: 0px currentColor; width: 900px; height: 350px; z-index: 0; background-color: rgb(0, 0, 0);
+	margin: 0px auto; width: 900px; height: 350px; z-index: 0; background-color: rgb(0, 0, 0);
 }
 #divVertSubMenu {
 	width: 145px; height: 325px; float: left; z-index: 0; background-color: rgb(0, 0, 0);
@@ -80,7 +88,17 @@ body {
 	background-position: right; width: 195px; height: 325px; right: 5px; float: right; background-color: rgb(37, 37, 37);
 }
 .GalerieRahmen {
-	border-top-color: rgb(141, 141, 141); border-bottom-color: rgb(141, 141, 141); border-top-width: 3px; border-bottom-width: 3px; border-top-style: solid; border-bottom-style: solid;
+
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: rgb(141, 141, 141);
+	border-bottom-color: rgb(141, 141, 141);
+	border-left-color: rgb(0, 0, 0);
+	border-right-color: rgb(0, 0, 0);
+	border-top-width: 3px;
+	border-bottom-width: 3px;
 }
 .breadcrumb {
 	text-align: right; right: 20px; color: rgb(160, 165, 165); text-indent: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; border-right-color: rgb(0, 0, 0); border-right-width: 15px; border-right-style: solid;

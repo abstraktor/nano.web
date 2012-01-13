@@ -119,15 +119,21 @@ namespace ipn
 		translation = animationStart + ((float) tickCount / FRAMES) * vector;
 		updateView();
 		if (tickCount == (int) FRAMES) {
-			animationTimer->stop();
-			diff = translation = animationDestination;
-			tickCount = 0;
-			updateView();
+			stopAnimation();
 		}
+	}
+
+	void BorderEditApp::stopAnimation() {
+		animationTimer->stop();
+		diff = translation = animationDestination;
+		tickCount = 0;
+		updateView();
+
 	}
 
 	void BorderEditApp::mousePressEvent(QMouseEvent *event)
 	{
+		stopAnimation();
 		QRect top = QRect(52, 0, 136, 52);
 		if (top.contains(event->pos())) {
 			backgroundString = ":img/boxmodel-app/bm_topbutton_pressed.png";
@@ -279,7 +285,7 @@ namespace ipn
 			left = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-left-color", QWebElement::ComputedStyle));
 			right = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-right-color", QWebElement::ComputedStyle));
 			bottom = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-bottom-color", QWebElement::ComputedStyle));
-			painter.setPen(QPen(Qt::black, 2.0));
+			painter.setPen(QPen(Qt::black, 1.0));
 			painter.setBrush(QBrush(top, Qt::SolidPattern));
 			painter.drawRoundedRect(70, 10, 100, 32, 9.0, 9.0);
 			painter.rotate(90);
