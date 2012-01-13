@@ -94,5 +94,6 @@
         <file>img/icons/multitap/key_12a.png</file>
         <file>img/icons/multitap/key_12b.png</file>
         <file>img/icons/multitap/key_12c.png</file>
+        <file>img/mockup-app/storysample_start.png</file>
     </qresource>
 </RCC>
