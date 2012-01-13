@@ -71,7 +71,8 @@ SOURCES += \
     src/apps/BorderStyleApp.cc \
     src/apps/BorderWidthApp.cc \
     src/apps/MockUpApp.cc \
-    src/widgets/WidthListWidget.cc
+    src/widgets/WidthListWidget.cc \
+    src/nanoweb/NanoOverlayWidget.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -118,7 +119,8 @@ HEADERS += \
     src/apps/BorderStyleApp.h \
     src/apps/BorderWidthApp.h \
     src/apps/MockUpApp.h \
-    src/widgets/WidthListWidget.h
+    src/widgets/WidthListWidget.h \
+    src/nanoweb/NanoOverlayWidget.h
 FORMS +=
 
 INCLUDEPATH += src src/apps src/widgets
@@ -281,6 +283,10 @@ OTHER_FILES += \
 
 RESOURCES += \
     resources.qrc
+
+
+
+
 
 
 

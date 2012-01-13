@@ -1,2 +1,4 @@
 nanoweb.pro.user
 nanoweb.pro.user*
+*.o
+moc_*.cpp

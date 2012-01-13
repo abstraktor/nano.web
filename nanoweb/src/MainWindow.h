@@ -10,7 +10,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "widgets/OverlayWidget.h"
+#include "nanoweb/NanoOverlayWidget.h"
 
 #include <QtGui/QMainWindow>
 #include <QWebElement>
@@ -39,7 +39,7 @@ class BorderStyleApp;
 class BorderWidthApp;
 class MockUpApp;
 
-class OverlayWidget;
+class NanoOverlayWidget;
 class TitleBarWidget;
 class ScalableButtonWidget;
 class ImageWidget;
@@ -123,7 +123,7 @@ class MainWindow : public QMainWindow
         MockUpApp *m_mockUpApp;
 
         // For emulating touch noise:
-        OverlayWidget *m_overlayWidget;
+        NanoOverlayWidget *m_overlayWidget;
         QPoint m_currentOffset;
         QWidget *m_currentChild;
         static const int m_noiseRadius = 20;
