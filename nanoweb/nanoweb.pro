@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Add files and directories to ship with the application 
 # by adapting the examples below.
 # file1.source = myfile
@@ -286,19 +285,6 @@ RESOURCES += \
     resources.qrc
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 # Add files and directories to ship with the application 
 # by adapting the examples below.
 # file1.source = myfile
@@ -584,18 +570,3 @@ OTHER_FILES += \
 
 RESOURCES += \
     resources.qrc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 7086d695736b39a577f5d24bc5e2155e6454b43c
