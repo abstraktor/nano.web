@@ -98,7 +98,6 @@ namespace ipn
 		m_currentText = QString();
 		m_cursorBlink = false;
 		unit = "px";
-		qDebug() << unit;
 	}
 
 	QString MultiTapApp::text()
@@ -166,7 +165,6 @@ namespace ipn
 	}
 
 	void MultiTapApp::unitChange() {
-		qDebug() << "TODO: change unit";
 		if (unit == "px") {
 			m_unitButton->setIconImage(":/img/icons/multitap/key_12c");
 			unit = "em";

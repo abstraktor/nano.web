@@ -100,18 +100,22 @@ namespace ipn
 				doSwiping = true;
 			}
 			if (doSwiping) {
-				if (diff.x() > 0)
-					diff.setX(0);
-				if (diff.y() > 0)
-					diff.setY(0);
-				if (abs(diff.x()) > (715 * m_webView->zoomFactor()))
-					diff.setX(-715 * m_webView->zoomFactor());
-				if (abs(diff.y()) > (275 * m_webView->zoomFactor()))
-					diff.setY(-275 * m_webView->zoomFactor());
+				setDiffCorrectly();
 				translation = diff;
 			}
 		}
 		updateView();
+	}
+
+	void WebviewApp::setDiffCorrectly() {
+		if (diff.x() > 0)
+			diff.setX(0);
+		if (diff.y() > 0)
+			diff.setY(0);
+		if (abs(diff.x()) > (930 * m_webView->zoomFactor() - 240))
+			diff.setX(-(930 * m_webView->zoomFactor() - 240));
+		if (abs(diff.y()) > (525 * m_webView->zoomFactor() - 240))
+			diff.setY(-(525 * m_webView->zoomFactor() - 240));
 	}
 
 	void WebviewApp::mouseReleaseEvent(QMouseEvent *event) {
@@ -127,6 +131,7 @@ namespace ipn
 	void WebviewApp::updateView() {
 		update();
 		m_webView->move(translation.x(), translation.y());
+		m_webView->update();
 	}
 
 	void WebviewApp::changePinchScaleFactor(qreal delta)
@@ -134,7 +139,11 @@ namespace ipn
 		qDebug() << "zooming";
 		doZooming = true;
 		m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
+		diff = diff - QPoint(120, 120);
 		diff = diff * delta;
+		diff = diff + QPoint(120, 120);
+		setDiffCorrectly();
+		translation = diff;
 		updateView();
 		emit zoomTriggered();
 	}

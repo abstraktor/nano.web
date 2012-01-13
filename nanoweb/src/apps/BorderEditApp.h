@@ -44,7 +44,7 @@ class BorderEditApp : public App
 		bool canLeft();
 		bool canRight();
 		void stopAnimation();
-		bool leftPressed, topPressed, rightPressed, bottomPressed;
+		bool leftPressed, topPressed, rightPressed, bottomPressed, centerPressed;
 		void updateView();
 		PageIndicatorWidget *m_pageIndicator;
 		QPoint topLeft, topRight, bottomLeft, bottomRight;

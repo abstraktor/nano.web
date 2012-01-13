@@ -23,6 +23,14 @@ namespace ipn
 
 	}
 
+	void WidthListWidget::setSelected(QString newSelected) {
+		selected = newSelected;
+	}
+
+	QString WidthListWidget::getSelected() {
+		return selected;
+	}
+
 	void WidthListWidget::addEntry(QString text)
 	{
 		m_entries.append(text);
@@ -46,7 +54,7 @@ namespace ipn
 
 			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 
-			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick"))
+			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick" && !selected.contains(" ")))
 				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
 			if (buttonPressed && rect.contains(lastPoint)) {
 				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
@@ -62,7 +70,7 @@ namespace ipn
 			if (i == 3) {
 				QPixmap pixmap = QPixmap(":/img/our_imgs/input.png");
 				painter.drawPixmap(90, i * ENTRYHEIGHT + 10, 60, 60, pixmap);
-				if (i == 3 && selected != "thin" && selected != "medium" && selected != "thick")
+				if (i == 3 && selected != "thin" && selected != "medium" && selected != "thick" && !selected.contains(" "))
 					painter.drawText(0, 3 * ENTRYHEIGHT, 90, 200 - 3 * ENTRYHEIGHT, Qt::AlignCenter, selected);
 			}
 

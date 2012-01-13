@@ -75,7 +75,6 @@ namespace ipn
 	}
 
 	void BorderWidthApp::numberClicked(QString value) {
-		qDebug() << "pppp" << value;
 		currentEl.setStyleProperty(cssproperty, value);
 		emit valueChosen();
 	}
@@ -188,7 +187,7 @@ namespace ipn
 
 	void BorderWidthApp::paintEvent(QPaintEvent*)
 	{
-		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::CascadedStyle);
+		m_picker->setSelected(currentEl.styleProperty(cssproperty, QWebElement::CascadedStyle));
 
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);

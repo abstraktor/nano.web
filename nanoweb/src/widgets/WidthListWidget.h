@@ -18,7 +18,8 @@ namespace ipn
 
 			void addEntry(QString text);
 
-			QString selected;
+			void setSelected(QString newSelected);
+			QString getSelected();
 
 
 		signals:
@@ -30,6 +31,7 @@ namespace ipn
 			virtual void mouseReleaseEvent(QMouseEvent *event);
 
 		private:
+			QString selected;
 			QVector<QString> m_entries;
 			bool buttonPressed;
 			QPoint lastPoint;

@@ -60,6 +60,7 @@ namespace ipn
 		QPoint translation, diff, lastPoint;
 
 		void updateView();
+		void setDiffCorrectly();
 
 
 		qreal m_currentScaleFactor, m_currentRotationAngle;

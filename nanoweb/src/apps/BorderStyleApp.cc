@@ -65,7 +65,6 @@ namespace ipn
 	}
 
 	void BorderStyleApp::entryClicked(QString value) {
-		qDebug() << cssproperty << value;
 		currentEl.setStyleProperty(cssproperty, value); // + " !important");
 		emit valueChosen();
 	}

@@ -131,9 +131,9 @@ namespace ipn
 		m_frameWidget->pushApp(m_chooseToolBoxmodelApp);
 	}
 	void MainWindow::switchToElementTapped(QWebElement el) {
-		//m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);
-		m_borderEditApp->setElement(el);
-		m_frameWidget->pushApp(m_borderEditApp);
+		m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);
+		//m_borderEditApp->setElement(el);
+		//m_frameWidget->pushApp(m_borderEditApp);
 	}
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 	void MainWindow::elementTappedLeftButtonClicked() {

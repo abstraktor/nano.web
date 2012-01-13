@@ -34,7 +34,7 @@ namespace ipn
 
 		backgroundString = "";
 
-		leftPressed = topPressed = bottomPressed = rightPressed = false;
+		leftPressed = topPressed = bottomPressed = rightPressed = centerPressed = false;
 
 		translation = QPoint();
 		diff = QPoint();
@@ -157,6 +157,9 @@ namespace ipn
 			backgroundString = ":img/boxmodel-app/bm_leftbutton_pressed.png";
 			leftPressed = true;
 		}
+		QRect center = QRect(52, 52, 136, 136);
+		if (center.contains(event->pos()))
+			centerPressed = true;
 		updateView();
 	}
 
@@ -202,7 +205,6 @@ namespace ipn
 			animationTimer->start();
 		}
 		mousePressed = false;
-		doSwiping = false;
 		moves = 0;
 		axis = NOAXIS;
 		backgroundString = "";
@@ -216,20 +218,25 @@ namespace ipn
 		else if (m_pageIndicator->getActiveSegment() == 2)
 			clickedCssProperty = "style";
 		QRect top = QRect(52, 0, 136, 52);
-		if (topPressed && top.contains(event->pos()))
+		if (!doSwiping && topPressed && top.contains(event->pos()))
 			emit borderEdit("border-top-" + clickedCssProperty);
 		QRect right = QRect(188, 52, 52, 136);
-		if (rightPressed && right.contains(event->pos()))
+		if (!doSwiping && rightPressed && right.contains(event->pos()))
 			emit borderEdit("border-right-" + clickedCssProperty);
 		QRect bottom = QRect(52, 188, 136, 52);
-		if (bottomPressed && bottom.contains(event->pos()))
+		if (!doSwiping && bottomPressed && bottom.contains(event->pos()))
 			emit borderEdit("border-bottom-" + clickedCssProperty);
 		QRect left = QRect(0, 52, 52, 136);
-		if (leftPressed && left.contains(event->pos()))
+		if (!doSwiping && leftPressed && left.contains(event->pos()))
 			emit borderEdit("border-left-" + clickedCssProperty);
+		QRect center = QRect(52, 52, 136, 136);
+		if (!doSwiping && centerPressed && center.contains(event->pos()))
+			emit borderEdit("border-" + clickedCssProperty);
+
 		updateView();
 
 		leftPressed = topPressed = bottomPressed = rightPressed = false;
+		doSwiping = false;
 	}
 
 	void BorderEditApp::paintEvent(QPaintEvent*)
