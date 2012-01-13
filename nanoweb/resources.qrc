@@ -31,18 +31,6 @@
         <file>img/buttons/title_bar_button_right_down.png</file>
         <file>img/icons/icon.png</file>
         <file>img/icons/checkmark.png</file>
-        <file>img/icons/multitap/key_0.png</file>
-        <file>img/icons/multitap/key_1.png</file>
-        <file>img/icons/multitap/key_2.png</file>
-        <file>img/icons/multitap/key_3.png</file>
-        <file>img/icons/multitap/key_4.png</file>
-        <file>img/icons/multitap/key_5.png</file>
-        <file>img/icons/multitap/key_6.png</file>
-        <file>img/icons/multitap/key_7.png</file>
-        <file>img/icons/multitap/key_8.png</file>
-        <file>img/icons/multitap/key_9.png</file>
-        <file>img/icons/multitap/key_10.png</file>
-        <file>img/icons/multitap/key_11.png</file>
         <file>img/slider/bar_left.png</file>
         <file>img/slider/bar_active.png</file>
         <file>img/slider/bar_inactive.png</file>
@@ -84,12 +72,10 @@
         <file>meilenwerk/meilenwerk-Dateien/_blank.gif</file>
         <file>meilenwerk/meilenwerk-Dateien/content.css</file>
         <file>meilenwerk/meilenwerk-Dateien/meilenwerk_zuerichsee_start_01.jpg</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>meilenwerk/meilenwerk-Dateien/MW_Logo.png</file>
         <file>meilenwerk/meilenwerk-Dateien/nav.css</file>
         <file>meilenwerk/meilenwerk-Dateien/rb.css</file>
         <file>meilenwerk/meilenwerk-Dateien/zuerichsee_imageshow.js</file>
-        <file>img/frame/t.png</file>
         <file>img/icons/multitap/key_0.png</file>
         <file>img/icons/multitap/key_1.png</file>
         <file>img/icons/multitap/key_2.png</file>
@@ -109,5 +95,13 @@
         <file>img/mockup-app/storysample_start.png</file>
         <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>img/frame/t.png</file>
+        <file>img/menu-icons/icon_attributes.png</file>
+        <file>img/menu-icons/icon_border.png</file>
+        <file>img/menu-icons/icon_dimension.png</file>
+        <file>img/menu-icons/icon_list.png</file>
+        <file>img/menu-icons/icon_plus.png</file>
+        <file>img/menu-icons/icon_ppadding.png</file>
+        <file>img/menu-icons/icon_trash.png</file>
+        <file>img/menu-icons/icon_margin.png</file>
     </qresource>
 </RCC>

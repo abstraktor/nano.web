@@ -77,22 +77,22 @@ namespace ipn
 		m_topLeft2 = new ScalableButtonWidget(this);
 		m_topLeft2->resize(64, 64);
 		m_topLeft2->setImage(":/img/buttons/default");
-		m_topLeft2->setIconImage(":/img/our_icons/edit");
+        m_topLeft2->setIconImage(":/img/menu-icons/icon_list");
 		m_topLeft2->setTitle("list");
 		m_topRight2 = new ScalableButtonWidget(this);
 		m_topRight2->resize(64, 64);
 		m_topRight2->setImage(":/img/buttons/default");
-		m_topRight2->setIconImage(":/img/our_icons/edit");
+        m_topRight2->setIconImage(":/img/menu-icons/icon_plus");
 		m_topRight2->setTitle("add child");
 		m_bottomLeft2 = new ScalableButtonWidget(this);
 		m_bottomLeft2->resize(64, 64);
 		m_bottomLeft2->setImage(":/img/buttons/default");
-		m_bottomLeft2->setIconImage(":/img/our_icons/edit");
+        m_bottomLeft2->setIconImage(":/img/menu-icons/icon_attributes");
 		m_bottomLeft2->setTitle("attributes");
 		m_bottomRight2 = new ScalableButtonWidget(this);
 		m_bottomRight2->resize(64, 64);
 		m_bottomRight2->setImage(":/img/buttons/default");
-		m_bottomRight2->setIconImage(":/img/our_icons/edit");
+        m_bottomRight2->setIconImage(":/img/menu-icons/icon_trash");
 		m_bottomRight2->setTitle("delete");
 
 		m_topLeft3 = new ScalableButtonWidget(this);

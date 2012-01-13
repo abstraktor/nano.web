@@ -72,7 +72,6 @@ SOURCES += \
     src/apps/BorderWidthApp.cc \
     src/apps/MockUpApp.cc \
     src/widgets/WidthListWidget.cc \
-    src/apps/MockupApp.cc \
     src/nanoweb/NanoOverlayWidget.cc
 HEADERS += \
         src/MainWindow.h \

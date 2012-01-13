@@ -5,7 +5,7 @@
 #include <QtWebKit>
 #include <QWebView>
 #include "widgets/FlickArea.h"
-#include "nanoweb/NanoQWebView.h"
+#include "nanoweb/NanoQWebview.h"
 
 namespace ipn
 {
