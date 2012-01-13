@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MultiTapApp.h'
 **
-** Created: Fri 13. Jan 14:07:58 2012
+** Created: Fri 13. Jan 15:17:33 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MultiTapApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,6 +38,7 @@ static const uint qt_meta_data_ipn__MultiTapApp[] = {
       50,   17,   17,   17, 0x09,
       58,   17,   17,   17, 0x09,
       77,   17,   17,   17, 0x09,
+      91,   17,   17,   17, 0x09,
 
        0        // eod
 };
@@ -46,6 +47,7 @@ static const char qt_meta_stringdata_ipn__MultiTapApp[] = {
     "ipn::MultiTapApp\0\0accepted()\0"
     "multiTapKeyPressed()\0blink()\0"
     "catchCurrentChar()\0refreshText()\0"
+    "unitChange()\0"
 };
 
 const QMetaObject ipn::MultiTapApp::staticMetaObject = {
@@ -82,9 +84,10 @@ int ipn::MultiTapApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 2: blink(); break;
         case 3: catchCurrentChar(); break;
         case 4: refreshText(); break;
+        case 5: unitChange(); break;
         default: ;
         }
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

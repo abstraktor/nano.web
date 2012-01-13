@@ -233,7 +233,7 @@ namespace ipn
 	{
 
 		QPainter painter(this);
-		painter.setRenderHint(QPainter::Antialiasing);
+		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));
 		painter.drawRect(0, 0, 240, 240);
 
@@ -261,10 +261,10 @@ namespace ipn
 		if (m_pageIndicator->getActiveSegment() == 0) {
 			cssproperty = "width";
 			painter.setPen(QPen(Qt::black, 5.0));
-			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-top-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-top-" + cssproperty, QWebElement::CascadedStyle));
 			painter.rotate(90);
 			painter.translate(0, -240);
-			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-right-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-right-" + cssproperty, QWebElement::CascadedStyle));
 
 			painter.translate(0, 240);
 			painter.rotate(90);
@@ -272,20 +272,20 @@ namespace ipn
 			painter.translate(240, 240);
 			painter.rotate(90);
 			painter.translate(-240, 0);
-			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-left-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-left-" + cssproperty, QWebElement::CascadedStyle));
 			painter.translate(240, 0);
 			painter.rotate(90);
-			painter.drawText(0, 188, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-bottom-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 188, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-bottom-" + cssproperty, QWebElement::CascadedStyle));
 		}
 		else if (m_pageIndicator->getActiveSegment() == 1) {
 			cssproperty = "color";
 
 			QColor top, right, bottom, left;
-			top = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-top-color", QWebElement::ComputedStyle));
-			left = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-left-color", QWebElement::ComputedStyle));
-			right = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-right-color", QWebElement::ComputedStyle));
-			bottom = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-bottom-color", QWebElement::ComputedStyle));
-			painter.setPen(QPen(Qt::black, 1.0));
+			top = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-top-color", QWebElement::CascadedStyle));
+			left = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-left-color", QWebElement::CascadedStyle));
+			right = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-right-color", QWebElement::CascadedStyle));
+			bottom = ipn::webhelpers::stringToColor(currentEl.styleProperty("border-bottom-color", QWebElement::CascadedStyle));
+			painter.setPen(QPen(Qt::black, 0.5));
 			painter.setBrush(QBrush(top, Qt::SolidPattern));
 			painter.drawRoundedRect(70, 10, 100, 32, 9.0, 9.0);
 			painter.rotate(90);
@@ -306,15 +306,15 @@ namespace ipn
 			painter.translate(240, 0);
 			painter.rotate(90);
 			//painter.setBrush(QBrush(bottom, Qt::SolidPattern));
-			//painter.drawText(0, 188, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-bottom-" + cssproperty, QWebElement::ComputedStyle));
+			//painter.drawText(0, 188, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-bottom-" + cssproperty, QWebElement::CascadedStyle));
 		}
 		else if (m_pageIndicator->getActiveSegment() == 2) {
 			cssproperty = "style";
 			painter.setPen(QPen(Qt::black, 5.0));
-			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-top-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-top-" + cssproperty, QWebElement::CascadedStyle));
 			painter.rotate(90);
 			painter.translate(0, -240);
-			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-right-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-right-" + cssproperty, QWebElement::CascadedStyle));
 
 			painter.translate(0, 240);
 			painter.rotate(90);
@@ -322,10 +322,10 @@ namespace ipn
 			painter.translate(240, 240);
 			painter.rotate(90);
 			painter.translate(-240, 0);
-			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-left-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 0, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-left-" + cssproperty, QWebElement::CascadedStyle));
 			painter.translate(240, 0);
 			painter.rotate(90);
-			painter.drawText(0, 188, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-bottom-" + cssproperty, QWebElement::ComputedStyle));
+			painter.drawText(0, 188, 240, 52, Qt::AlignCenter, currentEl.styleProperty("border-bottom-" + cssproperty, QWebElement::CascadedStyle));
 		}
 
 	}

@@ -58,6 +58,7 @@ namespace ipn
 		m_borderEditApp = new BorderEditApp();
 		m_borderWidthApp = new BorderWidthApp();
 		m_borderStyleApp = new BorderStyleApp();
+		m_multiTapApp = new MultiTapApp();
 
 
 		// Set MenuApp as first app:
@@ -89,6 +90,8 @@ namespace ipn
 		connect(m_borderEditApp, SIGNAL(borderEdit(QString)), this, SLOT(switchToSpecificBorderApp(QString)));
 		connect(m_borderStyleApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
 		connect(m_borderWidthApp, SIGNAL(valueChosen()), m_frameWidget, SLOT(popApp()));
+		connect(m_borderWidthApp, SIGNAL(requestNumber()), this, SLOT(switchToMultiTapApp()));
+		connect(m_multiTapApp, SIGNAL(accepted()), m_frameWidget, SLOT(popApp()));
 
 
 		// Forward event notifications from the frame widget:
@@ -174,6 +177,9 @@ namespace ipn
 			m_borderStyleApp->setElement(m_borderEditApp->getElement());
 			m_frameWidget->pushApp(m_borderStyleApp);
 		}
+	}
+	void MainWindow::switchToMultiTapApp() {
+		m_frameWidget->pushApp(m_multiTapApp);
 	}
 
 

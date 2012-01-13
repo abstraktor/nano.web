@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'BorderWidthApp.h'
 **
-** Created: Fri 13. Jan 14:08:30 2012
+** Created: Fri 13. Jan 14:54:18 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,30 +23,32 @@ static const uint qt_meta_data_ipn__BorderWidthApp[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       21,   20,   20,   20, 0x05,
+      35,   20,   20,   20, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      35,   20,   20,   20, 0x0a,
-      47,   20,   20,   20, 0x0a,
-      59,   20,   20,   20, 0x0a,
-      72,   20,   20,   20, 0x0a,
-      96,   90,   20,   20, 0x0a,
+      51,   20,   20,   20, 0x0a,
+      63,   20,   20,   20, 0x0a,
+      75,   20,   20,   20, 0x0a,
+      88,   20,   20,   20, 0x0a,
+     112,  106,   20,   20, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ipn__BorderWidthApp[] = {
     "ipn::BorderWidthApp\0\0valueChosen()\0"
-    "timerTick()\0swipeLeft()\0swipeRight()\0"
-    "backButtonClick()\0value\0entryClicked(QString)\0"
+    "requestNumber()\0timerTick()\0swipeLeft()\0"
+    "swipeRight()\0backButtonClick()\0value\0"
+    "entryClicked(QString)\0"
 };
 
 const QMetaObject ipn::BorderWidthApp::staticMetaObject = {
@@ -79,14 +81,15 @@ int ipn::BorderWidthApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: valueChosen(); break;
-        case 1: timerTick(); break;
-        case 2: swipeLeft(); break;
-        case 3: swipeRight(); break;
-        case 4: backButtonClick(); break;
-        case 5: entryClicked((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: requestNumber(); break;
+        case 2: timerTick(); break;
+        case 3: swipeLeft(); break;
+        case 4: swipeRight(); break;
+        case 5: backButtonClick(); break;
+        case 6: entryClicked((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
@@ -95,5 +98,11 @@ int ipn::BorderWidthApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void ipn::BorderWidthApp::valueChosen()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void ipn::BorderWidthApp::requestNumber()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
 }
 QT_END_MOC_NAMESPACE

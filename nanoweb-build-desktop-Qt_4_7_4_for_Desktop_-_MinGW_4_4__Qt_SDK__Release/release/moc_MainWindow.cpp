@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWindow.h'
 **
-** Created: Fri 13. Jan 14:28:08 2012
+** Created: Fri 13. Jan 14:49:24 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -50,7 +50,8 @@ static const uint qt_meta_data_ipn__MainWindow[] = {
      483,  471,   16,   16, 0x08,
      518,   16,   16,   16, 0x08,
      551,   16,   16,   16, 0x08,
-     580,  576,   16,   16, 0x08,
+     576,   16,   16,   16, 0x08,
+     602,  598,   16,   16, 0x08,
 
        0        // eod
 };
@@ -72,8 +73,8 @@ static const char qt_meta_stringdata_ipn__MainWindow[] = {
     "switchToBorderApp()\0cssproperty\0"
     "switchToSpecificBorderApp(QString)\0"
     "elementTappedLeftButtonClicked()\0"
-    "elementTappedInFisheye()\0app\0"
-    "switchToApp(App*)\0"
+    "elementTappedInFisheye()\0switchToMultiTapApp()\0"
+    "app\0switchToApp(App*)\0"
 };
 
 const QMetaObject ipn::MainWindow::staticMetaObject = {
@@ -124,10 +125,11 @@ int ipn::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 16: switchToSpecificBorderApp((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 17: elementTappedLeftButtonClicked(); break;
         case 18: elementTappedInFisheye(); break;
-        case 19: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
+        case 19: switchToMultiTapApp(); break;
+        case 20: switchToApp((*reinterpret_cast< App*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 20;
+        _id -= 21;
     }
     return _id;
 }

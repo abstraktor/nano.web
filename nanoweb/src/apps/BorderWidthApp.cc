@@ -50,7 +50,7 @@ namespace ipn
 		m_picker->addEntry("thin");
 		m_picker->addEntry("medium");
 		m_picker->addEntry("thick");
-		m_picker->addEntry("");
+		m_picker->addEntry("number");
 		m_picker->move(0, 40);
 
 
@@ -64,6 +64,10 @@ namespace ipn
 	}
 
 	void BorderWidthApp::entryClicked(QString value) {
+		if (value == "number") {
+			emit requestNumber();
+			return;
+		}
 		currentEl.setStyleProperty(cssproperty, value);
 		emit valueChosen();
 	}
@@ -176,7 +180,7 @@ namespace ipn
 
 	void BorderWidthApp::paintEvent(QPaintEvent*)
 	{
-		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::ComputedStyle);
+		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::CascadedStyle);
 
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);

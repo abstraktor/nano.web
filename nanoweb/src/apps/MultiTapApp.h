@@ -30,6 +30,7 @@ namespace ipn
 			void blink();
 			void catchCurrentChar();
 			void refreshText();
+			void unitChange();
 
 		protected:
 			void handleKey(int key);
@@ -39,7 +40,7 @@ namespace ipn
 
 			ImageWidget *m_textBoxLeft, *m_textBoxMiddle, *m_textBoxRight;
 			TextWidget *m_text;
-			ScalableButtonWidget *m_acceptButton, *m_keys[12];
+			ScalableButtonWidget *m_unitButton, *m_keys[12];
 
 			QString m_currentText;
 			QChar m_currentChar;

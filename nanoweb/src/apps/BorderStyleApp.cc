@@ -178,7 +178,7 @@ namespace ipn
 
 	void BorderStyleApp::paintEvent(QPaintEvent*)
 	{
-		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::ComputedStyle);
+		m_picker->selected = currentEl.styleProperty(cssproperty, QWebElement::CascadedStyle);
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));

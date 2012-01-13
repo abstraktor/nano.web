@@ -44,6 +44,7 @@ class ChooseToolBoxmodelApp;
 class BorderEditApp;
 class BorderStyleApp;
 class BorderWidthApp;
+class MultiTapApp;
 
 class OverlayWidget;
 class TitleBarWidget;
@@ -101,6 +102,7 @@ class MainWindow : public QMainWindow
 		void switchToSpecificBorderApp(QString cssproperty);
 		void elementTappedLeftButtonClicked();
 		void elementTappedInFisheye();
+		void switchToMultiTapApp();
 
         void switchToApp(App *app);
 
@@ -120,6 +122,7 @@ class MainWindow : public QMainWindow
 		BorderEditApp *m_borderEditApp;
 		BorderStyleApp *m_borderStyleApp;
 		BorderWidthApp *m_borderWidthApp;
+		MultiTapApp *m_multiTapApp;
 
         // For emulating touch noise:
         OverlayWidget *m_overlayWidget;

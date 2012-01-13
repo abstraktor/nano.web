@@ -4,11 +4,12 @@
 #include "widgets/TextWidget.h"
 #include "widgets/ScalableButtonWidget.h"
 #include <QTimer>
+#include <QtDebug>
 
 namespace ipn
 {
 
-	QString characters[12] =
+	/*QString characters[12] =
 	{
 		".,?!'\"1-()@/:_",
 		"abc2האבדגוזח",
@@ -21,6 +22,21 @@ namespace ipn
 		"wxyz9‎‏",
 		0,
 		" 0",
+		0
+	};*/
+	QString characters[12] =
+	{
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		0,
+		"0",
 		0
 	};
 
@@ -51,12 +67,12 @@ namespace ipn
 		m_text->resize(172, 32);
 		m_text->move(20, 16);
 
-		m_acceptButton = new ScalableButtonWidget(this);
-		m_acceptButton->move(162, 8);
-		m_acceptButton->resize(70, 40);
-		m_acceptButton->setImage(":/img/buttons/default");
-		m_acceptButton->setIconImage(":/img/icons/checkmark.png");
-		connect(m_acceptButton, SIGNAL(clicked()), this, SIGNAL(accepted()));
+		m_unitButton = new ScalableButtonWidget(this);
+		m_unitButton->move(162, 8);
+		m_unitButton->resize(70, 40);
+		m_unitButton->setImage(":/img/buttons/default");
+		m_unitButton->setIconImage(":/img/icons/multitap/key_12a");
+		connect(m_unitButton, SIGNAL(clicked()), this, SLOT(unitChange()));
 
 		for (int i = 0; i < 12; i++)
 		{
@@ -109,7 +125,7 @@ namespace ipn
 	{
 		if (key == 9)
 		{
-			// Delete currently pressed key
+			// delete currently pressed key
 			if (m_currentChar.isNull() && !m_currentText.isEmpty())
 				m_currentText.chop(1);
 			else
@@ -120,37 +136,18 @@ namespace ipn
 		}
 		else if (key == 11)
 		{
-			// Shift key pressed
-			m_keys[11]->setActive(!m_keys[11]->isActive());
+			// accept button pressed
+			emit accepted();
 		}
 		else
 		{
 			// Character key pressed
 
-			if (key != m_lastKey)
-			{
-				// First tap, choose the first letter
-				if (!m_currentChar.isNull())
-					catchCurrentChar();
+			m_currentText.append(characters[key].at(0));
 
-				m_tapCount = 0;
-			}
-			else
-				// Multi-tap triggered, choose the next letter
-				m_tapCount++;
-
-			if (!characters[key].isEmpty())
-			{
-				m_currentChar = QChar(characters[key].at(m_tapCount % characters[key].length()));
-
-				if (m_keys[11]->isActive())
-					// shift pressed
-					m_currentChar = m_currentChar.toUpper();
-
-				m_multiTapTimer->start();
-				m_cursorBlinkTimer->stop();
-				m_cursorBlink = false;
-			}
+			m_multiTapTimer->start();
+			m_cursorBlinkTimer->stop();
+			m_cursorBlink = false;
 		}
 
 		m_lastKey = key;
@@ -186,6 +183,10 @@ namespace ipn
 			text += "|";
 
 		m_text->setText(text);
+	}
+
+	void MultiTapApp::unitChange() {
+		qDebug() << "TODO: change unit";
 	}
 
 } // namespace ipn

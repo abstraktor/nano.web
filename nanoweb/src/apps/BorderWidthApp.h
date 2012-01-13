@@ -37,6 +37,7 @@ class BorderWidthApp : public App
 
 	signals:
 		void valueChosen();
+		void requestNumber();
 
 
     protected:

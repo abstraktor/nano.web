@@ -33,7 +33,7 @@ namespace ipn
 	{
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing, true);
-		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
+		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor));
 
 
 		painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
@@ -46,9 +46,8 @@ namespace ipn
 
 			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
 
-			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick")) {
+			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick"))
 				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
-			}
 			if (buttonPressed && rect.contains(lastPoint)) {
 				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
 				m_activeEntry = i;
@@ -57,7 +56,8 @@ namespace ipn
 			painter.drawRect(rect);
 
 			painter.setPen(QPen(Qt::black, 1.0f));
-			painter.drawText(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT, Qt::AlignCenter, m_entries.at(i));
+			if (i != 3)
+				painter.drawText(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT, Qt::AlignCenter, m_entries.at(i));
 
 			if (i == 3) {
 				QPixmap pixmap = QPixmap(":/img/our_imgs/input.png");
