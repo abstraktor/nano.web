@@ -97,9 +97,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	}
 
 
-	void MainWindow::elementTappedInFisheye() {
-		m_elementTappedApp->elementTappedInFisheye(m_elementFisheyeApp->getElement());
-	}
+        void MainWindow::elementTappedInFisheye(QWebElement el) {
+                m_elementTappedApp->elementTappedInFisheye(el);
+        }
+
+        void MainWindow::elementTappedInFisheye(){
+                elementTappedInFisheye(m_elementFisheyeApp->getElement());
+        }
 
 	void MainWindow::resizeEvent(QResizeEvent *event)
 	{

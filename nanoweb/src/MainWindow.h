@@ -89,6 +89,7 @@ class MainWindow : public QMainWindow
         void switchToNumberApp();
         void elementTappedLeftButtonClicked();
         void elementTappedInFisheye();
+        void elementTappedInFisheye(QWebElement el);
 
         void switchToApp(App *app);
 
