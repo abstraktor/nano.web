@@ -27,7 +27,7 @@
 namespace ipn
 {
 
-	BorderEditApp::BorderEditApp(QWidget *pParent) : App(pParent)
+        BorderEditApp::BorderEditApp(QWidget *parent) : App(parent)
 	{
 
                 connect(this, SIGNAL(borderEdit(QString)), parent, SLOT(switchToSpecificBorderApp(QString)));

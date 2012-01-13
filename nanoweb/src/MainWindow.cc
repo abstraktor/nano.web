@@ -33,7 +33,7 @@ namespace ipn
 
 
 		// Create apps:
-		m_menuApp = new MenuApp();
+                m_menuApp = new MenuApp(this);
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
 		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
