@@ -52,8 +52,7 @@ namespace ipn
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
 		connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
 		connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
-		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
-		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+                connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 	}
 
 	void ElementFisheyeApp::setElement(QWebElement el) {
@@ -64,9 +63,10 @@ namespace ipn
 		return currentEl;
 	}
 
-	void ElementFisheyeApp::backButtonClick()
-	{
-		qDebug() << "Backbutton clicked! ";
+        void ElementFisheyeApp::backButtonClick()
+        {
+                //nop to override default action
+                qDebug() << "Backbutton clicked! ";
 	}
 
 	void ElementFisheyeApp::swipeRight()

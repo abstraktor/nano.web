@@ -41,7 +41,9 @@ namespace ipn
 	};
 
 	MultiTapApp::MultiTapApp(QWidget *parent) : App(parent)
-	{
+        {
+                connect(this, SIGNAL(accepted(QString)), parent, SLOT(popApp()));
+
 		m_back = new BackgroundWidget(this);
 		m_back->setColor(BackgroundWidget::BG_GRAY);
 		m_back->move(0, 0);

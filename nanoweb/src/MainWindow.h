@@ -46,96 +46,97 @@ class ImageWidget;
 
 class MainWindow : public QMainWindow
 {
-        Q_OBJECT
+    Q_OBJECT
 
-    public:
-        enum ScreenOrientation
-        {
-            ScreenOrientationLockPortrait,
-            ScreenOrientationLockLandscape,
-            ScreenOrientationAuto
-        };
+public:
+    enum ScreenOrientation
+    {
+        ScreenOrientationLockPortrait,
+        ScreenOrientationLockLandscape,
+        ScreenOrientationAuto
+    };
 
-        explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0);
 
-        virtual void resizeEvent(QResizeEvent *event);
-		virtual void moveEvent(QMoveEvent *event);
+    virtual void resizeEvent(QResizeEvent *event);
+    virtual void moveEvent(QMoveEvent *event);
 
-        void setOrientation(ScreenOrientation orientation);
-        void showExpanded();
+    void setOrientation(ScreenOrientation orientation);
+    void showExpanded();
 
-    signals:
+signals:
 
-    protected:
-        virtual void mouseMoveEvent(QMouseEvent *event);
+protected:
+    virtual void mouseMoveEvent(QMouseEvent *event);
 
-    public slots:
-        // slots proxying to m_frameWidget
-        void popApp();
-        void instantPopApp();
+public slots:
+    // slots proxying to m_frameWidget
+    void popApp();
+    void instantPopApp();
 
-        // Slots for connecting apps:
-        void switchToWebPage();
-        void switchToMockUp();
-        void switchToElementTapped();
-        void switchToElementTapped(QWebElement el);
-        void switchToElementFisheye();
-        void switchToElementFisheye(QWebElement el);
-        void switchToInfo();
-        void switchToChooseTool1App();
-        void switchToChooseToolBoxmodelApp();
-        void switchToBorderApp();
-        void switchToSpecificBorderApp(QString cssproperty);
-        void switchToNumberApp();
-        void elementTappedLeftButtonClicked();
-        void elementTappedInFisheye();
-        void elementTappedInFisheye(QWebElement el);
+    // Slots for connecting apps:
+    void switchToWebPage();
+    void switchToMockUp();
+    void switchToElementTapped();
+    void switchToElementTapped(QWebElement el);
+    void switchToElementFisheye();
+    void switchToElementFisheye(QWebElement el);
+    void switchToInfo();
+    void switchToChooseTool1App();
+    void switchToChooseToolBoxmodelApp();
+    void switchToBorderApp();
+    void switchToSpecificBorderApp(QString cssproperty);
+    void switchToNumberApp();
+    void elementTappedLeftButtonClicked();
+    void elementTappedInFisheye();
+    void elementTappedInFisheye(QWebElement el);
+    void switchToMultiTapApp();
 
-        void switchToApp(App *app);
+    void switchToApp(App *app);
 
-    private slots:
-        void moveOverlay();
+private slots:
+    void moveOverlay();
 
-        // For emulating touch noise:
-        void handleMousePress(QMouseEvent *event);
-        void handleMouseRelease(QMouseEvent *event);
-        void handleMouseMove(QMouseEvent *event);
-        void handleMouseHover(QMouseEvent *event);
-        void forwardMouseEvent(QMouseEvent *event);
+    // For emulating touch noise:
+    void handleMousePress(QMouseEvent *event);
+    void handleMouseRelease(QMouseEvent *event);
+    void handleMouseMove(QMouseEvent *event);
+    void handleMouseHover(QMouseEvent *event);
+    void forwardMouseEvent(QMouseEvent *event);
 
-        // Handle gestures triggered by m_overlayWidget:
-        void handleGesture(GestureType type, qreal param);
+    // Handle gestures triggered by m_overlayWidget:
+    void handleGesture(GestureType type, qreal param);
 
 
-    private:
-        void moveHandOverlay(QPoint pos);
+private:
+    void moveHandOverlay(QPoint pos);
 
-        IPodFrameWidget *m_frameWidget;
+    IPodFrameWidget *m_frameWidget;
 
-        // Apps
-        MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
-        WebviewApp *m_webviewApp;
-        ElementTappedApp *m_elementTappedApp;
-		ElementFisheyeApp *m_elementFisheyeApp;
-		InfoApp *m_infoApp;
-		ChooseTool1App *m_chooseTool1App;
-		ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
-		BorderEditApp *m_borderEditApp;
-		BorderStyleApp *m_borderStyleApp;
-		BorderWidthApp *m_borderWidthApp;
-		MultiTapApp *m_multiTapApp;
-        MockUpApp *m_mockUpApp;
+    // Apps
+    MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
+    WebviewApp *m_webviewApp;
+    ElementTappedApp *m_elementTappedApp;
+    ElementFisheyeApp *m_elementFisheyeApp;
+    InfoApp *m_infoApp;
+    ChooseTool1App *m_chooseTool1App;
+    ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
+    BorderEditApp *m_borderEditApp;
+    BorderStyleApp *m_borderStyleApp;
+    BorderWidthApp *m_borderWidthApp;
+    MultiTapApp *m_multiTapApp;
+    MockUpApp *m_mockUpApp;
 
-        // For emulating touch noise:
-        NanoOverlayWidget *m_overlayWidget;
-        QPoint m_currentOffset;
-        QWidget *m_currentChild;
-        static const int m_noiseRadius = 20;
+    // For emulating touch noise:
+    NanoOverlayWidget *m_overlayWidget;
+    QPoint m_currentOffset;
+    QWidget *m_currentChild;
+    static const int m_noiseRadius = 20;
 
-        // Finger:
-        ImageWidget *m_fingerImage;
-        static const QPoint kSingleTouchOffset;
-        bool m_isMouseDown;
+    // Finger:
+    ImageWidget *m_fingerImage;
+    static const QPoint kSingleTouchOffset;
+    bool m_isMouseDown;
 };
 
 } // namespace ipn

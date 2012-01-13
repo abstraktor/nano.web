@@ -66,8 +66,7 @@ namespace ipn
 		updateView();
 
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
-		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
-		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+                connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 
 	}
 

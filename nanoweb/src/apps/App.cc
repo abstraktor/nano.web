@@ -15,7 +15,7 @@ App::App(QWidget *parent) : QWidget()
 		// Invoke the marking menu on button clicks and on timer expiration:
 		connect(m_buttonHoldTimer, SIGNAL(timeout()), this, SLOT(triggerButtonHold()));
 
-		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+                connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
 		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
 
@@ -122,8 +122,8 @@ App::App(QWidget *parent) : QWidget()
 	}
 	void App::backButtonClick()
 	{
-		emit popApp();
-		qDebug() << "Backbutton clicked! ";
+                emit popApp();
+                qDebug() << "Backbutton clicked! (popping app as default action)";
 	}
 
 	void App::rightButtonClick()

@@ -58,7 +58,6 @@ namespace ipn
 
 		updateView();
 
-		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 		connect(m_topLeft1, SIGNAL(clicked()), this, SIGNAL(borderButtonClicked()));
 	}
 

@@ -24,12 +24,12 @@ class ElementFisheyeApp : public App
 		QWebElement getElement();
 
 	public slots:
-		void timerTick();
-		void swipeLeft();
-		void swipeUp();
-		void swipeRight();
-		void swipeDown();
-		void backButtonClick();
+                virtual void timerTick();
+                virtual void swipeLeft();
+                virtual void swipeUp();
+                virtual void swipeRight();
+                virtual void swipeDown();
+                virtual void backButtonClick();
 
 
     signals:

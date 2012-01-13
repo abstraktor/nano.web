@@ -30,8 +30,7 @@ namespace ipn
 {
 
         BorderWidthApp::BorderWidthApp(QWidget *parent) : App(parent)
-	{
-                connect(this, SIGNAL(valueChosen()), parent, SLOT(popApp()));
+        {
 
 		translation = QPoint();
 		diff = QPoint();
@@ -59,10 +58,10 @@ namespace ipn
 		updateView();
 
 		connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
-		connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
-		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+                connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 		connect(m_picker, SIGNAL(entryClicked(QString)), this, SLOT(entryClicked(QString)));
-
+                connect(this, SIGNAL(valueChosen()), parent, SLOT(popApp()));
+                connect(this, SIGNAL(requestNumber()), parent, SLOT(switchToMultiTapApp()));
 	}
 
 	void BorderWidthApp::entryClicked(QString value) {
@@ -90,11 +89,6 @@ namespace ipn
 
 	void BorderWidthApp::updateView() {
 		update();
-	}
-
-	void BorderWidthApp::backButtonClick()
-	{
-		qDebug() << "Backbutton clicked! ";
 	}
 
 	void BorderWidthApp::swipeRight()

@@ -30,6 +30,8 @@ namespace ipn
 	{
 		m_frameWidget = new ipn::IPodFrameWidget(new QWidget);
 		setCentralWidget(m_frameWidget);
+                connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
+                connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
 
 
 		// Create apps:
@@ -41,17 +43,36 @@ namespace ipn
 		m_menuApp->addButton(MenuApp::BottomRight, "--", ":/img/icons/default.png", false);
 		m_menuApp->titleBar()->setTitle("NANOWEB");
 		connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close()));
+                connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
+                connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
+                connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToInfo()));
+                connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
+                connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
 
 		m_webviewApp = new WebviewApp(this);
+
                 m_elementTappedApp = new ElementTappedApp(this);
+
 		m_elementFisheyeApp = new ElementFisheyeApp(this);
+
 		m_infoApp = new InfoApp(this);
+                //connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
+                connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
+
 		m_chooseTool1App = new ChooseTool1App(this);
+
 		m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp(this);
+
 		m_borderEditApp = new BorderEditApp(this);
+
 		m_borderWidthApp = new BorderWidthApp(this);
+
 		m_borderStyleApp = new BorderStyleApp(this);
-                //m_mockUpApp = new MockUpApp(this);
+
+                m_multiTapApp = new MultiTapApp(this);
+                connect(m_multiTapApp, SIGNAL(accepted(QString)), m_borderWidthApp, SLOT(numberClicked(QString)));
+
+                m_mockUpApp = new MockUpApp(this);
 
 
 		// Set MenuApp as first app:
@@ -61,26 +82,7 @@ namespace ipn
                 m_overlayWidget = new NanoOverlayWidget(this);
 		m_overlayWidget->resize(240, 240);
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
-		m_currentChild = NULL;
-
-		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
-
-
-
-		// Forward event notifications from the frame widget:
-		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
-
-		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
-		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
-		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToInfo()));
-		connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
-
-
-		// quit button
-		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
-		//connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
-		connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
-
+                m_currentChild = NULL;
 
 		// Initialize finger:
 		m_fingerImage = new ImageWidget(this);
@@ -120,6 +122,7 @@ namespace ipn
 	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
+        void MainWindow::switchToMultiTapApp()                  {m_frameWidget->pushApp(m_multiTapApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
 	void MainWindow::switchToChooseTool1App() {
