@@ -87,6 +87,9 @@ namespace ipn
                         void leftButtonHoldTriggered();
                         void rightButtonHoldTriggered();
 
+                        void switchToMockUp();
+                        void switchToWebPage();
+
             private slots:
                         void popApp();
                         void triggerButtonHold();

@@ -23,10 +23,10 @@ App::App(QWidget *parent) : QWidget(parent)
 		connect(this, SIGNAL(rightButtonHoldTriggered()), this, SLOT(rightButtonHold()));
 		connect(this, SIGNAL(leftButtonHoldTriggered()), this, SLOT(leftButtonHold()));
 
-		// let's bind some overall actions
+                // let's connect the local signals to our parent's slots
 		connect(this, SIGNAL(performPopApp()), parent, SLOT(popApp()));
-		connect(this, SIGNAL(rightButtonClickTriggered()), parent, SLOT(switchToMockUp()));
-		connect(this, SIGNAL(leftButtonClickTriggered()), parent, SLOT(switchToWebPage()));
+                connect(this, SIGNAL(switchToMockUp()), parent, SLOT(switchToMockUp()));
+                connect(this, SIGNAL(switchToWebPage()), parent, SLOT(switchToWebPage()));
 	}
 
 	void App::popApp()
@@ -128,11 +128,13 @@ App::App(QWidget *parent) : QWidget(parent)
 
 	void App::rightButtonClick()
 	{
+                emit switchToMockUp();
 		qDebug() << "Rightbutton clicked! ";
 	}
 
 	void App::leftButtonClick()
 	{
+                emit switchToWebPage();
 		qDebug() << "Leftbutton clicked! ";
 	}
 

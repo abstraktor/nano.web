@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 
 		// Create apps:
-		m_menuApp = new MenuApp();
+                m_menuApp = new MenuApp(this);
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
 		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 		connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close()));
 
 		m_webviewApp = new WebviewApp(this);
-		m_elementTappedApp = new ElementTappedApp(this);
+                m_elementTappedApp = new ElementTappedApp(this);
 		m_elementFisheyeApp = new ElementFisheyeApp(this);
 		m_infoApp = new InfoApp(this);
 		m_chooseTool1App = new ChooseTool1App(this);
@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 		m_borderEditApp = new BorderEditApp(this);
 		m_borderWidthApp = new BorderWidthApp(this);
 		m_borderStyleApp = new BorderStyleApp(this);
-		m_mockUpApp = new MockUpApp(this);
+                //m_mockUpApp = new MockUpApp(this);
 
 
 		// Set MenuApp as first app:
@@ -63,16 +63,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 		m_overlayWidget->move(m_frameWidget->pos() + m_frameWidget->contentRect().topLeft());
 		m_currentChild = NULL;
 
-		connect(m_overlayWidget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(handleMousePress(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(mouseReleased(QMouseEvent*)), this, SLOT(handleMouseRelease(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(mouseMoved(QMouseEvent*)), this, SLOT(handleMouseMove(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
-		connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
+                connect(m_overlayWidget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(handleMousePress(QMouseEvent*)));
+                connect(m_overlayWidget, SIGNAL(mouseReleased(QMouseEvent*)), this, SLOT(handleMouseRelease(QMouseEvent*)));
+                connect(m_overlayWidget, SIGNAL(mouseMoved(QMouseEvent*)), this, SLOT(handleMouseMove(QMouseEvent*)));
+                connect(m_overlayWidget, SIGNAL(mouseHovered(QMouseEvent*)), this, SLOT(handleMouseHover(QMouseEvent*)));
+                connect(m_overlayWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 
 		connect(m_webviewApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementTapped(QWebElement)));
 		connect(m_elementTappedApp, SIGNAL(elementTapped(QWebElement)), this, SLOT(switchToElementFisheye(QWebElement)));
-		connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
+                connect(m_elementTappedApp, SIGNAL(leftButtonClicked()), this, SLOT(elementTappedLeftButtonClicked()));
 		connect(m_elementTappedApp, SIGNAL(editButtonClicked()), this, SLOT(switchToChooseTool1App()));
 		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_frameWidget, SLOT(instantPopApp()));
 		connect(m_elementFisheyeApp, SIGNAL(elementTapped(QWebElement)), m_elementTappedApp, SLOT(elementTappedInFisheye(QWebElement)));
