@@ -70,10 +70,9 @@ SOURCES += \
     src/widgets/StyleListWidget.cc \
     src/apps/BorderStyleApp.cc \
     src/apps/BorderWidthApp.cc \
-    src/apps/MockUpApp.cc \
     src/widgets/WidthListWidget.cc \
-    src/apps/MockupApp.cc \
-    src/nanoweb/NanoOverlayWidget.cc
+    src/nanoweb/NanoOverlayWidget.cc \
+    src/apps/MockupApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -119,10 +118,10 @@ HEADERS += \
     src/widgets/StyleListWidget.h \
     src/apps/BorderStyleApp.h \
     src/apps/BorderWidthApp.h \
-    src/apps/MockUpApp.h \
     src/widgets/WidthListWidget.h \
 FORMS += \
-    src/nanoweb/NanoOverlayWidget.h
+    src/nanoweb/NanoOverlayWidget.h \
+    src/apps/MockupApp.h
 
 INCLUDEPATH += src src/apps src/widgets
 QT += webkit
