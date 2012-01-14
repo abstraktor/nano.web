@@ -22,6 +22,7 @@ class ElementFisheyeApp : public App
 		inline bool isOpaque() {return false;}
 		void setElement(QWebElement el);
 		QWebElement getElement();
+		void resetChild();
 
 	public slots:
                 virtual void timerTick();

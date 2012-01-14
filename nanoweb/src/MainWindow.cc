@@ -127,7 +127,7 @@ namespace ipn
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToMultiTapApp()			{m_frameWidget->pushApp(m_multiTapApp);}
-	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
+	void MainWindow::switchToElementFisheye()		{m_elementFisheyeApp->resetChild(); m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo() {
 		m_frameWidget->pushApp(m_infoApp);
 	}
@@ -144,7 +144,7 @@ namespace ipn
 		//m_borderEditApp->setElement(el);
 		//m_frameWidget->pushApp(m_borderEditApp);
 	}
-	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
+	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->resetChild(); m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 	void MainWindow::elementTappedLeftButtonClicked() {
 		switchToInfo();
 	}

@@ -55,6 +55,11 @@ ElementFisheyeApp::ElementFisheyeApp(QWidget *parent) : App(parent)
 	connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
 }
 
+void ElementFisheyeApp::resetChild() {
+	lastSwipeDownwards = false;
+	lastChild = QWebElement();
+}
+
 void ElementFisheyeApp::setElement(QWebElement el) {
 	currentEl = el;
 	update();
@@ -133,12 +138,12 @@ void ElementFisheyeApp::timerTick()
 	update();
 	if (tickCount == (int) FRAMES) {
 		animationTimer->stop();
+		lastSwipeDownwards = vector.y() > 0 && ipn::webhelpers::hasFirstChild(currentEl);
 		currentEl = nextEl;
 		translation = animationDestination;
 		tickCount = 0;
 		update();
 		diff = translation = QPoint();
-		lastSwipeDownwards = vector.y() > 0;
 	}
 }
 
