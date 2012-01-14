@@ -3,28 +3,27 @@
 
 #include "App.h"
 #include "widgets/FlickArea.h"
-#include "widgets/ImageWidget.h"
+#include "widgets/MockupWidget.h"
 
 namespace ipn
 {
+	class FlickArea;
+	class MockUpApp : public App
+	{
+		Q_OBJECT
 
-        class FlickArea;
-        class MockUpApp : public App
-        {
-                Q_OBJECT
+		public:
+			MockUpApp(QWidget * parent = 0);
 
-                public:
-                        MockUpApp(QWidget * parent = 0);
+		public slots:
+			void changePinchScaleFactor(qreal delta);
 
-                signals:
-
-                protected:
-
-                private:
-                        FlickArea *m_flickArea;
-                        ImageWidget *m_image;
-        };
+		private:
+			FlickArea *m_flickArea;
+			MockupWidget *m_image;
+			double zoomFactor;
 
 
+	};
 }
 #endif // MOCKUPAPP_H

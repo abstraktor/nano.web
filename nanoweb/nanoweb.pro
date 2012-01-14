@@ -73,7 +73,8 @@ SOURCES += \
     src/apps/GestureApp.cc \
     src/apps/ExplanationApp.cc \
     src/apps/ElementTappedApp.cc \
-    src/apps/ElementFisheyeApp.cc
+    src/apps/ElementFisheyeApp.cc \
+    src/widgets/MockupWidget.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -123,7 +124,8 @@ FORMS += \
     src/apps/GestureApp.h \
     src/apps/ExplanationApp.h \
     src/apps/ElementTappedApp.h \
-    src/apps/ElementFisheyeApp.h
+    src/apps/ElementFisheyeApp.h \
+    src/widgets/MockupWidget.h
 
 INCLUDEPATH += src src/apps src/widgets
 QT += webkit

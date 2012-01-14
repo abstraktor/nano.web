@@ -107,5 +107,6 @@
         <file>img/our_icons/deploy.png</file>
         <file>img/our_icons/tickets.png</file>
         <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
+        <file>img/our_imgs/mockup.png</file>
     </qresource>
 </RCC>
