@@ -8,22 +8,6 @@
 
 namespace ipn
 {
-
-	/*QString characters[12] =
-	{
-		".,?!'\"1-()@/:_",
-		"abc2äàáãâåæç",
-		"def3èéëêð",
-		"ghi4ìíîï",
-		"jkl5£",
-		"mno6öòóôõøñ",
-		"pqrs7$",
-		"tuv8üùúû",
-		"wxyz9ýþ",
-		0,
-		" 0",
-		0
-	};*/
 	QString characters[12] =
 	{
 		"1",
@@ -41,8 +25,9 @@ namespace ipn
 	};
 
 	MultiTapApp::MultiTapApp(QWidget *parent) : App(parent)
-        {
-                connect(this, SIGNAL(accepted(QString)), parent, SLOT(popApp()));
+	{
+		connect(this, SIGNAL(accepted(QString)), parent, SLOT(switchBackToBorderEditApp(QString)));
+		//connect(this, SIGNAL(accepted(QString)), parent, SLOT(popApp()));
 
 		m_back = new BackgroundWidget(this);
 		m_back->setColor(BackgroundWidget::BG_GRAY);
@@ -82,7 +67,7 @@ namespace ipn
 			m_keys[i]->setImage(":/img/buttons/default");
 			m_keys[i]->resize(70, 40);
 			m_keys[i]->setIconImage(QString(":/img/icons/multitap/key_")
-				+ QString::number(i) + QString(".png"));
+									+ QString::number(i) + QString(".png"));
 
 			int row = i / 3;
 			int column = i % 3;
@@ -173,9 +158,9 @@ namespace ipn
 		}
 		else if (unit == "em") {
 			m_unitButton->setIconImage(":/img/icons/multitap/key_12b");
-			unit = "%";
+			unit = "mm";
 		}
-		else if (unit == "%") {
+		else if (unit == "mm") {
 			m_unitButton->setIconImage(":/img/icons/multitap/key_12a");
 			unit = "px";
 		}

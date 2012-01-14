@@ -91,6 +91,7 @@ public slots:
     void elementTappedInFisheye();
     void elementTappedInFisheye(QWebElement el);
     void switchToMultiTapApp();
+	void switchBackToBorderEditApp(QString value);
 
     void switchToApp(App *app);
 

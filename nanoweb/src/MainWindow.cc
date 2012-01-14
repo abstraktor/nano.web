@@ -164,6 +164,10 @@ namespace ipn
 	void MainWindow::switchToNumberApp() {
 		m_frameWidget->pushApp(m_multiTapApp);
 	}
+	void MainWindow::switchBackToBorderEditApp(QString value) {
+		// we entered a number in MultiTapApp and now we want to go two apps back
+		m_frameWidget->switchBackTo(m_borderEditApp);
+	}
 
 
 
