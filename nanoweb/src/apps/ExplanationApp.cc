@@ -17,7 +17,7 @@ namespace ipn
 		m_okButton->setImage(":/img/buttons/default");
 		m_okButton->setText("OK");
 		connect(m_okButton, SIGNAL(clicked()), this, SIGNAL(okButtonClicked()));
-		setAccessibleName("ExplanationApp");
+		name = "ExplanationApp";
 	}
 
 	void ExplanationApp::paintEvent(QPaintEvent*)

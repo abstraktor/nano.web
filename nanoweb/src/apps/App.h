@@ -26,6 +26,7 @@ class App : public QWidget
 		// Part of gesture recognition, you won't normally need this function unless
 		// you want to add custom gestures.
 		void handleGesture(GestureType type, qreal param = 0);
+		QString name;
 	private:
 
 		enum HoldType {

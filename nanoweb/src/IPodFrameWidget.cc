@@ -327,7 +327,7 @@ void IPodFrameWidget::refresh()
 }
 
 void IPodFrameWidget::refreshFrame() {
-	if (topApp()->accessibleName() == "ExplanationApp" || topApp()->accessibleName() == "MenuApp") {
+	if (topApp()->name == "ExplanationApp" || topApp()->name == "MenuApp") {
 		m_frameImages[0][1]->setImage(":/img/frame/t_ohne.png");
 	}
 	else {

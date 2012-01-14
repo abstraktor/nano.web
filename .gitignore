@@ -3,3 +3,5 @@ nanoweb.pro.user*
 Thumbs.db
 *.orig
 /nanoweb/debug
+/nanoweb/moc
+/nanoweb/rcc

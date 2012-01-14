@@ -28,6 +28,7 @@ namespace ipn
 		connect(this, SIGNAL(switchToMockUp()), parent, SLOT(switchToMockUp()));
 		connect(this, SIGNAL(switchToWebPage()), parent, SLOT(switchToWebPage()));
 		connect(this, SIGNAL(switchToMainMenuIfNecessary()), parent, SLOT(switchToMainMenuIfNecessary()));
+		name = "";
 	}
 
 	void App::popApp()

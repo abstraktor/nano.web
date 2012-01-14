@@ -108,14 +108,14 @@ namespace ipn
 	}
 
 	void WebviewApp::setDiffCorrectly() {
-		if (diff.x() > 0)
-			diff.setX(0);
-		if (diff.y() > 0)
-			diff.setY(0);
 		if (abs(diff.x()) > (930 * m_webView->zoomFactor() - 240))
 			diff.setX(-(930 * m_webView->zoomFactor() - 240));
 		if (abs(diff.y()) > (525 * m_webView->zoomFactor() - 240))
 			diff.setY(-(525 * m_webView->zoomFactor() - 240));
+		if (diff.x() > 0)
+			diff.setX(0);
+		if (diff.y() > 0)
+			diff.setY(0);
 	}
 
 	void WebviewApp::mouseReleaseEvent(QMouseEvent *event) {
@@ -136,12 +136,26 @@ namespace ipn
 
 	void WebviewApp::changePinchScaleFactor(qreal delta)
 	{
-		qDebug() << "zooming";
 		doZooming = true;
 		m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
-		diff = diff - QPoint(120, 120);
-		diff = diff * delta;
-		diff = diff + QPoint(120, 120);
+		if (m_webView->zoomFactor() >= 3.0)
+		{
+			m_webView->setZoomFactor(3.0);
+			return;
+		}
+		if (m_webView->zoomFactor() < 0.2)
+		{
+			m_webView->setZoomFactor(0.2);
+			return;
+		}
+		if (delta > 1.0) {
+			diff = diff - QPoint(120, 120);
+			diff = diff * delta;
+			diff = diff + QPoint(120, 120);
+		}
+		else {
+			diff = diff * delta;
+		}
 		setDiffCorrectly();
 		translation = diff;
 		updateView();
@@ -174,7 +188,6 @@ namespace ipn
 
 	void WebviewApp::swipe(qreal angle)
 	{
-		//qDebug() << "EVENT: Swipe " << angle;
 	}
 
 
