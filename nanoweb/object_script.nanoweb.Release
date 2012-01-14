@@ -43,9 +43,9 @@ INPUT(
 ./release\StyleListWidget.o
 ./release\BorderStyleApp.o
 ./release\BorderWidthApp.o
+./release\MockUpApp.o
 ./release\WidthListWidget.o
 ./release\NanoOverlayWidget.o
-./release\MockupApp.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o
@@ -86,8 +86,8 @@ INPUT(
 ./release\moc_StyleListWidget.o
 ./release\moc_BorderStyleApp.o
 ./release\moc_BorderWidthApp.o
+./release\moc_MockUpApp.o
 ./release\moc_WidthListWidget.o
 ./release\moc_NanoOverlayWidget.o
-./release\moc_MockupApp.o
 ./release\qrc_resources.o
 );
