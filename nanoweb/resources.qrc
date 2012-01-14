@@ -88,7 +88,6 @@
         <file>img/icons/multitap/key_12a.png</file>
         <file>img/icons/multitap/key_12c.png</file>
         <file>img/mockup-app/storysample_start.png</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>img/frame/t.png</file>
         <file>img/menu-icons/box_model.png</file>
         <file>img/menu-icons/color.png</file>
@@ -107,5 +106,6 @@
         <file>img/frame/t_ohne.png</file>
         <file>img/our_icons/deploy.png</file>
         <file>img/our_icons/tickets.png</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
     </qresource>
 </RCC>
