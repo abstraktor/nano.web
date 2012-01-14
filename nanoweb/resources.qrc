@@ -56,10 +56,6 @@
         <file>img/fisheye-app/lappen_top.png</file>
         <file>img/our_imgs/meilenwerk.png</file>
         <file>img/our_imgs/zurichsee.png</file>
-        <file>img/menu-icons/box_model.png</file>
-        <file>img/menu-icons/color.png</file>
-        <file>img/menu-icons/position.png</file>
-        <file>img/menu-icons/text.png</file>
         <file>img/boxmodel-app/bm_bottombutton_pressed.png</file>
         <file>img/boxmodel-app/bm_leftbutton_pressed.png</file>
         <file>img/boxmodel-app/bm_middle_pressed.png</file>
@@ -95,13 +91,17 @@
         <file>img/mockup-app/storysample_start.png</file>
         <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>img/frame/t.png</file>
+        <file>img/menu-icons/box_model.png</file>
+        <file>img/menu-icons/color.png</file>
         <file>img/menu-icons/icon_attributes.png</file>
         <file>img/menu-icons/icon_border.png</file>
         <file>img/menu-icons/icon_dimension.png</file>
         <file>img/menu-icons/icon_list.png</file>
+        <file>img/menu-icons/icon_margin.png</file>
         <file>img/menu-icons/icon_plus.png</file>
         <file>img/menu-icons/icon_ppadding.png</file>
         <file>img/menu-icons/icon_trash.png</file>
-        <file>img/menu-icons/icon_margin.png</file>
+        <file>img/menu-icons/position.png</file>
+        <file>img/menu-icons/text.png</file>
     </qresource>
 </RCC>
