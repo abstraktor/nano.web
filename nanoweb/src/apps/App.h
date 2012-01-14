@@ -89,7 +89,7 @@ class App : public QWidget
 
 		void switchToMockUp();
 		void switchToWebPage();
-		void switchToWebPageIfNecessary();
+		void switchToMainMenuIfNecessary();
 
 	private slots:
 		void popApp();

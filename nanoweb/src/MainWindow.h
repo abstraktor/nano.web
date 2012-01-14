@@ -77,7 +77,7 @@ public slots:
 
 	// Slots for connecting apps:
 	void switchToWebPage();
-	void switchToWebPageIfNecessary();
+	void switchToMainMenuIfNecessary();
     void switchToMockUp();
     void switchToElementTapped();
     void switchToElementTapped(QWebElement el);

@@ -43,7 +43,7 @@ namespace ipn
 		m_menuApp->addButton(MenuApp::BottomLeft, "tickets", ":/img/our_icons/tickets.png");
 		m_menuApp->addButton(MenuApp::BottomRight, "deploy", ":/img/our_icons/deploy.png");
 		m_menuApp->titleBar()->setTitle("NANOWEB");
-		connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close()));
+		//connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close())); no closing on last popApp
 		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
 		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToInfo()));
@@ -175,9 +175,9 @@ namespace ipn
 		m_frameWidget->switchBackTo(m_borderEditApp);
 	}
 
-	void MainWindow::switchToWebPageIfNecessary() {
-		if (m_frameWidget->topApp() != m_webviewApp && m_frameWidget->topApp() != m_menuApp) {
-			m_frameWidget->switchBackTo(m_webviewApp);
+	void MainWindow::switchToMainMenuIfNecessary() {
+		if (m_frameWidget->topApp() != m_menuApp) {
+			m_frameWidget->instantSwitchBackTo(m_menuApp);
 		}
 	}
 

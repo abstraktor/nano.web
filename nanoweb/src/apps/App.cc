@@ -27,7 +27,7 @@ namespace ipn
 		connect(this, SIGNAL(performPopApp()), parent, SLOT(popApp()));
 		connect(this, SIGNAL(switchToMockUp()), parent, SLOT(switchToMockUp()));
 		connect(this, SIGNAL(switchToWebPage()), parent, SLOT(switchToWebPage()));
-		connect(this, SIGNAL(switchToWebPageIfNecessary()), parent, SLOT(switchToWebPageIfNecessary()));
+		connect(this, SIGNAL(switchToMainMenuIfNecessary()), parent, SLOT(switchToMainMenuIfNecessary()));
 	}
 
 	void App::popApp()
@@ -119,6 +119,10 @@ namespace ipn
 			}
 			m_buttonHoldTimer->stop();
 			break;
+		case BackButtonClick:
+		case RightButtonClick:
+		case LeftButtonClick:
+			break;
 		}
 	}
 	void App::backButtonClick()
@@ -152,7 +156,7 @@ namespace ipn
 	void App::backButtonHold()
 	{
 		qDebug() << "BAckbutton hold";
-		emit switchToWebPageIfNecessary();
+		emit switchToMainMenuIfNecessary();
 	}
 
 } // namespace ipn
