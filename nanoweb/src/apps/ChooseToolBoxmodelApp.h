@@ -30,6 +30,7 @@ class ChooseToolBoxmodelApp : public App
 
 	signals:
 		void borderButtonClicked();
+		void anotherButtonClicked();
 
 
     protected:

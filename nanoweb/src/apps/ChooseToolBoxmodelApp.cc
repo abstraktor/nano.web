@@ -26,29 +26,30 @@
 namespace ipn
 {
 
-        ChooseToolBoxmodelApp::ChooseToolBoxmodelApp(QWidget *parent) : App(parent)
+	ChooseToolBoxmodelApp::ChooseToolBoxmodelApp(QWidget *parent) : App(parent)
 	{
-                connect(this, SIGNAL(borderButtonClicked()), parent, SLOT(switchToBorderApp()));
+		connect(this, SIGNAL(borderButtonClicked()), parent, SLOT(switchToBorderApp()));
+		connect(this, SIGNAL(anotherButtonClicked()), parent, SLOT(switchToInfo()));
 
 		m_topLeft1 = new ScalableButtonWidget(this);
 		m_topLeft1->resize(64, 64);
 		m_topLeft1->setImage(":/img/buttons/default");
-        m_topLeft1->setIconImage(":/img/menu-icons/icon_border");
+		m_topLeft1->setIconImage(":/img/menu-icons/icon_border");
 		m_topLeft1->setTitle("border");
 		m_topRight1 = new ScalableButtonWidget(this);
 		m_topRight1->resize(64, 64);
 		m_topRight1->setImage(":/img/buttons/default");
-        m_topRight1->setIconImage(":/img/menu-icons/icon_margin");
+		m_topRight1->setIconImage(":/img/menu-icons/icon_margin");
 		m_topRight1->setTitle("margin");
 		m_bottomLeft1 = new ScalableButtonWidget(this);
 		m_bottomLeft1->resize(64, 64);
 		m_bottomLeft1->setImage(":/img/buttons/default");
-        m_bottomLeft1->setIconImage(":/img/menu-icons/icon_ppadding");
+		m_bottomLeft1->setIconImage(":/img/menu-icons/icon_ppadding");
 		m_bottomLeft1->setTitle("padding");
 		m_bottomRight1 = new ScalableButtonWidget(this);
 		m_bottomRight1->resize(64, 64);
 		m_bottomRight1->setImage(":/img/buttons/default");
-        m_bottomRight1->setIconImage(":/img/menu-icons/icon_dimension");
+		m_bottomRight1->setIconImage(":/img/menu-icons/icon_dimension");
 		m_bottomRight1->setTitle("dimension");
 
 		topLeft = QPoint(36, 36);
@@ -59,6 +60,9 @@ namespace ipn
 		updateView();
 
 		connect(m_topLeft1, SIGNAL(clicked()), this, SIGNAL(borderButtonClicked()));
+		connect(m_topRight1, SIGNAL(clicked()), this, SIGNAL(anotherButtonClicked()));
+		connect(m_bottomLeft1, SIGNAL(clicked()), this, SIGNAL(anotherButtonClicked()));
+		connect(m_bottomRight1, SIGNAL(clicked()), this, SIGNAL(anotherButtonClicked()));
 	}
 
 	void ChooseToolBoxmodelApp::setElement(QWebElement el) {
