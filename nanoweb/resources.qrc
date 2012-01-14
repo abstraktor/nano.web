@@ -105,5 +105,7 @@
         <file>img/icons/multitap/key_12b.png</file>
         <file>img/our_imgs/explanation.png</file>
         <file>img/frame/t_ohne.png</file>
+        <file>img/our_icons/deploy.png</file>
+        <file>img/our_icons/tickets.png</file>
     </qresource>
 </RCC>

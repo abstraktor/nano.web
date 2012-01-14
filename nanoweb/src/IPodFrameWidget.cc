@@ -327,7 +327,6 @@ void IPodFrameWidget::refresh()
 }
 
 void IPodFrameWidget::refreshFrame() {
-	qDebug() << topApp();
 	if (topApp()->accessibleName() == "ExplanationApp" || topApp()->accessibleName() == "MenuApp") {
 		m_frameImages[0][1]->setImage(":/img/frame/t_ohne.png");
 	}
