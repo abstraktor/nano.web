@@ -25,6 +25,8 @@ namespace ipn
 		connect(m_buttons[1], SIGNAL(clicked()), this, SIGNAL(topRightButtonClicked()));
 		connect(m_buttons[2], SIGNAL(clicked()), this, SIGNAL(bottomLeftButtonClicked()));
 		connect(m_buttons[3], SIGNAL(clicked()), this, SIGNAL(bottomRightButtonClicked()));
+
+		setAccessibleName("MenuApp");
 	}
 
 	ScalableButtonWidget *MenuApp::button(ButtonPosition position)

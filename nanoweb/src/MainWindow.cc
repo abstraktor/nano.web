@@ -2,6 +2,7 @@
 #include "IPodFrameWidget.h"
 #include "apps/MenuApp.h"
 #include "apps/InfoApp.h"
+#include "apps/ExplanationApp.h"
 #include "apps/WebviewApp.h"
 #include "apps/ElementTappedApp.h"
 #include "apps/ElementFisheyeApp.h"
@@ -56,8 +57,10 @@ namespace ipn
 		m_elementFisheyeApp = new ElementFisheyeApp(this);
 
 		m_infoApp = new InfoApp(this);
-		//connect(m_webviewApp, SIGNAL(quitButtonClicked()), m_frameWidget, SLOT(popApp()));
 		connect(m_infoApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
+
+		m_explanationApp = new ExplanationApp(this);
+		connect(m_explanationApp, SIGNAL(okButtonClicked()), m_frameWidget, SLOT(popApp()));
 
 		m_chooseTool1App = new ChooseTool1App(this);
 
@@ -77,6 +80,7 @@ namespace ipn
 
 		// Set MenuApp as first app:
 		m_frameWidget->instantReplaceAllAppsBy(m_menuApp);
+		m_frameWidget->pushApp(m_explanationApp);
 
 		// Set up OverlayWidget:
 		m_overlayWidget = new NanoOverlayWidget(this);
@@ -124,7 +128,9 @@ namespace ipn
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToMultiTapApp()			{m_frameWidget->pushApp(m_multiTapApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
-	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
+	void MainWindow::switchToInfo() {
+		m_frameWidget->pushApp(m_infoApp);
+	}
 	void MainWindow::switchToChooseTool1App() {
 		m_chooseTool1App->setElement(m_elementTappedApp->getElement());
 		m_frameWidget->pushApp(m_chooseTool1App);

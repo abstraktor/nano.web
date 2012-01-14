@@ -103,5 +103,7 @@
         <file>img/menu-icons/position.png</file>
         <file>img/menu-icons/text.png</file>
         <file>img/icons/multitap/key_12b.png</file>
+        <file>img/our_imgs/explanation.png</file>
+        <file>img/frame/t_ohne.png</file>
     </qresource>
 </RCC>

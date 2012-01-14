@@ -36,7 +36,6 @@ SOURCES += \
         src/apps/ClockApp.cc \
         src/apps/GUIApp.cc \
         src/apps/MapApp.cc \
-        src/apps/GestureApp.cc \
         src/apps/MarkingMenuApp.cc \
         src/apps/MultiTapApp.cc \
         src/apps/PickerApp.cc \
@@ -57,11 +56,8 @@ SOURCES += \
         src/widgets/PickerWidget.cc \
         src/widgets/OverlayWidget.cc \
         src/apps/MenuApp.cc \
-        src/apps/InfoApp.cc \
     src/apps/WebviewApp.cc \
     src/nanoweb/NanoWebView.cc \
-    src/apps/ElementTappedApp.cc \
-    src/apps/ElementFisheyeApp.cc \
     src/nanoweb/NanoQWebview.cc \
     src/webhelpers.cc \
     src/apps/ChooseTool1App.cc \
@@ -72,7 +68,12 @@ SOURCES += \
     src/apps/BorderWidthApp.cc \
     src/apps/MockUpApp.cc \
     src/widgets/WidthListWidget.cc \
-    src/nanoweb/NanoOverlayWidget.cc
+    src/nanoweb/NanoOverlayWidget.cc \
+    src/apps/InfoApp.cc \
+    src/apps/GestureApp.cc \
+    src/apps/ExplanationApp.cc \
+    src/apps/ElementTappedApp.cc \
+    src/apps/ElementFisheyeApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -83,7 +84,6 @@ HEADERS += \
         src/apps/ClockApp.h \
         src/apps/GUIApp.h \
         src/apps/MapApp.h \
-        src/apps/GestureApp.h \
         src/apps/MarkingMenuApp.h \
         src/apps/MultiTapApp.h \
         src/apps/PickerApp.h \
@@ -108,8 +108,6 @@ HEADERS += \
     src/apps/WebviewApp.h \
     src/nanoweb/NanoWebView.h \
     src/nanoweb/NanoWebView.h \
-    src/apps/ElementTappedApp.h \
-    src/apps/ElementFisheyeApp.h \
     src/nanoweb/NanoQWebview.h \
     src/webhelpers.h \
     src/apps/ChooseTool1App.h \
@@ -121,7 +119,11 @@ HEADERS += \
     src/apps/MockUpApp.h \
     src/widgets/WidthListWidget.h \
 FORMS += \
-    src/nanoweb/NanoOverlayWidget.h
+    src/nanoweb/NanoOverlayWidget.h \
+    src/apps/GestureApp.h \
+    src/apps/ExplanationApp.h \
+    src/apps/ElementTappedApp.h \
+    src/apps/ElementFisheyeApp.h
 
 INCLUDEPATH += src src/apps src/widgets
 QT += webkit

@@ -26,6 +26,7 @@ class IPodFrameWidget;
 class App;
 class MenuApp;
 class InfoApp;
+class ExplanationApp;
 class MultiTapApp;
 class PickerApp;
 class PeepholeApp;
@@ -121,6 +122,7 @@ private:
     ElementTappedApp *m_elementTappedApp;
     ElementFisheyeApp *m_elementFisheyeApp;
     InfoApp *m_infoApp;
+	ExplanationApp *m_explanationApp;
     ChooseTool1App *m_chooseTool1App;
     ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
     BorderEditApp *m_borderEditApp;

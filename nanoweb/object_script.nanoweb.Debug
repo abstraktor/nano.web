@@ -9,7 +9,6 @@ INPUT(
 ./debug\ClockApp.o
 ./debug\GUIApp.o
 ./debug\MapApp.o
-./debug\GestureApp.o
 ./debug\MarkingMenuApp.o
 ./debug\MultiTapApp.o
 ./debug\PickerApp.o
@@ -30,11 +29,8 @@ INPUT(
 ./debug\PickerWidget.o
 ./debug\OverlayWidget.o
 ./debug\MenuApp.o
-./debug\InfoApp.o
 ./debug\WebviewApp.o
 ./debug\NanoWebView.o
-./debug\ElementTappedApp.o
-./debug\ElementFisheyeApp.o
 ./debug\NanoQWebview.o
 ./debug\webhelpers.o
 ./debug\ChooseTool1App.o
@@ -46,6 +42,11 @@ INPUT(
 ./debug\MockUpApp.o
 ./debug\WidthListWidget.o
 ./debug\NanoOverlayWidget.o
+./debug\InfoApp.o
+./debug\GestureApp.o
+./debug\ExplanationApp.o
+./debug\ElementTappedApp.o
+./debug\ElementFisheyeApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -54,7 +55,6 @@ INPUT(
 ./debug\moc_ClockApp.o
 ./debug\moc_GUIApp.o
 ./debug\moc_MapApp.o
-./debug\moc_GestureApp.o
 ./debug\moc_MarkingMenuApp.o
 ./debug\moc_MultiTapApp.o
 ./debug\moc_PickerApp.o
@@ -77,8 +77,6 @@ INPUT(
 ./debug\moc_MenuApp.o
 ./debug\moc_InfoApp.o
 ./debug\moc_WebviewApp.o
-./debug\moc_ElementTappedApp.o
-./debug\moc_ElementFisheyeApp.o
 ./debug\moc_NanoQWebview.o
 ./debug\moc_ChooseTool1App.o
 ./debug\moc_ChooseToolBoxmodelApp.o
@@ -89,5 +87,9 @@ INPUT(
 ./debug\moc_MockUpApp.o
 ./debug\moc_WidthListWidget.o
 ./debug\moc_NanoOverlayWidget.o
+./debug\moc_GestureApp.o
+./debug\moc_ExplanationApp.o
+./debug\moc_ElementTappedApp.o
+./debug\moc_ElementFisheyeApp.o
 ./debug\qrc_resources.o
 );
