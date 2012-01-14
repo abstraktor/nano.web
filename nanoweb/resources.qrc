@@ -63,7 +63,6 @@
         <file>img/boxmodel-app/bm_rightbutton_pressed.png</file>
         <file>img/boxmodel-app/bm_topbutton_pressed.png</file>
         <file>img/our_imgs/input.png</file>
-        <file>meilenwerk/meilenwerk.html</file>
         <file>meilenwerk/testpage.html</file>
         <file>meilenwerk/meilenwerk-Dateien/_blank.gif</file>
         <file>meilenwerk/meilenwerk-Dateien/content.css</file>
@@ -106,7 +105,8 @@
         <file>img/frame/t_ohne.png</file>
         <file>img/our_icons/deploy.png</file>
         <file>img/our_icons/tickets.png</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>img/our_imgs/mockup.png</file>
+        <file>meilenwerk/meilenwerk.html</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
     </qresource>
 </RCC>
