@@ -4,8 +4,8 @@
 namespace ipn
 {
 
-App::App(QWidget *parent) : QWidget()
-{
+	App::App(QWidget *parent) : QWidget()
+	{
 		// Create a timer invoking the menu if the users hold a finger on the screen
 		// for a specific amount of time in milliseconds:
 		m_buttonHoldTimer = new QTimer(this);
@@ -15,7 +15,7 @@ App::App(QWidget *parent) : QWidget()
 		// Invoke the marking menu on button clicks and on timer expiration:
 		connect(m_buttonHoldTimer, SIGNAL(timeout()), this, SLOT(triggerButtonHold()));
 
-                connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
+		connect(this, SIGNAL(backButtonClickTriggered()), this, SLOT(backButtonClick()));
 		connect(this, SIGNAL(rightButtonClickTriggered()), this, SLOT(rightButtonClick()));
 		connect(this, SIGNAL(leftButtonClickTriggered()), this, SLOT(leftButtonClick()));
 
@@ -23,10 +23,11 @@ App::App(QWidget *parent) : QWidget()
 		connect(this, SIGNAL(rightButtonHoldTriggered()), this, SLOT(rightButtonHold()));
 		connect(this, SIGNAL(leftButtonHoldTriggered()), this, SLOT(leftButtonHold()));
 
-                // let's connect the local signals to our parent's slots
+		// let's connect the local signals to our parent's slots
 		connect(this, SIGNAL(performPopApp()), parent, SLOT(popApp()));
-                connect(this, SIGNAL(switchToMockUp()), parent, SLOT(switchToMockUp()));
-                connect(this, SIGNAL(switchToWebPage()), parent, SLOT(switchToWebPage()));
+		connect(this, SIGNAL(switchToMockUp()), parent, SLOT(switchToMockUp()));
+		connect(this, SIGNAL(switchToWebPage()), parent, SLOT(switchToWebPage()));
+		connect(this, SIGNAL(switchToWebPageIfNecessary()), parent, SLOT(switchToWebPageIfNecessary()));
 	}
 
 	void App::popApp()
@@ -122,19 +123,19 @@ App::App(QWidget *parent) : QWidget()
 	}
 	void App::backButtonClick()
 	{
-                emit popApp();
-                qDebug() << "Backbutton clicked! (popping app as default action)";
+		emit popApp();
+		qDebug() << "Backbutton clicked! (popping app as default action)";
 	}
 
 	void App::rightButtonClick()
 	{
-                emit switchToMockUp();
+		emit switchToMockUp();
 		qDebug() << "Rightbutton clicked! ";
 	}
 
 	void App::leftButtonClick()
 	{
-                emit switchToWebPage();
+		emit switchToWebPage();
 		qDebug() << "Leftbutton clicked! ";
 	}
 
@@ -150,7 +151,8 @@ App::App(QWidget *parent) : QWidget()
 
 	void App::backButtonHold()
 	{
-		qDebug() << "Backbutton hold! ";
+		qDebug() << "BAckbutton hold";
+		emit switchToWebPageIfNecessary();
 	}
 
 } // namespace ipn

@@ -74,8 +74,9 @@ public slots:
     void popApp();
     void instantPopApp();
 
-    // Slots for connecting apps:
-    void switchToWebPage();
+	// Slots for connecting apps:
+	void switchToWebPage();
+	void switchToWebPageIfNecessary();
     void switchToMockUp();
     void switchToElementTapped();
     void switchToElementTapped(QWebElement el);

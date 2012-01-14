@@ -122,7 +122,7 @@ namespace ipn
 	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
-	void MainWindow::switchToMultiTapApp()                  {m_frameWidget->pushApp(m_multiTapApp);}
+	void MainWindow::switchToMultiTapApp()			{m_frameWidget->pushApp(m_multiTapApp);}
 	void MainWindow::switchToElementFisheye()		{m_frameWidget->pushApp(m_elementFisheyeApp);}
 	void MainWindow::switchToInfo()					{m_frameWidget->pushApp(m_infoApp);}
 	void MainWindow::switchToChooseTool1App() {
@@ -169,6 +169,11 @@ namespace ipn
 		m_frameWidget->switchBackTo(m_borderEditApp);
 	}
 
+	void MainWindow::switchToWebPageIfNecessary() {
+		if (m_frameWidget->topApp() != m_webviewApp && m_frameWidget->topApp() != m_menuApp) {
+			m_frameWidget->switchBackTo(m_webviewApp);
+		}
+	}
 
 
 	void MainWindow::handleMousePress(QMouseEvent *event)

@@ -74,7 +74,6 @@ namespace ipn
 	}
 
 	void BorderWidthApp::numberClicked(QString value) {
-		qDebug() << cssproperty << "#" << value;
 		currentEl.setStyleProperty(cssproperty, value);
 		emit valueChosen();
 	}
