@@ -11,6 +11,10 @@
 	border-bottom-width: 0px;
 	border-left-width: 0px;
 	border-right-width: 0px;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
 }
 
 body {
