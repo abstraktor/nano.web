@@ -52,7 +52,7 @@ namespace ipn
 
 		m_webviewApp = new WebviewApp(this);
 
-		m_hardwareLeftWebView = new WebviewApp(this);
+		m_hardwareLeftWebView = new WebviewApp(this, true);
 		m_hardwareLeftWebView->m_webView->setPage(m_webviewApp->m_webView->page());
 
 		m_elementTappedApp = new ElementTappedApp(this);

@@ -14,13 +14,14 @@ namespace ipn
 	class TextWidget;
 	class ScalableButtonWidget;
 	class NanoQWebView;
+	class TextWidget;
 
 	class WebviewApp : public App
 	{
 		Q_OBJECT
 
 	public:
-		WebviewApp(QWidget *parent = 0);
+		WebviewApp(QWidget *parent = 0, bool displayWidget = false);
 		NanoQWebview *m_webView;
 
 		inline bool isOpaque() {return false;}
@@ -53,6 +54,7 @@ namespace ipn
 	private:
 		QVector<QPolygon> m_drawing;
 		FlickArea *m_flickArea;
+		TextWidget *m_text;
 
 		BackgroundWidget *m_back;
 

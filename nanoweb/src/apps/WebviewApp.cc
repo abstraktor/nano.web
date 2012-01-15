@@ -17,7 +17,7 @@
 
 namespace ipn
 {
-WebviewApp::WebviewApp(QWidget *parent) : App(parent)
+WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 {
 
 	connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementTapped(QWebElement)));
@@ -49,6 +49,15 @@ WebviewApp::WebviewApp(QWidget *parent) : App(parent)
 	//m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
 	m_webView->show();
 	m_webView->setZoomFactor(1.0);
+
+
+	if (displayWidget) {
+		m_text = new TextWidget(this);
+		m_text->otherStyle = true;
+		m_text->setText("Webseite");
+		m_text->resize(100, 30);
+		m_text->move(140, 210);
+	}
 
 	// Connect gestures:
 	connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
