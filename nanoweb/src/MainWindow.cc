@@ -162,9 +162,8 @@ namespace ipn
 	void MainWindow::switchToElementTapped(QWebElement el) {
 		m_hardwareLeftWebView->setScrollPosition(m_webviewApp->getScrollPosition());
 		m_mockUpApp->m_flickArea->setScrollPosition(m_webviewApp->getScrollPosition());
-		m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);
-		//m_borderEditApp->setElement(el);
-		//m_frameWidget->pushApp(m_borderEditApp);
+		m_elementTappedApp->setElement(el);
+		m_frameWidget->pushApp(m_elementTappedApp);
 	}
 	void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->resetChild(); m_elementFisheyeApp->setElement(el);  m_frameWidget->instantPushApp(m_elementFisheyeApp);}
 	void MainWindow::elementTappedLeftButtonClicked() {
