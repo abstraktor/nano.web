@@ -15,6 +15,8 @@ namespace ipn
 		m_lineHeight = 1.0;
 
 		setAttribute(Qt::WA_TransparentForMouseEvents);
+
+		otherStyle = false;
 	}
 
 	void TextWidget::paintEvent(QPaintEvent*)
@@ -22,6 +24,10 @@ namespace ipn
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 
+		if (otherStyle) {
+			painter.setBrush(QBrush(QColor(255, 255, 255, 150), Qt::SolidPattern));
+			painter.drawRect(0, 0, width(), height());
+		}
 		if (m_textLines.size() > 0)
 		{
 			int weight = 50;

@@ -4,6 +4,7 @@
 #include "App.h"
 #include "widgets/FlickArea.h"
 #include "widgets/MockupWidget.h"
+#include "widgets/TextWidget.h"
 
 namespace ipn
 {
@@ -21,6 +22,7 @@ namespace ipn
 		private:
 			FlickArea *m_flickArea;
 			MockupWidget *m_image;
+			TextWidget *m_text;
 			double zoomFactor;
 
 

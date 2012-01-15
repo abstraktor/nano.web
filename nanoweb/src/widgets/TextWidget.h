@@ -35,6 +35,8 @@ namespace ipn
 			Qt::Alignment alignment();
 			void setAlignment(Qt::Alignment alignment);
 
+			bool otherStyle;
+
 		signals:
 
 		public slots:

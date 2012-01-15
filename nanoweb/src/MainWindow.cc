@@ -39,7 +39,7 @@ namespace ipn
 		m_menuApp = new MenuApp(this);
 		m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 		m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
-		m_menuApp->addButton(MenuApp::TopRight, "mockup", ":/img/our_icons/mockup.png");
+		m_menuApp->addButton(MenuApp::TopRight, "vorlage", ":/img/our_icons/mockup.png");
 		m_menuApp->addButton(MenuApp::BottomLeft, "tickets", ":/img/our_icons/tickets.png");
 		m_menuApp->addButton(MenuApp::BottomRight, "deploy", ":/img/our_icons/deploy.png");
 		m_menuApp->titleBar()->setTitle("NANOWEB");
