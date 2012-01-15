@@ -94,6 +94,8 @@ public slots:
     void elementTappedInFisheye(QWebElement el);
     void switchToMultiTapApp();
 	void switchBackToBorderEditApp(QString value);
+	void hardwareLeftButtonClicked();
+	void hardwareRightButtonClicked();
 
     void switchToApp(App *app);
 
@@ -118,7 +120,7 @@ private:
 
     // Apps
     MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
-    WebviewApp *m_webviewApp;
+	WebviewApp *m_webviewApp, *m_hardwareLeftWebView;
     ElementTappedApp *m_elementTappedApp;
     ElementFisheyeApp *m_elementFisheyeApp;
     InfoApp *m_infoApp;

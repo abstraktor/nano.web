@@ -21,6 +21,7 @@ namespace ipn
 
 	public:
 		WebviewApp(QWidget *parent = 0);
+		NanoQWebview *m_webView;
 
 		inline bool isOpaque() {return false;}
 
@@ -51,7 +52,6 @@ namespace ipn
 
 	private:
 		QVector<QPolygon> m_drawing;
-		NanoQWebview *m_webView;
 		FlickArea *m_flickArea;
 
 		BackgroundWidget *m_back;

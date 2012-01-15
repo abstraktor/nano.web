@@ -52,6 +52,9 @@ namespace ipn
 
 		m_webviewApp = new WebviewApp(this);
 
+		m_hardwareLeftWebView = new WebviewApp(this);
+		m_hardwareLeftWebView->m_webView->setPage(m_webviewApp->m_webView->page());
+
 		m_elementTappedApp = new ElementTappedApp(this);
 
 		m_elementFisheyeApp = new ElementFisheyeApp(this);
@@ -126,6 +129,21 @@ namespace ipn
 	// For each app, we need a slot which pushes it on the app stack:
 	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
+	void MainWindow::hardwareLeftButtonClicked() {
+		if (m_frameWidget->topApp() == m_webviewApp || m_frameWidget->topApp() == m_hardwareLeftWebView)
+			return;
+		if (m_frameWidget->topApp() == m_mockUpApp)
+			m_frameWidget->instantPopApp();
+		m_frameWidget->pushApp(m_hardwareLeftWebView);
+	}
+	void MainWindow::hardwareRightButtonClicked() {
+		if (m_frameWidget->topApp() == m_mockUpApp)
+			return;
+		if (m_frameWidget->topApp() == m_hardwareLeftWebView)
+			m_frameWidget->instantPopApp();
+		m_frameWidget->pushApp(m_mockUpApp);
+	}
+
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 	void MainWindow::switchToMultiTapApp()			{m_frameWidget->pushApp(m_multiTapApp);}
 	void MainWindow::switchToElementFisheye()		{m_elementFisheyeApp->resetChild(); m_frameWidget->pushApp(m_elementFisheyeApp);}

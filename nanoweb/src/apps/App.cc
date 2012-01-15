@@ -25,8 +25,8 @@ namespace ipn
 
 		// let's connect the local signals to our parent's slots
 		connect(this, SIGNAL(performPopApp()), parent, SLOT(popApp()));
-		connect(this, SIGNAL(switchToMockUp()), parent, SLOT(switchToMockUp()));
-		connect(this, SIGNAL(switchToWebPage()), parent, SLOT(switchToWebPage()));
+		connect(this, SIGNAL(switchToMockUp()), parent, SLOT(hardwareRightButtonClicked()));
+		connect(this, SIGNAL(switchToWebPage()), parent, SLOT(hardwareLeftButtonClicked()));
 		connect(this, SIGNAL(switchToMainMenuIfNecessary()), parent, SLOT(switchToMainMenuIfNecessary()));
 		name = "";
 	}
