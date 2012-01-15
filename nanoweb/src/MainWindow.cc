@@ -76,6 +76,7 @@ namespace ipn
 		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_borderWidthApp, SLOT(numberClicked(QString)));
 
 		m_mockUpApp = new MockUpApp(this);
+		m_mockUpApp->m_flickArea->setScrollPosition(QPoint(-100, -100));
 
 
 		// Set MenuApp as first app:
