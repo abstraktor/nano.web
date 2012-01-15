@@ -199,7 +199,7 @@ void IPodFrameWidget::instantPushApp(App *app)
 	app->resize(240, 240);
 	app->move(0, 0);
 
-	// Push the app on the stack an redraw everything
+	// Push the app on the stack and redraw everything
 	m_appStack.append(app);
 	refresh();
 }

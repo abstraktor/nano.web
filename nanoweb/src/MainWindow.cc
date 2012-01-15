@@ -45,7 +45,7 @@ namespace ipn
 		m_menuApp->titleBar()->setTitle("NANOWEB");
 		//connect(m_menuApp, SIGNAL(performPopApp()), this, SLOT(close())); no closing on last popApp
 		connect(m_menuApp, SIGNAL(topLeftButtonClicked()), this, SLOT(switchToWebPage()));
-		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToInfo()));
+		connect(m_menuApp, SIGNAL(topRightButtonClicked()), this, SLOT(switchToMockUp()));
 		connect(m_menuApp, SIGNAL(bottomLeftButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
 		connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));

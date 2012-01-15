@@ -23,6 +23,9 @@ namespace ipn
 		if (el.tagName() == "")
 			el = this->page()->mainFrame()->hitTestContent(pos).linkElement();  // for link element
 
+		if (el.tagName() == "") {
+			return;
+		}
 		event->setAccepted(false);
 		//el.setStyleProperty("background-color", "red !important"); // PROOF OF CONCEPT
 		emit elementTapped(el);
