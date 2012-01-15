@@ -51,13 +51,16 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 	m_webView->setZoomFactor(1.0);
 
 
+	name = "WebViewApp";
 	if (displayWidget) {
 		m_text = new TextWidget(this);
 		m_text->otherStyle = true;
 		m_text->setText("Webseite");
 		m_text->resize(100, 30);
 		m_text->move(140, 210);
+		//name = "WebViewApp2";
 	}
+
 
 	// Connect gestures:
 	connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));

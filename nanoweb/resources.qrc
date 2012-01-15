@@ -108,5 +108,7 @@
         <file>img/our_imgs/mockup.png</file>
         <file>meilenwerk/meilenwerk.html</file>
         <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
+        <file>img/frame/t_ohnemockup.png</file>
+        <file>img/frame/t_ohneweb.png</file>
     </qresource>
 </RCC>

@@ -20,6 +20,8 @@ namespace ipn
 			m_text->setText("Vorlage");
 			m_text->resize(100, 30);
 			m_text->move(140, 210);
+
+			name = "MockUpApp";
         }
 
 		void MockUpApp::changePinchScaleFactor(qreal delta)

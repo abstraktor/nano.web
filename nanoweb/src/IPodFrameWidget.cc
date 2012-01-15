@@ -330,6 +330,12 @@ void IPodFrameWidget::refreshFrame() {
 	if (topApp()->name == "ExplanationApp" || topApp()->name == "MenuApp") {
 		m_frameImages[0][1]->setImage(":/img/frame/t_ohne.png");
 	}
+	else if (topApp()->name == "WebViewApp") {
+		m_frameImages[0][1]->setImage(":/img/frame/t_ohneweb.png");
+	}
+	else if (topApp()->name == "MockUpApp") {
+		m_frameImages[0][1]->setImage(":/img/frame/t_ohnemockup.png");
+	}
 	else {
 		m_frameImages[0][1]->setImage(":/img/frame/t.png");
 	}
