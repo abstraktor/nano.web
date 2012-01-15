@@ -5,3 +5,5 @@ Thumbs.db
 /nanoweb/debug
 /nanoweb/moc
 /nanoweb/rcc
+/nanoweb/.make.cache
+/nanoweb/nanoweb.sis

@@ -14,6 +14,12 @@ namespace ipn
 			m_image->setImage(":/img/our_imgs/mockup.png");
 			connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
 			zoomFactor = 1.0;
+
+			m_text = new TextWidget(this);
+			m_text->otherStyle = true;
+			m_text->setText("Vorlage");
+			m_text->resize(100, 30);
+			m_text->move(140, 210);
         }
 
 		void MockUpApp::changePinchScaleFactor(qreal delta)
