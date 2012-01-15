@@ -30,7 +30,6 @@ class ElementFisheyeApp : public App
                 virtual void swipeUp();
                 virtual void swipeRight();
                 virtual void swipeDown();
-                virtual void backButtonClick();
 
 
     signals:

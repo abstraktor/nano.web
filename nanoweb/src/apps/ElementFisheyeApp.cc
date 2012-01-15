@@ -68,12 +68,6 @@ namespace ipn
             return currentEl;
     }
 
-    void ElementFisheyeApp::backButtonClick()
-    {
-            //nop to override default action
-            qDebug() << "Backbutton clicked! ";
-    }
-
     void ElementFisheyeApp::swipeRight()
     {
             animationStart = translation;

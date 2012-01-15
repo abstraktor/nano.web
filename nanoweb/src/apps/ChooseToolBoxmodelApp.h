@@ -24,10 +24,6 @@ class ChooseToolBoxmodelApp : public App
 		void setElement(QWebElement el);
 		QWebElement getElement();
 
-	public slots:
-		void backButtonClick();
-
-
 	signals:
 		void borderButtonClicked();
 		void anotherButtonClicked();

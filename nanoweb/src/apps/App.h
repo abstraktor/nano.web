@@ -92,17 +92,17 @@ class App : public QWidget
 		void switchToWebPage();
 		void switchToMainMenuIfNecessary();
 
-	private slots:
+        protected slots:
 		void popApp();
 		void triggerButtonHold();
 
-		void backButtonClick();
-		void rightButtonClick();
-		void leftButtonClick();
+                virtual void backButtonClick();
+                virtual void rightButtonClick();
+                virtual void leftButtonClick();
 
-		void backButtonHold();
-		void rightButtonHold();
-		void leftButtonHold();
+                virtual void backButtonHold();
+                virtual void rightButtonHold();
+                virtual void leftButtonHold();
 
 	};
 

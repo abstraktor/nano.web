@@ -189,11 +189,6 @@ namespace ipn
         m_bottomRight3->move(br3.x(), br3.y());
     }
 
-    void ChooseTool1App::backButtonClick()
-    {
-        qDebug() << "Backbutton clicked! ";
-    }
-
     void ChooseTool1App::swipeRight()
     {
         animationStart = translation;

@@ -83,11 +83,6 @@ namespace ipn
 		update();
 	}
 
-	void BorderEditApp::backButtonClick()
-	{
-		qDebug() << "Backbutton clicked! ";
-	}
-
 	void BorderEditApp::swipeRight()
 	{
 		animationStart = translation;

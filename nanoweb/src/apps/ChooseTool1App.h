@@ -27,8 +27,7 @@ class ChooseTool1App : public App
 	public slots:
 		void timerTick();
 		void swipeLeft();
-		void swipeRight();
-		void backButtonClick();
+                void swipeRight();
 		void anotherButtonClickedSlot();
 		void boxmodelButtonClickedSlot();
 

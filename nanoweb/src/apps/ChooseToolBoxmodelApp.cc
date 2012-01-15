@@ -86,11 +86,6 @@ namespace ipn
 		m_bottomRight1->move(br1.x(), br1.y());
 	}
 
-	void ChooseToolBoxmodelApp::backButtonClick()
-	{
-		qDebug() << "Backbutton clicked! ";
-	}
-
 	void ChooseToolBoxmodelApp::mousePressEvent(QMouseEvent *event)
 	{
 	}
