@@ -130,18 +130,19 @@ namespace ipn
 	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
 	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
 	void MainWindow::hardwareLeftButtonClicked() {
+		qDebug() << m_frameWidget->topApp();
 		if (m_frameWidget->topApp() == m_webviewApp || m_frameWidget->topApp() == m_hardwareLeftWebView)
 			return;
 		if (m_frameWidget->topApp() == m_mockUpApp)
 			m_frameWidget->instantPopApp();
-		m_frameWidget->pushApp(m_hardwareLeftWebView);
+		m_frameWidget->instantPushApp(m_hardwareLeftWebView);
 	}
 	void MainWindow::hardwareRightButtonClicked() {
 		if (m_frameWidget->topApp() == m_mockUpApp)
 			return;
 		if (m_frameWidget->topApp() == m_hardwareLeftWebView)
 			m_frameWidget->instantPopApp();
-		m_frameWidget->pushApp(m_mockUpApp);
+		m_frameWidget->instantPushApp(m_mockUpApp);
 	}
 
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
@@ -159,6 +160,8 @@ namespace ipn
 		m_frameWidget->pushApp(m_chooseToolBoxmodelApp);
 	}
 	void MainWindow::switchToElementTapped(QWebElement el) {
+		m_hardwareLeftWebView->setScrollPosition(m_webviewApp->getScrollPosition());
+		m_mockUpApp->m_flickArea->setScrollPosition(m_webviewApp->getScrollPosition());
 		m_elementTappedApp->setElement(el);  m_frameWidget->pushApp(m_elementTappedApp);
 		//m_borderEditApp->setElement(el);
 		//m_frameWidget->pushApp(m_borderEditApp);

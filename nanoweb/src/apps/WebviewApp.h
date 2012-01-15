@@ -25,6 +25,8 @@ namespace ipn
 		NanoQWebview *m_webView;
 
 		inline bool isOpaque() {return false;}
+		void setScrollPosition(QPoint newP);
+		QPoint getScrollPosition();
 
 	public slots:
 		void changePinchRotationAngle(qreal delta);
@@ -55,6 +57,8 @@ namespace ipn
 		QVector<QPolygon> m_drawing;
 		FlickArea *m_flickArea;
 		TextWidget *m_text;
+
+		bool iAmBackButtonWebView;
 
 		BackgroundWidget *m_back;
 

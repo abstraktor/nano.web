@@ -61,6 +61,8 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 		//name = "WebViewApp2";
 	}
 
+	iAmBackButtonWebView = displayWidget;
+
 
 	// Connect gestures:
 	connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
@@ -75,6 +77,15 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 
 
 	connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SLOT(elementTappedHandler(QWebElement)));
+}
+
+void WebviewApp::setScrollPosition(QPoint newP) {
+	translation = newP;
+	updateView();
+}
+
+QPoint WebviewApp::getScrollPosition() {
+	return translation;
 }
 
 void WebviewApp::elementTappedHandler(QWebElement el) {
