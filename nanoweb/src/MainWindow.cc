@@ -79,7 +79,7 @@ namespace ipn
 		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_borderWidthApp, SLOT(numberClicked(QString)));
 
 		m_mockUpApp = new MockUpApp(this);
-		m_mockUpApp->m_flickArea->setScrollPosition(QPoint(-100, -100));
+                m_mockUpApp->m_flickArea->updateScrollPosition(QPoint(-100, -100));
 
 
 		// Set MenuApp as first app:
@@ -159,9 +159,15 @@ namespace ipn
 		m_chooseToolBoxmodelApp->setElement(m_chooseTool1App->getElement());
 		m_frameWidget->pushApp(m_chooseToolBoxmodelApp);
 	}
-	void MainWindow::switchToElementTapped(QWebElement el) {
-		m_hardwareLeftWebView->setScrollPosition(m_webviewApp->getScrollPosition());
-		m_mockUpApp->m_flickArea->setScrollPosition(m_webviewApp->getScrollPosition());
+
+        void MainWindow::setContentScrollPosition(QPoint point) {
+            qDebug() << point;
+            m_webviewApp->updateScrollPosition(point);
+            m_hardwareLeftWebView->updateScrollPosition(point);
+            m_mockUpApp->m_flickArea->updateScrollPosition(point);
+        }
+
+        void MainWindow::switchToElementTapped(QWebElement el) {
 		m_elementTappedApp->setElement(el);
 		m_frameWidget->pushApp(m_elementTappedApp);
 	}

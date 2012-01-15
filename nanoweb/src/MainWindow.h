@@ -98,6 +98,7 @@ public slots:
 	void hardwareRightButtonClicked();
 
     void switchToApp(App *app);
+    void setContentScrollPosition(QPoint);
 
 private slots:
     void moveOverlay();

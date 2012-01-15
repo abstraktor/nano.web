@@ -25,7 +25,7 @@ namespace ipn
 		NanoQWebview *m_webView;
 
 		inline bool isOpaque() {return false;}
-		void setScrollPosition(QPoint newP);
+                void updateScrollPosition(QPoint newP);
 		QPoint getScrollPosition();
 
 	public slots:
@@ -45,6 +45,7 @@ namespace ipn
 		void quitButtonClicked();
 		void elementTapped(QWebElement el);
 		void zoomTriggered();
+                void setScrollPosition(QPoint newP);
 
 
 	protected:

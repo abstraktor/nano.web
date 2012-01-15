@@ -32,8 +32,10 @@ namespace ipn
 		qDebug() << "clicked";
 	}
 
-	void FlickArea::setScrollPosition(QPoint newP) {
+        void FlickArea::updateScrollPosition(QPoint newP) {
+            qDebug() << this << (QWidget*)children().at(children().size()-2);
 		m_scrollOffset = newP;
+                if(m_currentChild) ((QWidget*)children().at(children().size()-2))->move(m_scrollOffset);
 		update();
 	}
 
