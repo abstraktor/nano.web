@@ -176,6 +176,7 @@ namespace ipn
 	}
 
 	void MainWindow::switchToMainMenuIfNecessary() {
+                m_webviewApp->moveContent(QPoint(0,0));
 		if (m_frameWidget->topApp() != m_menuApp) {
 			m_frameWidget->instantSwitchBackTo(m_menuApp);
 		}
@@ -254,7 +255,7 @@ namespace ipn
 							   event->buttons(),
 							   event->modifiers());
 
-		QApplication::sendEvent(m_currentChild, &childEvent);
+                QApplication::sendEvent(m_currentChild, &childEvent);
 	}
 
 	void MainWindow::moveOverlay()
