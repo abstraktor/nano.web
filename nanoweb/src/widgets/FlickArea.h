@@ -15,9 +15,12 @@ namespace ipn
 			virtual void resize(int width, int height);
 
 			QPointF relativeScrollPosition();
+			void setScrollPosition(QPoint newP);
+			QPoint getScrollPosition();
 
 		public slots:
 			void forwardMouseEvent(QMouseEvent *event, bool simulateMouseRelease = false);
+			void clicked();
 
 		signals:
 			void moved();

@@ -29,19 +29,14 @@ WebviewApp::WebviewApp(QWidget *parent) : App(parent)
 	translation = QPoint();
 	diff = QPoint();
 	lastPoint = QPoint();
-	/*
-		m_flickArea = new FlickArea(this);
-		m_flickArea->move(0, 0);
-		m_flickArea->resize(240, 240);
-		*/
-
 
 	/*
-			 * Important Websites, read and understand before editing this code:
-			 *    - http://codeposts.blogspot.com/2010/06/qtwebkit-goes-mobile.html
-			 *    - http://trac.webkit.org/wiki/QtWebKitTiling (slightly different)
-			 *    - http://doc.qt.nokia.com/4.7-snapshot/qgraphicswebview.html#QGraphicsWebView
-			 */
+	m_flickArea = new FlickArea(this);
+	m_flickArea->move(0, 0);
+	m_flickArea->resize(240, 240);
+	*/
+
+
 
 	// qt web settings: enable tiling and flatten frames
 	QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, true);
@@ -50,13 +45,10 @@ WebviewApp::WebviewApp(QWidget *parent) : App(parent)
 	m_webView = new NanoQWebview(this);
 	m_webView->resize(10000, 10000);
 	m_webView->move(0, 0);
-	//m_webView->load(QUrl("http://www.meilenwerk.de/Meilenwerk_Zuerichsee_index.php"));
 	m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
 	//m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
 	m_webView->show();
 	m_webView->setZoomFactor(1.0);
-
-	//m_webView->page()->setPreferredContentsSize(QSize(240, 240));
 
 	// Connect gestures:
 	connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));

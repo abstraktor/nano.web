@@ -15,12 +15,12 @@ namespace ipn
 
 		public:
 			MockUpApp(QWidget * parent = 0);
+			FlickArea *m_flickArea;
 
 		public slots:
 			void changePinchScaleFactor(qreal delta);
 
 		private:
-			FlickArea *m_flickArea;
 			MockupWidget *m_image;
 			TextWidget *m_text;
 			double zoomFactor;

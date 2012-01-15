@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QTimer>
 #include <math.h>
+#include <QDebug>
 
 namespace ipn
 {
@@ -24,6 +25,20 @@ namespace ipn
 		m_overlay->resize(width(), height());
 
 		m_currentChild = NULL;
+
+	}
+
+	void FlickArea::clicked() {
+		qDebug() << "clicked";
+	}
+
+	void FlickArea::setScrollPosition(QPoint newP) {
+		m_scrollOffset = newP;
+		update();
+	}
+
+	QPoint FlickArea::getScrollPosition() {
+		return m_scrollOffset;
 	}
 
 	void FlickArea::resize(int width, int height)
