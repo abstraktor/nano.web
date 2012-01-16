@@ -142,10 +142,11 @@ void WebviewApp::changePinchRotationAngle(qreal delta)
 
 
 void WebviewApp::updateView() {
-	update();
+        raise();
         translation = diff = emit getContentScrollPosition();
         m_webView->move(translation);
 	m_webView->update();
+        update();
 }
 
 void WebviewApp::changePinchScaleFactor(qreal delta)

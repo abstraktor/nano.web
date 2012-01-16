@@ -127,24 +127,29 @@ namespace ipn
 	void MainWindow::instantPopApp() { m_frameWidget->instantPopApp();}
 
 	// For each app, we need a slot which pushes it on the app stack:
-        void MainWindow::switchToMockUp()				{m_mockUpApp->updateView(); m_frameWidget->pushApp(m_mockUpApp);}
-        void MainWindow::switchToWebPage()				{m_hardwareLeftWebView->updateView();m_webviewApp->updateView(); m_frameWidget->pushApp(m_webviewApp);}
-	void MainWindow::hardwareLeftButtonClicked() {
-                //qDebug() << m_frameWidget->topApp();
+        void MainWindow::switchToMockUp()				{hardwareRightButtonClicked();}
+        void MainWindow::switchToWebPage()				{hardwareLeftButtonClicked();}
+        void MainWindow::hardwareLeftButtonClicked() {
+                qDebug() << m_frameWidget->topApp();
 		if (m_frameWidget->topApp() == m_webviewApp || m_frameWidget->topApp() == m_hardwareLeftWebView)
 			return;
 		if (m_frameWidget->topApp() == m_mockUpApp)
 			m_frameWidget->instantPopApp();
                 m_frameWidget->instantPushApp(m_hardwareLeftWebView);
                 m_hardwareLeftWebView->updateView();
+                update();
+                m_frameWidget->refresh();
 	}
 	void MainWindow::hardwareRightButtonClicked() {
+            qDebug() << m_frameWidget->topApp();
 		if (m_frameWidget->topApp() == m_mockUpApp)
 			return;
 		if (m_frameWidget->topApp() == m_hardwareLeftWebView)
 			m_frameWidget->instantPopApp();
 		m_frameWidget->instantPushApp(m_mockUpApp);
                 m_mockUpApp->updateView();
+                update();
+                m_frameWidget->refresh();
 	}
 
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
@@ -257,7 +262,7 @@ namespace ipn
 
 	void MainWindow::handleMouseMove(QMouseEvent *event)
 	{
-		QRect screen = QRect(0, 0, 240, 240);
+                QRect screen = QRect(0, 0, 240, 240);
 
 
 		// Drop the mouse event if it is outside the screen:

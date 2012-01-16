@@ -29,8 +29,11 @@ namespace ipn
     }
 
     void MockUpApp::updateView() {
-        update();
+        raise();
         m_image->move(emit getContentScrollPosition());
+        m_flickArea->update();
+        m_image->update();
+        update();
     }
 
     void MockUpApp::sendContentScrollPosition(QPoint pos) {
