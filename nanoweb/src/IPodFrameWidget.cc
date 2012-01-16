@@ -324,6 +324,8 @@ void IPodFrameWidget::refresh()
 		w--;
 		(*w)->hide();
 	}
+
+	qDebug() << m_appStack;
 }
 
 void IPodFrameWidget::refreshFrame() {
