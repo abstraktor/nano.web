@@ -21,12 +21,12 @@ namespace ipn
 		Q_OBJECT
 
 	public:
-		WebviewApp(QWidget *parent = 0, bool displayWidget = false);
+                WebviewApp(QWidget *parent = 0, bool displayWidget = false);
 		NanoQWebview *m_webView;
 
-		inline bool isOpaque() {return false;}
-		void setScrollPosition(QPoint newP);
+                inline bool isOpaque() {return false;}
 		QPoint getScrollPosition();
+                void updateView();
 
 	public slots:
 		void changePinchRotationAngle(qreal delta);
@@ -45,6 +45,8 @@ namespace ipn
 		void quitButtonClicked();
 		void elementTapped(QWebElement el);
 		void zoomTriggered();
+                void setScrollPosition(QPoint newP);
+                QPoint getContentScrollPosition();
 
 
 	protected:
@@ -65,7 +67,6 @@ namespace ipn
 		bool doSwiping, mousePressed, doZooming;
 		QPoint translation, diff, lastPoint;
 
-		void updateView();
 		void setDiffCorrectly();
 
 

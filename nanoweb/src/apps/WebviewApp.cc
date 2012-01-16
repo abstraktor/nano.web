@@ -75,13 +75,11 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 	connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 	connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
 
+        connect(this, SIGNAL(setScrollPosition(QPoint)), parent, SLOT(setContentScrollPosition(QPoint)));
+        connect(this, SIGNAL(getContentScrollPosition()), parent, SLOT(getContentScrollPosition()));
 
 	connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SLOT(elementTappedHandler(QWebElement)));
-}
-
-void WebviewApp::setScrollPosition(QPoint newP) {
-	translation = newP;
-	updateView();
+        updateView();
 }
 
 QPoint WebviewApp::getScrollPosition() {
@@ -116,10 +114,10 @@ void WebviewApp::mouseMoveEvent(QMouseEvent *event)
 		}
 		if (doSwiping) {
 			setDiffCorrectly();
-			translation = diff;
+                        emit setScrollPosition(diff);
+                        updateView();
 		}
-	}
-	updateView();
+        }
 }
 
 void WebviewApp::setDiffCorrectly() {
@@ -144,9 +142,11 @@ void WebviewApp::changePinchRotationAngle(qreal delta)
 
 
 void WebviewApp::updateView() {
-	update();
-	m_webView->move(translation.x(), translation.y());
+        raise();
+        translation = diff = emit getContentScrollPosition();
+        m_webView->move(translation);
 	m_webView->update();
+        update();
 }
 
 void WebviewApp::changePinchScaleFactor(qreal delta)

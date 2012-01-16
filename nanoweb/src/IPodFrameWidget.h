@@ -35,6 +35,7 @@ public:
 	QSize frameSize();
 	QRect contentRect();
 	int paddingTop();
+        void refresh();
 
 signals:
 	/** Signal emmited when the frame is moved, use this to emulate
@@ -69,8 +70,7 @@ protected:
 	void moveEvent(QMoveEvent*);
 
 private:
-	void popMultipleApps();
-	void refresh();
+        void popMultipleApps();
 	void refreshFrame();
 
 	ImageWidget *m_frameImages[3][3];

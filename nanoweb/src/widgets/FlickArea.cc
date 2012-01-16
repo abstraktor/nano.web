@@ -30,12 +30,7 @@ namespace ipn
 
 	void FlickArea::clicked() {
 		qDebug() << "clicked";
-	}
-
-	void FlickArea::setScrollPosition(QPoint newP) {
-		m_scrollOffset = newP;
-		update();
-	}
+        }
 
 	QPoint FlickArea::getScrollPosition() {
 		return m_scrollOffset;

@@ -11,6 +11,7 @@ namespace ipn
 
 		m_opacity = 1.0;
 		m_image = NULL;
+
 	}
 
 	ImageWidget::~ImageWidget()

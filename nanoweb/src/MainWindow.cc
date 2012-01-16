@@ -30,6 +30,7 @@ namespace ipn
 	MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	{
 		m_frameWidget = new ipn::IPodFrameWidget(new QWidget);
+                scrollPos = QPoint(0,0);
 		setCentralWidget(m_frameWidget);
 		connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 		connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -78,8 +79,7 @@ namespace ipn
 		m_multiTapApp = new MultiTapApp(this);
 		connect(m_multiTapApp, SIGNAL(accepted(QString)), m_borderWidthApp, SLOT(numberClicked(QString)));
 
-		m_mockUpApp = new MockUpApp(this);
-		m_mockUpApp->m_flickArea->setScrollPosition(QPoint(-100, -100));
+                m_mockUpApp = new MockUpApp(this);
 
 
 		// Set MenuApp as first app:
@@ -127,22 +127,29 @@ namespace ipn
 	void MainWindow::instantPopApp() { m_frameWidget->instantPopApp();}
 
 	// For each app, we need a slot which pushes it on the app stack:
-	void MainWindow::switchToMockUp()				{m_frameWidget->pushApp(m_mockUpApp);}
-	void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
-	void MainWindow::hardwareLeftButtonClicked() {
-		qDebug() << m_frameWidget->topApp();
+        void MainWindow::switchToMockUp()				{hardwareRightButtonClicked();}
+        void MainWindow::switchToWebPage()				{hardwareLeftButtonClicked();}
+        void MainWindow::hardwareLeftButtonClicked() {
+                qDebug() << m_frameWidget->topApp();
 		if (m_frameWidget->topApp() == m_webviewApp || m_frameWidget->topApp() == m_hardwareLeftWebView)
 			return;
 		if (m_frameWidget->topApp() == m_mockUpApp)
 			m_frameWidget->instantPopApp();
-		m_frameWidget->instantPushApp(m_hardwareLeftWebView);
+                m_frameWidget->instantPushApp(m_hardwareLeftWebView);
+                m_hardwareLeftWebView->updateView();
+                update();
+                m_frameWidget->refresh();
 	}
 	void MainWindow::hardwareRightButtonClicked() {
+            qDebug() << m_frameWidget->topApp();
 		if (m_frameWidget->topApp() == m_mockUpApp)
 			return;
 		if (m_frameWidget->topApp() == m_hardwareLeftWebView)
 			m_frameWidget->instantPopApp();
 		m_frameWidget->instantPushApp(m_mockUpApp);
+                m_mockUpApp->updateView();
+                update();
+                m_frameWidget->refresh();
 	}
 
 	void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
@@ -159,9 +166,17 @@ namespace ipn
 		m_chooseToolBoxmodelApp->setElement(m_chooseTool1App->getElement());
 		m_frameWidget->pushApp(m_chooseToolBoxmodelApp);
 	}
-	void MainWindow::switchToElementTapped(QWebElement el) {
-		m_hardwareLeftWebView->setScrollPosition(m_webviewApp->getScrollPosition());
-		m_mockUpApp->m_flickArea->setScrollPosition(m_webviewApp->getScrollPosition());
+
+        void MainWindow::setContentScrollPosition(QPoint point) {
+            qDebug() << "update position: " << point;
+            scrollPos = point;
+        }
+
+        QPoint MainWindow::getContentScrollPosition() {
+            return scrollPos;
+        }
+
+        void MainWindow::switchToElementTapped(QWebElement el) {
 		m_elementTappedApp->setElement(el);
 		m_frameWidget->pushApp(m_elementTappedApp);
 	}
@@ -197,9 +212,10 @@ namespace ipn
 	}
 
 	void MainWindow::switchToMainMenuIfNecessary() {
+                m_webviewApp->updateView();
 		if (m_frameWidget->topApp() != m_menuApp) {
 			m_frameWidget->instantSwitchBackTo(m_menuApp);
-		}
+                }
 	}
 
 
@@ -246,7 +262,7 @@ namespace ipn
 
 	void MainWindow::handleMouseMove(QMouseEvent *event)
 	{
-		QRect screen = QRect(0, 0, 240, 240);
+                QRect screen = QRect(0, 0, 240, 240);
 
 
 		// Drop the mouse event if it is outside the screen:
