@@ -25,9 +25,13 @@ namespace ipn
 			void setZoomFactor(double zoomFactor);
 			double getZoomFactor();
 			QPixmap *image();
+                        void moveEvent(QMoveEvent *event);
+
+                signals:
+                        void moved(QPoint pos);
 
 		protected:
-			void paintEvent(QPaintEvent*);
+                        void paintEvent(QPaintEvent*);
 
 		private:
 			float m_opacity;

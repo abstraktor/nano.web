@@ -99,6 +99,7 @@ public slots:
 
     void switchToApp(App *app);
     void setContentScrollPosition(QPoint);
+    QPoint getContentScrollPosition();
 
 private slots:
     void moveOverlay();
@@ -144,6 +145,8 @@ private:
     ImageWidget *m_fingerImage;
     static const QPoint kSingleTouchOffset;
     bool m_isMouseDown;
+
+    QPoint scrollPos;
 };
 
 } // namespace ipn

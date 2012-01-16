@@ -16,9 +16,16 @@ namespace ipn
 		public:
 			MockUpApp(QWidget * parent = 0);
 			FlickArea *m_flickArea;
+                        void show();
+                        void updateView();
+
+                signals:
+                        QPoint getContentScrollPosition();
+                        void setContentScrollPosition(QPoint);
 
 		public slots:
 			void changePinchScaleFactor(qreal delta);
+                        void sendContentScrollPosition(QPoint);
 
 		private:
 			MockupWidget *m_image;

@@ -14,8 +14,7 @@ namespace ipn
 
 			virtual void resize(int width, int height);
 
-			QPointF relativeScrollPosition();
-                        void updateScrollPosition(QPoint newP);
+                        QPointF relativeScrollPosition();
 			QPoint getScrollPosition();
 
 		public slots:

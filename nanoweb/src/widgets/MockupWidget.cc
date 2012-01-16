@@ -2,6 +2,7 @@
 #include "helpers.h"
 #include <QPainter>
 #include <QDebug>
+#include <QMoveEvent>
 
 namespace ipn
 {
@@ -14,6 +15,10 @@ namespace ipn
 
 		zoomFactor = 1.0;
 	}
+
+        void MockupWidget::moveEvent(QMoveEvent *event){
+            emit moved(event->pos());
+        }
 
 	double MockupWidget::getZoomFactor() {
 		return zoomFactor;
