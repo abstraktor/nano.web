@@ -97,9 +97,11 @@ public slots:
 	void hardwareLeftButtonClicked();
 	void hardwareRightButtonClicked();
 
-    void switchToApp(App *app);
-    void setContentScrollPosition(QPoint);
-    QPoint getContentScrollPosition();
+	void switchToApp(App *app);
+	void setContentScrollPosition(QPoint);
+	QPoint getContentScrollPosition();
+	void setContentZoomFactor(double);
+	double getContentZoomFactor();
 
 private slots:
     void moveOverlay();
@@ -147,6 +149,7 @@ private:
     bool m_isMouseDown;
 
     QPoint scrollPos;
+	double zoomFactor;
 };
 
 } // namespace ipn

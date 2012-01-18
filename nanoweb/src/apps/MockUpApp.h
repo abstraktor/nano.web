@@ -8,31 +8,33 @@
 
 namespace ipn
 {
-	class FlickArea;
-	class MockUpApp : public App
-	{
-		Q_OBJECT
+class FlickArea;
+class MockUpApp : public App
+{
+	Q_OBJECT
 
-		public:
-			MockUpApp(QWidget * parent = 0);
-			FlickArea *m_flickArea;
-                        void show();
-                        void updateView();
+public:
+	MockUpApp(QWidget * parent = 0);
+	FlickArea *m_flickArea;
+	void show();
+	void updateView();
 
-                signals:
-                        QPoint getContentScrollPosition();
-                        void setContentScrollPosition(QPoint);
+signals:
+	QPoint getContentScrollPosition();
+	void setContentScrollPosition(QPoint);
+	double getContentZoomFactor();
+	void setContentZoomFactor(double);
 
-		public slots:
-			void changePinchScaleFactor(qreal delta);
-                        void sendContentScrollPosition(QPoint);
+public slots:
+	void changePinchScaleFactor(qreal delta);
+	void sendUpdatedInfo(QPoint);
 
-		private:
-			MockupWidget *m_image;
-			TextWidget *m_text;
-			double zoomFactor;
+private:
+	MockupWidget *m_image;
+	TextWidget *m_text;
+	double zoomFactor;
 
 
-	};
+};
 }
 #endif // MOCKUPAPP_H

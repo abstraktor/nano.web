@@ -75,11 +75,13 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 	connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
 	connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
 
-        connect(this, SIGNAL(setScrollPosition(QPoint)), parent, SLOT(setContentScrollPosition(QPoint)));
-        connect(this, SIGNAL(getContentScrollPosition()), parent, SLOT(getContentScrollPosition()));
+	connect(this, SIGNAL(setScrollPosition(QPoint)), parent, SLOT(setContentScrollPosition(QPoint)));
+	connect(this, SIGNAL(getContentScrollPosition()), parent, SLOT(getContentScrollPosition()));
+	connect(this, SIGNAL(setContentZoomFactor(double)), parent, SLOT(setContentZoomFactor(double)));
+	connect(this, SIGNAL(getContentZoomFactor()), parent, SLOT(getContentZoomFactor()));
 
 	connect(m_webView, SIGNAL(elementTapped(QWebElement)), this, SLOT(elementTappedHandler(QWebElement)));
-        updateView();
+	updateView();
 }
 
 QPoint WebviewApp::getScrollPosition() {
@@ -114,10 +116,10 @@ void WebviewApp::mouseMoveEvent(QMouseEvent *event)
 		}
 		if (doSwiping) {
 			setDiffCorrectly();
-                        emit setScrollPosition(diff);
-                        updateView();
+			sendUpdatedInfo();
+			updateView();
 		}
-        }
+	}
 }
 
 void WebviewApp::setDiffCorrectly() {
@@ -142,11 +144,12 @@ void WebviewApp::changePinchRotationAngle(qreal delta)
 
 
 void WebviewApp::updateView() {
-        raise();
-        translation = diff = emit getContentScrollPosition();
-        m_webView->move(translation);
+	raise();
+	translation = diff = emit getContentScrollPosition();
+	m_webView->setZoomFactor(emit getContentZoomFactor());
+	m_webView->move(translation);
 	m_webView->update();
-        update();
+	update();
 }
 
 void WebviewApp::changePinchScaleFactor(qreal delta)
@@ -163,7 +166,9 @@ void WebviewApp::changePinchScaleFactor(qreal delta)
 		m_webView->setZoomFactor(0.2);
 		return;
 	}
-	if (delta > 1.0) {
+	//only zoom to middle when zooming in
+	//if (delta > 1.0) {
+	if (true) {
 		diff = diff - QPoint(120, 120);
 		diff = diff * delta;
 		diff = diff + QPoint(120, 120);
@@ -173,8 +178,15 @@ void WebviewApp::changePinchScaleFactor(qreal delta)
 	}
 	setDiffCorrectly();
 	translation = diff;
+	sendUpdatedInfo();
 	updateView();
 	emit zoomTriggered();
+}
+
+void WebviewApp::sendUpdatedInfo() {
+	emit setContentZoomFactor(m_webView->zoomFactor());
+	emit setScrollPosition(diff);
+	updateView();
 }
 
 void WebviewApp::pinchIn()

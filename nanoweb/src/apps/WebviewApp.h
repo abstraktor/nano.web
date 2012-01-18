@@ -9,69 +9,72 @@
 
 namespace ipn
 {
-	class BackgroundWidget;
-	class TitleBarWidget;
-	class TextWidget;
-	class ScalableButtonWidget;
-	class NanoQWebView;
-	class TextWidget;
+class BackgroundWidget;
+class TitleBarWidget;
+class TextWidget;
+class ScalableButtonWidget;
+class NanoQWebView;
+class TextWidget;
 
-	class WebviewApp : public App
-	{
-		Q_OBJECT
+class WebviewApp : public App
+{
+	Q_OBJECT
 
-	public:
-                WebviewApp(QWidget *parent = 0, bool displayWidget = false);
-		NanoQWebview *m_webView;
+public:
+	WebviewApp(QWidget *parent = 0, bool displayWidget = false);
+	NanoQWebview *m_webView;
 
-                inline bool isOpaque() {return false;}
-		QPoint getScrollPosition();
-                void updateView();
+	inline bool isOpaque() {return false;}
+	QPoint getScrollPosition();
+	void updateView();
+	void sendUpdatedInfo();
 
-	public slots:
-		void changePinchRotationAngle(qreal delta);
-		void changePinchScaleFactor(qreal delta);
-		void pinchIn();
-		void pinchOut();
-		void swipeLeft();
-		void swipeUp();
-		void swipeRight();
-		void swipeDown();
-		void swipe(qreal angle);
+public slots:
+	void changePinchRotationAngle(qreal delta);
+	void changePinchScaleFactor(qreal delta);
+	void pinchIn();
+	void pinchOut();
+	void swipeLeft();
+	void swipeUp();
+	void swipeRight();
+	void swipeDown();
+	void swipe(qreal angle);
 
-		void elementTappedHandler(QWebElement el);
+	void elementTappedHandler(QWebElement el);
 
-	signals:
-		void quitButtonClicked();
-		void elementTapped(QWebElement el);
-		void zoomTriggered();
-                void setScrollPosition(QPoint newP);
-                QPoint getContentScrollPosition();
-
-
-	protected:
-		virtual void mousePressEvent(QMouseEvent *event);
-		virtual void mouseMoveEvent(QMouseEvent *event);
-		virtual void mouseReleaseEvent(QMouseEvent *event);
+signals:
+	void quitButtonClicked();
+	void elementTapped(QWebElement el);
+	void zoomTriggered();
+	void setScrollPosition(QPoint newP);
+	QPoint getContentScrollPosition();
+	void setContentZoomFactor(double z);
+	double getContentZoomFactor();
 
 
-	private:
-		QVector<QPolygon> m_drawing;
-		FlickArea *m_flickArea;
-		TextWidget *m_text;
-
-		bool iAmBackButtonWebView;
-
-		BackgroundWidget *m_back;
-
-		bool doSwiping, mousePressed, doZooming;
-		QPoint translation, diff, lastPoint;
-
-		void setDiffCorrectly();
+protected:
+	virtual void mousePressEvent(QMouseEvent *event);
+	virtual void mouseMoveEvent(QMouseEvent *event);
+	virtual void mouseReleaseEvent(QMouseEvent *event);
 
 
-		qreal m_currentScaleFactor, m_currentRotationAngle;
-	};
+private:
+	QVector<QPolygon> m_drawing;
+	FlickArea *m_flickArea;
+	TextWidget *m_text;
+
+	bool iAmBackButtonWebView;
+
+	BackgroundWidget *m_back;
+
+	bool doSwiping, mousePressed, doZooming;
+	QPoint translation, diff, lastPoint;
+
+	void setDiffCorrectly();
+
+
+	qreal m_currentScaleFactor, m_currentRotationAngle;
+};
 
 } // namespace ipn
 

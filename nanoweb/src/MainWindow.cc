@@ -30,7 +30,8 @@ const QPoint MainWindow::kSingleTouchOffset = QPoint(48, 43);
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
 	m_frameWidget = new ipn::IPodFrameWidget(new QWidget);
-	scrollPos = QPoint(0,0);
+	scrollPos = QPoint();
+	zoomFactor = 1;
 	setCentralWidget(m_frameWidget);
 	connect(m_frameWidget, SIGNAL(gestureTriggered(GestureType,qreal)), this, SLOT(handleGesture(GestureType,qreal)));
 	connect(m_frameWidget, SIGNAL(frameMoved()), this, SLOT(moveOverlay()));
@@ -174,6 +175,14 @@ void MainWindow::setContentScrollPosition(QPoint point) {
 
 QPoint MainWindow::getContentScrollPosition() {
 	return scrollPos;
+}
+
+void MainWindow::setContentZoomFactor(double z) {
+	zoomFactor = z;
+}
+
+double MainWindow::getContentZoomFactor() {
+	return zoomFactor;
 }
 
 void MainWindow::switchToElementTapped(QWebElement el) {

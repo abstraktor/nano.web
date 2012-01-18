@@ -5,48 +5,48 @@
 
 namespace ipn
 {
-	class FlickArea : public ClickableWidget
-	{
-		Q_OBJECT
+class FlickArea : public ClickableWidget
+{
+	Q_OBJECT
 
-		public:
-			FlickArea(QWidget *parent = 0);
+public:
+	FlickArea(QWidget *parent = 0);
 
-			virtual void resize(int width, int height);
+	virtual void resize(int width, int height);
 
-                        QPointF relativeScrollPosition();
-			QPoint getScrollPosition();
+	QPointF relativeScrollPosition();
+	QPoint getScrollPosition();
 
-		public slots:
-			void forwardMouseEvent(QMouseEvent *event, bool simulateMouseRelease = false);
-			void clicked();
+public slots:
+	void forwardMouseEvent(QMouseEvent *event, bool simulateMouseRelease = false);
+	void clicked();
 
-		signals:
-			void moved();
-                        void setScrollPosition(QPoint pos);
+signals:
+	void moved();
+	void setScrollPosition(QPoint pos);
 
-		protected:
-			void mousePressEvent(QMouseEvent *event);
-			void mouseMoveEvent(QMouseEvent *event);
-			void mouseReleaseEvent(QMouseEvent *event);
-			void paintEvent(QPaintEvent *event);
+protected:
+	void mousePressEvent(QMouseEvent *event);
+	void mouseMoveEvent(QMouseEvent *event);
+	void mouseReleaseEvent(QMouseEvent *event);
+	void paintEvent(QPaintEvent *event);
 
-		private:
-			ClickableWidget *m_overlay;
+private:
+	ClickableWidget *m_overlay;
 
-			QTimer *m_animationTimer;
-			QPoint m_lastMousePos;
-			QPoint m_mouseDownPos;
-			QPoint m_scrollOffset;
-			bool m_mouseMovedSinceMousePress;
-			QWidget *m_currentChild;
+	QTimer *m_animationTimer;
+	QPoint m_lastMousePos;
+	QPoint m_mouseDownPos;
+	QPoint m_scrollOffset;
+	bool m_mouseMovedSinceMousePress;
+	QWidget *m_currentChild;
 
-			float calculateFlickDistance(float realDistance);
-			void flick(QPoint offset);
+	float calculateFlickDistance(float realDistance);
+	void flick(QPoint offset);
 
-		private slots:
-			void proceedAnimation();
-	};
+private slots:
+	void proceedAnimation();
+};
 
 } // namespace ipn
 
