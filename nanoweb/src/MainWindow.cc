@@ -169,7 +169,6 @@ void MainWindow::switchToChooseToolBoxmodelApp() {
 }
 
 void MainWindow::setContentScrollPosition(QPoint point) {
-	qDebug() << "update position: " << point;
 	scrollPos = point;
 }
 

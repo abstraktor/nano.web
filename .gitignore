@@ -8,3 +8,6 @@ Thumbs.db
 /nanoweb/.make.cache
 /nanoweb/nanoweb.sis
 /nanoweb/bld.inf
+/nanoweb/Makefile
+/nanoweb/Makefile.Debug
+/nanoweb/Makefile.Release
