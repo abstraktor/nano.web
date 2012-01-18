@@ -13,7 +13,7 @@ NanoQWebview::NanoQWebview(QWidget *parent) : QWebView(parent)
 
 
 void NanoQWebview::mousePressEvent(QMouseEvent *event) {
-	if (event->button() == Qt::MidButton)
+	if (event->button() != Qt::MidButton)
 	{
 		event->ignore();
 		return;
