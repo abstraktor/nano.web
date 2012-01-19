@@ -8,8 +8,8 @@ namespace ipn
     {
         connect(this, SIGNAL(setContentScrollPosition(QPoint)), parent, SLOT(setContentScrollPosition(QPoint)));
         connect(this, SIGNAL(getContentScrollPosition()), parent, SLOT(getContentScrollPosition()));
-		connect(this, SIGNAL(setContentZoomFactor(double)), parent, SLOT(setContentZoomFactor(double)));
-		connect(this, SIGNAL(getContentZoomFactor()), parent, SLOT(getContentZoomFactor()));
+        connect(this, SIGNAL(setContentZoomFactor(double)), parent, SLOT(setContentZoomFactor(double)));
+        connect(this, SIGNAL(getContentZoomFactor()), parent, SLOT(getContentZoomFactor()));
 
         m_flickArea = new FlickArea(this);
         m_flickArea->resize(240, 240);
@@ -19,7 +19,7 @@ namespace ipn
         m_image->setImage(":/img/our_imgs/mockup.png");
         connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
         zoomFactor = 1.0;
-		connect(m_image, SIGNAL(moved(QPoint)), this, SLOT(sendContentScrollPosition(QPoint)));
+        connect(m_image, SIGNAL(moved(QPoint)), this, SLOT(sendContentScrollPosition(QPoint)));
 
         m_text = new TextWidget(this);
         m_text->otherStyle = true;
@@ -32,8 +32,8 @@ namespace ipn
 
     void MockUpApp::updateView() {
         raise();
-		m_image->setZoomFactor(emit getContentZoomFactor());
-		m_image->move(emit getContentScrollPosition());
+        m_image->setZoomFactor(emit getContentZoomFactor());
+        m_image->move(emit getContentScrollPosition());
         m_flickArea->update();
         m_image->update();
         update();
