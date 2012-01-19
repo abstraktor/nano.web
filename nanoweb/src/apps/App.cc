@@ -4,7 +4,7 @@
 namespace ipn
 {
 
-	App::App(QWidget *parent) : QWidget()
+        App::App(QWidget *parent) : QWidget()
 	{
 		// Create a timer invoking the menu if the users hold a finger on the screen
 		// for a specific amount of time in milliseconds:

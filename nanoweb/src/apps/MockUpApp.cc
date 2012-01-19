@@ -58,9 +58,9 @@ namespace ipn
             return;
         }
         qDebug() << zoomFactor;
-		m_image->setZoomFactor(zoomFactor);
-		sendUpdatedInfo(m_image->pos());
-		m_image->update();
+        m_image->setZoomFactor(zoomFactor);
+        sendUpdatedInfo(m_image->pos());
+        m_image->update();
     }
 
 } // namespace ipn
