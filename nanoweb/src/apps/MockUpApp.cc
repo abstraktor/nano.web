@@ -39,7 +39,7 @@ namespace ipn
         update();
     }
 
-	void MockUpApp::sendUpdatedInfo(QPoint pos) {
+    void MockUpApp::sendUpdatedInfo(QPoint pos) {
 		emit setContentScrollPosition(pos);
 		emit setContentZoomFactor(zoomFactor);
     }
