@@ -10,23 +10,28 @@
 
 namespace ipn
 {
-	class NanoQWebview : public QWebView
-	{
-		Q_OBJECT
+class NanoQWebview : public QWebView
+{
+    Q_OBJECT
 
-		public:
-			NanoQWebview(QWidget *parent = 0);
-		protected:
-			virtual void mousePressEvent(QMouseEvent *);
-			virtual void mouseMoveEvent(QMouseEvent *);
-			virtual void mouseReleaseEvent(QMouseEvent *);
-		signals:
-			void elementTapped(QWebElement el);
+public:
+    NanoQWebview(QWidget *parent = 0);
+protected:
+    virtual void mousePressEvent(QMouseEvent *);
+    virtual void mouseMoveEvent(QMouseEvent *);
+    virtual void mouseReleaseEvent(QMouseEvent *);
+    void moveEvent(QMoveEvent *event);
 
-		private:
+signals:
+    void elementTapped(QWebElement el);
+    void mouseClick(QMouseEvent *);
+    void mouseClickEvent(QMouseEvent *event);
+    void moved(QPoint pos);
 
+private:
+    bool event_by_area;
 
-	};
+};
 
 } // namespace ipn
 

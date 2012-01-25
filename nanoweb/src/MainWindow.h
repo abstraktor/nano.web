@@ -75,9 +75,9 @@ public slots:
     void popApp();
     void instantPopApp();
 
-	// Slots for connecting apps:
-	void switchToWebPage();
-	void switchToMainMenuIfNecessary();
+    // Slots for connecting apps:
+    void switchToWebPage();
+    void switchToMainMenuIfNecessary();
     void switchToMockUp();
     void switchToElementTapped();
     void switchToElementTapped(QWebElement el);
@@ -93,15 +93,15 @@ public slots:
     void elementTappedInFisheye();
     void elementTappedInFisheye(QWebElement el);
     void switchToMultiTapApp();
-	void switchBackToBorderEditApp(QString value);
-	void hardwareLeftButtonClicked();
-	void hardwareRightButtonClicked();
+    void switchBackToBorderEditApp(QString value);
+    void hardwareLeftButtonClicked();
+    void hardwareRightButtonClicked();
 
-	void switchToApp(App *app);
-	void setContentScrollPosition(QPoint);
-	QPoint getContentScrollPosition();
-	void setContentZoomFactor(double);
-	double getContentZoomFactor();
+    void switchToApp(App *app);
+    void setContentScrollPosition(QPoint);
+    QPoint getContentScrollPosition();
+    void setContentZoomFactor(double);
+    double getContentZoomFactor();
 
 private slots:
     void moveOverlay();
@@ -124,11 +124,11 @@ private:
 
     // Apps
     MenuApp *m_menuApp, *m_displayMenuApp, *m_interactiveMenuApp, *m_inputMenuApp, *m_choiceMenuApp;
-	WebviewApp *m_webviewApp, *m_hardwareLeftWebView;
+    WebviewApp *m_webviewApp, *m_hardwareLeftWebView;
     ElementTappedApp *m_elementTappedApp;
     ElementFisheyeApp *m_elementFisheyeApp;
     InfoApp *m_infoApp;
-	ExplanationApp *m_explanationApp;
+    ExplanationApp *m_explanationApp;
     ChooseTool1App *m_chooseTool1App;
     ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
     BorderEditApp *m_borderEditApp;
@@ -149,7 +149,7 @@ private:
     bool m_isMouseDown;
 
     QPoint scrollPos;
-	double zoomFactor;
+    double zoomFactor;
 };
 
 } // namespace ipn

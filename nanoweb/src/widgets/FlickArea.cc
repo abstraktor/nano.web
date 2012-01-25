@@ -25,7 +25,6 @@ namespace ipn
 		m_overlay->resize(width(), height());
 
 		m_currentChild = NULL;
-
 	}
 
 	void FlickArea::clicked() {
@@ -64,14 +63,14 @@ namespace ipn
 		QPoint pos = event->pos() - m_currentChild->pos();
 		QEvent::Type type = event->type();
 
-		// simulate mouse release outside the widget by clicking at (-1, -1) which is always outside
+                // simulate mouse release outside the widget by clicking at (-1, -1) which is always outside
 		if (simulateMouseRelease)
 		{
 			pos = QPoint(-1, -1);
 			type = QEvent::MouseButtonRelease;
 		}
 
-		QMouseEvent childEvent(type, pos, event->button(), event->buttons(), event->modifiers());
+                QMouseEvent childEvent(type, pos, Qt::MidButton, event->buttons(), event->modifiers());
 
 		QApplication::sendEvent(m_currentChild, &childEvent);
 	}

@@ -17,9 +17,9 @@ namespace ipn
 
         m_image = new MockupWidget(m_flickArea);
         m_image->setImage(":/img/our_imgs/mockup.png");
-        connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
         zoomFactor = 1.0;
-        connect(m_image, SIGNAL(moved(QPoint)), this, SLOT(sendContentScrollPosition(QPoint)));
+        connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
+        connect(m_image, SIGNAL(moved(QPoint)), this, SLOT(sendUpdatedInfo(QPoint)));
 
         m_text = new TextWidget(this);
         m_text->otherStyle = true;

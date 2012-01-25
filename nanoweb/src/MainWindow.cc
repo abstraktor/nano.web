@@ -131,7 +131,7 @@ void MainWindow::instantPopApp() { m_frameWidget->instantPopApp();}
 
 // For each app, we need a slot which pushes it on the app stack:
 void MainWindow::switchToMockUp()				{hardwareRightButtonClicked();}
-void MainWindow::switchToWebPage()				{m_frameWidget->pushApp(m_webviewApp);}
+void MainWindow::switchToWebPage()				{m_webviewApp->updateView(); m_frameWidget->pushApp(m_webviewApp);}
 void MainWindow::hardwareLeftButtonClicked() {
 	qDebug() << m_frameWidget->topApp();
 	if (m_frameWidget->topApp() == m_webviewApp || m_frameWidget->topApp() == m_hardwareLeftWebView)
@@ -170,6 +170,7 @@ void MainWindow::switchToChooseToolBoxmodelApp() {
 }
 
 void MainWindow::setContentScrollPosition(QPoint point) {
+    qDebug() << "set position to:" << point;
 	scrollPos = point;
 }
 
@@ -178,6 +179,7 @@ QPoint MainWindow::getContentScrollPosition() {
 }
 
 void MainWindow::setContentZoomFactor(double z) {
+    qDebug() << "set zoomfactor to:" << z;
 	zoomFactor = z;
 }
 
