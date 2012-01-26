@@ -11,12 +11,12 @@ namespace ipn
 	ExplanationApp::ExplanationApp(QWidget *parent) : App(parent)
 	{
 
-		/*m_okButton = new ScalableButtonWidget(this);
+		m_okButton = new ScalableButtonWidget(this);
 		m_okButton->move(160, 180);
 		m_okButton->resize(64, 48);
 		m_okButton->setImage(":/img/buttons/default");
 		m_okButton->setText("OK");
-		connect(m_okButton, SIGNAL(clicked()), this, SIGNAL(okButtonClicked()));*/
+		connect(m_okButton, SIGNAL(clicked()), this, SIGNAL(okButtonClicked()));
 		name = "ExplanationApp";
 	}
 
