@@ -57,8 +57,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	m_hardwareLeftWebView = new WebviewApp(this, true);
 	m_hardwareLeftWebView->m_webView->setPage(m_webviewApp->m_webView->page());
 
-	qDebug() << "Webview: " << m_webviewApp << "#" << m_hardwareLeftWebView;
-
 	m_elementTappedApp = new ElementTappedApp(this);
 
 	m_elementFisheyeApp = new ElementFisheyeApp(this);
@@ -133,7 +131,6 @@ void MainWindow::instantPopApp() { m_frameWidget->instantPopApp();}
 void MainWindow::switchToMockUp()				{hardwareRightButtonClicked();}
 void MainWindow::switchToWebPage()				{m_webviewApp->updateView(); m_frameWidget->pushApp(m_webviewApp);}
 void MainWindow::hardwareLeftButtonClicked() {
-	qDebug() << m_frameWidget->topApp();
 	if (m_frameWidget->topApp() == m_webviewApp || m_frameWidget->topApp() == m_hardwareLeftWebView)
 		return;
 	if (m_frameWidget->topApp() == m_mockUpApp)
@@ -143,7 +140,6 @@ void MainWindow::hardwareLeftButtonClicked() {
 	m_frameWidget->refresh();
 }
 void MainWindow::hardwareRightButtonClicked() {
-	qDebug() << m_frameWidget->topApp();
 	if (m_frameWidget->topApp() == m_mockUpApp)
 		return;
 	if (m_frameWidget->topApp() == m_hardwareLeftWebView)
@@ -170,7 +166,6 @@ void MainWindow::switchToChooseToolBoxmodelApp() {
 }
 
 void MainWindow::setContentScrollPosition(QPoint point) {
-    qDebug() << "set position to:" << point;
 	scrollPos = point;
 }
 
@@ -179,7 +174,6 @@ QPoint MainWindow::getContentScrollPosition() {
 }
 
 void MainWindow::setContentZoomFactor(double z) {
-    qDebug() << "set zoomfactor to:" << z;
 	zoomFactor = z;
 }
 

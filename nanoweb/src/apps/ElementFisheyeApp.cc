@@ -26,9 +26,9 @@ namespace ipn
 
     ElementFisheyeApp::ElementFisheyeApp(QWidget *parent) : App(parent)
     {
-            connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(instantPopApp()));
-            connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(elementTappedInFisheye(QWebElement)));
-            connect(this, SIGNAL(backButtonClickTriggered()), parent, SLOT(elementTappedInFisheye()));
+			connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(elementTappedInFisheye(QWebElement)));
+			connect(this, SIGNAL(backButtonClickTriggered()), parent, SLOT(elementTappedInFisheye()));
+			connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToChooseTool1App()));
 
             translation = QPoint();
 

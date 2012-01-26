@@ -129,34 +129,28 @@ namespace ipn
 	void App::backButtonClick()
 	{
 		emit popApp();
-		qDebug() << "Backbutton clicked! (popping app as default action)";
 	}
 
 	void App::rightButtonClick()
 	{
 		emit switchToMockUp();
-		qDebug() << "Rightbutton clicked! ";
 	}
 
 	void App::leftButtonClick()
 	{
 		emit switchToWebPage();
-		qDebug() << "Leftbutton clicked! ";
 	}
 
 	void App::leftButtonHold()
 	{
-		qDebug() << "Leftbutton hold! ";
 	}
 
 	void App::rightButtonHold()
 	{
-		qDebug() << "Rightbutton hold! ";
 	}
 
 	void App::backButtonHold()
 	{
-		qDebug() << "BAckbutton hold";
 		emit switchToMainMenuIfNecessary();
 	}
 
