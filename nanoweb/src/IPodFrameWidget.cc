@@ -330,17 +330,13 @@ void IPodFrameWidget::refresh()
 }
 
 void IPodFrameWidget::refreshFrame() {
-	if (topApp()->name == "ExplanationApp" || topApp()->name == "MenuApp") {
+	if (topApp()->name == "MenuApp") {
 		m_frameImages[0][1]->setImage(":/img/frame/t_ohne.png");
-	}
-	else if (topApp()->name == "WebViewApp") {
-		m_frameImages[0][1]->setImage(":/img/frame/t_ohneweb.png");
-	}
-	else if (topApp()->name == "MockUpApp") {
-		m_frameImages[0][1]->setImage(":/img/frame/t_ohnemockup.png");
+		m_frameImages[0][0]->setImage(":/img/frame/tl_ohne.png");
 	}
 	else {
 		m_frameImages[0][1]->setImage(":/img/frame/t.png");
+		m_frameImages[0][0]->setImage(":/img/frame/tl.png");
 	}
 }
 
