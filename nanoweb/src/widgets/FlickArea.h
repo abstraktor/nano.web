@@ -16,6 +16,7 @@ public:
 
 	QPointF relativeScrollPosition();
 	QPoint getScrollPosition();
+	void setScrollPosition(QPoint pos);
 
 public slots:
 	void forwardMouseEvent(QMouseEvent *event, bool simulateMouseRelease = false);
@@ -23,7 +24,6 @@ public slots:
 
 signals:
 	void moved();
-	void setScrollPosition(QPoint pos);
 
 protected:
 	void mousePressEvent(QMouseEvent *event);

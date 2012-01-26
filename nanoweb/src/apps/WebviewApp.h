@@ -29,7 +29,6 @@ public:
     void updateView();
 
 public slots:
-    void changePinchRotationAngle(qreal delta);
     void changePinchScaleFactor(qreal delta);
     void pinchIn();
     void pinchOut();
@@ -52,8 +51,7 @@ signals:
 
 
 protected slots:
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseMoveEvent(QMouseEvent *event);
+	virtual void mousePressEvent(QMouseEvent *event);
     virtual void mouseReleaseEvent(QMouseEvent *event);
 
 private:
@@ -69,7 +67,7 @@ private:
 
     void setDiffCorrectly();
 
-    qreal m_currentScaleFactor, m_currentRotationAngle;
+	qreal m_currentScaleFactor;
 };
 
 } // namespace ipn

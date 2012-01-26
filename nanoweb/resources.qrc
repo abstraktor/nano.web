@@ -96,7 +96,6 @@
         <file>img/our_icons/tickets.png</file>
         <file>img/our_imgs/mockup.png</file>
         <file>meilenwerk/meilenwerk.html</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>img/frame/b.png</file>
         <file>img/frame/bl.png</file>
         <file>img/frame/br.png</file>
@@ -116,5 +115,6 @@
         <file>img/frame/t_ohne.png</file>
         <file>img/frame/tl_ohne.png</file>
         <file>img/our_icons/mockup3.png</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
     </qresource>
 </RCC>

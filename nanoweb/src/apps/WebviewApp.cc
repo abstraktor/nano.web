@@ -47,7 +47,7 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
     QWebSettings::globalSettings()->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
 
     m_webView = new NanoQWebview(m_flickArea);
-    m_webView->resize(10000, 10000);
+	m_webView->resize(930, 525);
    // m_webView->move(0, 0);
     m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
     //m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
@@ -74,8 +74,7 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
     connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
     connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
     connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
-    connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
-    connect(this, SIGNAL(pinchRotationAngleChanged(qreal)), this, SLOT(changePinchRotationAngle(qreal)));
+	connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
     connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
     connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
     connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
@@ -118,30 +117,6 @@ void WebviewApp::mouseReleaseEvent(QMouseEvent *event) {
 
 }
 
-void WebviewApp::mouseMoveEvent(QMouseEvent *event)
-{
-    if (!event->buttons() == Qt::LeftButton)
-        return;
-    if (!mousePressed) {
-        mousePressed = true;
-        lastPoint = event->pos();
-        return;
-    }
-    else {
-        diff = diff + (event->pos() - lastPoint);
-        lastPoint = event->pos();
-        double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
-        if (length >= 2) {
-            doSwiping = true;
-        }
-        if (doSwiping) {
-            setDiffCorrectly();
-            sendUpdatedInfo();
-            updateView();
-        }
-    }
-}
-
 void WebviewApp::setDiffCorrectly() {
     if (abs(diff.x()) > (930 * m_webView->zoomFactor() - 240))
         diff.setX(-(930 * m_webView->zoomFactor() - 240));
@@ -153,23 +128,20 @@ void WebviewApp::setDiffCorrectly() {
         diff.setY(0);
 }
 
-void WebviewApp::changePinchRotationAngle(qreal delta)
-{
-}
-
 
 void WebviewApp::updateView() {
     raise();
     translation = diff = emit getContentScrollPosition();
     m_webView->setZoomFactor(emit getContentZoomFactor());
     m_webView->move(translation);
+	m_webView->resize(930 * m_webView->zoomFactor(), 525 * m_webView->zoomFactor());
     m_webView->update();
     update();
 }
 
 void WebviewApp::changePinchScaleFactor(qreal delta)
 {
-    doZooming = true;
+	qDebug() << "change pinch scale factor";
     m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
     if (m_webView->zoomFactor() >= 3.0)
     {
@@ -188,11 +160,11 @@ void WebviewApp::changePinchScaleFactor(qreal delta)
     }
     else {
         diff = diff * delta;
-    }
+	}
     setDiffCorrectly();
     translation = diff;
     sendUpdatedInfo();
-    updateView();
+	updateView();
     emit zoomTriggered();
 }
 
