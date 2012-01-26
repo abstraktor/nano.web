@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	m_menuApp = new MenuApp(this);
 	m_menuApp->titleBar()->addButton(TitleBarWidget::BUTTON_QUIT);
 	m_menuApp->addButton(MenuApp::TopLeft, "website", ":/img/our_icons/website.png");
-	m_menuApp->addButton(MenuApp::TopRight, "vorlage", ":/img/our_icons/mockup.png");
+	m_menuApp->addButton(MenuApp::TopRight, "vorlage", ":/img/our_icons/mockup3.png");
 	m_menuApp->addButton(MenuApp::BottomLeft, "tickets", ":/img/our_icons/tickets.png");
 	m_menuApp->addButton(MenuApp::BottomRight, "deploy", ":/img/our_icons/deploy.png");
 	m_menuApp->titleBar()->setTitle("NANOWEB");
@@ -135,7 +135,11 @@ void MainWindow::hardwareLeftButtonClicked() {
 		return;
 	if (m_frameWidget->topApp() == m_mockUpApp)
 		m_frameWidget->instantPopApp();
+	QPoint tempPos = scrollPos;
+	double tempZoom = zoomFactor;
 	m_frameWidget->instantPushApp(m_hardwareLeftWebView);
+	scrollPos = tempPos;
+	zoomFactor = tempZoom;
 	m_hardwareLeftWebView->updateView();
 	m_frameWidget->refresh();
 }
@@ -144,7 +148,11 @@ void MainWindow::hardwareRightButtonClicked() {
 		return;
 	if (m_frameWidget->topApp() == m_hardwareLeftWebView)
 		m_frameWidget->instantPopApp();
+	QPoint tempPos = scrollPos;
+	double tempZoom = zoomFactor;
 	m_frameWidget->instantPushApp(m_mockUpApp);
+	scrollPos = tempPos;
+	zoomFactor = tempZoom;
 	m_mockUpApp->updateView();
 	update();
 	m_frameWidget->refresh();
@@ -166,6 +174,7 @@ void MainWindow::switchToChooseToolBoxmodelApp() {
 }
 
 void MainWindow::setContentScrollPosition(QPoint point) {
+	qDebug() << "set content scroll pos to" << point;
 	scrollPos = point;
 }
 

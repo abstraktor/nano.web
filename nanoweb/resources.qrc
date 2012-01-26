@@ -115,5 +115,6 @@
         <file>img/frame/tl.png</file>
         <file>img/frame/t_ohne.png</file>
         <file>img/frame/tl_ohne.png</file>
+        <file>img/our_icons/mockup3.png</file>
     </qresource>
 </RCC>
