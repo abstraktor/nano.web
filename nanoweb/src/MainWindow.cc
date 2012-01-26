@@ -137,11 +137,19 @@ void MainWindow::hardwareLeftButtonClicked() {
 		m_frameWidget->instantPopApp();
 	QPoint tempPos = scrollPos;
 	double tempZoom = zoomFactor;
-	m_frameWidget->instantPushApp(m_hardwareLeftWebView);
-	scrollPos = tempPos;
-	zoomFactor = tempZoom;
-	m_hardwareLeftWebView->updateView();
-	m_frameWidget->refresh();
+	if (m_frameWidget->topApp() != m_webviewApp) {
+		m_frameWidget->instantPushApp(m_hardwareLeftWebView);
+		scrollPos = tempPos;
+		zoomFactor = tempZoom;
+		m_hardwareLeftWebView->updateView();
+		m_frameWidget->refresh();
+	}
+	else {
+		scrollPos = tempPos;
+		zoomFactor = tempZoom;
+		m_webviewApp->updateView();
+		m_frameWidget->refresh();
+	}
 }
 void MainWindow::hardwareRightButtonClicked() {
 	if (m_frameWidget->topApp() == m_mockUpApp)
