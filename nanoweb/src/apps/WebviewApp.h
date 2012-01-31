@@ -51,7 +51,6 @@ signals:
 
 
 protected slots:
-	virtual void mousePressEvent(QMouseEvent *event);
     virtual void mouseReleaseEvent(QMouseEvent *event);
 
 private:
@@ -60,12 +59,7 @@ private:
     TextWidget *m_text;
 
     bool iAmBackButtonWebView;
-    BackgroundWidget *m_back;
-
-    bool doSwiping, mousePressed, doZooming;
-    QPoint translation, diff, lastPoint;
-
-    void setDiffCorrectly();
+	BackgroundWidget *m_back;
 
 	qreal m_currentScaleFactor;
 };

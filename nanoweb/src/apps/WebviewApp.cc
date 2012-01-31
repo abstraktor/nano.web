@@ -19,159 +19,118 @@ namespace ipn
 {
 WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 {
-    connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementTapped(QWebElement)));
+	connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementTapped(QWebElement)));
 
-    mousePressed = false;
-    doSwiping = false;
-    doZooming = false;
+	m_flickArea = new FlickArea(this);
+	//m_flickArea->move(0, 0);
+	m_flickArea->resize(240, 240);
 
-    translation = QPoint();
-    diff = QPoint();
-    lastPoint = QPoint();
+	// qt web settings: enable tiling and flatten frames
+	QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, true);
+	QWebSettings::globalSettings()->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
 
-    m_flickArea = new FlickArea(this);
-    //m_flickArea->move(0, 0);
-    m_flickArea->resize(240, 240);
-
-
-
-    /*
-    * Important Websites, read and understand before editing this code:
-    *    - http://codeposts.blogspot.com/2010/06/qtwebkit-goes-mobile.html
-    *    - http://trac.webkit.org/wiki/QtWebKitTiling (slightly different)
-    *    - http://doc.qt.nokia.com/4.7-snapshot/qgraphicswebview.html#QGraphicsWebView
-    */
-
-    // qt web settings: enable tiling and flatten frames
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::TiledBackingStoreEnabled, true);
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
-
-    m_webView = new NanoQWebview(m_flickArea);
+	m_webView = new NanoQWebview(m_flickArea);
 	m_webView->resize(930, 525);
    // m_webView->move(0, 0);
-    m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
-    //m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
-    m_webView->show();
-    m_webView->setZoomFactor(1.0);
-
-    //m_webView->page()->setPreferredContentsSize(QSize(240, 240));
-
-    name = "WebViewApp";
-    if (displayWidget) {
-        m_text = new TextWidget(this);
-        m_text->otherStyle = true;
-        m_text->setText("Webseite");
-        m_text->resize(100, 30);
-        m_text->move(140, 210);
-        //name = "WebViewApp2";
-    }
-
-    iAmBackButtonWebView = displayWidget;
+	m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
+	//m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
+	m_webView->show();
+	m_webView->setZoomFactor(1.0);
 
 
-    // Connect gestures:
-    connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
-    connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
-    connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
-    connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
+	name = "WebViewApp";
+	if (displayWidget) {
+		m_text = new TextWidget(this);
+		m_text->otherStyle = true;
+		m_text->setText("Webseite");
+		m_text->resize(100, 30);
+		m_text->move(140, 210);
+		//name = "WebViewApp2";
+	}
+
+	iAmBackButtonWebView = displayWidget;
+
+
+	// Connect gestures:
+	connect(this, SIGNAL(swipeTriggered(qreal)), this, SLOT(swipe(qreal)));
+	connect(this, SIGNAL(swipeRightTriggered()), this, SLOT(swipeRight()));
+	connect(this, SIGNAL(swipeUpTriggered()), this, SLOT(swipeUp()));
+	connect(this, SIGNAL(swipeDownTriggered()), this, SLOT(swipeDown()));
 	connect(this, SIGNAL(swipeLeftTriggered()), this, SLOT(swipeLeft()));
-    connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
-    connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
-    connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
-    //connect(m_webView,SIGNAL(mouseClickEvent(QMouseEvent *)),this,SLOT(mousePressEvent(QMouseEvent *)));
+	connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
+	connect(this, SIGNAL(pinchInTriggered()), this, SLOT(pinchIn()));
+	connect(this, SIGNAL(pinchOutTriggered()), this, SLOT(pinchOut()));
+	//connect(m_webView,SIGNAL(mouseClickEvent(QMouseEvent *)),this,SLOT(mousePressEvent(QMouseEvent *)));
 
-    connect(this, SIGNAL(setScrollPosition(QPoint)), parent, SLOT(setContentScrollPosition(QPoint)));
-    connect(this, SIGNAL(getContentScrollPosition()), parent, SLOT(getContentScrollPosition()));
-    connect(this, SIGNAL(setContentZoomFactor(double)), parent, SLOT(setContentZoomFactor(double)));
-    connect(this, SIGNAL(getContentZoomFactor()), parent, SLOT(getContentZoomFactor()));
-    connect(m_webView, SIGNAL(moved(QPoint)), this, SLOT(sendUpdatedInfo()));
+	connect(this, SIGNAL(setScrollPosition(QPoint)), parent, SLOT(setContentScrollPosition(QPoint)));
+	connect(this, SIGNAL(getContentScrollPosition()), parent, SLOT(getContentScrollPosition()));
+	connect(this, SIGNAL(setContentZoomFactor(double)), parent, SLOT(setContentZoomFactor(double)));
+	connect(this, SIGNAL(getContentZoomFactor()), parent, SLOT(getContentZoomFactor()));
+	connect(m_webView, SIGNAL(moved(QPoint)), this, SLOT(sendUpdatedInfo()));
 
-    connect(m_webView, SIGNAL(mouseClick(QMouseEvent*)), this, SLOT(elementTappedHandler(QMouseEvent*)));
-    updateView();
+	connect(m_webView, SIGNAL(mouseClick(QMouseEvent*)), this, SLOT(elementTappedHandler(QMouseEvent*)));
+	updateView();
 }
 
 QPoint WebviewApp::getScrollPosition() {
-    return translation;
+	return m_webView->pos();
 }
 
 
 void WebviewApp::elementTappedHandler(QMouseEvent* event) {
-    QPoint pos = event->pos();
-    QWebElement el = m_webView->page()->mainFrame()->hitTestContent(pos).element();
-    if (el.tagName() == "")
-        el = m_webView->page()->mainFrame()->hitTestContent(pos).linkElement();  // for link element
+	QPoint pos = event->pos();
+	QWebElement el = m_webView->page()->mainFrame()->hitTestContent(pos).element();
+	if (el.tagName() == "")
+		el = m_webView->page()->mainFrame()->hitTestContent(pos).linkElement();  // for link element
 
-    if (el.tagName() == "") {
-        return;
-    }
+	if (el.tagName() == "") {
+		return;
+	}
 
-    //el.setStyleProperty("background-color", "red !important"); // PROOF OF CONCEPT
-    emit elementTapped(el);
-}
-
-void WebviewApp::mousePressEvent(QMouseEvent *event) {
-    doZooming = false;
+	//el.setStyleProperty("background-color", "red !important"); // PROOF OF CONCEPT
+	emit elementTapped(el);
 }
 
 void WebviewApp::mouseReleaseEvent(QMouseEvent *event) {
 
 }
 
-void WebviewApp::setDiffCorrectly() {
-    if (abs(diff.x()) > (930 * m_webView->zoomFactor() - 240))
-        diff.setX(-(930 * m_webView->zoomFactor() - 240));
-    if (abs(diff.y()) > (525 * m_webView->zoomFactor() - 240))
-        diff.setY(-(525 * m_webView->zoomFactor() - 240));
-    if (diff.x() > 0)
-        diff.setX(0);
-    if (diff.y() > 0)
-        diff.setY(0);
-}
-
-
 void WebviewApp::updateView() {
-    raise();
-    translation = diff = emit getContentScrollPosition();
-    m_webView->setZoomFactor(emit getContentZoomFactor());
-    m_webView->move(translation);
-	m_webView->resize(930 * m_webView->zoomFactor(), 525 * m_webView->zoomFactor());
-    m_webView->update();
-    update();
+	raise();
+	m_webView->setZoomFactor(emit getContentZoomFactor());
+	m_webView->move(emit getContentScrollPosition());
+	m_webView->resize(930 * m_webView->zoomFactor() >= 240 ? 930 * m_webView->zoomFactor() : 240, 525 * m_webView->zoomFactor() >= 240 ? 525 * m_webView->zoomFactor() : 240);
+	m_webView->update();
+	update();
 }
 
 void WebviewApp::changePinchScaleFactor(qreal delta)
 {
-	qDebug() << "change pinch scale factor";
-    m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
-    if (m_webView->zoomFactor() >= 3.0)
-    {
-        m_webView->setZoomFactor(3.0);
-        return;
-    }
-    if (m_webView->zoomFactor() < 0.2)
-    {
-        m_webView->setZoomFactor(0.2);
-        return;
-    }
-    if (delta > 1.0) {
-        diff = diff - QPoint(120, 120);
-        diff = diff * delta;
-        diff = diff + QPoint(120, 120);
-    }
-    else {
-        diff = diff * delta;
+	m_webView->setZoomFactor(m_webView->zoomFactor() * delta);
+	if (m_webView->zoomFactor() >= 3.0)
+	{
+		m_webView->setZoomFactor(3.0);
+		return;
 	}
-    setDiffCorrectly();
-    translation = diff;
-    sendUpdatedInfo();
+	if (m_webView->zoomFactor() < 0.2)
+	{
+		m_webView->setZoomFactor(0.2);
+		return;
+	}
+
+	QPoint p = m_webView->pos() - QPoint(120, 120);
+	p = p * delta;
+	p = p + QPoint(120, 120);
+	m_webView->move(p);
+	sendUpdatedInfo();
 	updateView();
-    emit zoomTriggered();
+	emit zoomTriggered();
 }
 
 void WebviewApp::sendUpdatedInfo() {
-    emit setContentZoomFactor(m_webView->zoomFactor());
-    emit setScrollPosition(m_webView->pos());
-    updateView();
+	emit setContentZoomFactor(m_webView->zoomFactor());
+	emit setScrollPosition(m_webView->pos());
+	updateView();
 }
 
 void WebviewApp::pinchIn()
