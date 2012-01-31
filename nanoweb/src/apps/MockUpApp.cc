@@ -19,7 +19,7 @@ namespace ipn
         m_image->setImage(":/img/our_imgs/mockup.png");
         zoomFactor = 1.0;
         connect(this, SIGNAL(pinchScaleFactorChanged(qreal)), this, SLOT(changePinchScaleFactor(qreal)));
-        connect(m_image, SIGNAL(moved(QPoint)), this, SLOT(sendUpdatedInfo(QPoint)));
+		connect(m_image, SIGNAL(moved(QPoint)), this, SLOT(sendUpdatedInfo()));
 
         m_text = new TextWidget(this);
         m_text->otherStyle = true;
@@ -39,8 +39,8 @@ namespace ipn
         update();
     }
 
-    void MockUpApp::sendUpdatedInfo(QPoint pos) {
-		emit setContentScrollPosition(pos);
+	void MockUpApp::sendUpdatedInfo() {
+		emit setContentScrollPosition(m_image->pos());
 		emit setContentZoomFactor(zoomFactor);
     }
 
@@ -49,17 +49,22 @@ namespace ipn
         zoomFactor = delta * zoomFactor;
         if (zoomFactor >= 3.0)
         {
-            zoomFactor = 3.0;
-            return;
+			zoomFactor = 3.0;
         }
         if (zoomFactor < 0.2)
         {
-            zoomFactor = 0.2;
-            return;
-        }
-        qDebug() << zoomFactor;
+			zoomFactor = 0.2;
+		}
+		QPoint p = m_image->pos() - QPoint(120, 120);
+		p = p * delta;
+		p = p + QPoint(120, 120);
+		if (p.x() < 0)
+			p.setX(0);
+		if (p.y() < 0)
+			p.setY(0);
+		m_image->move(p);
         m_image->setZoomFactor(zoomFactor);
-        sendUpdatedInfo(m_image->pos());
+		sendUpdatedInfo();
         m_image->update();
     }
 

@@ -27,7 +27,7 @@ signals:
 
 public slots:
 	void changePinchScaleFactor(qreal delta);
-	void sendUpdatedInfo(QPoint);
+	void sendUpdatedInfo();
 
 private:
 	MockupWidget *m_image;
