@@ -119,15 +119,23 @@ void WebviewApp::changePinchScaleFactor(qreal delta)
 	QPoint p = m_webView->pos() - QPoint(120, 120);
 	p = p * delta;
 	p = p + QPoint(120, 120);
-	if (p.x() >= 0)
-		p.setX(0);
-	if (p.y() >= 0)
-		p.setY(0);
-	qDebug() << p;
+	p = setPositionCorrectly(p);
 	m_webView->move(p);
 	sendUpdatedInfo();
 	updateView();
 	emit zoomTriggered();
+}
+
+QPoint WebviewApp::setPositionCorrectly(QPoint p) {
+	if (abs(p.x()) > (930 * m_webView->zoomFactor() - 240))
+		p.setX(-(930 * m_webView->zoomFactor() - 240));
+	if (abs(p.y()) > (525 * m_webView->zoomFactor() - 240))
+		p.setY(-(525 * m_webView->zoomFactor() - 240));
+	if (p.x() >= 0)
+		p.setX(0);
+	if (p.y() >= 0)
+		p.setY(0);
+	return p;
 }
 
 void WebviewApp::sendUpdatedInfo() {

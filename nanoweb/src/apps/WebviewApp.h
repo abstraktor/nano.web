@@ -62,6 +62,8 @@ private:
 	BackgroundWidget *m_back;
 
 	qreal m_currentScaleFactor;
+
+	QPoint setPositionCorrectly(QPoint p);
 };
 
 } // namespace ipn
