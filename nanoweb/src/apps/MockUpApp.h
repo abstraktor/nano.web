@@ -34,6 +34,8 @@ private:
 	TextWidget *m_text;
 	double zoomFactor;
 
+	QPoint setPositionCorrectly(QPoint p);
+
 
 };
 }

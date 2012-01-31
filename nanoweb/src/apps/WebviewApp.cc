@@ -99,7 +99,7 @@ void WebviewApp::updateView() {
 	raise();
 	m_webView->setZoomFactor(emit getContentZoomFactor());
 	m_webView->move(emit getContentScrollPosition());
-	m_webView->resize(930 * m_webView->zoomFactor() >= 240 ? 930 * m_webView->zoomFactor() : 240, 525 * m_webView->zoomFactor() >= 240 ? 525 * m_webView->zoomFactor() : 240);
+	m_webView->resize(930 * m_webView->zoomFactor() + 10 >= 240 ? 930 * m_webView->zoomFactor() + 10 : 240, 525 * m_webView->zoomFactor() + 10 >= 240 ? 525 * m_webView->zoomFactor() + 10: 240);
 	m_webView->update();
 	update();
 }

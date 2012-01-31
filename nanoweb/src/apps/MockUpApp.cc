@@ -58,14 +58,24 @@ namespace ipn
 		QPoint p = m_image->pos() - QPoint(120, 120);
 		p = p * delta;
 		p = p + QPoint(120, 120);
-		if (p.x() < 0)
-			p.setX(0);
-		if (p.y() < 0)
-			p.setY(0);
+		p = setPositionCorrectly(p);
 		m_image->move(p);
         m_image->setZoomFactor(zoomFactor);
 		sendUpdatedInfo();
         m_image->update();
     }
+
+
+	QPoint MockUpApp::setPositionCorrectly(QPoint p) {
+		if (abs(p.x()) > (930 * zoomFactor - 240))
+			p.setX(-(930 * zoomFactor - 240));
+		if (abs(p.y()) > (525 * zoomFactor - 240))
+			p.setY(-(525 * zoomFactor - 240));
+		if (p.x() >= 0)
+			p.setX(0);
+		if (p.y() >= 0)
+			p.setY(0);
+		return p;
+	}
 
 } // namespace ipn

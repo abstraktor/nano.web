@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <math.h>
 #include <QDebug>
+#include <QPainter>
 
 namespace ipn
 {
@@ -123,6 +124,9 @@ void FlickArea::paintEvent(QPaintEvent*)
 {
 	// Make sure the overlay is on top of all other children before drawing the FlickArea
 	m_overlay->raise();
+	QPainter painter(this);
+	painter.setBrush(QBrush(QColor(0, 0, 0, 255), Qt::SolidPattern));
+	painter.drawRect(0, 0, 240, 240);
 }
 
 void FlickArea::proceedAnimation()
