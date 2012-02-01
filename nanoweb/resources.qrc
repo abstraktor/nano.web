@@ -45,8 +45,6 @@
         <file>img/our_imgs/elementTapped_background_hover.png</file>
         <file>img/our_imgs/lappen.png</file>
         <file>img/fisheye-app/lappen_top.png</file>
-        <file>img/our_imgs/meilenwerk.png</file>
-        <file>img/our_imgs/zurichsee.png</file>
         <file>img/boxmodel-app/bm_bottombutton_pressed.png</file>
         <file>img/boxmodel-app/bm_leftbutton_pressed.png</file>
         <file>img/boxmodel-app/bm_middle_pressed.png</file>
@@ -116,5 +114,7 @@
         <file>img/our_icons/mockup3.png</file>
         <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>meilenwerk/meilenwerk.html</file>
+        <file>img/our_imgs/meilenwerk.png</file>
+        <file>img/our_imgs/zurichsee.png</file>
     </qresource>
 </RCC>
