@@ -35,7 +35,8 @@ public:
 	QSize frameSize();
 	QRect contentRect();
 	int paddingTop();
-        void refresh();
+	void refresh();
+	QVector<App*> m_appStack;
 
 signals:
 	/** Signal emmited when the frame is moved, use this to emulate
@@ -70,7 +71,7 @@ protected:
 	void moveEvent(QMoveEvent*);
 
 private:
-        void popMultipleApps();
+	void popMultipleApps();
 	void refreshFrame();
 
 	ImageWidget *m_frameImages[3][3];
@@ -84,7 +85,6 @@ private:
 	bool m_currentlyDragging;
 	bool m_dragging;
 
-	QVector<App*> m_appStack;
 	QWidget *m_appWidget;
 
 	// members needed for implementing animation:

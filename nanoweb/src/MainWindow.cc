@@ -186,7 +186,6 @@ void MainWindow::switchToChooseToolBoxmodelApp() {
 }
 
 void MainWindow::setContentScrollPosition(QPoint point) {
-	qDebug() << "pos:" << point;
 	scrollPos = point;
 }
 
@@ -203,7 +202,8 @@ double MainWindow::getContentZoomFactor() {
 }
 
 void MainWindow::switchToElementTapped(QWebElement el) {
-	m_frameWidget->instantSwitchBackTo(m_webviewApp);
+	m_frameWidget->instantSwitchBackTo(m_menuApp);
+	m_frameWidget->instantPushApp(m_webviewApp);
 	m_elementTappedApp->setElement(el);
 	m_frameWidget->pushApp(m_elementTappedApp);
 }
