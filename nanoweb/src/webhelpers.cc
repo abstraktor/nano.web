@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QtGlobal>
 
-#define CONTENTLENGTH 17
+#define CONTENTLENGTH 15
 
 namespace ipn
 {
@@ -25,8 +25,16 @@ namespace ipn
 	QString elementContentString(QWebElement el)
 	{
 		QString s = el.toPlainText().trimmed().replace("\n", " ");
-		if (s.length() == 0)
-			return "[no content]";
+		if (s.length() == 0) {
+			if (el.tagName().toLower() == "img") {
+				s = el.attribute("src");
+				s = trim(s, true);
+			}
+			if (s == "") {
+				s = "[no content]";
+			}
+			return s;
+		}
 		s = trim(s);
 
 		return "\"" + s + "\"";
@@ -35,7 +43,15 @@ namespace ipn
 	QString elementContent2String(QWebElement el) {
 		QString s = "";
 		if (el.tagName().toLower() == "img") {
-			s = el.attribute("src");
+			s = "width: " + el.styleProperty("width", QWebElement::ComputedStyle);
+			s = trim(s, true);
+		}
+		else if (el.tagName().toLower() == "a") {
+			s = el.attribute("href");
+			s = trim(s, true);
+		}
+		else if (el.tagName().toLower() == "div" || el.tagName().toLower() == "tbody" || el.tagName().toLower() == "table" || el.tagName().toLower() == "tr" || el.tagName().toLower() == "td" || el.tagName().toLower() == "body") {
+			s = "width: " + el.styleProperty("width", QWebElement::ComputedStyle);
 			s = trim(s, true);
 		}
 		return s;
@@ -43,24 +59,24 @@ namespace ipn
 	QString elementContent3String(QWebElement el) {
 		QString s = "";
 		if (el.tagName().toLower() == "img") {
-			s = "width: " + el.styleProperty("width", QWebElement::ComputedStyle);
+			s = "height: " + el.styleProperty("height", QWebElement::ComputedStyle);
+			s = trim(s, true);
+		}
+		else if (el.tagName().toLower() == "div" || el.tagName().toLower() == "tbody" || el.tagName().toLower() == "table" || el.tagName().toLower() == "tr" || el.tagName().toLower() == "td" || el.tagName().toLower() == "body") {
+			s = "height: " + el.styleProperty("height", QWebElement::ComputedStyle);
 			s = trim(s, true);
 		}
 		return s;
 	}
 	QString elementContent4String(QWebElement el) {
 		QString s = "";
-		if (el.tagName().toLower() == "img") {
-			s = "height: " + el.styleProperty("height", QWebElement::ComputedStyle);
-			s = trim(s, true);
-		}
 		return s;
 	}
 
 	QString trim(QString s, bool right) {
 		if (s.length() > CONTENTLENGTH) {
 			if (right)
-				s = s.right(CONTENTLENGTH) + "...";
+				s = "..." + s.right(CONTENTLENGTH);
 			else
 				s = s.left(CONTENTLENGTH) + "...";
 		}
