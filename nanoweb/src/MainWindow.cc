@@ -205,6 +205,7 @@ void MainWindow::switchToElementTapped(QWebElement el) {
 	m_frameWidget->instantSwitchBackTo(m_menuApp);
 	m_frameWidget->instantPushApp(m_webviewApp);
 	m_elementTappedApp->setElement(el);
+	m_elementTappedApp->updateView();
 	m_frameWidget->pushApp(m_elementTappedApp);
 }
 void MainWindow::switchToElementFisheye(QWebElement el) {m_elementFisheyeApp->resetChild(); m_elementFisheyeApp->setElement(el);  m_frameWidget->pushApp(m_elementFisheyeApp);}
