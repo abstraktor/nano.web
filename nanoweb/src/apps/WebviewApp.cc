@@ -22,7 +22,6 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 	connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementTapped(QWebElement)));
 
 	m_flickArea = new FlickArea(this);
-	//m_flickArea->move(0, 0);
 	m_flickArea->resize(240, 240);
 
 	// qt web settings: enable tiling and flatten frames
@@ -31,7 +30,6 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 
 	m_webView = new NanoQWebview(m_flickArea);
 	m_webView->resize(930, 525);
-   // m_webView->move(0, 0);
 	m_webView->load(QUrl("qrc:///meilenwerk/meilenwerk.html"));
 	//m_webView->load(QUrl("qrc:///meilenwerk/testpage.html"));
 	m_webView->show();
@@ -39,14 +37,11 @@ WebviewApp::WebviewApp(QWidget *parent, bool displayWidget) : App(parent)
 
 
 	name = "WebViewApp";
-	if (displayWidget) {
-		m_text = new TextWidget(this);
-		m_text->otherStyle = true;
-		m_text->setText("Webseite");
-		m_text->resize(100, 30);
-		m_text->move(140, 210);
-		//name = "WebViewApp2";
-	}
+	m_text = new TextWidget(this);
+	m_text->otherStyle = true;
+	m_text->setText("Webseite");
+	m_text->resize(100, 30);
+	m_text->move(140, 210);
 
 	iAmBackButtonWebView = displayWidget;
 
@@ -86,8 +81,6 @@ void WebviewApp::elementTappedHandler(QMouseEvent* event) {
 	if (el.tagName() == "") {
 		return;
 	}
-
-	//el.setStyleProperty("background-color", "red !important"); // PROOF OF CONCEPT
 	emit elementTapped(el);
 }
 

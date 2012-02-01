@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	connect(m_menuApp, SIGNAL(bottomRightButtonClicked()), this, SLOT(switchToInfo()));
 	connect(m_menuApp->titleBar(), SIGNAL(rightButtonClicked()), this, SLOT(close()));
 
-	m_webviewApp = new WebviewApp(this, true);
+	m_webviewApp = new WebviewApp(this);
 
 	m_hardwareLeftWebView = new WebviewApp(this, true);
 	m_hardwareLeftWebView->m_webView->setPage(m_webviewApp->m_webView->page());
@@ -203,6 +203,7 @@ double MainWindow::getContentZoomFactor() {
 }
 
 void MainWindow::switchToElementTapped(QWebElement el) {
+	m_frameWidget->instantSwitchBackTo(m_webviewApp);
 	m_elementTappedApp->setElement(el);
 	m_frameWidget->pushApp(m_elementTappedApp);
 }
