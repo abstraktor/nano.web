@@ -17,7 +17,7 @@
 #include <QtCore/qmath.h>
 #include "webhelpers.h"
 
-#define ANIMATION_TIME 500.0
+#define ANIMATION_TIME 300.0
 #define FRAMES 25.0
 
 #define NOAXIS 0
@@ -85,6 +85,7 @@ void BorderEditApp::updateView() {
 
 void BorderEditApp::swipeRight()
 {
+	/*
 	animationStart = translation;
 	if (canLeft()) {
 		animationDestination = QPoint(136, 0);
@@ -93,10 +94,11 @@ void BorderEditApp::swipeRight()
 	else {
 		setAnimationParametersToZero();
 	}
-	animationTimer->start();
+	animationTimer->start();*/
 }
 void BorderEditApp::swipeLeft()
 {
+	/*
 	animationStart = translation;
 	if (canRight()) {
 		animationDestination = QPoint(-136, 0);
@@ -106,7 +108,7 @@ void BorderEditApp::swipeLeft()
 	else {
 		setAnimationParametersToZero();
 	}
-	animationTimer->start();
+	animationTimer->start();*/
 }
 
 void BorderEditApp::timerTick()

@@ -51,9 +51,9 @@ namespace ipn
         {
 			zoomFactor = 3.0;
         }
-        if (zoomFactor < 0.2)
+		if (zoomFactor < 0.3)
         {
-			zoomFactor = 0.2;
+			zoomFactor = 0.3;
 		}
 		QPoint p = m_image->pos() - QPoint(120, 120);
 		p = p * delta;

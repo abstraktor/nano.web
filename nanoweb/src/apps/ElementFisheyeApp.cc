@@ -323,9 +323,6 @@ void ElementFisheyeApp::paintEvent(QPaintEvent*)
 	if (ipn::webhelpers::hasFirstChild(currentEl)) {
 		painter.drawText(0, 220, 240, 20, Qt::AlignCenter, lastSwipeDownwards ? lastChild.tagName().toUpper() : currentEl.firstChild().tagName().toUpper());
 	}
-
-
-	//painter.drawText(0, 200, 240, 20, Qt::AlignCenter, "tap to go back");
 }
 
 void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor) {
@@ -346,6 +343,7 @@ void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bg
 	painter->drawText(28, 150, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent3String(el));
 	painter->drawText(28, 180, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent4String(el));
 	painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal	));
+	painter->drawText(0, 185, 240, 20, Qt::AlignCenter, "tap to go on");
 }
 
 void ElementFisheyeApp::setAnimationParametersToZero() {

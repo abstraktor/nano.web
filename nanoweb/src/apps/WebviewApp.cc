@@ -104,9 +104,9 @@ void WebviewApp::changePinchScaleFactor(qreal delta)
 	{
 		m_webView->setZoomFactor(3.0);
 	}
-	if (m_webView->zoomFactor() < 0.2)
+	if (m_webView->zoomFactor() < 0.3)
 	{
-		m_webView->setZoomFactor(0.2);
+		m_webView->setZoomFactor(0.3);
 	}
 
 	QPoint p = m_webView->pos() - QPoint(120, 120);
