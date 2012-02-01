@@ -14,63 +14,63 @@ class ScalableButtonWidget;
 
 class ElementFisheyeApp : public App
 {
-        Q_OBJECT
+	Q_OBJECT
 
-    public:
-		ElementFisheyeApp(QWidget *parent = 0);
+public:
+	ElementFisheyeApp(QWidget *parent = 0);
 
-		inline bool isOpaque() {return false;}
-		void setElement(QWebElement el);
-		QWebElement getElement();
-		void resetChild();
+	inline bool isOpaque() {return true;}
+	void setElement(QWebElement el);
+	QWebElement getElement();
+	void resetChild();
 
-	public slots:
-                virtual void timerTick();
-                virtual void swipeLeft();
-                virtual void swipeUp();
-                virtual void swipeRight();
-                virtual void swipeDown();
-
-
-    signals:
-		void elementTapped(QWebElement el);
+public slots:
+	virtual void timerTick();
+	virtual void swipeLeft();
+	virtual void swipeUp();
+	virtual void swipeRight();
+	virtual void swipeDown();
 
 
-    protected:
-		virtual void mousePressEvent(QMouseEvent *event);
-		virtual void mouseMoveEvent(QMouseEvent *event);
-		virtual void mouseReleaseEvent(QMouseEvent *event);
-		virtual void paintEvent(QPaintEvent *event);
+signals:
+	void elementTapped(QWebElement el);
 
-	private:
-		void drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor = Qt::white);
-		QWebElement currentEl, nextEl, lastChild;
 
-		bool lastSwipeDownwards;
+protected:
+	virtual void mousePressEvent(QMouseEvent *event);
+	virtual void mouseMoveEvent(QMouseEvent *event);
+	virtual void mouseReleaseEvent(QMouseEvent *event);
+	virtual void paintEvent(QPaintEvent *event);
 
-		/*
+private:
+	void drawFisheye(QPainter *painter, QWebElement el, QColor bgcolor = Qt::white);
+	QWebElement currentEl, nextEl, lastChild;
+
+	bool lastSwipeDownwards;
+
+	/*
 		 * Start animation stuff
 		 */
-		QPoint translation;
-		QPoint lastPoint;
-		QPoint diff;
+	QPoint translation;
+	QPoint lastPoint;
+	QPoint diff;
 
-		QPoint animationStart;
-		QPoint animationDestination;
-		int tickCount;
+	QPoint animationStart;
+	QPoint animationDestination;
+	int tickCount;
 
-		bool mousePressed;
-		bool doSwiping;
-		QTimer *animationTimer;
-		int moves;
+	bool mousePressed;
+	bool doSwiping;
+	QTimer *animationTimer;
+	int moves;
 
-		int axis;
-		/*
+	int axis;
+	/*
 		 * End animation stuff
 		 */
-		// helpers
-		int signum(int number);
-		void setAnimationParametersToZero();
+	// helpers
+	int signum(int number);
+	void setAnimationParametersToZero();
 
 };
 

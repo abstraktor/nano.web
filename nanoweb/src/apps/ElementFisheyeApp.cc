@@ -57,7 +57,6 @@ ElementFisheyeApp::ElementFisheyeApp(QWidget *parent) : App(parent)
 
 void ElementFisheyeApp::resetChild() {
 	lastSwipeDownwards = false;
-	qDebug() << "reset child";
 	lastChild = QWebElement();
 }
 
@@ -133,7 +132,6 @@ void ElementFisheyeApp::timerTick()
 	if (tickCount == (int) FRAMES) {
 		animationTimer->stop();
 		lastSwipeDownwards = vector.y() > 0; // && ipn::webhelpers::hasFirstChild(currentEl);
-		qDebug() << "change here" << vector.y();
 		currentEl = nextEl;
 		translation = animationDestination;
 		tickCount = 0;
@@ -286,7 +284,6 @@ void ElementFisheyeApp::paintEvent(QPaintEvent*)
 	drawFisheye(&painter, currentEl.nextSibling(), others);
 	// draw child
 	painter.translate(-240, 240);
-	qDebug() << lastSwipeDownwards;
 	drawFisheye(&painter, lastSwipeDownwards ? lastChild : currentEl.firstChild(), others);
 
 	painter.translate(0, -240);
@@ -343,8 +340,11 @@ void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bg
 
 	painter->setPen(QPen(Qt::white, 5.0));
 	painter->setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
-	painter->drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(el));
-	painter->drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(el));
+	painter->drawText(0, 60, 240, 25, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(el));
+	painter->drawText(0, 90, 240, 25, Qt::AlignCenter, ipn::webhelpers::elementContentString(el));
+	painter->drawText(0, 120, 240, 25, Qt::AlignCenter, ipn::webhelpers::elementContent2String(el));
+	painter->drawText(0, 150, 240, 25, Qt::AlignCenter, ipn::webhelpers::elementContent3String(el));
+	painter->drawText(0, 180, 240, 25, Qt::AlignCenter, ipn::webhelpers::elementContent4String(el));
 	painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal	));
 }
 

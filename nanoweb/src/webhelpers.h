@@ -14,7 +14,11 @@ namespace ipn
 	{
 		QString elementIdentifierString(QWebElement el);
 		QString elementContentString(QWebElement el);
+		QString elementContent2String(QWebElement el);
+		QString elementContent3String(QWebElement el);
+		QString elementContent4String(QWebElement el);
 		QColor stringToColor(QString colorString);
+		QString trim(QString s, bool right = false);
 
 		bool hasPreviousSibling(QWebElement el);
 		bool hasNextSibling(QWebElement el);

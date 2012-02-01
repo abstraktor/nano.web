@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QtGlobal>
 
-#define CONTENTLENGTH 15
+#define CONTENTLENGTH 17
 
 namespace ipn
 {
@@ -18,8 +18,7 @@ namespace ipn
 		else
 			s = el.tagName().toUpper();
 
-		if (s.length() > CONTENTLENGTH)
-			s = s.left(CONTENTLENGTH) + "...";
+		s = trim(s);
 		return s;
 	}
 
@@ -28,10 +27,44 @@ namespace ipn
 		QString s = el.toPlainText().trimmed().replace("\n", " ");
 		if (s.length() == 0)
 			return "[no content]";
-		if (s.length() > CONTENTLENGTH) {
-			s = s.left(CONTENTLENGTH) + "...";
-		}
+		s = trim(s);
+
 		return "\"" + s + "\"";
+	}
+
+	QString elementContent2String(QWebElement el) {
+		QString s = "";
+		if (el.tagName().toLower() == "img") {
+			s = el.attribute("src");
+			s = trim(s, true);
+		}
+		return s;
+	}
+	QString elementContent3String(QWebElement el) {
+		QString s = "";
+		if (el.tagName().toLower() == "img") {
+			s = "width: " + el.styleProperty("width", QWebElement::ComputedStyle);
+			s = trim(s, true);
+		}
+		return s;
+	}
+	QString elementContent4String(QWebElement el) {
+		QString s = "";
+		if (el.tagName().toLower() == "img") {
+			s = "height: " + el.styleProperty("height", QWebElement::ComputedStyle);
+			s = trim(s, true);
+		}
+		return s;
+	}
+
+	QString trim(QString s, bool right) {
+		if (s.length() > CONTENTLENGTH) {
+			if (right)
+				s = s.right(CONTENTLENGTH) + "...";
+			else
+				s = s.left(CONTENTLENGTH) + "...";
+		}
+		return s;
 	}
 
 	QColor stringToColor(QString colorString) {
