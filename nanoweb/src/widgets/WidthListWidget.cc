@@ -27,6 +27,24 @@ namespace ipn
 		selected = newSelected;
 	}
 
+	void WidthListWidget::switchToBorder() {
+		m_entries.clear();
+		m_entries.append("thin");
+		m_entries.append("medium");
+		m_entries.append("thick");
+		m_entries.append("number");
+		update();
+	}
+
+	void WidthListWidget::switchToMarginPadding() {
+		m_entries.clear();
+		m_entries.append("1px");
+		m_entries.append("3px");
+		m_entries.append("5px");
+		m_entries.append("number");
+		update();
+	}
+
 	QString WidthListWidget::getSelected() {
 		return selected;
 	}

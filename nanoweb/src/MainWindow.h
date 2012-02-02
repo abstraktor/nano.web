@@ -37,6 +37,7 @@ class ChooseTool1App;
 class ChooseToolBoxmodelApp;
 class BorderEditApp;
 class PaddingEditApp;
+class MarginEditApp;
 class BorderStyleApp;
 class BorderWidthApp;
 class MockUpApp;
@@ -89,6 +90,7 @@ public slots:
 	void switchToChooseToolBoxmodelApp();
 	void switchToBorderApp();
 	void switchToPaddingApp();
+	void switchToMarginApp();
     void switchToSpecificBorderApp(QString cssproperty);
     void switchToNumberApp();
     void elementTappedLeftButtonClicked();
@@ -135,6 +137,7 @@ private:
     ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
     BorderEditApp *m_borderEditApp;
 	PaddingEditApp *m_paddingEditApp;
+	MarginEditApp *m_marginEditApp;
     BorderStyleApp *m_borderStyleApp;
     BorderWidthApp *m_borderWidthApp;
     MultiTapApp *m_multiTapApp;

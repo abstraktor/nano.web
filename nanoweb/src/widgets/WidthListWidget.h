@@ -21,6 +21,9 @@ namespace ipn
 			void setSelected(QString newSelected);
 			QString getSelected();
 
+			void switchToBorder();
+			void switchToMarginPadding();
+
 
 		signals:
 			void entryClicked(QString value);

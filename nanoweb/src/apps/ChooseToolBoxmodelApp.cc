@@ -30,6 +30,7 @@ namespace ipn
 	{
 		connect(this, SIGNAL(borderButtonClicked()), parent, SLOT(switchToBorderApp()));
 		connect(this, SIGNAL(paddingButtonClicked()), parent, SLOT(switchToPaddingApp()));
+		connect(this, SIGNAL(marginButtonClicked()), parent, SLOT(switchToMarginApp()));
 		connect(this, SIGNAL(anotherButtonClicked()), parent, SLOT(switchToInfo()));
 
 		m_topLeft1 = new ScalableButtonWidget(this);
@@ -61,7 +62,7 @@ namespace ipn
 		updateView();
 
 		connect(m_topLeft1, SIGNAL(clicked()), this, SIGNAL(borderButtonClicked()));
-		connect(m_topRight1, SIGNAL(clicked()), this, SIGNAL(anotherButtonClicked()));
+		connect(m_topRight1, SIGNAL(clicked()), this, SIGNAL(marginButtonClicked()));
 		connect(m_bottomLeft1, SIGNAL(clicked()), this, SIGNAL(paddingButtonClicked()));
 		connect(m_bottomRight1, SIGNAL(clicked()), this, SIGNAL(anotherButtonClicked()));
 	}

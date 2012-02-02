@@ -77,7 +77,8 @@ SOURCES += \
     src/apps/ElementTappedApp.cc \
     src/apps/ElementFisheyeApp.cc \
     src/widgets/MockupWidget.cc \
-    src/apps/PaddingEditApp.cc
+    src/apps/PaddingEditApp.cc \
+    src/apps/MarginEditApp.cc
 HEADERS += \
         src/MainWindow.h \
         src/IPodFrameWidget.h \
@@ -129,7 +130,8 @@ FORMS += \
     src/apps/ElementTappedApp.h \
     src/apps/ElementFisheyeApp.h \
     src/widgets/MockupWidget.h \
-    src/apps/PaddingEditApp.h
+    src/apps/PaddingEditApp.h \
+    src/apps/MarginEditApp.h
 
 INCLUDEPATH += src src/apps src/widgets
 QT += webkit
