@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QtGlobal>
 
-#define CONTENTLENGTH 15
+#define CONTENTLENGTH 14
 
 namespace ipn
 {

@@ -337,11 +337,11 @@ void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bg
 
 	painter->setPen(QPen(Qt::white, 5.0));
 	painter->setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
-	painter->drawText(28, 60, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementIdentifierString(el));
-	painter->drawText(28, 90, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContentString(el));
-	painter->drawText(28, 120, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent2String(el));
-	painter->drawText(28, 150, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent3String(el));
-	painter->drawText(28, 180, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent4String(el));
+	painter->drawText(33, 60, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementIdentifierString(el));
+	painter->drawText(33, 90, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContentString(el));
+	painter->drawText(33, 120, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent2String(el));
+	painter->drawText(33, 150, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent3String(el));
+	painter->drawText(33, 180, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent4String(el));
 	painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal	));
 	//painter->drawText(0, 185, 240, 20, Qt::AlignCenter, "tap to go on");
 }
