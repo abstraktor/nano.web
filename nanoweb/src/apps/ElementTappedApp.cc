@@ -175,7 +175,7 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 	painter.setPen(QPen(QColor(30, 30, 30), 0));
 	painter.drawRect(0, 0, 240, 28);
 	painter.setPen(QPen(Qt::white, 0));
-	painter.drawText(0, 0, 240, 28, Qt::AlignCenter, "YOUR SELECTION");
+	painter.drawText(10, 0, 230, 28, Qt::AlignLeft, "your selection:");
 }
 
 
