@@ -6,7 +6,7 @@ namespace ipn
 
 	PageIndicatorWidget::PageIndicatorWidget(QWidget *parent) : QWidget(parent)
 	{
-		m_numberOfSegments = 5;
+		m_numberOfSegments = 3;
 		m_activeSegment = 0;
 
 		m_activePixmap = new QPixmap(":/img/page_indicator/page_indicator_active.png");

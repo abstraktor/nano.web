@@ -12,112 +12,111 @@
 namespace ipn
 {
 
-	WidthListWidget::WidthListWidget(QWidget *parent) : QWidget(parent)
-	{
-		m_entries = QVector<QString>();
-		m_activeEntry = 3;
-		resize(240, 200);
+WidthListWidget::WidthListWidget(QWidget *parent) : QWidget(parent)
+{
+	m_entries = QVector<QString>();
+	m_activeEntry = 3;
+	resize(240, 200);
 
-		selected = "";
-		buttonPressed = false;
+	selected = "";
+	buttonPressed = false;
+}
 
-	}
+void WidthListWidget::setSelected(QString newSelected) {
+	selected = newSelected;
+}
 
-	void WidthListWidget::setSelected(QString newSelected) {
-		selected = newSelected;
-	}
+void WidthListWidget::switchToBorder() {
+	m_entries.clear();
+	m_entries.append("thin");
+	m_entries.append("medium");
+	m_entries.append("thick");
+	m_entries.append("number");
+	update();
+}
 
-	void WidthListWidget::switchToBorder() {
-		m_entries.clear();
-		m_entries.append("thin");
-		m_entries.append("medium");
-		m_entries.append("thick");
-		m_entries.append("number");
-		update();
-	}
+void WidthListWidget::switchToMarginPadding() {
+	m_entries.clear();
+	m_entries.append("1px");
+	m_entries.append("5px");
+	m_entries.append("10px");
+	m_entries.append("number");
+	update();
+}
 
-	void WidthListWidget::switchToMarginPadding() {
-		m_entries.clear();
-		m_entries.append("1px");
-		m_entries.append("3px");
-		m_entries.append("5px");
-		m_entries.append("number");
-		update();
-	}
+QString WidthListWidget::getSelected() {
+	return selected;
+}
 
-	QString WidthListWidget::getSelected() {
-		return selected;
-	}
+void WidthListWidget::addEntry(QString text)
+{
+	m_entries.append(text);
+	update();
+}
 
-	void WidthListWidget::addEntry(QString text)
-	{
-		m_entries.append(text);
-		update();
-	}
+void WidthListWidget::paintEvent(QPaintEvent*)
+{
+	QPainter painter(this);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+	painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor));
 
-	void WidthListWidget::paintEvent(QPaintEvent*)
-	{
-		QPainter painter(this);
-		painter.setRenderHint(QPainter::Antialiasing, true);
-		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor));
 
+	painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
+	for (int i = 0; i < m_entries.size(); i++) {
+		painter.setPen(Qt::NoPen);
+
+		QRect rect = QRect(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT);
+		if (i == 3)
+			rect = QRect(0, 3 * ENTRYHEIGHT, 240, 200 - 3 * ENTRYHEIGHT);
 
 		painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
-		for (int i = 0; i < m_entries.size(); i++) {
-			painter.setPen(Qt::NoPen);
 
-			QRect rect = QRect(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT);
-			if (i == 3)
-				rect = QRect(0, 3 * ENTRYHEIGHT, 240, 200 - 3 * ENTRYHEIGHT);
-
-			painter.setBrush(QBrush(QColor(225, 225, 225), Qt::SolidPattern));
-
-			if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick" && !selected.contains(" ")))
-				painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
-			if (buttonPressed && rect.contains(lastPoint)) {
-				painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
-				m_activeEntry = i;
-			}
-
-			painter.drawRect(rect);
-
-			painter.setPen(QPen(Qt::black, 1.0f));
-			if (i != 3)
-				painter.drawText(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT, Qt::AlignCenter, m_entries.at(i));
-
-			if (i == 3) {
-				QPixmap pixmap = QPixmap(":/img/our_imgs/input.png");
-				painter.drawPixmap(90, i * ENTRYHEIGHT + 10, 60, 60, pixmap);
-				if (i == 3 && selected != "thin" && selected != "medium" && selected != "thick" && !selected.contains(" "))
-					painter.drawText(0, 3 * ENTRYHEIGHT, 90, 200 - 3 * ENTRYHEIGHT, Qt::AlignCenter, selected);
-			}
-
-			if (i == 0) continue;
-			painter.setPen(QPen(Qt::white, 1.0f));
-			painter.drawLine(QPoint(0, i * ENTRYHEIGHT - 1), QPoint(width(), i * ENTRYHEIGHT - 1));
+		if(m_entries.at(i) == selected || (i == 3 && selected != "thin" && selected != "medium" && selected != "thick" && !selected.contains(" ")))
+			painter.setBrush(QBrush(QColor(204, 204, 204), Qt::SolidPattern));
+		if (buttonPressed && rect.contains(lastPoint)) {
+			painter.setBrush(QBrush(QColor(135, 135, 135), Qt::SolidPattern));
+			m_activeEntry = i;
 		}
 
+		painter.drawRect(rect);
 
-	}
+		painter.setPen(QPen(Qt::black, 1.0f));
+		if (i != 3)
+			painter.drawText(0, i * ENTRYHEIGHT, 240, ENTRYHEIGHT, Qt::AlignCenter, m_entries.at(i));
 
-	void WidthListWidget::mousePressEvent(QMouseEvent *event)
-	{
-		buttonPressed = true;
-		lastPoint = event->pos();
-		update();
-	}
-
-	void WidthListWidget::mouseReleaseEvent(QMouseEvent *event)
-	{
-		if (buttonPressed) {
-			QString value = m_entries.at(m_activeEntry);
-			if (value == "") value = selected;
-			emit entryClicked(value);
+		if (i == 3) {
+			QPixmap pixmap = QPixmap(":/img/our_imgs/input.png");
+			painter.drawPixmap(90, i * ENTRYHEIGHT + 10, 60, 60, pixmap);
+			if (i == 3 && selected != "thin" && selected != "medium" && selected != "thick" && !selected.contains(" "))
+				painter.drawText(0, 3 * ENTRYHEIGHT, 90, 200 - 3 * ENTRYHEIGHT, Qt::AlignCenter, selected);
 		}
 
-		buttonPressed = false;
-
-		update();
+		if (i == 0) continue;
+		painter.setPen(QPen(Qt::white, 1.0f));
+		painter.drawLine(QPoint(0, i * ENTRYHEIGHT - 1), QPoint(width(), i * ENTRYHEIGHT - 1));
 	}
+
+
+}
+
+void WidthListWidget::mousePressEvent(QMouseEvent *event)
+{
+	buttonPressed = true;
+	lastPoint = event->pos();
+	update();
+}
+
+void WidthListWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+	if (buttonPressed) {
+		QString value = m_entries.at(m_activeEntry);
+		if (value == "") value = selected;
+		emit entryClicked(value);
+	}
+
+	buttonPressed = false;
+
+	update();
+}
 
 }

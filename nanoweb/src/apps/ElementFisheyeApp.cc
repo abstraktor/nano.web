@@ -212,7 +212,7 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 	if (doSwiping) {
 		if (axis == XAXIS) {
 			// animate x-axis
-			if (abs(diff.x()) < 100) {
+			if (abs(diff.x()) < 60) {
 				animationDestination = QPoint(0, 0);
 				nextEl = currentEl;
 			}
@@ -242,7 +242,7 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 		}
 		else if (axis == YAXIS) {
 			// animate y-axis
-			if (abs(diff.y()) < 100) {
+			if (abs(diff.y()) < 60) {
 				setAnimationParametersToZero();
 			}
 			else {
@@ -285,28 +285,28 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 		// top
 		r = QRect(30, 0, 180, 60);
 		if (ipn::webhelpers::hasParent(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			animationDestination = QPoint(0, 40);
+			animationDestination = QPoint(0, 20);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}
 		// bottom
 		r = QRect(30, 180, 180, 60);
 		if (ipn::webhelpers::hasFirstChild(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			animationDestination = QPoint(0, -40);
+			animationDestination = QPoint(0, -20);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}
 		// left
 		r = QRect(0, 30, 60, 180);
 		if (ipn::webhelpers::hasPreviousSibling(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			animationDestination = QPoint(40, 0);
+			animationDestination = QPoint(20, 0);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}
 		// right
 		r = QRect(180, 30, 60, 180);
 		if (ipn::webhelpers::hasNextSibling(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			animationDestination = QPoint(-40, 0);
+			animationDestination = QPoint(-20, 0);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}

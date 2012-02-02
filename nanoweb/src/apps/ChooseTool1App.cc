@@ -190,7 +190,7 @@ namespace ipn
     }
 
     void ChooseTool1App::swipeRight()
-    {
+	{/*
         animationStart = translation;
         if (canLeft()) {
             animationDestination = QPoint(240, 0);
@@ -199,10 +199,10 @@ namespace ipn
         else {
             setAnimationParametersToZero();
         }
-        animationTimer->start();
+		animationTimer->start();*/
     }
     void ChooseTool1App::swipeLeft()
-    {
+	{/*
         animationStart = translation;
         if (canRight()) {
             animationDestination = QPoint(-240, 0);
@@ -212,7 +212,7 @@ namespace ipn
         else {
             setAnimationParametersToZero();
         }
-        animationTimer->start();
+		animationTimer->start();*/
     }
 
     void ChooseTool1App::timerTick()
@@ -251,18 +251,13 @@ namespace ipn
         else {
             moves++;
             diff = diff + (event->pos() - lastPoint);
-            lastPoint = event->pos();
-            //if (moves == 1) {
+			lastPoint = event->pos();
             double length = qSqrt(diff.x() * diff.x() + diff.y() * diff.y());
             if (length >= 5 && diff.x() != diff.y()) {
-                doSwiping = true;
-                // detect x or y
-                //if (abs(diff.x()) > abs(diff.y()))
+				doSwiping = true;
                 axis = XAXIS;
             }
 
-            //}
-            //if (axis == XAXIS)
             diff.setY(0);
             if (doSwiping) {
                 translation = diff;
@@ -274,11 +269,30 @@ namespace ipn
     void ChooseTool1App::mouseReleaseEvent(QMouseEvent *event) {
         if (doSwiping) {
             // for all pages
-            animationDestination = QPoint();
-            for (int i = 0; i < 3; i++) {
-                if (distance(i * QPoint(-240, 0), diff) < distance(animationDestination, diff))
-                    animationDestination = i * QPoint(-240, 0);
-            }
+			animationDestination = QPoint();
+			int nr = m_pageIndicator->getActiveSegment();
+			QPoint current = QPoint(-240 * nr, 0);
+			qDebug() << "current" << current;
+			qDebug() << "diff" << diff;
+			QPoint result = current - diff;
+			if (result.x() > 0) {
+				qDebug() << "right";
+				if (nr == 2 || abs(result.x() <= 60)) {
+					animationDestination = nr * QPoint(-240, 0);
+				}
+				else {
+					animationDestination = (nr + 1) * QPoint(-240, 0);
+				}
+			}
+			else if (result.x() < 0) {
+				if (nr == 0 || abs(result.x()) <= 60) {
+					animationDestination = nr * QPoint(-240, 0);
+				}
+				else {
+					animationDestination = (nr - 1) * QPoint(-240, 0);
+				}
+			}
+
             m_pageIndicator->setActiveSegment(animationDestination.x() / -240);
             animationStart = diff;
             animationTimer->start();
