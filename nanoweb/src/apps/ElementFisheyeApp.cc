@@ -38,6 +38,10 @@ ElementFisheyeApp::ElementFisheyeApp(QWidget *parent) : App(parent)
 	animationTimer = new QTimer(this);
 	animationTimer->setInterval(ANIMATION_TIME / FRAMES);
 	connect(animationTimer, SIGNAL(timeout()), this, SLOT(timerTick()));
+	animationWackelTimer = new QTimer(this);
+	animationWackelTimer->setInterval(200 / FRAMES);
+	connect(animationWackelTimer, SIGNAL(timeout()), this, SLOT(timerWackelTick()));
+
 	doSwiping = false;
 	axis = NOAXIS;
 
@@ -139,6 +143,30 @@ void ElementFisheyeApp::timerTick()
 		diff = translation = QPoint();
 	}
 }
+
+void ElementFisheyeApp::timerWackelTick()
+{
+	tickCount++;
+	QPoint vector = animationDestination - animationStart;
+	translation = animationStart + ((float) tickCount / FRAMES) * vector;
+	update();
+	if (tickCount == (int) FRAMES) {
+		animationWackelTimer->stop();
+		translation = animationDestination;
+		tickCount = 0;
+		update();
+		if (animationDestination.x() != 0 || animationDestination.y() != 0) {
+			QPoint tmp = animationDestination;
+			animationStart = tmp;
+			animationDestination = QPoint();
+			animationWackelTimer->start();
+			return;
+		}
+		diff = translation = QPoint();
+		setAnimationParametersToZero();
+	}
+}
+
 
 void ElementFisheyeApp::mousePressEvent(QMouseEvent *event)
 {
@@ -254,6 +282,38 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 		QRect r = QRect(60, 60, 120, 120);
 		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5)
 			emit elementTapped(currentEl);
+		// top
+		r = QRect(30, 0, 180, 60);
+		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
+			qDebug() << "toppress";
+			animationDestination = QPoint(0, 40);
+			animationStart = QPoint(0, 0);
+			animationWackelTimer->start();
+		}
+		// bottom
+		r = QRect(30, 180, 180, 60);
+		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
+			qDebug() << "toppress";
+			animationDestination = QPoint(0, -40);
+			animationStart = QPoint(0, 0);
+			animationWackelTimer->start();
+		}
+		// left
+		r = QRect(0, 30, 60, 180);
+		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
+			qDebug() << "toppress";
+			animationDestination = QPoint(40, 0);
+			animationStart = QPoint(0, 0);
+			animationWackelTimer->start();
+		}
+		// right
+		r = QRect(180, 30, 60, 180);
+		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
+			qDebug() << "toppress";
+			animationDestination = QPoint(-40, 0);
+			animationStart = QPoint(0, 0);
+			animationWackelTimer->start();
+		}
 	}
 	mousePressed = false;
 	doSwiping = false;
@@ -345,8 +405,7 @@ void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bg
 	painter->drawText(33, 120, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent2String(el));
 	painter->drawText(33, 150, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent3String(el));
 	painter->drawText(33, 180, 240, 25, Qt::AlignLeft, ipn::webhelpers::elementContent4String(el));
-	painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal	));
-	//painter->drawText(0, 185, 240, 20, Qt::AlignCenter, "tap to go on");
+	painter->setFont(QFont("Ubuntu", 10 * ipn::helpers::fontSizeFactor, QFont::Normal));
 }
 
 void ElementFisheyeApp::setAnimationParametersToZero() {

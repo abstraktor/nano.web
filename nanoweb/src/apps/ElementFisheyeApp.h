@@ -26,6 +26,7 @@ public:
 
 public slots:
 	virtual void timerTick();
+	virtual void timerWackelTick();
 	virtual void swipeLeft();
 	virtual void swipeUp();
 	virtual void swipeRight();
@@ -62,6 +63,7 @@ private:
 	bool mousePressed;
 	bool doSwiping;
 	QTimer *animationTimer;
+	QTimer *animationWackelTimer;
 	int moves;
 
 	int axis;
