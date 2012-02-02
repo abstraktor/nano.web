@@ -172,7 +172,11 @@ void MainWindow::hardwareRightButtonClicked() {
 
 void MainWindow::switchToElementTapped()		{m_frameWidget->pushApp(m_elementTappedApp);}
 void MainWindow::switchToMultiTapApp()			{m_frameWidget->pushApp(m_multiTapApp);}
-void MainWindow::switchToElementFisheye()		{m_elementFisheyeApp->resetChild(); m_frameWidget->pushApp(m_elementFisheyeApp);}
+void MainWindow::switchToElementFisheye()		{
+	m_elementFisheyeApp->resetChild();
+	m_elementFisheyeApp->setElement(m_elementTappedApp->getElement());
+	m_frameWidget->pushApp(m_elementFisheyeApp);
+}
 void MainWindow::switchToInfo() {
 	m_frameWidget->pushApp(m_infoApp);
 }

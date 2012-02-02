@@ -13,7 +13,9 @@ namespace ipn
 	namespace webhelpers
 	{
 		QString elementIdentifierString(QWebElement el);
+		QString elementTypeString(QWebElement el);
 		QString elementContentString(QWebElement el);
+		QString elementShortIdentifierString(QWebElement el);
 		QString elementContent2String(QWebElement el);
 		QString elementContent3String(QWebElement el);
 		QString elementContent4String(QWebElement el);

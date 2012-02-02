@@ -29,7 +29,7 @@ ElementTappedApp::ElementTappedApp(QWidget *parent) : App(parent)
 	m_explainText->move(0, 0);
 	m_explainText->resize(240, 30);
 	m_explainText->setFontSize(12);
-	m_explainText->setText("Tap to refine your selection:");
+	m_explainText->setText("Your selection:");
 
 
 	m_editElementButton = new ScalableButtonWidget(this);
@@ -45,7 +45,7 @@ ElementTappedApp::ElementTappedApp(QWidget *parent) : App(parent)
 	m_refineButton->resize(60, 60);
 	m_refineButton->setImage(":/img/buttons/default");
 	m_refineButton->setIconImage(":/img/our_icons/refine");
-	m_refineButton->setTitle("refine");
+	m_refineButton->setTitle("");
 	connect(m_refineButton, SIGNAL(clicked()), this, SIGNAL(leftButtonClicked()));
 
 
@@ -142,8 +142,6 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 	//pixmap = QPixmap(":img/our_imgs/elementTapped_background.png");
 	else
 		painter.setBrush(QBrush(QColor(200, 200, 200), Qt::SolidPattern));
-	//pixmap = QPixmap(":img/our_imgs/elementTapped_background_hover.png");
-	//painter.drawPixmap(0, 40, 240, 90, pixmap);
 	painter.setPen(Qt::NoPen);
 	//painter.drawRoundedRect(15, 40, 210, 90, 15.0, 15.0);
 	painter.setPen(Qt::SolidLine);
@@ -152,8 +150,9 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 	painter.setPen(QPen(Qt::white, 5.0));
 	painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
 
-	painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
-	painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
+	painter.drawText(20, 30, 240, 30, Qt::AlignLeft, ipn::webhelpers::elementShortIdentifierString(currentEl));
+	QString elementType = ipn::webhelpers::elementTypeString(currentEl);
+	painter.drawText(20, 60, 240, 30, Qt::AlignLeft, elementType);
 
 	if (currentEl.tagName().toUpper() == "IMG") {
 		QPixmap pixmap;
@@ -161,8 +160,14 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 			pixmap = QPixmap(":img/our_imgs/meilenwerk.png");
 		if (currentEl.attribute("src").contains("zuerichsee"))
 			pixmap = QPixmap(":img/our_imgs/zurichsee.png");
-		painter.drawPixmap(20, 90, 200, 35, pixmap);
+		painter.drawPixmap(20, 95, 200, 35, pixmap);
 	}
+	else {
+		painter.drawText(20, 87, 240, 30, Qt::AlignLeft, ipn::webhelpers::elementContentString(currentEl));
+	}
+
+	painter.setFont(QFont("Ubuntu", 11 * ipn::helpers::fontSizeFactor, QFont::Bold));
+	painter.drawText(5, 209, 120, 30, Qt::AlignCenter, "refine selection");
 }
 
 

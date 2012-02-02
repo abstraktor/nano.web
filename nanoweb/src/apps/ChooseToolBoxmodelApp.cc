@@ -99,7 +99,6 @@ namespace ipn
 
 	void ChooseToolBoxmodelApp::paintEvent(QPaintEvent*)
 	{
-
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 		painter.setBrush(QBrush(QColor(60, 60, 60), Qt::SolidPattern));
@@ -107,7 +106,7 @@ namespace ipn
 
 		painter.setPen(QPen(Qt::white, 5.0));
 		painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold	));
-		painter.drawText(0, 0, 240, 30, Qt::AlignCenter, "el: " + ipn::webhelpers::elementIdentifierString(currentEl));
+		painter.drawText(0, 0, 240, 30, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
 
 	}
 
