@@ -148,7 +148,7 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 
 	QPixmap pix;
 	pix = QPixmap(":img/our_imgs/elementTapped_background.png");
-	painter.drawPixmap(0, 28, 240, 110, pix);
+	//painter.drawPixmap(0, 28, 240, 110, pix);
 
 	painter.setPen(QPen(Qt::white, 5.0));
 	painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
@@ -173,7 +173,7 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 	painter.drawText(5, 209, 120, 30, Qt::AlignCenter, "refine selection");
 	painter.setBrush(QBrush(QColor(64, 64, 64), Qt::SolidPattern));
 	painter.setPen(QPen(QColor(30, 30, 30), 0));
-	painter.drawRect(0, 0, 240, 28);
+	//painter.drawRect(0, 0, 240, 28);
 	painter.setPen(QPen(Qt::white, 0));
 	painter.drawText(10, 0, 230, 28, Qt::AlignLeft, "your selection:");
 }
