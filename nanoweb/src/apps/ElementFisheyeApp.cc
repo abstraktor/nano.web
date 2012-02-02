@@ -284,32 +284,28 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 			emit elementTapped(currentEl);
 		// top
 		r = QRect(30, 0, 180, 60);
-		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			qDebug() << "toppress";
+		if (ipn::webhelpers::hasParent(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
 			animationDestination = QPoint(0, 40);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}
 		// bottom
 		r = QRect(30, 180, 180, 60);
-		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			qDebug() << "toppress";
+		if (ipn::webhelpers::hasFirstChild(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
 			animationDestination = QPoint(0, -40);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}
 		// left
 		r = QRect(0, 30, 60, 180);
-		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			qDebug() << "toppress";
+		if (ipn::webhelpers::hasPreviousSibling(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
 			animationDestination = QPoint(40, 0);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
 		}
 		// right
 		r = QRect(180, 30, 60, 180);
-		if (r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
-			qDebug() << "toppress";
+		if (ipn::webhelpers::hasNextSibling(currentEl) && r.contains(event->pos()) && r.contains(event->pos() - diff) && diff.x() <= 5 && diff.y() <= 5) {
 			animationDestination = QPoint(-40, 0);
 			animationStart = QPoint(0, 0);
 			animationWackelTimer->start();
