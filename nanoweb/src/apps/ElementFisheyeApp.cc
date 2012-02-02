@@ -39,7 +39,7 @@ ElementFisheyeApp::ElementFisheyeApp(QWidget *parent) : App(parent)
 	animationTimer->setInterval(ANIMATION_TIME / FRAMES);
 	connect(animationTimer, SIGNAL(timeout()), this, SLOT(timerTick()));
 	animationWackelTimer = new QTimer(this);
-	animationWackelTimer->setInterval(200 / FRAMES);
+	animationWackelTimer->setInterval(150 / FRAMES);
 	connect(animationWackelTimer, SIGNAL(timeout()), this, SLOT(timerWackelTick()));
 
 	doSwiping = false;
@@ -148,9 +148,9 @@ void ElementFisheyeApp::timerWackelTick()
 {
 	tickCount++;
 	QPoint vector = animationDestination - animationStart;
-	translation = animationStart + ((float) tickCount / FRAMES) * vector;
+	translation = animationStart + ((float) tickCount / (FRAMES - 10)) * vector;
 	update();
-	if (tickCount == (int) FRAMES) {
+	if (tickCount == (int) (FRAMES - 10)) {
 		animationWackelTimer->stop();
 		translation = animationDestination;
 		tickCount = 0;
@@ -212,7 +212,7 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 	if (doSwiping) {
 		if (axis == XAXIS) {
 			// animate x-axis
-			if (abs(diff.x()) < 60) {
+			if (abs(diff.x()) < 55) {
 				animationDestination = QPoint(0, 0);
 				nextEl = currentEl;
 			}
@@ -242,7 +242,7 @@ void ElementFisheyeApp::mouseReleaseEvent(QMouseEvent *event) {
 		}
 		else if (axis == YAXIS) {
 			// animate y-axis
-			if (abs(diff.y()) < 60) {
+			if (abs(diff.y()) < 55) {
 				setAnimationParametersToZero();
 			}
 			else {

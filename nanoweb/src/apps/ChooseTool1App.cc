@@ -267,16 +267,12 @@ namespace ipn
     }
 
     void ChooseTool1App::mouseReleaseEvent(QMouseEvent *event) {
-        if (doSwiping) {
-            // for all pages
+		if (doSwiping) {
 			animationDestination = QPoint();
 			int nr = m_pageIndicator->getActiveSegment();
 			QPoint current = QPoint(-240 * nr, 0);
-			qDebug() << "current" << current;
-			qDebug() << "diff" << diff;
 			QPoint result = current - diff;
 			if (result.x() > 0) {
-				qDebug() << "right";
 				if (nr == 2 || abs(result.x() <= 60)) {
 					animationDestination = nr * QPoint(-240, 0);
 				}

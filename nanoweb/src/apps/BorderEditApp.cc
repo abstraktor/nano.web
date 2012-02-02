@@ -190,12 +190,27 @@ void BorderEditApp::mouseMoveEvent(QMouseEvent *event)
 
 void BorderEditApp::mouseReleaseEvent(QMouseEvent *event) {
 	if (doSwiping) {
-		// for all pages
 		animationDestination = QPoint();
-		for (int i = 0; i < 3; i++) {
-			if (distance(i * QPoint(-136, 0), diff) < distance(animationDestination, diff))
-				animationDestination = i * QPoint(-136, 0);
+		int nr = m_pageIndicator->getActiveSegment();
+		QPoint current = QPoint(-136 * nr, 0);
+		QPoint result = current - diff;
+		if (result.x() > 0) {
+			if (nr == 2 || abs(result.x() <= 30)) {
+				animationDestination = nr * QPoint(-136, 0);
+			}
+			else {
+				animationDestination = (nr + 1) * QPoint(-136, 0);
+			}
 		}
+		else if (result.x() < 0) {
+			if (nr == 0 || abs(result.x()) <= 30) {
+				animationDestination = nr * QPoint(-136, 0);
+			}
+			else {
+				animationDestination = (nr - 1) * QPoint(-136, 0);
+			}
+		}
+
 		m_pageIndicator->setActiveSegment(animationDestination.x() / -136);
 		animationStart = diff;
 		animationTimer->start();
