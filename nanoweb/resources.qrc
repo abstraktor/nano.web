@@ -117,5 +117,6 @@
         <file>img/our_imgs/zurichsee.png</file>
         <file>img/our_icons/refine.png</file>
         <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
+        <file>img/our_imgs/edit.png</file>
     </qresource>
 </RCC>

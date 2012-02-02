@@ -330,6 +330,9 @@ void ElementFisheyeApp::drawFisheye(QPainter *painter, QWebElement el, QColor bg
 	painter->setBrush(QBrush(bgcolor, Qt::SolidPattern));
 	painter->setPen(Qt::NoPen);
 	painter->drawRect(0, 0, 240, 240);
+	QPixmap pixmap = QPixmap(":img/our_imgs/edit.png");
+	painter->drawPixmap(0, -10, 240, 240, pixmap);
+
 	painter->setPen(Qt::SolidLine);
 
 	if (!ipn::webhelpers::nodeExists(el))
