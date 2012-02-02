@@ -13,43 +13,43 @@ class ScalableButtonWidget;
 
 class ElementTappedApp : public App
 {
-        Q_OBJECT
+	Q_OBJECT
 
-    public:
-        ElementTappedApp(QWidget *parent = 0);
+public:
+	ElementTappedApp(QWidget *parent = 0);
 
-        inline bool isOpaque() {return true;}
-		QWebElement getElement();
-		void setElement(QWebElement el);
-		void updateView();
+	inline bool isOpaque() {return true;}
+	QWebElement getElement();
+	void setElement(QWebElement el);
+	void updateView();
 
-    public slots:
-        void pinchIn();
-        void pinchOut();
-        void swipeLeft();
-        void swipeUp();
-        void swipeRight();
-		void swipeDown();
-		void elementTappedInFisheye(QWebElement el);
+public slots:
+	void pinchIn();
+	void pinchOut();
+	void swipeLeft();
+	void swipeUp();
+	void swipeRight();
+	void swipeDown();
+	void elementTappedInFisheye(QWebElement el);
 
-	protected:
-		virtual void paintEvent(QPaintEvent *event);
-		virtual void mousePressEvent(QMouseEvent *event);
-		virtual void mouseReleaseEvent(QMouseEvent *event);
+protected:
+	virtual void paintEvent(QPaintEvent *event);
+	virtual void mousePressEvent(QMouseEvent *event);
+	virtual void mouseReleaseEvent(QMouseEvent *event);
 
-    signals:
-		void leftButtonClicked();
-		void elementTapped(QWebElement el);
-		void editButtonClicked();
+signals:
+	void leftButtonClicked();
+	void elementTapped(QWebElement el);
+	void editButtonClicked();
 
 
-    private:
-		bool isElementTapped;
-		bool showText;
-		QColor buttonColor;
-		TextWidget *m_explainText;
-        ScalableButtonWidget *m_editElementButton, *m_followLinkButton;
-		QWebElement currentEl;
+private:
+	bool isElementTapped;
+	bool showText;
+	QColor buttonColor;
+	TextWidget *m_explainText;
+	ScalableButtonWidget *m_editElementButton, *m_refineButton;
+	QWebElement currentEl;
 
 };
 

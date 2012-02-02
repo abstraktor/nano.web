@@ -25,6 +25,8 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # Display a console to display debug messages.
 CONFIG += console
 
+ICON = ./nanoweb.svg
+
 SOURCES += \
         src/main.cc \
         src/MainWindow.cc \

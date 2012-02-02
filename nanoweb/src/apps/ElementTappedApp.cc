@@ -18,12 +18,11 @@ namespace ipn
 ElementTappedApp::ElementTappedApp(QWidget *parent) : App(parent)
 {
 	connect(this, SIGNAL(elementTapped(QWebElement)), parent, SLOT(switchToElementFisheye(QWebElement)));
-	connect(this, SIGNAL(leftButtonClicked()), parent, SLOT(elementTappedLeftButtonClicked()));
+	connect(this, SIGNAL(leftButtonClicked()), parent, SLOT(switchToElementFisheye()));
 	connect(this, SIGNAL(editButtonClicked()), parent, SLOT(switchToChooseTool1App()));
 
 	buttonColor = QColor(180, 180, 180);
 	isElementTapped = false;
-	showText = true;
 
 	m_explainText = new TextWidget(this);
 	m_explainText->setColor(Qt::white);
@@ -41,13 +40,13 @@ ElementTappedApp::ElementTappedApp(QWidget *parent) : App(parent)
 	m_editElementButton->setTitle("edit");
 	connect(m_editElementButton, SIGNAL(clicked()), this, SIGNAL(editButtonClicked()));
 
-	m_followLinkButton = new ScalableButtonWidget(this);
-	m_followLinkButton->move(30, 150);
-	m_followLinkButton->resize(60, 60);
-	m_followLinkButton->setImage(":/img/buttons/default");
-	m_followLinkButton->setIconImage(":/img/our_icons/followlink");
-	m_followLinkButton->setTitle("follow link");
-	connect(m_followLinkButton, SIGNAL(clicked()), this, SIGNAL(leftButtonClicked()));
+	m_refineButton = new ScalableButtonWidget(this);
+	m_refineButton->move(30, 150);
+	m_refineButton->resize(60, 60);
+	m_refineButton->setImage(":/img/buttons/default");
+	m_refineButton->setIconImage(":/img/our_icons/refine");
+	m_refineButton->setTitle("refine");
+	connect(m_refineButton, SIGNAL(clicked()), this, SIGNAL(leftButtonClicked()));
 
 
 	// Connect gestures:
@@ -61,10 +60,6 @@ ElementTappedApp::ElementTappedApp(QWidget *parent) : App(parent)
 
 void ElementTappedApp::mousePressEvent(QMouseEvent *event)
 {
-	if (event->pos().y() >= 50 && event->pos().y() <= 140) {
-		isElementTapped = true;
-		updateView();
-	}
 	/*
 		if (event->pos().y() <= 120) {
 			buttonColor = QColor(100, 100, 100);
@@ -75,11 +70,6 @@ void ElementTappedApp::mousePressEvent(QMouseEvent *event)
 
 void ElementTappedApp::mouseReleaseEvent(QMouseEvent *event)
 {
-	if (isElementTapped && event->pos().y() >= 50 && event->pos().y() <= 140) {
-		showText = false;
-		emit elementTapped(currentEl);
-	}
-	isElementTapped = false;
 	update();
 	/*
 		if (event->pos().y() <= 120) {
@@ -91,27 +81,12 @@ void ElementTappedApp::mouseReleaseEvent(QMouseEvent *event)
 }
 
 void ElementTappedApp::elementTappedInFisheye(QWebElement el) {
-	showText = true;
 	currentEl = el;
 	updateView();
 }
 
 void ElementTappedApp::updateView() {
-	/*
-		if (currentEl.tagName() == "A")
-		{
-			m_followLinkButton->setTitle("follow link");
-			m_followLinkButton->setIconImage(":/img/our_icons/followlink");
-		}
-		else {
-			m_followLinkButton->setTitle("back");
-			m_followLinkButton->setIconImage(":/img/our_icons/back");
-		}
-		*/
-
-	m_followLinkButton->setTitle("follow link");
-	m_followLinkButton->setIconImage(":/img/our_icons/followlink");
-	m_followLinkButton->setEnabled(currentEl.tagName() == "A");
+	//m_refineButton->setEnabled(currentEl.tagName() == "A");
 	update();
 
 }
@@ -170,17 +145,16 @@ void ElementTappedApp::paintEvent(QPaintEvent*)
 	//pixmap = QPixmap(":img/our_imgs/elementTapped_background_hover.png");
 	//painter.drawPixmap(0, 40, 240, 90, pixmap);
 	painter.setPen(Qt::NoPen);
-	painter.drawRoundedRect(15, 40, 210, 90, 15.0, 15.0);
+	//painter.drawRoundedRect(15, 40, 210, 90, 15.0, 15.0);
 	painter.setPen(Qt::SolidLine);
 
 
-	painter.setPen(QPen(Qt::black, 5.0));
+	painter.setPen(QPen(Qt::white, 5.0));
 	painter.setFont(QFont("Ubuntu", 15 * ipn::helpers::fontSizeFactor, QFont::Bold));
 
-	if (showText) {
-		painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
-		painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
-	}
+	painter.drawText(0, 60, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementIdentifierString(currentEl));
+	painter.drawText(0, 90, 240, 20, Qt::AlignCenter, ipn::webhelpers::elementContentString(currentEl));
+
 	if (currentEl.tagName().toUpper() == "IMG") {
 		QPixmap pixmap;
 		if (currentEl.attribute("src").contains("MW_Logo"))

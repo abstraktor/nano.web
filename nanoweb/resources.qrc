@@ -116,5 +116,6 @@
         <file>meilenwerk/meilenwerk.html</file>
         <file>img/our_imgs/meilenwerk.png</file>
         <file>img/our_imgs/zurichsee.png</file>
+        <file>img/our_icons/refine.png</file>
     </qresource>
 </RCC>
