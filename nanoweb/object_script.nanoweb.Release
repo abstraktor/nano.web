@@ -48,6 +48,7 @@ INPUT(
 ./release\ElementTappedApp.o
 ./release\ElementFisheyeApp.o
 ./release\MockupWidget.o
+./release\PaddingEditApp.o
 ./release\moc_MainWindow.o
 ./release\moc_IPodFrameWidget.o
 ./release\moc_PeepholeApp.o
@@ -93,5 +94,6 @@ INPUT(
 ./release\moc_ElementTappedApp.o
 ./release\moc_ElementFisheyeApp.o
 ./release\moc_MockupWidget.o
+./release\moc_PaddingEditApp.o
 ./release\qrc_resources.o
 );

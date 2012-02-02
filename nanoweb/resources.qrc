@@ -112,10 +112,10 @@
         <file>img/frame/t_ohne.png</file>
         <file>img/frame/tl_ohne.png</file>
         <file>img/our_icons/mockup3.png</file>
-        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
         <file>meilenwerk/meilenwerk.html</file>
         <file>img/our_imgs/meilenwerk.png</file>
         <file>img/our_imgs/zurichsee.png</file>
         <file>img/our_icons/refine.png</file>
+        <file>meilenwerk/meilenwerk-Dateien/mw.css</file>
     </qresource>
 </RCC>

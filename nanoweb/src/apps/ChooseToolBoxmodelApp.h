@@ -26,6 +26,7 @@ class ChooseToolBoxmodelApp : public App
 
 	signals:
 		void borderButtonClicked();
+		void paddingButtonClicked();
 		void anotherButtonClicked();
 
 

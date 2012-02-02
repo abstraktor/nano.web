@@ -36,6 +36,7 @@ class ElementFisheyeApp;
 class ChooseTool1App;
 class ChooseToolBoxmodelApp;
 class BorderEditApp;
+class PaddingEditApp;
 class BorderStyleApp;
 class BorderWidthApp;
 class MockUpApp;
@@ -85,8 +86,9 @@ public slots:
     void switchToElementFisheye(QWebElement el);
     void switchToInfo();
     void switchToChooseTool1App();
-    void switchToChooseToolBoxmodelApp();
-    void switchToBorderApp();
+	void switchToChooseToolBoxmodelApp();
+	void switchToBorderApp();
+	void switchToPaddingApp();
     void switchToSpecificBorderApp(QString cssproperty);
     void switchToNumberApp();
     void elementTappedLeftButtonClicked();
@@ -132,6 +134,7 @@ private:
     ChooseTool1App *m_chooseTool1App;
     ChooseToolBoxmodelApp *m_chooseToolBoxmodelApp;
     BorderEditApp *m_borderEditApp;
+	PaddingEditApp *m_paddingEditApp;
     BorderStyleApp *m_borderStyleApp;
     BorderWidthApp *m_borderWidthApp;
     MultiTapApp *m_multiTapApp;

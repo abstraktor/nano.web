@@ -48,6 +48,7 @@ INPUT(
 ./debug\ElementTappedApp.o
 ./debug\ElementFisheyeApp.o
 ./debug\MockupWidget.o
+./debug\PaddingEditApp.o
 ./debug\moc_MainWindow.o
 ./debug\moc_IPodFrameWidget.o
 ./debug\moc_PeepholeApp.o
@@ -93,5 +94,6 @@ INPUT(
 ./debug\moc_ElementTappedApp.o
 ./debug\moc_ElementFisheyeApp.o
 ./debug\moc_MockupWidget.o
+./debug\moc_PaddingEditApp.o
 ./debug\qrc_resources.o
 );

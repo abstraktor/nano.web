@@ -9,6 +9,7 @@
 #include "apps/ChooseTool1App.h"
 #include "apps/ChooseToolBoxmodelApp.h"
 #include "apps/BorderEditApp.h"
+#include "apps/PaddingEditApp.h"
 #include "apps/BorderWidthApp.h"
 #include "apps/BorderStyleApp.h"
 #include "apps/MultiTapApp.h"
@@ -72,6 +73,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	m_chooseToolBoxmodelApp = new ChooseToolBoxmodelApp(this);
 
 	m_borderEditApp = new BorderEditApp(this);
+
+	m_paddingEditApp = new PaddingEditApp(this);
 
 	m_borderWidthApp = new BorderWidthApp(this);
 
@@ -220,6 +223,10 @@ void MainWindow::switchToBorderApp() {
 	m_borderEditApp->setElement(m_chooseToolBoxmodelApp->getElement());
 	m_frameWidget->pushApp(m_borderEditApp);
 }
+void MainWindow::switchToPaddingApp() {
+	m_paddingEditApp->setElement(m_chooseToolBoxmodelApp->getElement());
+	m_frameWidget->pushApp(m_paddingEditApp);
+}
 void MainWindow::switchToSpecificBorderApp(QString property) {
 	if (property.contains("width")) {
 		m_borderWidthApp->cssproperty = property;
@@ -233,6 +240,11 @@ void MainWindow::switchToSpecificBorderApp(QString property) {
 		m_borderStyleApp->cssproperty = property;
 		m_borderStyleApp->setElement(m_borderEditApp->getElement());
 		m_frameWidget->pushApp(m_borderStyleApp);
+	}
+	else if (property.contains("padding")) {
+		m_borderWidthApp->cssproperty = property;
+		m_borderWidthApp->setElement(m_paddingEditApp->getElement());
+		m_frameWidget->pushApp(m_borderWidthApp);
 	}
 }
 void MainWindow::switchToNumberApp() {
