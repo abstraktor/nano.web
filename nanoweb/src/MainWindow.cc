@@ -265,6 +265,8 @@ void MainWindow::switchToNumberApp() {
 void MainWindow::switchBackToBorderEditApp(QString value) {
 	// we entered a number in MultiTapApp and now we want to go two apps back
 	m_frameWidget->switchBackTo(m_borderEditApp);
+	m_frameWidget->switchBackTo(m_paddingEditApp);
+	m_frameWidget->switchBackTo(m_marginEditApp);
 }
 
 void MainWindow::switchToMainMenuIfNecessary() {
