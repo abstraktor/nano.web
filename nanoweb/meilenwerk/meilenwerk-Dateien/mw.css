@@ -63,7 +63,7 @@ body {
 	border-left-width: 0px;
 	border-right-width: 0px;
 	
-	/*border-top: 10px dotted #8D8D8D;*/
+	border-top: 10px dotted #8D8D8D;
 }
 #divBanner {
 	margin: 0px auto; border: 3px solid rgb(0, 0, 0); width: 900px; height: 60px; z-index: 0;

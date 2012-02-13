@@ -330,12 +330,24 @@ void IPodFrameWidget::refresh()
 void IPodFrameWidget::refreshFrame() {
 	App *top = topApp();
 	if (top != NULL && top->name == "MenuApp") {
-		m_frameImages[0][1]->setImage(":/img/frame/t_ohne.png");
 		m_frameImages[0][0]->setImage(":/img/frame/tl_ohne.png");
+		m_frameImages[0][1]->setImage(":/img/frame/t_ohne.png");
+		m_frameImages[0][2]->setImage(":/img/frame/tr.png");
+	}
+	else if (top != NULL && top->name == "WebViewApp") {
+		m_frameImages[0][0]->setImage(":/img/frame/tl.png");
+		m_frameImages[0][1]->setImage(":/img/frame/t_webpage.png");
+		m_frameImages[0][2]->setImage(":/img/frame/tr.png");
+	}
+	else if (top != NULL && top->name == "MockUpApp") {
+		m_frameImages[0][0]->setImage(":/img/frame/tl.png");
+		m_frameImages[0][1]->setImage(":/img/frame/t_mockup.png");
+		m_frameImages[0][2]->setImage(":/img/frame/tr_mockup.png");
 	}
 	else {
-		m_frameImages[0][1]->setImage(":/img/frame/t.png");
 		m_frameImages[0][0]->setImage(":/img/frame/tl.png");
+		m_frameImages[0][1]->setImage(":/img/frame/t.png");
+		m_frameImages[0][2]->setImage(":/img/frame/tr.png");
 	}
 }
 
